@@ -1,0 +1,13 @@
+# 0.16 - Integrais Multiplas
+
+Para que serve uma integral dupla?
+?
+Calcular "soma sobre uma area". Exemplo: carga total $Q = \iint \sigma\,dA$ numa placa com distribuicao de carga superficial.
+
+Quando usar coordenadas cilindricas $(r, \theta, z)$?
+?
+Problemas com simetria axial (fios, bobinas). Elemento de area: $dA = r\,dr\,d\theta$.
+
+Quando usar coordenadas esfericas $(r, \theta, \phi)$?
+?
+Problemas com simetria esferica (cargas pontuais, antenas). Elemento de volume: $dV = r^2\sin\theta\,dr\,d\theta\,d\phi$.

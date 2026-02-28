@@ -1,0 +1,17 @@
+# 0.22 - Matrizes e Sistemas Lineares
+
+$Ax = b$ na analise de circuitos: o que e $A$, $x$ e $b$?
+?
+$A$ = matriz de coeficientes (condutancias/resistencias), $x$ = incognitas (tensoes/correntes de malha), $b$ = fontes.
+
+Determinante 2x2: $\det\begin{pmatrix}a&b\\c&d\end{pmatrix} = $ ?
+?
+$ad - bc$. Se $\det = 0$, o sistema nao tem solucao unica.
+
+Quando a inversa $A^{-1}$ existe?
+?
+Quando $\det(A) \neq 0$ — o sistema tem solucao unica.
+
+Regra de Cramer para sistema 2x2?
+?
+$x_i = \frac{\det(A_i)}{\det(A)}$, onde $A_i$ e a matriz $A$ com a coluna $i$ substituida por $b$.

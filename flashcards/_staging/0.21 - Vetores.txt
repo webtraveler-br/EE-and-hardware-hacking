@@ -1,0 +1,17 @@
+# 0.21 - Vetores
+
+O que e produto escalar $\vec{a} \cdot \vec{b}$?
+?
+$|\vec{a}||\vec{b}|\cos(\theta) = a_xb_x + a_yb_y + a_zb_z$. Resultado: escalar. Mede "quanto $\vec{a}$ esta na direcao de $\vec{b}$".
+
+O que e produto vetorial $\vec{a} \times \vec{b}$?
+?
+$|\vec{a}||\vec{b}|\sin(\theta)\hat{n}$. Resultado: vetor perpendicular a ambos. Modulo = area do paralelogramo.
+
+Onde o produto vetorial aparece em EE?
+?
+Forca magnetica: $\vec{F} = q\vec{v} \times \vec{B}$ — a forca e perpendicular tanto a velocidade quanto ao campo.
+
+Onde o produto escalar aparece em EE?
+?
+Potencia: $P = \vec{F} \cdot \vec{v}$. Fluxo: $\Phi = \vec{B} \cdot \vec{A}$.

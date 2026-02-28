@@ -1,0 +1,13 @@
+# 2.18 - Carta de Smith e Parametros S
+
+O que sao parametros S?
+?
+Descrevem comportamento de rede RF. S11 = reflexao na entrada, S21 = transmissao, S22 = reflexao na saida, S12 = isolacao.
+
+$|S_{11}| < $ ? dB indica bom casamento?
+?
+$< -10$ dB — menos de 10% da potencia e refletida.
+
+O que e a carta de Smith?
+?
+Grafico circular que mapeia impedancia complexa em coeficiente de reflexao. Centro = casado ($Z_0$, $\Gamma = 0$). Borda = reflexao total ($|\Gamma| = 1$).

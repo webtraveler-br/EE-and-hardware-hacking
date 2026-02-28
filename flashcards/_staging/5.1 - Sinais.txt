@@ -1,0 +1,9 @@
+# 5.1 - Sinais
+
+Sinais fundamentais: degrau, impulso, rampa, exponencial?
+?
+Degrau $u(t)$: 0→1 em $t=0$. Impulso $\delta(t)$: "pancada" instantanea. Rampa $r(t) = t \cdot u(t)$: crescimento linear. Exponencial: $e^{at}$.
+
+O que e a resposta ao degrau?
+?
+A saida do sistema quando a entrada muda abruptamente de 0 para 1. Revela velocidade, oscilacao e estabilidade do sistema.

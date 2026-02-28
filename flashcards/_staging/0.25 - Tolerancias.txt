@@ -1,0 +1,13 @@
+# 0.25 - Tolerancias e Monte Carlo
+
+Formula de propagacao de erros?
+?
+$\sigma_f^2 = \left(\frac{\partial f}{\partial x}\right)^2 \sigma_x^2 + \left(\frac{\partial f}{\partial y}\right)^2 \sigma_y^2$ — soma em quadratura.
+
+Qual a diferenca entre analise de pior caso e Monte Carlo?
+?
+Pior caso: usa extremos de tolerancia, conservador demais. Monte Carlo: simula milhares de combinacoes aleatorias, mostra a distribuicao real dos resultados.
+
+O que significa 6 Sigma em fabricacao?
+?
+$3{,}4$ defeitos por milhao de unidades. Usado em fabricacao de eletronicos para garantir qualidade.

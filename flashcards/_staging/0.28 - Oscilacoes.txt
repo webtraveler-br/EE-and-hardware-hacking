@@ -1,0 +1,21 @@
+# 0.28 - Oscilacoes e Ondas
+
+Equacao do MHS?
+?
+$x(t) = A\sin(\omega t + \phi)$. Para mola: $\omega = \sqrt{k/m}$. Para RLC: $\omega_0 = 1/\sqrt{LC}$.
+
+Relacao entre periodo e frequencia?
+?
+$T = 1/f = 2\pi/\omega$
+
+Velocidade de propagacao de uma onda?
+?
+$v = f \times \lambda$
+
+Velocidade das ondas eletromagneticas?
+?
+$c = 3 \times 10^8$ m/s no vacuo.
+
+O que e ressonancia?
+?
+Excitar um sistema na sua frequencia natural — amplitude maxima. Base de filtros, antenas e radio.

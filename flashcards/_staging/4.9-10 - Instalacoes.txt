@@ -1,0 +1,13 @@
+# 4.9-4.10 - Instalacoes e Aterramento
+
+Queda de tensao maxima permitida (NBR 5410)?
+?
+7% do ponto de entrega ao ponto mais distante. Boa pratica: 4% interno.
+
+Sistemas de aterramento mais comuns no Brasil?
+?
+TN-C-S: PEN no alimentador, separa em PE e N no quadro. TT: terra independente, obrigatorio DR.
+
+Sistema IT: para que serve?
+?
+Sem aterramento direto. Usado em hospitais — garante continuidade de servico na primeira falta a terra.

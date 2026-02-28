@@ -1,0 +1,13 @@
+# 2.13 - Linear vs Chaveado
+
+Eficiencia do regulador linear?
+?
+$\eta \approx V_{out}/V_{in}$. Exemplo: 12V→5V = 42%. O resto vira calor.
+
+Eficiencia do regulador chaveado?
+?
+85-95%. Usa chaveamento em alta frequencia (100 kHz - 2 MHz) + filtro LC.
+
+Quando usar linear em vez de chaveado?
+?
+Quando precisa de baixo ruido: audio, instrumentacao, referencias de tensao. Linear nao tem ruido de chaveamento.

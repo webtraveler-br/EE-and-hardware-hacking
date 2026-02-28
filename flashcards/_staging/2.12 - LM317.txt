@@ -1,0 +1,9 @@
+# 2.12 - Regulador LM317
+
+Formula do LM317?
+?
+$V_{out} = 1{,}25 \times \left(1 + \frac{R_2}{R_1}\right)$. Ajustavel de 1.25V a 37V.
+
+Dissipacao termica no regulador linear?
+?
+$P_{dissipada} = (V_{in} - V_{out}) \times I_{out}$. Precisa dimensionar dissipador se $P$ for alta.

@@ -1,0 +1,13 @@
+# 3.4 - Circuitos Combinacionais
+
+O que faz um multiplexador (MUX)?
+?
+Seleciona 1 de N entradas baseado nos seletores. MUX 4:1 = 4 entradas, 2 seletores, 1 saida.
+
+O que faz um decoder?
+?
+Converte codigo binario em linha ativa. Decoder 3:8 → 3 bits de entrada ativam 1 de 8 linhas de saida.
+
+Full Adder: entradas e saidas?
+?
+Entradas: $A$, $B$, $C_{in}$ (carry). Saidas: $S = A \oplus B \oplus C_{in}$, $C_{out} = AB + C_{in}(A \oplus B)$.

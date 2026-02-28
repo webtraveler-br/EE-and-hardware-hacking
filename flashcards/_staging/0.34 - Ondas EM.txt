@@ -1,0 +1,17 @@
+# 0.34 - Maxwell e Ondas EM
+
+Velocidade da luz a partir das constantes de Maxwell?
+?
+$c = \frac{1}{\sqrt{\mu_0\varepsilon_0}} = 3 \times 10^8$ m/s
+
+Impedancia do espaco livre?
+?
+$Z_0 = \sqrt{\mu_0/\varepsilon_0} \approx 377\,\Omega$
+
+Comprimento de onda: $\lambda = $ ?
+?
+$\lambda = c/f$. Exemplo: WiFi 2.4 GHz → $\lambda \approx 12{,}5$ cm.
+
+Antena de quarto de onda ($\lambda/4$) para FM 100 MHz?
+?
+$\lambda = 3 \times 10^8 / 10^8 = 3$ m. $\lambda/4 = 75$ cm.

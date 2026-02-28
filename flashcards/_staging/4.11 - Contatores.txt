@@ -1,0 +1,13 @@
+# 4.11 - Contatores e Intertravamento
+
+O que e selo (auto-retencao)?
+?
+Contato NA do contator em paralelo com botao de liga. Mantem contator energizado apos soltar o botao.
+
+O que e intertravamento?
+?
+Contato NF de um contator no circuito do outro. Impede que dois contatores liguem simultaneamente (seguranca na reversao de motor).
+
+Logica de contatores e algebra booleana?
+?
+NA = AND, NF = NOT, paralelo = OR, selo = variavel booleana que mantem TRUE. Cada fio e uma "linha de codigo".

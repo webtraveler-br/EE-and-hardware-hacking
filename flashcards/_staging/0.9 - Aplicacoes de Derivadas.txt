@@ -1,0 +1,13 @@
+# 0.9 - Aplicacoes de Derivadas
+
+Como encontrar maximo ou minimo de uma funcao?
+?
+Iguale $f'(x) = 0$. Se $f''(x) < 0$ e maximo, se $f''(x) > 0$ e minimo.
+
+O que e linearizacao (Taylor 1a ordem)?
+?
+$f(x) \approx f(a) + f'(a)(x - a)$ para $x$ proximo de $a$
+
+Em que condicao ocorre maxima transferencia de potencia?
+?
+Quando $R_L = R_{th}$ (carga igual a resistencia de Thevenin). Obtido igualando $dP/dR_L = 0$.

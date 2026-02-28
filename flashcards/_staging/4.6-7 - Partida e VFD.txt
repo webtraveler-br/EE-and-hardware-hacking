@@ -1,0 +1,17 @@
+# 4.6-4.7 - Partida de Motor e VFD
+
+Partida Y-$\Delta$: corrente de partida?
+?
+$I_{partida} = \frac{1}{3}$ da partida direta. Parte em Y (menor tensao), comuta para $\Delta$ apos acelerado.
+
+O que e um soft-starter?
+?
+Eletronica de potencia (SCRs) que reduz tensao gradualmente na partida. Controle suave, sem transientes.
+
+O que e um VFD (inversor de frequencia)?
+?
+Controla tensao E frequencia do motor simultaneamente → controle total de velocidade e torque. Padrao moderno. Eficiencia energetica.
+
+Regra V/f constante do VFD?
+?
+Manter $V/f$ constante mantem torque constante. Ex: 220V/60Hz = 110V/30Hz = mesmo torque.

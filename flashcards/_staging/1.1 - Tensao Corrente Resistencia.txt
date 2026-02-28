@@ -1,0 +1,13 @@
+# 1.1 - Tensao, Corrente e Resistencia
+
+Lei de Ohm?
+?
+$V = IR$ — tensao e proporcional a corrente vezes a resistencia.
+
+3 formas de calcular potencia?
+?
+$P = VI = I^2R = V^2/R$. Unidade: Watt (W).
+
+Corrente e "consumida" por um componente?
+?
+Nao. A corrente que entra e igual a que sai. O que e consumido e energia (potencia × tempo).

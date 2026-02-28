@@ -1,0 +1,13 @@
+# 2.19 - EMC
+
+O que e EMI?
+?
+Interferencia eletromagnetica: emissao indesejada que afeta outros dispositivos. Pode ser conduzida (pelos fios) ou irradiada (pelo ar).
+
+Capacitor de desacoplamento: valor e posicao?
+?
+100 nF ceramico em cada pino VCC de CI, o mais perto possivel. Filtra ruido de alta frequencia.
+
+Por que usar plano de terra continuo?
+?
+Minimiza a area de loops de corrente de retorno → minimiza irradiacao eletromagnetica.

@@ -1,0 +1,33 @@
+# 0.32-0.33 - Magnetismo e Faraday
+
+Campo magnetico de fio reto infinito?
+?
+$B = \frac{\mu_0 I}{2\pi r}$. Direcao: regra da mao direita.
+
+Campo magnetico dentro de solenoide?
+?
+$B = \mu_0 n I$, onde $n$ = espiras por metro. Uniforme dentro, quase zero fora.
+
+Indutancia de solenoide?
+?
+$L = \frac{\mu_0 N^2 A}{l}$, onde $N$ = espiras, $A$ = area, $l$ = comprimento.
+
+Lei de Faraday?
+?
+$\text{fem} = -N\frac{d\Phi}{dt}$ — variacao de fluxo magnetico induz tensao.
+
+Lei de Lenz?
+?
+A tensao induzida se opoe a variacao que a causou (o sinal negativo em Faraday). Inercia magnetica.
+
+fem de um gerador?
+?
+$\text{fem}(t) = NBA\omega\sin(\omega t)$ — e uma senoide. Origem de toda corrente alternada.
+
+Transformador ideal: relacao de tensoes?
+?
+$\frac{V_1}{V_2} = \frac{N_1}{N_2}$ e $\frac{I_1}{I_2} = \frac{N_2}{N_1}$. Potencia conservada: $P_1 = P_2$.
+
+O que sao correntes de Foucault?
+?
+Correntes parasitas induzidas em massas condutoras por variacao de fluxo magnetico. Causam perdas. Solucao: laminar o nucleo.

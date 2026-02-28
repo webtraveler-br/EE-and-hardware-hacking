@@ -1,0 +1,17 @@
+# 5.3 - Fourier
+
+O que diz a Transformada de Fourier?
+?
+Qualquer sinal pode ser decomposto em uma soma de senoides de diferentes frequencias. $X(f) = \int x(t) e^{-j2\pi ft}\,dt$.
+
+Convolucao no tempo equivale a que na frequencia?
+?
+Multiplicacao. $x(t) * h(t) \leftrightarrow X(f) \cdot H(f)$.
+
+O que e aliasing?
+?
+Quando a frequencia do sinal $> f_s/2$ (Nyquist), o sinal "dobra" e aparece errado no espectro. Solucao: filtro anti-aliasing antes do ADC.
+
+O que e FFT?
+?
+Algoritmo rapido ($O(N\log N)$) para calcular a DFT. Versao computacional da Transformada de Fourier.

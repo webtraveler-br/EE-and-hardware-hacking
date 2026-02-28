@@ -1,0 +1,25 @@
+# 2.5 - BJT como Chave
+
+Terminais do BJT?
+?
+Base (B), Coletor (C), Emissor (E). NPN: corrente entra pela base, sai pelo emissor.
+
+Condicao de saturacao do BJT?
+?
+$I_B > I_C / \beta$ → transistor totalmente ligado, $V_{CE} \approx 0{,}2$ V. Funciona como chave fechada.
+
+Condicao de corte do BJT?
+?
+$V_{BE} < 0{,}7$ V → transistor desligado, $I_C = 0$. Funciona como chave aberta.
+
+$I_C = $ ? em funcao de $I_B$
+?
+$I_C = \beta \cdot I_B$. $\beta$ tipico: 100-300.
+
+$R_B = $ ? para garantir saturacao
+?
+$R_B = \frac{V_{input} - 0{,}7}{I_B}$, usando $I_B = \frac{I_C}{\beta_{min}} \times \text{fator de seguranca}$ (fator 2 a 5).
+
+Por que usar $\beta_{min}$ do datasheet ao projetar?
+?
+$\beta$ varia de 75 a 300 entre transistores do mesmo modelo. Se projetar com $\beta$ alto e o transistor tiver $\beta$ baixo, nao satura.

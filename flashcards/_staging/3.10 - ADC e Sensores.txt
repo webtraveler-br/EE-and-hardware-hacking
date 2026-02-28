@@ -1,0 +1,9 @@
+# 3.10 - ADC e Sensores
+
+Resolucao do ADC do Arduino?
+?
+10 bits → valores de 0 a 1023. Tensao = valor $\times$ 5.0 / 1023.
+
+LM35: saida?
+?
+10 mV/°C. Exemplo: 250 mV = 25°C.

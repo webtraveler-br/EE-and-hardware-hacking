@@ -1,0 +1,17 @@
+# 0.15 - Derivadas Parciais e Gradiente
+
+O que e uma derivada parcial?
+?
+Derivada em relacao a uma variavel tratando as outras como constantes. $\frac{\partial f}{\partial x}$ varia $x$, fixa $y$.
+
+O que e o gradiente $\nabla f$?
+?
+$\nabla f = \left(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right)$ — vetor que aponta na direcao de maximo crescimento de $f$.
+
+Qual a relacao entre campo eletrico e potencial?
+?
+$\vec{E} = -\nabla V$ — o campo eletrico e o negativo do gradiente do potencial.
+
+Formula do diferencial total?
+?
+$df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy$ — base da propagacao de erros.

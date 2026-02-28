@@ -1,0 +1,21 @@
+# 1.11 - Indutores
+
+$V = $ ? num indutor
+?
+$V = L \cdot \frac{dI}{dt}$ — tensao proporcional a taxa de variacao da corrente.
+
+Energia armazenada num indutor?
+?
+$E = \frac{1}{2}LI^2$
+
+$\tau$ de circuito RL?
+?
+$\tau = L/R$
+
+O que acontece se desligar um indutor com corrente fluindo?
+?
+$dI/dt$ e enorme → spike de tensao que pode destruir componentes. Solucao: diodo flyback em antiparalelo.
+
+Indutor em DC (corrente constante)?
+?
+Curto-circuito. $dI/dt = 0$ entao $V = 0$.

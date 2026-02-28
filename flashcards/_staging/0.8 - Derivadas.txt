@@ -1,0 +1,45 @@
+# 0.8 - Derivadas
+
+O que a derivada representa?
+?
+Taxa de variacao instantanea — a inclinacao da curva num ponto.
+
+$\frac{d}{dt}[k] = $ ?
+?
+$0$ (constante nao muda)
+
+$\frac{d}{dt}[t^n] = $ ?
+?
+$n \cdot t^{n-1}$
+
+$\frac{d}{dt}[e^{at}] = $ ?
+?
+$a \cdot e^{at}$ — a exponencial e proporcional a si mesma
+
+$\frac{d}{dt}[\sin(\omega t)] = $ ?
+?
+$\omega \cos(\omega t)$
+
+$\frac{d}{dt}[\cos(\omega t)] = $ ?
+?
+$-\omega \sin(\omega t)$
+
+$\frac{d}{dt}[\ln(t)] = $ ?
+?
+$\frac{1}{t}$
+
+Regra da cadeia: $\frac{d}{dt}[f(g(t))] = $ ?
+?
+$f'(g(t)) \cdot g'(t)$. Exemplo: $\frac{d}{dt}[e^{-t/\tau}] = (-1/\tau) \cdot e^{-t/\tau}$
+
+Regra do produto: $\frac{d}{dt}[f \cdot g] = $ ?
+?
+$f' \cdot g + f \cdot g'$
+
+Qual a relacao entre corrente e tensao num capacitor?
+?
+$I = C \cdot \frac{dV}{dt}$ — corrente e proporcional a taxa de variacao da tensao
+
+Qual a relacao entre tensao e corrente num indutor?
+?
+$V = L \cdot \frac{dI}{dt}$ — tensao e proporcional a taxa de variacao da corrente

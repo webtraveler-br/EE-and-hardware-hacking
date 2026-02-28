@@ -1,0 +1,9 @@
+# 1.16 - Fasores
+
+O que e um fasor?
+?
+Representacao de uma senoide como numero complexo. $v(t) = V_m\cos(\omega t + \phi)$ → fasor $\vec{V} = V_m \angle\phi$.
+
+Os metodos DC (KVL, KCL, Thevenin, nodal) funcionam com fasores?
+?
+Sim, todos. Substitua $R$ por $Z$ e use algebra complexa. Os metodos sao identicos.

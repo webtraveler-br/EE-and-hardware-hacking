@@ -1,0 +1,13 @@
+# 2.16 - Inversores e Fontes Chaveadas
+
+O que faz um inversor?
+?
+Converte DC → AC. Usa H-bridge com PWM senoidal (SPWM) + filtro LC para gerar senoide.
+
+O que e uma fonte flyback?
+?
+Fonte chaveada isolada (usa transformador de alta frequencia). Padrao em carregadores de celular e fontes de baixa potencia.
+
+O que e THD (Total Harmonic Distortion)?
+?
+Medida de quanto a forma de onda de saida difere de uma senoide pura. Menor THD = onda mais limpa.

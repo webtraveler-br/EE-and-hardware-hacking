@@ -1,0 +1,17 @@
+# 5.9 - Controlador PID
+
+Equacao do PID no tempo?
+?
+$u(t) = K_p e(t) + K_i \int e(t)\,dt + K_d \frac{de(t)}{dt}$
+
+P, I e D — o que cada um faz?
+?
+P: reacao proporcional ao erro atual (rapido mas com offset). I: acumula erro → elimina offset (mas pode oscilar). D: reage a taxa de variacao → antecipa e suaviza (mas sensivel a ruido).
+
+Ziegler-Nichols: procedimento?
+?
+Aumente $K_p$ ate oscilar. Anote $K_u$ (ganho critico) e $T_u$ (periodo). $K_p = 0{,}6K_u$, $K_i = 2K_p/T_u$, $K_d = K_pT_u/8$.
+
+PID em Laplace?
+?
+$G_{PID}(s) = K_p + K_i/s + K_ds = \frac{K_ds^2 + K_ps + K_i}{s}$

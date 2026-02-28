@@ -1,0 +1,13 @@
+# 3.5 - Flip-Flops
+
+Diferenca entre latch e flip-flop?
+?
+Latch: sensivel a NIVEL (saida acompanha entrada enquanto enable = 1). Flip-flop: sensivel a BORDA (captura dados apenas no instante da borda do clock).
+
+Flip-flop D: como funciona?
+?
+Na borda de subida do clock, captura o valor de D e mantem na saida Q ate o proximo clock.
+
+O que sao setup time e hold time?
+?
+Setup: dados devem estar estaveis ANTES da borda do clock. Hold: devem permanecer estaveis DEPOIS. Violar = metastabilidade.

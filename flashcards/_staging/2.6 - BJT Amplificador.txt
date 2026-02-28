@@ -1,0 +1,13 @@
+# 2.6 - BJT Amplificador
+
+Ganho de tensao do emissor comum?
+?
+$A_V = -g_m \cdot R_C = -\frac{I_C}{V_T} \cdot R_C$. Sinal negativo = inversao de fase.
+
+O que e o ponto de operacao (Q-point)?
+?
+Polarizacao DC que coloca o BJT no meio da regiao ativa — permite amplificacao linear sem distorcao.
+
+Pra que servem capacitores de acoplamento?
+?
+Bloqueiam DC e passam AC — separam a polarizacao DC de um estagio do sinal AC.

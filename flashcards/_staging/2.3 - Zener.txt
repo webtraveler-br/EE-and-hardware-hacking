@@ -1,0 +1,9 @@
+# 2.3 - Zener
+
+Como funciona o diodo Zener?
+?
+Opera em breakdown reverso controlado — mantem tensao constante $V_Z$ na reversa. Usado como regulador simples ou referencia de tensao.
+
+Como dimensionar $R_{serie}$ num regulador Zener?
+?
+$R = \frac{V_{in} - V_Z}{I_Z + I_{carga}}$. Manter $I_{Z,min} \approx 5$ mA para regulacao.

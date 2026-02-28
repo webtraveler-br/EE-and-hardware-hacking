@@ -1,0 +1,13 @@
+# 3.6 - Contadores
+
+Contador binario de N bits: conta de 0 a ?
+?
+$2^N - 1$. Exemplo: 4 bits → 0 a 15.
+
+Cada flip-flop divide a frequencia por quanto?
+?
+Por 2. N flip-flops em cascata dividem por $2^N$.
+
+Diferenca entre contador sincrono e assincrono?
+?
+Sincrono: todos os FFs recebem o mesmo clock (mais rapido, sem propagation delay acumulado). Assincrono: cada Q alimenta o clock do proximo (simples mas com delay).

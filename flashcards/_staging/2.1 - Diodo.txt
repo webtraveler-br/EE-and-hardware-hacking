@@ -1,0 +1,17 @@
+# 2.1 - Diodo
+
+Tensao de limiar do diodo de silicio?
+?
+$\approx 0{,}7$ V. Germanio: $\approx 0{,}3$ V. LED: $1{,}8$ a $3{,}5$ V dependendo da cor.
+
+Modelo ideal do diodo?
+?
+Chave: ON = curto-circuito (polarizacao direta), OFF = circuito aberto (reversa).
+
+Equacao do diodo (modelo real)?
+?
+$I = I_s(e^{V/nV_T} - 1)$, onde $V_T \approx 26$ mV a 25°C.
+
+Como calcular o resistor para um LED?
+?
+$R = \frac{V_{fonte} - V_{LED}}{I_{LED}}$. Exemplo: LED vermelho (2V, 20mA) com 5V → $R = 150\,\Omega$.

@@ -1,0 +1,17 @@
+# 2.17 - Linhas de Transmissao
+
+Quando um fio se comporta como linha de transmissao?
+?
+Quando o comprimento do fio $\geq \lambda/10$. Para 1 GHz ($\lambda = 30$ cm), fios de 3 cm ja sao linhas de transmissao.
+
+Impedancia caracteristica de cabo coaxial?
+?
+$Z_0 = \sqrt{L/C}$ por unidade de comprimento. RG-58: 50 $\Omega$. TV/cabo: 75 $\Omega$. Ethernet: 100 $\Omega$.
+
+Coeficiente de reflexao?
+?
+$\Gamma = \frac{Z_L - Z_0}{Z_L + Z_0}$. Se $Z_L = Z_0$ → $\Gamma = 0$ (sem reflexao, casamento perfeito).
+
+O que e SWR?
+?
+Standing Wave Ratio: $SWR = \frac{1 + |\Gamma|}{1 - |\Gamma|}$. SWR = 1 = casamento perfeito.

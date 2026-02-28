@@ -1,0 +1,13 @@
+# 2.15 - Boost e Buck-Boost
+
+Relacao saida/entrada do Boost?
+?
+$V_{out} = \frac{V_{in}}{1 - D}$. D = 0.5 → $V_{out} = 2 V_{in}$. So sobe tensao.
+
+Relacao saida/entrada do Buck-Boost?
+?
+$V_{out} = -V_{in} \cdot \frac{D}{1 - D}$. Pode subir ou descer, mas saida e invertida.
+
+Aplicacao tipica do Boost?
+?
+Bateria Li-Ion (3.7V) → USB 5V. Power banks, LED drivers.

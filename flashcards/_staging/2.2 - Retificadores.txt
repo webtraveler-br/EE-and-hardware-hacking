@@ -1,0 +1,13 @@
+# 2.2 - Retificadores
+
+$V_{dc}$ media do retificador de onda completa?
+?
+$V_{dc} = \frac{2 V_p}{\pi}$
+
+Formula do ripple de um retificador com filtro capacitivo?
+?
+$V_{ripple} \approx \frac{I_{carga}}{f \cdot C}$. Para onda completa: $f_{ripple} = 2 \times f_{rede}$ (120 Hz no Brasil).
+
+Tensao DC no capacitor apos retificador ponte?
+?
+$V_{dc} \approx V_{pico} - 2 \times V_f$ (queda de 2 diodos na ponte, $\approx 1{,}4$ V).

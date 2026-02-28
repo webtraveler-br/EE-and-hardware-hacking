@@ -1,0 +1,17 @@
+# 0.27 - Torque e Rotacao
+
+Formula do torque?
+?
+$\tau = r \times F \times \sin(\theta)$. Unidade: N·m.
+
+Potencia rotacional?
+?
+$P = \tau \times \omega$, onde $\omega$ em rad/s.
+
+RPM para rad/s: $\omega = $ ?
+?
+$\omega = \frac{2\pi n}{60}$, onde $n$ e a rotacao em RPM.
+
+Energia cinetica rotacional?
+?
+$E = \frac{1}{2}J\omega^2$, onde $J$ e o momento de inercia.

@@ -1,0 +1,9 @@
+# 5.2 - Convolucao
+
+Convolucao: $y(t) = $ ?
+?
+$\int x(\tau) \cdot h(t-\tau)\,d\tau$. A saida de um sistema LTI e a convolucao da entrada $x(t)$ com a resposta ao impulso $h(t)$.
+
+O que e a resposta ao impulso $h(t)$?
+?
+Saida do sistema quando a entrada e $\delta(t)$. Define completamente qualquer sistema LTI.

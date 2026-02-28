@@ -1,0 +1,17 @@
+# 4.5 - Motor de Inducao
+
+Velocidade sincrona: $n_s = $ ?
+?
+$n_s = \frac{120 \cdot f}{p}$. 4 polos, 60 Hz → $n_s = 1800$ RPM.
+
+Escorregamento: $s = $ ?
+?
+$s = \frac{n_s - n_r}{n_s}$. Tipico: 2-5%. Motor 4 polos, 60 Hz → ~1750 RPM nominal.
+
+Corrente de partida do motor de inducao?
+?
+5 a 8 vezes a corrente nominal. Pode causar queda de tensao na rede.
+
+Por que o rotor nunca gira na velocidade sincrona?
+?
+Se girasse, nao haveria variacao de fluxo, nao haveria corrente induzida, nao haveria torque. O escorregamento e necessario para o funcionamento.

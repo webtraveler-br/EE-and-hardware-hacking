@@ -1,0 +1,25 @@
+# 0.2 - Algebra e Isolamento
+
+Equacao de 1o grau: $ax + b = 0 \Rightarrow x = $ ?
+?
+$x = -b/a$. Exemplo: $V = IR \Rightarrow I = V/R$
+
+Formula de Bhaskara?
+?
+$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$
+
+Se o discriminante $\Delta < 0$, o que acontece?
+?
+Raizes complexas — nao significa sem solucao. Em circuitos RLC, $\Delta < 0$ indica **oscilacao**.
+
+Isole C de $f = \frac{1}{2\pi\sqrt{LC}}$
+?
+$C = \frac{1}{(2\pi f)^2 \cdot L}$
+
+Isole $R_2$ de $V_{out} = V_{in} \cdot \frac{R_2}{R_1 + R_2}$
+?
+$R_2 = \frac{V_{out} \cdot R_1}{V_{in} - V_{out}}$
+
+Isole $V_p$ de $V_{rms} = \frac{V_p}{\sqrt{2}}$
+?
+$V_p = V_{rms} \cdot \sqrt{2}$

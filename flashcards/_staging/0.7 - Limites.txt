@@ -1,0 +1,21 @@
+# 0.7 - Limites e Continuidade
+
+O que e um limite?
+?
+O valor que $f(x)$ se aproxima quando $x$ se aproxima de $a$. Nao precisa ser igual a $f(a)$.
+
+$\lim_{x \to 0} \frac{\sin(x)}{x} = $ ?
+?
+$1$
+
+$\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = $ ?
+?
+$e \approx 2{,}718$
+
+O que significa uma funcao ser continua em $x = a$?
+?
+$\lim_{x \to a} f(x) = f(a)$ — sem buracos, saltos ou descontinuidades naquele ponto.
+
+Qual a definicao de derivada usando limites?
+?
+$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$

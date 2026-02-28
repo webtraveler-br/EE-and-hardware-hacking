@@ -1,0 +1,13 @@
+# 1.3 - KVL e KCL
+
+KVL (Lei das Tensoes de Kirchhoff)?
+?
+A soma das tensoes ao longo de qualquer malha fechada e zero: $\sum V = 0$.
+
+KCL (Lei das Correntes de Kirchhoff)?
+?
+A soma das correntes que entram num no e igual a soma das que saem: $\sum I_{in} = \sum I_{out}$.
+
+O que e um no num circuito?
+?
+Ponto onde 3 ou mais condutores se encontram. Um fio reto entre 2 componentes nao e um no.

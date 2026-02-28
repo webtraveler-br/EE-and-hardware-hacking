@@ -1,0 +1,9 @@
+# 3.8 - Maquinas de Estado (FSM)
+
+Diferenca entre FSM Mealy e Moore?
+?
+Mealy: saida depende do estado E da entrada atual (mais responsiva). Moore: saida depende apenas do estado (mais previsivel).
+
+Fluxo de projeto de FSM?
+?
+Especificacao → diagrama de estados → tabela de transicoes → K-map → circuito com FFs + logica combinacional.

@@ -1,0 +1,17 @@
+# 3.2 - Algebra Booleana
+
+Leis de De Morgan?
+?
+$(A \cdot B)' = A' + B'$ e $(A + B)' = A' \cdot B'$. Converte AND em OR (e vice-versa) com inversoes.
+
+Absorcao: $A + A \cdot B = $ ?
+?
+$A$
+
+$A \cdot A' = $ ?
+?
+$0$
+
+$A + A' = $ ?
+?
+$1$

@@ -1,0 +1,32 @@
+# 0.3 - Funcoes
+
+$y = kx$ e que tipo de funcao? Onde aparece em EE?
+?
+Linear (reta). Exemplo: $V = IR$ com R constante.
+
+$y = kx^2$ — se x dobra, o que acontece com y?
+?
+y quadruplica. Exemplo: $P = I^2 R$ — se a corrente dobra, a potencia fica 4x maior.
+
+$y = k/x$ e que tipo de funcao?
+?
+Inversa (hiperbole). Exemplo: $I = V/R$ com V constante — mais R, menos I.
+
+$y = e^{-at}$ descreve o que em circuitos?
+?
+Decaimento exponencial. Exemplo: descarga de capacitor, $V_C(t) = V_0 \cdot e^{-t/RC}$.
+
+$y = A\sin(\omega t + \phi)$ — o que representa cada parametro?
+?
+- $A$ = amplitude (valor de pico)
+- $\omega$ = frequencia angular (rad/s)
+- $\phi$ = fase inicial (rad)
+- Aparece em qualquer sinal AC
+
+O que e uma funcao par? Exemplo?
+?
+$f(-x) = f(x)$. Exemplo: $\cos(x)$ — simetrica em relacao ao eixo y.
+
+O que e uma funcao impar? Exemplo?
+?
+$f(-x) = -f(x)$. Exemplo: $\sin(x)$ — anti-simetrica.

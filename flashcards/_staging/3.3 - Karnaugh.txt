@@ -1,0 +1,9 @@
+# 3.3 - Mapa de Karnaugh
+
+Regras de agrupamento no K-map?
+?
+Agrupar 1s adjacentes em retangulos de $2^n$ (1, 2, 4, 8). Quanto maior o grupo, mais simples a expressao. Bordas sao adjacentes (wrap-around).
+
+O que sao don't-cares (X) no K-map?
+?
+Valores que podem ser 0 ou 1. Use-os para fazer grupos maiores e simplificar mais.

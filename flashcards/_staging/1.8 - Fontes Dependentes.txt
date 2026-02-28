@@ -1,0 +1,13 @@
+# 1.8 - Fontes Dependentes
+
+Quais sao os 4 tipos de fontes dependentes?
+?
+VCVS (tensao ctrl por tensao), VCCS (corrente ctrl por tensao), CCVS (tensao ctrl por corrente), CCCS (corrente ctrl por corrente).
+
+Um transistor BJT e modelado como qual tipo de fonte dependente?
+?
+CCCS: $I_C = \beta \cdot I_B$ — corrente de coletor controlada pela corrente de base.
+
+Um MOSFET e modelado como qual tipo de fonte dependente?
+?
+VCCS: $I_D = g_m \cdot V_{GS}$ — corrente de dreno controlada pela tensao gate-source.

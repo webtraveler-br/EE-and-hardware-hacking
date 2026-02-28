@@ -1,0 +1,17 @@
+# 1.2 - Serie e Paralelo
+
+Resistores em serie: $R_{total} = $ ?
+?
+$R_1 + R_2 + R_3 + ...$. Mesma corrente em todos, tensoes se dividem.
+
+Resistores em paralelo (2 resistores): $R_{total} = $ ?
+?
+$\frac{R_1 \cdot R_2}{R_1 + R_2}$. Mesma tensao, correntes se dividem. Resultado sempre menor que o menor resistor.
+
+Divisor de tensao: $V_{out} = $ ?
+?
+$V_{in} \cdot \frac{R_2}{R_1 + R_2}$
+
+Divisor de corrente (2 ramos): $I_1 = $ ?
+?
+$I_{total} \cdot \frac{R_2}{R_1 + R_2}$ — corrente pelo ramo e proporcional a resistencia do OUTRO ramo.

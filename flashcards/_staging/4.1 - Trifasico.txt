@@ -1,0 +1,17 @@
+# 4.1 - Sistema Trifasico
+
+Estrela (Y): $V_{linha} = $ ?
+?
+$\sqrt{3} \times V_{fase}$. Ex: $V_f = 127$ V → $V_L = 220$ V. Neutro disponivel.
+
+Triangulo ($\Delta$): $I_{linha} = $ ?
+?
+$\sqrt{3} \times I_{fase}$. Sem neutro. $V_{linha} = V_{fase}$.
+
+O que acontece se inverter a sequencia de fases de um motor?
+?
+O motor gira ao contrario. Perigoso em esteiras e guindastes.
+
+Tensoes tipicas no Brasil?
+?
+127/220 V (residencial), 380 V (industrial), 13.8 kV (distribuicao), 138-765 kV (transmissao).

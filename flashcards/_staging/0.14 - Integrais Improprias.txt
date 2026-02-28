@@ -1,0 +1,17 @@
+# 0.14 - Integrais Improprias
+
+$\int_0^\infty e^{-t/\tau}\,dt = $ ?
+?
+$\tau$ (converge porque o expoente e negativo)
+
+Quando uma integral impropria $\int_0^\infty e^{-at}\,dt$ converge?
+?
+Quando $a > 0$. O resultado e $1/a$.
+
+$\int_0^\infty \frac{1}{t}\,dt$ converge?
+?
+Nao, diverge. Cresce sem limite.
+
+Onde integrais improprias aparecem em EE?
+?
+Transformada de Laplace: $F(s) = \int_0^\infty f(t) \cdot e^{-st}\,dt$. Se diverge, o sistema e instavel.

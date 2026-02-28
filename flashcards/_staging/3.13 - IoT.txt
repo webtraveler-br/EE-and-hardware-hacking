@@ -1,0 +1,9 @@
+# 3.13 - Wireless e IoT
+
+O que e MQTT?
+?
+Protocolo leve para IoT baseado em publish/subscribe. Broker centraliza mensagens entre dispositivos.
+
+ESP32 vs Arduino Uno?
+?
+ESP32: WiFi + Bluetooth integrado, dual-core, mais RAM/flash. Arduino Uno: mais simples, sem wireless nativo.

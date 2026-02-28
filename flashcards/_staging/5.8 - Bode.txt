@@ -1,0 +1,13 @@
+# 5.8 - Diagrama de Bode
+
+Margem de fase (PM)?
+?
+Graus de fase que faltam para -180° na frequencia onde $|G| = 0$ dB. PM > 45° = bom, PM > 60° = otimo.
+
+Margem de ganho (GM)?
+?
+Quanto ganho (dB) pode ser adicionado antes de instabilidade. Medido na frequencia onde fase = -180°.
+
+Cada polo contribui com quanto na assintota?
+?
+-20 dB/decada de queda apos a frequencia do polo.

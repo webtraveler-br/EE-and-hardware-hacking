@@ -1,0 +1,21 @@
+# 0.31 - Corrente e Ohm Microscopico
+
+$R = $ ? em termos de resistividade
+?
+$R = \frac{\rho L}{A}$, onde $\rho$ = resistividade (Ohm·m), $L$ = comprimento, $A$ = area da secao.
+
+Efeito da temperatura na resistencia de metais?
+?
+$R(T) = R_0(1 + \alpha \Delta T)$. Metais: $\alpha > 0$ (R sobe com temperatura).
+
+Efeito da temperatura em semicondutores?
+?
+$\alpha < 0$ — R diminui com temperatura (mais portadores livres sao gerados).
+
+O que e efeito Joule?
+?
+$P = I^2R$ — dissipacao de energia como calor pela corrente passando por resistencia.
+
+Lei de Ohm microscopica?
+?
+$\vec{J} = \sigma\vec{E}$, onde $J = I/A$ e a densidade de corrente e $\sigma = 1/\rho$ e a condutividade.

@@ -1,0 +1,17 @@
+# 0.12 - Tecnicas de Integracao
+
+Quando usar substituicao (u-sub)?
+?
+Quando a integral tem a forma $\int f(g(x)) \cdot g'(x)\,dx$. Faz $u = g(x)$, $du = g'(x)\,dx$.
+
+Formula de integracao por partes?
+?
+$\int u\,dv = uv - \int v\,du$
+
+O que sao fracoes parciais?
+?
+Decompor uma fracao complexa em soma de fracoes simples. Ex: $\frac{1}{(s+1)(s+2)} = \frac{1}{s+1} - \frac{1}{s+2}$
+
+Onde fracoes parciais sao essenciais em EE?
+?
+Na inversa de Laplace — decompor $G(s)$ em termos simples para voltar ao dominio do tempo.

@@ -1,0 +1,37 @@
+# 0.17 - Calculo Vetorial e Maxwell
+
+O que e um campo vetorial?
+?
+Cada ponto do espaco tem um vetor associado. Exemplos: campo eletrico $\vec{E}$, campo magnetico $\vec{B}$.
+
+O que a divergencia $\nabla \cdot \vec{F}$ mede?
+?
+Se o campo "emana" de um ponto (fonte, $\nabla \cdot \vec{F} > 0$) ou "converge" (sumidouro, $< 0$).
+
+O que o rotacional $\nabla \times \vec{F}$ mede?
+?
+A "rotacao" ou "circulacao" do campo em torno de um ponto.
+
+$V = $ ? em termos de integral de linha do campo eletrico
+?
+$V = -\int \vec{E} \cdot d\vec{l}$ — tensao e a integral de linha do campo eletrico.
+
+O que e fluxo magnetico $\Phi$?
+?
+$\Phi = \iint \vec{B} \cdot d\vec{A}$ — integral de superficie do campo magnetico. Unidade: Weber (Wb).
+
+1a equacao de Maxwell: $\nabla \cdot \vec{E} = $ ?
+?
+$\rho / \varepsilon_0$ — cargas eletricas sao fontes de campo eletrico.
+
+2a equacao de Maxwell: $\nabla \cdot \vec{B} = $ ?
+?
+$0$ — nao existem monopolos magneticos. Linhas de campo B sao sempre fechadas.
+
+3a equacao de Maxwell (Faraday): $\nabla \times \vec{E} = $ ?
+?
+$-\partial\vec{B}/\partial t$ — campo magnetico variavel cria campo eletrico rotacional. Base de transformadores e geradores.
+
+4a equacao de Maxwell (Ampere-Maxwell): $\nabla \times \vec{B} = $ ?
+?
+$\mu_0\vec{J} + \mu_0\varepsilon_0 \partial\vec{E}/\partial t$ — corrente e campo eletrico variavel criam campo magnetico.

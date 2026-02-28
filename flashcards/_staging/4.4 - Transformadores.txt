@@ -1,0 +1,17 @@
+# 4.4 - Transformadores
+
+Relacao de transformacao?
+?
+$V_1/V_2 = N_1/N_2$ e $I_1/I_2 = N_2/N_1$. Potencia conservada: $V_1 I_1 = V_2 I_2$.
+
+Perdas no transformador real?
+?
+Perdas no cobre ($I^2R$, nos enrolamentos) + perdas no ferro (histerese + correntes parasitas, no nucleo).
+
+O que mede o ensaio a vazio?
+?
+Perdas no ferro ($P_{fe}$) e corrente de magnetizacao. Feito com secundario aberto, tensao nominal.
+
+O que mede o ensaio em curto-circuito?
+?
+Perdas no cobre ($P_{cu}$) e impedancia de curto ($Z_{cc}$). Feito com secundario curto-circuitado, tensao reduzida.

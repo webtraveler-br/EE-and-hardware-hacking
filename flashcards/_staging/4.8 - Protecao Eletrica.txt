@@ -1,0 +1,13 @@
+# 4.8 - Protecao Eletrica
+
+Disjuntor termomag: o que protege?
+?
+Sobrecarga (bimetalico, atuacao lenta) E curto-circuito (bobina eletromagnetica, atuacao rapida). Rearmavel.
+
+DR: sensibilidade para protecao de pessoas?
+?
+30 mA. Detecta fuga de corrente entre fase e neutro. Se $I_{fase} \neq I_{neutro}$, desarma em milissegundos.
+
+Curvas de disparo B, C, D?
+?
+B: 3-5× $I_n$ (residencial). C: 5-10× $I_n$ (comercial, motores pequenos). D: 10-20× $I_n$ (motores grandes, transformadores).

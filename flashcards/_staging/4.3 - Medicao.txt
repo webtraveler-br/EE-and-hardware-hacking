@@ -1,0 +1,9 @@
+# 4.3 - Medicao Trifasica
+
+Metodo dos 2 wattimetros (Blondel)?
+?
+$P_{total} = W_1 + W_2$. Se $W_2 < 0$, FP $< 0{,}5$.
+
+Para que serve um TC (Transformador de Corrente)?
+?
+Reduz correntes altas (ex: 200 A) para medicao segura (ex: 5 A). Nunca abra o secundario de um TC — tensao perigosa!

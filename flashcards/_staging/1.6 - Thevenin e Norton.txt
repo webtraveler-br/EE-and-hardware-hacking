@@ -1,0 +1,17 @@
+# 1.6 - Thevenin e Norton
+
+Teorema de Thevenin?
+?
+Qualquer rede linear de 2 terminais pode ser substituida por uma fonte $V_{th}$ em serie com $R_{th}$.
+
+Como encontrar $V_{th}$?
+?
+Desconecte a carga, meca a tensao de circuito aberto entre os terminais.
+
+Como encontrar $R_{th}$?
+?
+Desligue todas as fontes independentes (tensao → curto, corrente → aberto), calcule a resistencia entre os terminais.
+
+Conversao Thevenin-Norton?
+?
+$I_N = V_{th} / R_{th}$ e $R_N = R_{th}$. Norton e uma fonte de corrente $I_N$ em paralelo com $R_N$.

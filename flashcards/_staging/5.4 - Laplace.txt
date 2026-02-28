@@ -1,0 +1,17 @@
+# 5.4 - Laplace
+
+Derivada em Laplace?
+?
+$\mathcal{L}\{f'(t)\} = sF(s) - f(0^-)$. Derivacao no tempo → multiplicacao por $s$.
+
+Laplace do degrau unitario?
+?
+$\mathcal{L}\{u(t)\} = 1/s$
+
+Laplace da exponencial $e^{-at}$?
+?
+$\frac{1}{s+a}$
+
+Relacao Laplace-Fourier?
+?
+Substituir $s = j\omega$ em Laplace da Fourier. Laplace usa $s$ completo ($\sigma + j\omega$), Fourier usa apenas o eixo imaginario.

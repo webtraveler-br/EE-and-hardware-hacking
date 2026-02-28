@@ -1,0 +1,21 @@
+# HH 4-5 - Firmware e Debug
+
+Como extrair firmware com Binwalk?
+?
+`binwalk -e firmware.bin` — extrai componentes. Procure squashfs, cramfs, ou jffs2 para o filesystem.
+
+O que e U-Boot?
+?
+Bootloader universal para Linux embarcado. Comandos uteis: `printenv` (variaveis), `md` (memory dump), `tftpboot` (carregar imagem via rede).
+
+Como emular firmware ARM com QEMU?
+?
+`qemu-arm-static -L ./squashfs-root ./squashfs-root/bin/busybox sh`. Usa emulacao de userspace para rodar binarios ARM em x86.
+
+Ghidra: para que serve em HH?
+?
+Engenharia reversa de binarios de firmware. Descompila ARM/MIPS para C pseudocodigo. Essencial para encontrar vulns em binarios proprietarios.
+
+O que procurar primeiro num firmware extraido?
+?
+/etc/passwd e /etc/shadow (senhas), arquivos .conf (credenciais), binarios SUID, portas abertas (netstat), chaves privadas.

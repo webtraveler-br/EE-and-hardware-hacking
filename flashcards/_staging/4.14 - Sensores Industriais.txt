@@ -1,0 +1,13 @@
+# 4.14 - Sensores Industriais
+
+Sensor indutivo vs capacitivo?
+?
+Indutivo: detecta apenas metais (2-30 mm). Capacitivo: detecta qualquer material incluindo liquidos e plasticos (2-20 mm).
+
+Por que o padrao industrial analogico e 4-20 mA e nao 0-20 mA?
+?
+Porque 0 mA e indistinguivel de fio partido. Com 4 mA como zero, qualquer corrente abaixo de 4 mA indica falha no circuito.
+
+NPN (sink) vs PNP (source)?
+?
+NPN: transistor conecta saida ao GND quando ativo. PNP: conecta saida ao VCC quando ativo. Brasil usa mais PNP.

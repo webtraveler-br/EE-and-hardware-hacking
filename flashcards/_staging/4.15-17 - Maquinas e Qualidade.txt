@@ -1,0 +1,21 @@
+# 4.15-4.17 - Maquinas Avancadas e Qualidade de Energia
+
+Gerador sincrono: velocidade do rotor?
+?
+Exatamente $n_s = 120f/p$. Diferente do motor de inducao (que tem escorregamento).
+
+O que e um compensador sincrono?
+?
+Motor sincrono sem carga mecanica, usado apenas para corrigir fator de potencia gerando/absorvendo potencia reativa.
+
+O que sao harmonicos?
+?
+Frequencias multiplas da fundamental (60 Hz). 3° = 180 Hz, 5° = 300 Hz. Gerados por cargas nao-lineares (retificadores, fontes chaveadas).
+
+Problema do 3o harmonico no neutro?
+?
+Em sistema trifasico, harmonicos de 3a ordem se somam no neutro. $I_{neutro}$ pode ser MAIOR que $I_{fase}$!
+
+THD maximo permitido (IEEE 519)?
+?
+< 5%.

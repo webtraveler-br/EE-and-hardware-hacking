@@ -1,0 +1,21 @@
+# 5.5 - Funcao de Transferencia
+
+Funcao de transferencia: $G(s) = $ ?
+?
+$Y(s)/X(s)$ — razao saida/entrada em Laplace (condicoes iniciais zero).
+
+O que sao polos e zeros?
+?
+Polos: raizes do denominador (determinam estabilidade e forma da resposta). Zeros: raizes do numerador (influenciam amplitude e fase).
+
+Sistema de 1a ordem: $G(s) = $ ?
+?
+$\frac{K}{\tau s + 1}$. $\tau$ = constante de tempo, $K$ = ganho estatico.
+
+Sistema de 2a ordem: $G(s) = $ ?
+?
+$\frac{K\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2}$. $\zeta$ = amortecimento, $\omega_n$ = frequencia natural.
+
+Realimentacao em diagrama de blocos?
+?
+$T(s) = \frac{G(s)}{1 + G(s)H(s)}$

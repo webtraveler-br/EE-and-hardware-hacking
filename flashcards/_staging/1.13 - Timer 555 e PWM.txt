@@ -1,0 +1,13 @@
+# 1.13 - Timer 555 e PWM
+
+Frequencia do 555 astavel?
+?
+$f = \frac{1{,}44}{(R_1 + 2R_2) \cdot C}$
+
+Duracao do pulso do 555 monoestavel?
+?
+$T = 1{,}1 \cdot R \cdot C$
+
+O que e PWM?
+?
+Modulacao por largura de pulso — controla potencia media variando o duty cycle de uma onda quadrada. Mais eficiente que controle linear.

@@ -1,0 +1,13 @@
+# 2.4 - Aplicacoes de Diodos
+
+O que faz um clipper (ceifador)?
+?
+Limita a tensao a um valor maximo ou minimo usando diodo + resistor.
+
+O que faz um clamper (grampeador)?
+?
+Adiciona um nivel DC a um sinal AC usando capacitor + diodo.
+
+O que e um multiplicador de tensao (Cockcroft-Walton)?
+?
+Cascata de diodos + capacitores que multiplica a tensao. Dobrador: 12V AC → ~24V DC.

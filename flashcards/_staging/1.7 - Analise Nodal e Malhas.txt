@@ -1,0 +1,9 @@
+# 1.7 - Analise Nodal e Malhas
+
+Quando usar analise nodal?
+?
+Quando ha muitas fontes de corrente ou poucos nos. Variaveis: tensoes nodais. Equacoes: KCL em cada no.
+
+Quando usar analise de malhas?
+?
+Quando ha muitas fontes de tensao ou poucas malhas. Variaveis: correntes de malha. Equacoes: KVL em cada malha.

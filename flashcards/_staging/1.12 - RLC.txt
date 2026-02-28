@@ -1,0 +1,17 @@
+# 1.12 - Circuito RLC
+
+Frequencia natural do RLC: $f_0 = $ ?
+?
+$f_0 = \frac{1}{2\pi\sqrt{LC}}$
+
+Coeficiente de amortecimento do RLC serie: $\alpha = $ ?
+?
+$\alpha = \frac{R}{2L}$
+
+Fator de qualidade Q do RLC?
+?
+$Q = \frac{\omega_0 L}{R}$. Q alto = oscilacao forte, Q baixo = amortecimento rapido.
+
+Analogia mecanica do RLC?
+?
+$L$ = massa (inercia), $C$ = mola (restauracao), $R$ = atrito (dissipacao). RLC e exatamente um sistema massa-mola-amortecedor.

@@ -1,0 +1,17 @@
+# 0.35 - Bandas de Energia
+
+Energia de um foton?
+?
+$E = hf$, onde $h = 6{,}63 \times 10^{-34}$ J·s (constante de Planck).
+
+Qual a diferenca entre metal, semicondutor e isolante?
+?
+Metal: gap = 0 (conduz sempre). Semicondutor: gap pequeno (~1 eV, controlavel). Isolante: gap grande (> 3 eV, nao conduz).
+
+Gap do silicio?
+?
+$E_g = 1{,}12$ eV. Pequeno o suficiente para dopagem controlar a conducao, grande o suficiente para nao conduzir sozinho a temperatura ambiente.
+
+Por que semicondutores conduzem MAIS quando aquecem?
+?
+Temperatura maior = mais eletrons ganham energia para saltar o gap → mais portadores livres → resistencia diminui. Oposto dos metais.

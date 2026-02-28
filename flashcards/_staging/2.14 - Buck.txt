@@ -1,0 +1,13 @@
+# 2.14 - Conversor Buck
+
+Relacao saida/entrada do Buck?
+?
+$V_{out} = D \times V_{in}$, onde $D$ e o duty cycle (0 a 1). So abaixa tensao.
+
+Ripple de corrente no indutor do Buck?
+?
+$\Delta I = \frac{(V_{in} - V_{out}) \cdot D}{f \cdot L}$. Menor com frequencia e indutancia maiores.
+
+Componentes do Buck?
+?
+MOSFET (chave), diodo (freewheeling), indutor (armazena energia), capacitor (filtra ripple).

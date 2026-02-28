@@ -1,0 +1,17 @@
+# 3.9 - Arduino GPIO
+
+Specs do Arduino Uno?
+?
+ATmega328P, 14 I/O digitais (6 PWM), 6 ADC, 16 MHz, 32 KB flash, 2 KB SRAM.
+
+O que e INPUT_PULLUP?
+?
+Configura pino como entrada com resistor pull-up interno (~20-50 k$\Omega$ para VCC). Evita flutuacao quando botao nao esta pressionado.
+
+Corrente maxima por pino do Arduino?
+?
+40 mA (20 mA recomendado). Para cargas maiores, use transistor ou MOSFET.
+
+O que e debouncing?
+?
+Tratar os multiplos pulsos gerados pelo contato mecanico de um botao (~10-50 pulsos em ~5 ms). Solucao: delay, filtro RC, ou FSM em software.

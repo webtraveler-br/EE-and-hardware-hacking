@@ -1,0 +1,9 @@
+# 3.11 - PWM e Atuadores
+
+analogWrite do Arduino: range?
+?
+0 a 255 (8 bits). 0 = 0% duty, 255 = 100% duty. Frequencia: ~490 Hz ou ~980 Hz.
+
+Servo motor: pulsos?
+?
+1 ms = 0°, 1.5 ms = 90°, 2 ms = 180°. Periodo: 20 ms (50 Hz).

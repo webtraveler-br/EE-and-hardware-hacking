@@ -1,0 +1,17 @@
+# 1.14 - Introducao a AC
+
+Equacao de um sinal AC?
+?
+$v(t) = V_p \cdot \sin(2\pi f t + \phi)$
+
+$V_{rms}$ de uma senoide?
+?
+$V_{rms} = V_p / \sqrt{2} \approx 0{,}707 \cdot V_p$
+
+Rede brasileira 127V: qual o valor de pico?
+?
+$V_p = 127 \times \sqrt{2} \approx 179{,}6$ V
+
+Por que a rede eletrica usa AC e nao DC?
+?
+AC pode ser transformada (subir/descer tensao com transformador), permitindo transmissao a longas distancias com menos perdas.

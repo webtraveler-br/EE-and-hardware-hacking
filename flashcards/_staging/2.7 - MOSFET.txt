@@ -1,0 +1,17 @@
+# 2.7 - MOSFET
+
+Terminais do MOSFET?
+?
+Gate (G), Drain (D), Source (S). Gate isolado → corrente de gate $\approx 0$ (impedancia de entrada infinita).
+
+Quando um N-MOSFET enhancement liga?
+?
+Quando $V_{GS} > V_{th}$ (tensao de limiar, tipicamente 1.5 a 4V).
+
+O que e $R_{DS(on)}$?
+?
+Resistencia drain-source quando ligado. Valores: 1 m$\Omega$ a 1 $\Omega$. Muito menor que $V_{CE,sat}$ do BJT.
+
+Vantagens do MOSFET sobre BJT para chaveamento?
+?
+Controlado por tensao (nao corrente), $R_{DS(on)}$ muito baixo, chaveamento mais rapido, nao gasta energia para manter ligado.

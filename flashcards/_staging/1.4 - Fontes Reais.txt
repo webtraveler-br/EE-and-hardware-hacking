@@ -1,0 +1,21 @@
+# 1.4 - Fontes Reais e Potencia
+
+Modelo de fonte real de tensao?
+?
+$V_{carga} = V_{fonte} - I \cdot R_{interna}$. Quanto mais corrente, mais a tensao cai.
+
+Quando ocorre maxima transferencia de potencia?
+?
+Quando $R_{carga} = R_{interna}$. Mas a eficiencia e so 50%.
+
+Quando priorizar eficiencia sobre maxima potencia?
+?
+Na maioria dos casos praticos: fontes de alimentacao, paineis solares, carregadores. Maxima potencia so importa em audio (alto-falantes).
+
+Como "desligar" uma fonte de tensao para analise?
+?
+Substituir por curto-circuito (fio).
+
+Como "desligar" uma fonte de corrente para analise?
+?
+Substituir por circuito aberto.

@@ -1,0 +1,9 @@
+# 1.5 - Superposicao
+
+Principio da superposicao?
+?
+Em circuitos lineares com multiplas fontes, a resposta total e a soma das respostas calculadas com cada fonte isoladamente.
+
+Superposicao funciona com diodos ou transistores?
+?
+Nao. So funciona com circuitos lineares (resistores, capacitores, indutores).

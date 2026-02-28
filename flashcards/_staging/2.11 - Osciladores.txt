@@ -1,0 +1,9 @@
+# 2.11 - Osciladores
+
+Condicao de Barkhausen para oscilacao?
+?
+Ganho de malha = 1 e fase de malha = 0° (ou 360°).
+
+Frequencia do oscilador Wien Bridge?
+?
+$f = \frac{1}{2\pi RC}$. Gera senoide pura.

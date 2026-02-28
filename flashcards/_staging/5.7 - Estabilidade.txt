@@ -1,0 +1,13 @@
+# 5.7 - Estabilidade
+
+Condicao de estabilidade BIBO?
+?
+Todos os polos de malha fechada devem ter parte real negativa (semiplano esquerdo de $s$).
+
+Polo com parte real positiva → ?
+?
+Sistema instavel. Saida cresce exponencialmente.
+
+O que e o criterio de Routh-Hurwitz?
+?
+Metodo algebrico para verificar estabilidade sem calcular polos. Monta tabela com coeficientes → toda a 1a coluna positiva = estavel.

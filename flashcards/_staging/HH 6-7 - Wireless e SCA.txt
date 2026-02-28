@@ -1,0 +1,17 @@
+# HH 6-7 - Wireless e Side-Channel
+
+O que e SDR (Software Defined Radio)?
+?
+Radio onde modulacao/demodulacao e feita em software. Permite capturar e analisar qualquer sinal RF. Hardware popular: RTL-SDR ($25), HackRF ($300).
+
+O que e fault injection (glitching)?
+?
+Perturbacao intencional (voltage glitch, clock glitch, EM) para causar erros na CPU — pular verificacoes de senha, bypass secure boot.
+
+O que e side-channel attack?
+?
+Ataque que explora informacao vazada por canais fisicos: consumo de energia (power analysis), emanacoes EM, tempo de execucao (timing).
+
+Diferenca entre SPA e DPA?
+?
+SPA (Simple Power Analysis): analisa um unico trace de consumo visual. DPA (Differential Power Analysis): correlacao estatistica de milhares de traces para extrair chaves criptograficas.

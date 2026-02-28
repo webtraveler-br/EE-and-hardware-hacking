@@ -1,0 +1,17 @@
+# 2.10 - Filtros Ativos
+
+Vantagens de filtros ativos sobre passivos?
+?
+Ganho $\geq 1$, impedancia de saida baixa, pode cascatear sem perda de sinal, resposta mais precisa.
+
+O que e um filtro Butterworth?
+?
+Filtro com resposta maximamente plana na banda de passagem (sem ripple). Mais usado na pratica.
+
+O que e um amp-op de instrumentacao (INA)?
+?
+3 amp-ops que amplificam a diferenca entre 2 sinais rejeitando ruido comum (CMRR alto). Usado em sensores.
+
+Saida do integrador com amp-op?
+?
+$V_{out} = -\frac{1}{RC}\int V_{in}\,dt$ — acumula o sinal ao longo do tempo.

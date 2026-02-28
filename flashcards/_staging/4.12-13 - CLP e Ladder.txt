@@ -1,0 +1,13 @@
+# 4.12-4.13 - CLP e Ladder
+
+O que e o scan cycle do CLP?
+?
+1) Le entradas → 2) Executa programa → 3) Atualiza saidas → repete (~1-20 ms).
+
+Temporizador TON vs TP?
+?
+TON (delay on): saida liga apos tempo. Reseta se entrada cair antes. TP (pulse): gera pulso de duracao fixa independente da entrada.
+
+O que e GRAFCET?
+?
+Linguagem grafica para processos sequenciais: etapas + transicoes + acoes. Versao IEC 61131-3: SFC.

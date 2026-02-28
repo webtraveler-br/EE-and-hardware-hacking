@@ -1,0 +1,13 @@
+# 4.2 - Potencia Trifasica
+
+Potencia ativa trifasica (carga equilibrada)?
+?
+$P = \sqrt{3} \cdot V_L \cdot I_L \cdot \cos(\phi)$
+
+Potencia aparente trifasica?
+?
+$S = \sqrt{3} \cdot V_L \cdot I_L$ (VA)
+
+Qual o FP minimo para evitar multa no Brasil?
+?
+0.92 (ANEEL). Abaixo disso, a distribuidora cobra excedente de reativo.
