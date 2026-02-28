@@ -1,0 +1,26 @@
+# Dependências de ferramentas
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Arquivos de simulação grandes
+*.raw
+*.log
+*.bak
+
+# Gerber intermediários (manter finais)
+*.dsn
+*.ses
+
+# Arquivos temporários
+*.tmp
+*~
+.tmp-profile
