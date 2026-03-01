@@ -1,25 +1,21 @@
-# HH F.4 - Segurança PLCs e SCADA
+# HH F.4 - Seguranca em PLCs e SCADA
 
-Definicao fundamental HMI (Human-Machine Interface) x SCADA software?
+Risco central no Hardware de Controladores CLP (PLC security)?
 ?
-HMI projeta interfaces e botoes simplificados locais nas maquinas das plantas, permitindo re-atribuicao dos limites tecnicos sem necessariedade programatica nas logicas diretas dos CLPs/RTUs enquanto o SCADA orquestra o monitoramento longo da industria massivamente.
+A vasta maioria dos CLPs industriais legados foram construidos sem nenhuma preocupação com autenticacao ou criptografia nas instrucoes recebidas pelas redes RS485. Confiam cegamente em qualquer pacote.
 
-Vulnerabilidade em PLC vs Servidor Standard corporativo logico?
+Ataque na Interface Humano-Maquina (HMI-Ataque)?
 ?
-Efeitos OT e Hack ICS desaguam intrinsecamente no "Mundo Fisico". Manipular o stack resultaria em transbordamentos das estacoes de saneamento civil, queimaduras eletricas ativas ou destruicoes por giro descontrolado cinetico da planta centrigufa metalugica.
+Ao comprometer a IHM (tela touch que o operador usa), o invasor engana o operador mostrando dados falsos de pressao normal, enquanto envia comandos destrutivos silenciosos de abertura de valvulas para a rede do CLP.
 
-Segmentacao da Planta: Purdue Enterprise Reference Architecture?
+Engenharia Reversa no Projeto de Software Ladder?
 ?
-Divide e isola topograficamente os setores defensivos inexpugnaveis interligando por demeritacões verticais rigorosas $L0$ (I/O, campo) $\rightarrow L1$ (PLCs) $\rightarrow L2$ (SCADA/HMI) $\rightarrow L3$ (Operations/Historian) $\rightarrow DMZ \rightarrow Level 4/5 \text{(Enterprise network base internetizadas)}$.
+Extrair o programa compilado da memoria do CLP. Apos identificar a logica (ex: descobrir que o contato Q0.4 liga a esteira transportadora), o invasor cria scripts exatos para ativar ou desativar portas especificas da fabrica.
 
-Impacto de "Ransomwares e Botnets ICS OT" modernas (ex: CrashOverride e Trisys)?
+Ataque Replay e Injeçao de rede (Modbus)?
 ?
-Paralizao de Grid Energeticos via Logic Bombs. Corrupcao das rotinas e safety integrators embarcadas visando impossibilitar a planta do readaptamento defensivo preventivo humano/shutoff durante sobrecargas forçadas da temperatura eletrica ou quimica.
+Durante a intercepcao da rede com Wireshark, o invasor captura um pacote legitimo do engenheiro. Depois, ele reenvia infinitamente esse mesmo pacote capturado (ex: comando de abrir portao) e a rede legitima o disparo.
 
-Fraqueza estrita de Confianca e cega amarrativ limitante na Seguranca corporativa base por "VPNs Exclusivas estricas focais isoladaces natitas cruzatives basi limites ruidoses puristes (Falso perimento limpie logico crus amarrtaive reles basic cego limpe lido cravado limitis)?
+Ausencia de Assinatura de Firmware nos CLPs legados?
 ?
-Hackers mirames Engenharia Social/Malware primari cruso relos no PC remotado logio fraco basilio limite cruzo do Tecnico/Engenhei. Ao abir o Turnel de cego limpie basais cruza a maquina vitmiada bypassa lide pulando e violadnd cega atirado estric Level 4 direto pru Level 2 ($L2$ SCADA puriste natvo cruz limitis estrite limpes blindores logicio basi).
-
-Letalidade amarratica HMI-Ataques de Cegueira/Mentira Grafica Visual Cegas e Logices Ativadas Inatis crus limitance basalis (Engano cruses relogiese bases isolaties crus amarrates limiti relses natices e lido focado puristi logici amarrti)?
-?
-O atacante injeta e envia dados trancadores malicias p/ travar e congelar os numeros de temp na telha crusi limits basi logice HMI blindance focado cru dos operador nativos inute lis. A fabrica crusi limits basi derrete lida na fervesca encandeste rea limits fisica purists equante o supervisos asscista calmo um falso verde seguro limpie estrico cruzative logicio base crue blindance pura cego e lde.
+Atacantes sofisticados usam vulnerabilidades para injetar um firmware maligno personalizado direto na eeprom do CLP. A placa aceita o sistema operacional zumbi sem checar assinaturas criptograficas nativas de hardware.

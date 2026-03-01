@@ -1,17 +1,25 @@
-# 3.9 - Arduino GPIO
+# 3.9 - Arduino e Microcontroladores GPIO
 
-Specs do Arduino Uno?
+Direcionamento Data Direction Register inato (DDR)?
 ?
-ATmega328P, 14 I/O digitais (6 PWM), 6 ADC, 16 MHz, 32 KB flash, 2 KB SRAM.
+Registrador do MCU que dita o caminho físico. Se o DDRX bit eh $1$, o pino age como OUTPUT (Cuspe tensao). Se o bit for $0$, o pino aguarda e fica em INPUT (Lê tensoes quietinho, virando alta impedância).
 
-O que e INPUT_PULLUP?
+Funcao absoluta do PORT Register nos OUTPUTs ativados?
 ?
-Configura pino como entrada com resistor pull-up interno (~20-50 k$\Omega$ para VCC). Evita flutuacao quando botao nao esta pressionado.
+Se o pino estiver devidamente configurado p/ OUTPUT, gravar o valor magico $1$ neste registrador PORT forca o pino fisicamente pra subir em $5V$ nativos (HIGH cravado). Gravar $0$ derruba pra Ground zero volts atrelado puro.
 
-Corrente maxima por pino do Arduino?
+Utilidade restrita e limitante do PIN Register (Port INput Register)?
 ?
-40 mA (20 mA recomendado). Para cargas maiores, use transistor ou MOSFET.
+Quando configuramos o MCU em INPUT, a CPU le as informacoes passivas deste registrador especifico. Ele simplesmente tira uma "Foto" do estado fisico eletrico instantâneo gravado naquele pino externo ($1$ ou $0$ real avaliado).
 
-O que e debouncing?
+Mecanismo obrigatorio Pull-Up Resistors interno na leitura de Botoes cegos?
 ?
-Tratar os multiplos pulsos gerados pelo contato mecanico de um botao (~10-50 pulsos em ~5 ms). Solucao: delay, filtro RC, ou FSM em software.
+Sem pullups um pino INPUT solto age como "Antena Lixo" detectando estática FM fantasma e lendo randômicos falsos $0/1$. O pull-up interno amarra proativamente a leitura em $5V$ limpo fixo ($1$). O botao fisico, ao ser premido, aterra o fluxo pra $0$.
+
+Interrupcoes Externas Hardware Interrupts em Pinos Isolados cegos?
+?
+Hardware focado em Pinos de Acao rapida. Em vez do software perder tempo lendo cego $1000x$ o botão no Loop while (Polling), o proprio silício gela a main e chama a função (ISR) no exato nano-segundo em que ocorre a subida fisica do clique!
+
+Operante conversor Analog-to-Digital (ADC limitador basico Inativo multip)?
+?
+Converte tensoes variaveis do arduino ($0$ a $5V$ lisos e infinitos dos sensores umidade) num numero inteiro restrito exato engessado pela memoria pra CPU logica. Em boards AVR d 10-bits, o limite eh $0$ para $0V$ purista ou e $1023$ para reativar $5V$.

@@ -1,32 +1,21 @@
-# 0.3 - Funcoes
+# 0.3 - Funcoes Especiais
 
-$y = kx$ e que tipo de funcao? Onde aparece em EE?
+Funcao Senoide $y = A\sin(\omega t + \phi)$?
 ?
-Linear (reta). Exemplo: $V = IR$ com R constante.
+$A$ dita a altura maxima da onda. $\omega$ dita a frequencia e velcidade de oscilacao temporal. E $\phi$ determina quanto a onda inicia atrasada ou adiantada.
 
-$y = kx^2$ — se x dobra, o que acontece com y?
+Funcao Exponencial Natural $y = e^x$?
 ?
-y quadruplica. Exemplo: $P = I^2 R$ — se a corrente dobra, a potencia fica 4x maior.
+Matematica onipresente em capacitores onde a taxa exata de descarregamento é proporcional ao quanto de energia ela ainda possui internamente.
 
-$y = k/x$ e que tipo de funcao?
+Assintotas verticais e horizontais nas funcoes?
 ?
-Inversa (hiperbole). Exemplo: $I = V/R$ com V constante — mais R, menos I.
+Barreiras invisiveis que a linha do grafico persegue ao infinito, mas jamais ira tocar matematicamente ou cruzar.
 
-$y = e^{-at}$ descreve o que em circuitos?
+A funcao de Rampa / Degrau Unitario (Heaviside)?
 ?
-Decaimento exponencial. Exemplo: descarga de capacitor, $V_C(t) = V_0 \cdot e^{-t/RC}$.
+Liga algo do nada. Pula instantaneamente de zero volts para cinco volts em um unico instante sem delay de subida. Modela botoes ON de maquinas.
 
-$y = A\sin(\omega t + \phi)$ — o que representa cada parametro?
+Raizes de Equacoes (Zeros da funcao)?
 ?
-- $A$ = amplitude (valor de pico)
-- $\omega$ = frequencia angular (rad/s)
-- $\phi$ = fase inicial (rad)
-- Aparece em qualquer sinal AC
-
-O que e uma funcao par? Exemplo?
-?
-$f(-x) = f(x)$. Exemplo: $\cos(x)$ — simetrica em relacao ao eixo y.
-
-O que e uma funcao impar? Exemplo?
-?
-$f(-x) = -f(x)$. Exemplo: $\sin(x)$ — anti-simetrica.
+O ponto fisico exato e isolado onde a linha da tensao ou corrente cruza exatamente a metade do chao ($0V$ volts isolado). Importante para detectar cortes nas pontes de diodo retificadoras.

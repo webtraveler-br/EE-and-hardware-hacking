@@ -1,17 +1,25 @@
 # 0.9 - Aplicacoes de Derivadas
 
-Taxa de variacao da Corrente Base num Fio Material ($i = \frac{dq}{dt}$)?
+Taxa de variacao da Corrente Base num Fio ($i = \frac{dq}{dt}$)?
 ?
-Pura derivada temporal descrevendo a variacao aglutinada da velocidade exata inata do acumulo cru instantâneo de pacotes carga na bitola transversal amarrada por um ponto focal instantaneo temporal no cronometro lido ativo.
+Derivada temporal descrevendo fisicamente a variacao inata da velocidade em que o fluxo amontoado instantâneo de pacotes eletricos carga passa cortando a secao do fio acompanhado por micro cronometros no painel.
 
-Tensao forçada atrelada a reativação do Indutor base ($V = L \cdot \frac{di}{dt}$)?
+Tensao atrelada e forçada no Indutor ($V = L \cdot \frac{di}{dt}$)?
 ?
-Cravamente dependente da agressividade massiva veloz e violenta com que voce tenta matar a Corrente passante. Cortar os amperes subitos num bilionésimo d segundo causará derivados infinitos resultando Picos gigantescos de faiscas isolantes perigosas na Voltagem medida e forçada por relés rompantes (Spark).
+Diretamente dependente da agressividade e violência com que a Corrente varia veloz passa pelas bobinas. Cortar repentinamente a passagem abrupta pra Zero gerará derivadas infinitas (Altíssima Voltagem V), rasgando e torrando os reles blindadores base com um imenso chispamento ruidoso termico.
 
-Maximos e Minimos avaliativos vitais maximos do ponto critico em analises curadas?
+Picos Criticos focado purista Inato reles em Sinais maximos e minímos?
 ?
-Tirando-se a $1ª$ derivada de qualquer onda oscilatoria / consumo num SoC e a Igualando a zero na expressao base matemática cega aponta-se impreterivelmente unicamente e precisamente OS picos extatos crista ou vales afundados sem desenhar qualquer grafico.
+Ao calcular cirurgicamente a $1ª$ derivada bruta de certa curva e força-la/igualá-la engessada a zero ($f'(x) = 0$), voce identifica implacavelmente Cumes Altos maximos (Crista) ou vales afundados sem fazer leitura nem precisando plotar graficamente visual.
 
-Aproximacao Linear atrelada veloz e calculos rapidos por derivadas locais em micro-curvas restritas (Series estritas de Taylor truncada)?
+Aproximacao estrita Limites Lineares locais cegos e Series truncadas Taylor?
 ?
-Substitui as curvas imensas pesadas trigonomodelares dos Diodos em equacoes horriveis usando pequenas retas unicamente e localizadamente baseadas valendo rigorosamente so em micro tensoes próximas baseadas no eixo central em prol facilitatorio simulavel de contas basicas RC rapidissimas humanas na caneta bic ignorando a caotizacao real ampla.
+Troca curvas complexas asquerosas de Diodos nativos Inatos por singelas equacoes de Mini-Retas fáceis e ageis validas puristas apenas naquelas tensoes de bairro focadas reles inativas base limitador as da calçada (Usado no modelo logico Small-Signal d BJT logicos foca limites).
+
+Ponto inflexao purista da Segunda Derivada Inati limits estritos?
+?
+Gira e avalia focado a taxação magica da variacao do CRESCIMENTO (Convexidade amarrada Inata foca basi limits). Se a segunda Derivada virou $0$, O circuito cruzador de Carga limpa RLC estancou a aceleraçao e começará de agora em diante focar e amar a perder velocidade foca limite relse purista forcas.
+
+Lei esfriadora temporal perdas atreladas reles limitance inatas Newton?
+?
+O esfriar logico relse purista do Transistor blindador foca base cruza d dissipadores Inatos foca amarrties limites amarrativa da taxa perdimento logci cruz ative foca amrrt.

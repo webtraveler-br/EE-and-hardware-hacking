@@ -1,17 +1,25 @@
-# 2.1 - Diodo
+# 2.1 - Diodo Fundamental
 
-Tensao de limiar do diodo de silicio?
+Juncao PN (Diodo basilar)?
 ?
-$\approx 0{,}7$ V. Germanio: $\approx 0{,}3$ V. LED: $1{,}8$ a $3{,}5$ V dependendo da cor.
+Acoplamento da banda P (rica em lacunas positivas) com a banda N (rica em eletrons livres). O choque gera uma "Regiao de Depleçao" natural que funciona como barreira, impedindo vazamentos de corrente indesejados e permitindo o fluxo unidirecional.
 
-Modelo ideal do diodo?
+Polarizacao Direta (Forward Bias)?
 ?
-Chave: ON = curto-circuito (polarizacao direta), OFF = circuito aberto (reversa).
+Conectar o polo Positivo da bateria direto no Anodo (lado P). Isso empurra as cargas e "espreme" a barreira de Depleçao ate anula-la (quando chega perto de $0.7V$), liberando fluxo total e livre de corrente.
 
-Equacao do diodo (modelo real)?
+Polarizacao Inversa (Reverse Bias)?
 ?
-$I = I_s(e^{V/nV_T} - 1)$, onde $V_T \approx 26$ mV a 25°C.
+Conectar o polo Positivo no Cátodo (lado N). Isso atrai violentamente as cargas pra longe da regiao central, alargando absurdamente a barreira de Depleçao. O diodo vira um muro perfeito e bloqueia $100\%$ a passagem da corrente.
 
-Como calcular o resistor para um LED?
+Quebra por Zener vs Avalanche (Reverse Breakdowns)?
 ?
-$R = \frac{V_{fonte} - V_{LED}}{I_{LED}}$. Exemplo: LED vermelho (2V, 20mA) com 5V → $R = 150\,\Omega$.
+Todo diodo suporta um limite Inverso de voltagem (Peak Inverse Voltage). Se passar absurdo (ex: $-600V$), o imenso campo Eletrico rompe as ligacoes dos atomos a forca e a corrente transborda destrutiva furando a barreira bloqueadora.
+
+Queda de Tensao Direta (Forward Voltage Drop Vf)?
+?
+Diodos cobram um "pedagio obrigatorio" na voltagem para deixar a corrente passar. Eles roubam permanentemente $0.7V$ (Diodo de Silicio) ou $0.3V$ (Diodo de Germanio) da sua fonte original em forma de de calor dissipado.
+
+Modelo Pratico vs Modelo Ideal (Constant Voltage Drop)?
+?
+Mundo Ideal Inexistente: $V_f=0V$ (Age como chave de contato perfeita). Mundo Pratico: Modelamos todo diodo como sendo uma Chave + Bateria Oposta de $0.7V$ interna. Para o circuito externo, ele subtrai os $0.7V$ do balanço final.

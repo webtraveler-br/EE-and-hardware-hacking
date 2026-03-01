@@ -1,17 +1,21 @@
-# 2.7 - MOSFET
+# 2.7 - Transistores MOSFET
 
-Terminais do MOSFET?
+Como funciona basicamente o MOSFET?
 ?
-Gate (G), Drain (D), Source (S). Gate isolado → corrente de gate $\approx 0$ (impedancia de entrada infinita).
+Controla o fluxo de corrente entre Dreno e Fonte aplicando uma pequena tensao no pino Gate.
 
-Quando um N-MOSFET enhancement liga?
+Por que o MOSFET nao consome corrente na base?
 ?
-Quando $V_{GS} > V_{th}$ (tensao de limiar, tipicamente 1.5 a 4V).
+Porque possui uma fina camada isolante de oxido de silicio separando o Gate do resto do canal.
 
-O que e $R_{DS(on)}$?
+Diferenca entre Enhancement e Depletion Mode?
 ?
-Resistencia drain-source quando ligado. Valores: 1 m$\Omega$ a 1 $\Omega$. Muito menor que $V_{CE,sat}$ do BJT.
+Enhancement eh o padrao: vem desligado e precisa de tensao no gate para ligar. Depletion vem ligado de fabrica e precisa de tensao negativa para cortar.
 
-Vantagens do MOSFET sobre BJT para chaveamento?
+Regiao Ohmica do MOSFET?
 ?
-Controlado por tensao (nao corrente), $R_{DS(on)}$ muito baixo, chaveamento mais rapido, nao gasta energia para manter ligado.
+O transistor age como um resistor variavel resistindo a corrente dependendo da tensao no Gate.
+
+Regiao de Saturacao do MOSFET?
+?
+O transistor conduz a maxima corrente possivel atuando como uma chave perfeitamente fechada.

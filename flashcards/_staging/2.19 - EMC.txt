@@ -1,25 +1,25 @@
-# 2.19 - EMC (Compatibilidade Eletromagnetica) e EMI
+# 2.19 - EMC EMI SI PI
 
-Conceito focal inato embasador amarrativo de EMI versus padrao pacífico harmonico purista EMC em industrias focadas normativas base?
+Diferença cravada entre EMI e EMC (Interferencia vs Compatibilidade)?
 ?
-EMI = Ruido imundo sujo Injetado indesejadamente cego estrito focao (A poluicao radiante ativa). EMC = Aptidao imunologica de coexistir pacifica mente nesse ambiente lixoso sujo radioativo blindado natural s/ estragar em pane branca o proprio funcionamento, tao pouco ejetar ruidos aos viznihoz puros.
+EMI = O veneno ruidoso estrito ("Interference") emitido pelo seu pcb cego. EMC = A resiliência imunologica e "Compatibilidade" certificada de operar pacificamente nesse mar de veneno das outras placas.
 
-Mecanismo classificado Radiado VS Conduzido em ruidos rudes invasosivos invasores passivos estritos reles amarrativos baseados lidos inatos?
+Cross-talk letal em roteamentos de PCIs cegos (Sinal crossing)?
 ?
-Conduzidos rastejam imundos fisicmanente usando fios neutro cabos aterramentos ou pcb tracks partilhados com outros. Radiados se metamorfoseiam magicamente base viajando cruzes vãos etherneos sem fio base focados pelo ar livre (campos magnetics) estritivos invasivos isoladamente puros naturais lidos cru trancados inatos.
+Acoplamento capacitivo ou indutivo sujo e indesejado entre trilhas gordinhas paralelas vizinhas no PCB. O clock de alta frequência $100MHz$ sangra seu formato para o vizinho indefeso ADC induzindo ruido parasita.
 
-Crosstalk Capacitivo lido em malhas focadas apertadas vizinhas restruturais cruzadas amarrativas base e inatas?
+Desacoplamento de Energia Obrigatorio (Bypass Capacitors Inatos em SOCs)?
 ?
-Trilhas de cobre paralelas finissimas e excessivamente grudadas agem como incriveis pequenas chapinhas amarrativas capacitores invisiveis base focado reles parasita natural e unificado puro estaminio inato cru estaminico lido arruinando os isolamentos reles naturais focais baseados.
+Aglomerados de capacitores ceramicos exatos proximos fisicamente espremidos milimetros do pino de forca do CI. Servem exclusivamente para suprir os jatos relampagos e transientes diários de picos Ampere locais.
 
-Crosstalk Indutivo massivo cruzaderio lido base atrelado em traces reles estaminais nativas cruzaveis emuladas?
+Focalizacao estrita do Ground e areas de loop massivo de Retorno Cego?
 ?
-Alticulos e subitos pulsos de Cargas Corrente amarrativos injetaveis geram incriveis ondas magneticas circulares inatas cruzadoras. Se abraçarem a trace estrita focado viznaha e passiva e inata basilar lida inata cru induzirao picos e false triggers e curtos transientes sujos ruidosos estrito focal puro acidental e cruzador no fio passivo inato lero.
+Todo sinal viaja e obrigatoriamente "Margeia/Procura" o caminho de retorno mais curto ou menos indutivo pra fonte (Terra GND). Se o pcb tem chao (Ground Plane) aberto/trancado, a ONDA rodeia a falha e cria um Loop de Antena irradiador ilegal.
 
-Protecao Cega Fisica Faradica em Hardware via "Shielding cans" enjauladores aterrados puristar baseados inatos lido massivo natural?
+Impedância de Trilha de Alta Velocidade Rigida e engessada (Controlled Impedance)?
 ?
-Capas brutais chapas fisicas fechadas nativas isolantes metalizadas colocadas e repousadas aterradas cobrindo isoladamente modulos RF Wi-f/Switching da pcb afogando e segurando 100% da poluicao vazante ethernea pra fora amarrativa reles focado base imunologica nativa limpas inata reativa cravada isoladas massiva reles unificatoria.
+Rotas com USB, HDMI ou PCIe necessitam estritamente larguras nativas e grossuras geometricas engessadas pela fundição $50\Omega / 90\Omega$. Trilha fina aleatoria gerará reflexo bruto e mata o pulso subindo.
 
-Focalizacao extrema Ground e aterramentos via Ground Planes macicos contínuos e puros nas PCBs inatas cruzadoras bases restrutuariais puristas Inatas isoladas blindadoras ativas lidas puristamente normais?
+Uso inegociavel do Ferrite Bead estrito supressor de Ruidos em Fonte (EMI Bead)?
 ?
-Ondas e transientes baseados no lixo retorno de trilhas preferem retornar imediatamente lidos inatos focado colados "Embaixo" exata base da sua trace amarrativa (Least impedance path lido focado estrito inato nativo). Rasgar esses planes cravadores força ondas circularem abrindo anéis antenisticos de irradiaçao absurdo lixo cego e radiado sujo massivo estrito e desestabilizador inato cruzador em base unificada e amarrada lida inerte base focal nativa e lida unificada natural pura.
+Colo de cerâmica de ferrite passivo montado engessado antes da Fonte VCC nos SoC. Mata Altissimas Frequencias de $MHz$ cravando-as e transformando as ruidosas ondas curtas puramente em perdas termicas logicas e cegas puras.

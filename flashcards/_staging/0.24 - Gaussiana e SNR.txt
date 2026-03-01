@@ -1,17 +1,25 @@
-# 0.24 - Probabilidade e Gaussiana
+# 0.24 - Gaussiana e Ruido (SNR)
 
-Regra 68-95-99.7 da distribuicao Gaussiana?
+Distribuição Normal Gaussiana (Sino/Bell Curve) na Engenharia Eletrica?
 ?
-$68\%$ dos valores estao em $\pm 1\sigma$, $95\%$ em $\pm 2\sigma$, $99{,}7\%$ em $\pm 3\sigma$ da media.
+Modelo probabilistico universal ($f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$). Modela impecavelmente a soma aleatória de infinitos pequenos ruidos eletronicos termicos independentes oscilantes nos filamentos de cobre que compõem o AWGN noise vital das operadoras RF e Wi-fi.
 
-O que e SNR?
+Media ($\mu$) vs Desvio Padrao ($\sigma$) no espalhamento de Ruidos eletronicos Gaussianos?
 ?
-Signal-to-Noise Ratio: $\text{SNR} = P_{sinal}/P_{ruido}$. Em dB: $10\log_{10}(P_s/P_n)$.
+A media ($\mu$) crava o centro do sino (Geralmente 0 Volts p/ ruidos isolados limpos AC). O desvio ($\sigma$) ou variancia ($\sigma^2$) rege o quao "Gordo/espalhado" é esse ruido. +$\sigma$ = Ruidacos selvagens atirando picos incontrolaveis de volts parasitas pro ceu.
 
-Formula do ruido termico (Johnson-Nyquist)?
+Regra Estatistica Magica 68-95-99.7 no controle de Tolerancia baseada em Desvios Padrões $\sigma$?
 ?
-$V_{rms} = \sqrt{4kTR\Delta f}$, onde $k = 1{,}38 \times 10^{-23}$ J/K, $T$ = temperatura, $R$ = resistencia, $\Delta f$ = largura de banda.
+Prova que ao testar lotes imensos industriais de CIs, 68% deles operara a um raio de $\pm 1\sigma$ da exata medicao de fabrica. E impressionantes 99.7% ficarao embaulados num teto seguro de $3\sigma$. Se voce mirar as trilhas p/ tolerar $3\sigma$, quase nennum CI retornará em defeito.
 
-Por que ruido eletrico e modelado como Gaussiano?
+Signal-to-Noise Ratio (SNR) limitante basico de Telecom e Eletronica Sensivel de ADC logicos?
 ?
-Pelo teorema central do limite — muitas fontes de ruido independentes somadas resultam em distribuicao Gaussiana.
+Exprime as divisoes brutas em deciBeis $10 \cdot \log_{10}(\text{Potencia Sinal}/\text{Potencia Ruido Gaussiano})$. Um SNR estapafurdio massivo positivo $+40dB$ signfica q seu roteador fala alto o suficiente para sufocar e ignorar calar o lixo branco gaussiano radiando na sala.
+
+Ruido Branco Termico AWGN puro focado (Aditivo, Branco, Gaussiano)?
+?
+"Aditivo" pq somasse linearmente por cima do sinal original inato. "Branco" pq possui um espetro cego chato contínuo em TODAS as Frequencias Hertz simultaneas existentes. "Gaussiano" pois suas flutuacoes maximas de Volts seguem o sino $\pm \sigma$.
+
+Teorema do Limite Central unificador massivo justificador de uso de Gauss nas Telecom?
+?
+Ele dita cravativamente nua e pura que se voce somar inumeros ruidos estatisticos bizarros totalmente Desconhecidos e de Qualquer formato exotico que as industrias quiserem... a aglomeracao maciça estritamente tenderá Misticamente pro Sino logico Gaussiano Perfeito!

@@ -1,17 +1,25 @@
-# 4.4 - Transformadores
+# 4.4 - Transformadores e Inducao Eletro-Magnetica
 
-Relacao de transformacao?
+Lei de Faraday-Lenz na inducao do Transformador?
 ?
-$V_1/V_2 = N_1/N_2$ e $I_1/I_2 = N_2/N_1$. Potencia conservada: $V_1 I_1 = V_2 I_2$.
+"Uma Variacao ruidosa de Tempo do fluxo magnetico $\Phi$ atravessando uma espira induz forcadamente uma tensao (V)". No transformador, a corrente alternada do primário cria essa variação eternamente, forçando voltagem correspondente na bobina do secundário isolado.
 
-Perdas no transformador real?
+Principio base de Conservacao de Energia no Trafo?
 ?
-Perdas no cobre ($I^2R$, nos enrolamentos) + perdas no ferro (histerese + correntes parasitas, no nucleo).
+Transformadores nao criam e nem perdem energia magica (assumindo modelo ideal). Sempre $P_{in} = P_{out}$. Se ele Eleva de $110v$ para $220v$ a tensao ($V$), ele obrigatoriamente Corta a capacidade amperimetra de Corrente (A) pela exata metade pro vacuo.
 
-O que mede o ensaio a vazio?
+Razão de Espiras unificadas ($Turns Ratio = N_p/N_s$)?
 ?
-Perdas no ferro ($P_{fe}$) e corrente de magnetizacao. Feito com secundario aberto, tensao nominal.
+O numero exato de voltas enroladas no anel de ferro. A razao $N_p/N_s$ dita perfeitamente e diretamente as Tensoes multiplicativas $V_p/V_s$. Duzentas espiras no pino Primario e Cinquennta no Secundário ($200:50 \text{ ratio } 4$) derrubara os originais brutais V da rede exatos em 1/4.
 
-O que mede o ensaio em curto-circuito?
+Corrente de Magnetizacao parasita $Im$ no secundario "Em Aberto"?
 ?
-Perdas no cobre ($P_{cu}$) e impedancia de curto ($Z_{cc}$). Feito com secundario curto-circuitado, tensao reduzida.
+Mesmo com as chaves do Secundario completamente Abertas (0 carga, $0A$), o Primario sugara uma minuscula corrente letárgica restrita $Im$ parasita. Ela serve exclusivamente so para formatar as linhas de magnetismo no lido anel chumbo e manter o fluxo ativo constante de acionamento.
+
+Transformadores Autotransformadores limpos sem Isolaçao?
+?
+Diferente dos tradicionais onde o cobre dos 2 lados nunca encosta (Isolação Galvanica Pura), o AutoTrafo utiliza apenas UMA bobina unica gigantesca continua onde se pinca e rouba volts variados em pedacos restritos no estator (Taps em paralelo reles). Menor e mais fino mas perigoso e estrito condutor.
+
+Inrush Current temporal relogioso mortifero em Transformadores brutos?
+?
+No micro-segundo em que o megatrafo AC liga nas redes $13kv$, se o pulso bater na bobina quando a onda passava pelo $0V$, o magnetismo de estabilidade atinge sobrecarga gigante forcando saturacao nula no anel metalico e sugando uma violenta marreta transiente de ate $10x$ o pico nominal ruidoso dos amperes.

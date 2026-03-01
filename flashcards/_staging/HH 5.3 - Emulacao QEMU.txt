@@ -1,17 +1,25 @@
-# HH 5.3 - Emulacao com QEMU
+# HH 5.3 - Emulacao de Firmware e QEMU
 
-QEMU system mode vs user mode?
+O que é o QEMU (Quick Emulator)?
 ?
-System mode: emula CPU + memoria + perifericos → roda firmware completo. User mode: `qemu-{arch}-static` → roda um unico binario de outra arquitetura.
+Emulador e virtualizador open-source que traduz instrucoes de um CPU alvo (ex: ARM, MIPS) para as instrucoes nativas da maquina host (ex: x86). Essencial para rodar firmwares extraídos sem ter o hardware fisico MIPS na bancada.
 
-Chroot trick para emulacao?
+Diferença entre User-Mode e System-Mode Emulation?
 ?
-Copiar `qemu-mipsel-static` para dentro do filesystem extraido, depois `sudo chroot squashfs-root /usr/bin/qemu-mipsel-static /bin/sh` → shell dentro do firmware.
+User-Mode executa apenas um unico binário isolado (ex: rodar `/bin/busybox` compilado pra ARM no seu Linux x86). System-Mode emula a maquina inteira (CPU, RAM, Discos, perifericos I/O), bootando um kernel completo como se fosse o roteador fisico real.
 
-O que e Firmadyne/FAT?
+Dificuldades do QEMU system-mode para IoT?
 ?
-Frameworks que automatizam emulacao de firmware Linux com QEMU. Configuram rede, boot, e permitem acesso web/SSH ao firmware emulado.
+Para funcionar, não basta apenas o binário; é preciso o kernel compativel, a arvore de dispositivos (Device Tree), e mapear milimetricamente onde a memoria RAM e Flash ficam naquela placa especifica.
 
-Limitacoes da emulacao?
+Emulacao de NVRAM (Non-Volatile RAM)?
 ?
-Hardware-specific drivers podem falhar (WiFi, GPIO). Perifericos customizados nao sao emulados. Funciona melhor para analise de software/web do que hardware-specific.
+Muitos firmwares de roteadores travam no boot pois tentam ler configuracoes numa memoria NVRAM fisica que o QEMU nao possui nativo. Soluciona-se injetando bibliotecas falsas como a `libnvram` via `LD_PRELOAD` para simular as respostas ao firmware.
+
+Framework FIRMADYNE?
+?
+Orquestrador automatizado focado em emular roteadores e cameras IoT. Ele extrai o rootfs do firmware, altera as particoes, configura o kernel MIPS emulado do QEMU e tenta levantar a interface Web nativa do sistema pra voce atacar na sua rede local.
+
+Como emular binarios ARM isolados via Chroot User-Mode?
+?
+Apos extrair o root directory do firmware (`_extracted`), voce copia o binario estatico `qemu-arm-static` para dentro da pasta raiz dele e usa o comando `chroot` p/ trancar o shell e fingir que seu bash agora é aquele roteador ARM restrito executandos binários inativos.

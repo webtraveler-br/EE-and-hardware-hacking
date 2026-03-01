@@ -1,17 +1,21 @@
-# 4.6-4.7 - Partida de Motor e VFD
+# 4.6-7 - Métodos de Partida e VFDs Inversores de Frequencia
 
-Partida Y-$\Delta$: corrente de partida?
+Por que motores inducao precisam de Metodo de Partida?
 ?
-$I_{partida} = \frac{1}{3}$ da partida direta. Parte em Y (menor tensao), comuta para $\Delta$ apos acelerado.
+No instante da ligacao, o motor puxa de 6 a 8 vezes mais corrente da rede do que o normal. Isso derrete cabos e queima fusiveis.
 
-O que e um soft-starter?
+Partida Direta (DOL - Direct On Line)?
 ?
-Eletronica de potencia (SCRs) que reduz tensao gradualmente na partida. Controle suave, sem transientes.
+Liga o motor direto na rede 380V. Usado apenas em motores bem pequenos (ate 5 CV) onde o pico de corrente nao afeta a instalacao eletrica.
 
-O que e um VFD (inversor de frequencia)?
+Partida Estrela-Triangulo?
 ?
-Controla tensao E frequencia do motor simultaneamente → controle total de velocidade e torque. Padrao moderno. Eficiencia energetica.
+Primeiro o contator liga as bobinas em Estrela recebendo tensao menor por fase. Apos alguns segundos, outro contator muda para Triangulo operando na tensao normal e potencia maxima.
 
-Regra V/f constante do VFD?
+Inversor de Frequencia (VFD)?
 ?
-Manter $V/f$ constante mantem torque constante. Ex: 220V/60Hz = 110V/30Hz = mesmo torque.
+Equipamento eletronico que altera a velocidade do motor em tempo real variando a frequencia da rede (Hz). Retifica a tensao e gera pulsos PWM.
+
+Problema de Harmonicas e Filtros no VFD?
+?
+O chaveamento PWM da fonte do inversor suja a rede eletrica. Exige instalacao de filtros de linha na entrada para nao interferir em CLPs ou Computadores da fabrica.

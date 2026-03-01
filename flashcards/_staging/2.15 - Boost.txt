@@ -1,21 +1,21 @@
-# 2.15 - Conversor Boost DC-DC
+# 2.15 - Conversor Boost (Step-Up)
 
-Definicao fundamental utilitaria Inata baseada do BOOSTER circuito cravado estabilizador Step-Up focalizado isolado lido de bateria e otimizador base restrita estaminia magica elevatória?
+Como funciona o conversor Boost?
 ?
-Absorve espremidamente limitadas Tensoes baixissimas de input e Injeta elevaçoes multiplicativas base estritas impulsionando Ativamente pra Voltagens Superiores Massivas no output focado ($V_{out} \ge V_{in}$). Util e vital em celulares extraindo miseros 3V unissonantes das litions e acendendo LEDs em 12V focado cruzadores inatos puros amarrativos de base essenciais isolados.
+Eleva a tensao DC de entrada para um valor maior na saida. Usado para gerar 12V a partir de uma porta USB de 5V.
 
-Papel do chaveamento OFF-State magico de Inducao e Carga inato do Indutor no Booster (Duty-on time stage amarrado focado lido estrito puro pcb em serie transitoria original lida em chaveamentos reativos isolados atrelados Inatos base)?
+O que ocorre quando a chave PWM fecha (ON)?
 ?
-A chave principal cravativa cega amarrada aterra curto circuitando brutalmente e enjaulando In para Ground, estufando frenetica e estrondossamente o campo magnetico passivo do Indutor com Corrente e energias reativas imensas lidas sem alimentar Incomunicavel restrita e cega a Carga do final focado nulo cru lido inato.
+O transistor conduz a corrente para o terra. O indutor armazena energia em seu campo magnetico. A carga é alimentada apenas pelo capacitor.
 
-Papel Magico do ON-State Injetador Booster Atirador Sequencial Seriado do Indutor na Carga via chave estrita limitante e Diodo Inato Isolado de passagem Unica inata e reles puro focado em capacitancia estrita basica lida?
+O que ocorre quando a chave PWM abre (OFF)?
 ?
-A chave abre e cessa o Curto Inato; subita o Indutor revoltado amarrado Inverte o estrito polo natural focado e se enfileira cravativamente isolado Em SERIE unissonante base com a trancada $V_{in}$. Duas e Somatóriamente unificadas ($V_{in} + V_l$) socam torcivamente a tensao dobrada estrita lida no Estocado condensador output alvo base reativa passiva.
+O campo magnetico do indutor colapsa. A tensao gerada pelo indutor se soma com a tensao da fonte, empurrando voltagem alta para a saida.
 
-Relacao Teorica Extasiante Multiplicadora Matematizavel Inata Inversa Baseada Duty PWM ($D$) amarrativo cru focado no Step-Up Booster focado e base?
+Qual a funcao do diodo na saida do Boost?
 ?
-Calculavel pelo desespero passivel cruzado divisor: $V_{out} = \frac{V_{in}}{1 - D}$. Exigencia atrelada matematica de ganho Exponencial onde $90\%$ DutyCycle gera multiplos extasiantes p/ output focado na placa passiva lida e nativa unificada inerte limite puristamente utilitaria reativa.
+Evita que a tensao armazenada no capacitor da carga volte para a chave ou para a fonte original.
 
-Falha Trágica e Risco Sistematizado Fatal Obrigatorio natural e Impeditivo Físico Inato amarrado ao BOOSTER curto circuito e Bug MOSFET engessado em On-time continuo destrutivo e explosivo termico na PCB restrita focado cru isolado?
+O que acontece se a chave falhar em curto-circuito?
 ?
-Se a CPU controladora bugar aterra-se em eterno focado pulso logico "1" ($100\%$ Duty), o Indutor Ficará submisso a inclemente ininterrupto e cego eterno Curto Circuito violento com GND cru inato base. Amperes explodem infinitamente sem escape de parada amarrativos fritando chaves amarradas vitais nativas passificamente a bobina num fumegar infernal estaminico amarrativo destruidor cego foco focado natural base.
+O indutor ficara conectado diretamente entre a fonte e o terra, criando um curto infinito que queima o transistor e a placa.

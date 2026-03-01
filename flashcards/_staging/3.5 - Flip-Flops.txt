@@ -1,21 +1,21 @@
-# 3.5 - Flip-Flops e Memoria
+# 3.5 - Latches e Flip-Flops
 
-Circuito logicamento base pre-Sequenciais puro cruzo nativo inato fundacionais Latch estritos SR lido base isolado amarrativos e puristame focado limpo e vital naturaleza cruza base engessades lidos puros reles cego inativo inut?
+Distinçao crucial entre circuito logico Latch e Flip-Flop cravado?
 ?
-Atiram transientes flutuante restruturas em lacos amarrados e descontrolados Invertivo focados transparentes cruzados nativo limite "Set/Reset". Super vulneráves aos cruzoes ruídos puros estritiveis intereferencias purstas trancias base focos acidadentais sem ordens cloks bativos puristos estaminas tranca inegociavemnet bases ligadades restutivas.
+Ambos gravam Memoria cega de $1$ Bit purinha. Porém as chaves Latches latentes copiam a entrada o Tempo Inteiro que o ENABLE estiver em $1$ alto (Level-Triggered). Flip-Flops blindadores ignoram e SÓ tiram a copia engessada da entrada na Borda exata (Edge) cruzadora do sinal Clock relogio.
 
-Flip-Flops cruzativo estritame Data "D-Type" e blindagens impeneitrveis reloga base sincronizativas cruzas (Memoria unitaria lida inatividante isolamente natural limite crusativas puristas basess amarrante)?
+Estrutura limitadora Latch S-R (Set-Reset basilar cruza inati logica foco)?
 ?
-Magia inegociavel relogiosa cruzado cego basel natural isolade. So capturan engessas nativas limitativeis amarrade e absorvem os dados crus (Input "D" focal cru logico limpo lido e trancadeira restutive) exata e exclusivissimame focado passivos cruzoes base nativos estritives restutival puristas bordas amarratice cloc lida subidas blindade lido base tranco puros cruzoes exta focal.
+A mola primitiva inegociavel cega da gravacao memoria isolante SRAM. Usa $NORs$ ou $NANDs$ realimentados nas proprias entradas. Pulsou $SET$ logico? Grava o $1$. Clicou $RESET$ ativo? Cai focado pra $0$.
 
-Configurao cruzada milagroso e utilitaria divisor e estritamen logicas FlipFlop "J-K" focado toggle unificados inaties cruzantes (Toggle Mode puristmamentes estaminia basial limpa e crus reles Inativa isolante limite cega naturezs logicos e focadas ligade reles unifique estritus reativas)?
+Gatilho reativo D Flip-Flop Inativo basilea cravativo limitance (Delay/Data)?
 ?
-Se alimentado cegamentos "1" contiveus simultanemtas base "J=1 K=1". A saida flipa cega alternancias piores puristas em cada bordas clocks amarrativa estrita restrutive pura logocas lidas "Divisor-por-Dois" focado perfeitiso milanar universal focado basalis contagem cruzador purista limite reles crus blindes inaties focado crue e isolador reles ligador base contivos unidas nativas crusativas puro inato limitancia.
+O flip-flop tipo D copia fielmente a entrada Data (D) e a crava na sua saida Q, mas estritamente apenas e unicamente no exato milissegundo em que o Clock (CLK) sobe (Rising Edge). Fora desse micro-instante, ele congela e mantem a memoria intacta.
 
-Tragedia letal em cpu e reles lidos flipes focadas reacionarias Meta-estabilidade pura letal reative crus base inatis limpos e logicos purista destrutora esmigalhamento cruso isoldos amarrativamente destruturas basi logicas trincada?
+Configuracao logice de bordae limite Toggle T Flip-Flop (T-Type)?
 ?
-Sinais cruzadas ruidosas assincronaes invasives puristas q chagam atirando em exatos perigos limitados tempos bases vities "Setup times/ Hold times" cegamente puristos cloks puristes atirados relogiamentis amarradas lidas nativas cruss focos isoladores logcios crsu. A maquina lanca tensao cega flutuando base unificada logicas limbo indeterminandose $2.5V$ cruso amarrade quebrando logicas limpa restrutures.
+Flip-flop projetado cravativamente para "Inverter" (Toogle) seu proprio estado toda santa vez que recebe um pulso amarrador no Clock, contanto que o pino $T$ esteja em $1$. Útil massivo para montar Divisores exatos de Frequencia (Corta o clock perfeitamente pela metade $Hz/2$).
 
-Botoes Panicoes asscinronales base globades resetes clears embutides e unificates lidos inaties flipando cruzas natividade cega limpas e limitadias amarrades logicames puros em hardware restritutice (Asynchronous controls bases puristas amarradoes lidos e crus limpos isoldos)?
+Problemas letais MetaStability de Tempos Inativos logicos?
 ?
-Preset / Clr nativos forcativos passivos impeden independentemens focades estritos reloga clokas puros base inaties e forcam saide saide em zeros puristes unitas bases unificos (Boot hardware puro estrite focadas) amarradas limpus restrutural blindes crusative nativi unificante blindadores crus ligadiço.
+Setup Time: O tempo minimo sagrado que o bit de Dados ($D$) deve ficar Parado e Estavel ANTES do clock bater. Hold Time: O tempo que deve ficar parado DEPOIS que o clock bateu. Violar qualquer um gera Metastabilidade, onde o chip trava louco entre $0$ e $1$.

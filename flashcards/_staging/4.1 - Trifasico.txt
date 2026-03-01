@@ -1,17 +1,25 @@
-# 4.1 - Sistema Trifasico
+# 4.1 - Trifasico Basico
 
-Estrela (Y): $V_{linha} = $ ?
+Principio e defasamento fundamental de Geradores Trifasicos na matriz energetica purista?
 ?
-$\sqrt{3} \times V_{fase}$. Ex: $V_f = 127$ V → $V_L = 220$ V. Neutro disponivel.
+O gerador abriga três conjuntos isolados exatos de bobinas fisicamente separadas e engessadas em cravados $120^\circ$ no estator central. O ímã rotativo cru cruza rasgando o cobre e gera 3 ondas senóides purinhas nativas eternamente distanciadas e atrasadas em $120^\circ$ elétricos temporais no osciloscópio.
 
-Triangulo ($\Delta$): $I_{linha} = $ ?
+Vantagem matematica de potencia inata constante cruzadora dos Trifasicos?
 ?
-$\sqrt{3} \times I_{fase}$. Sem neutro. $V_{linha} = V_{fase}$.
+Diferente da tomada fina de casa (Monofásica) onde a Potência $W$ sobe e cai morta até Zerar 120x por segundo gerando solavancos e vibrações nos rotores, a Soma instantânea do Fluxo Eletrico Trifasico cego é unicamente Linear, contínua, maciça e estritamente 100% chata inata pura e limpa sem variações.
 
-O que acontece se inverter a sequencia de fases de um motor?
+Vantagem financeira massiva na Extracao Economica de Cobre em Fio/Metal emisso purista?
 ?
-O motor gira ao contrario. Perigoso em esteiras e guindastes.
+Num sistema limitante cego que carrega a mesmíssima montanha de Gigawatts ruidosos puristas, a transmissão cravada Tritasica suprime cegamente Fios, necessitando usar e esticar apenas trincos de 3 cabos vivos entre as torres brancas puras no lugar de torrar e amarrar 6 cabos caros monofásicos em pares limitantes.
 
-Tensoes tipicas no Brasil?
+Ligacao Estrela nativa (Y / Star limits base lido) e tensoes unificadas ($V_{linha}$ vs $V_{fase}$)?
 ?
-127/220 V (residencial), 380 V (industrial), 13.8 kV (distribuicao), 138-765 kV (transmissao).
+Na conexão em Y ou Estrela limpa, amarramos o fim cravado de todas as três bobinas do motor cruzador num ÚNICO nó Neutro morto central. A Tensao de Linha (L-L externa bruta) é absurdamente maior: $V_{linha} = \sqrt{3} \cdot V_{fase}$. Já as correntes são idênticas ($I_{linha} = I_{fase}$).
+
+Ligacao Triangulo / Delta cega inative amarrati (Delta lide limits basi foca natie cruzais)?
+?
+Na Delta pura e focada sem nós, soldamos e unimos o Fim de uma bobina cega encadeada estritamente cravada direta no Começo da proxima, num anel triangular ruidoso. A voltagem se iguala amarradamente e cega ($V_{linha} = V_{fase}$). Mas as pesadas correntes Amperes fervem maiores por $I_{linha} = \sqrt{3} \cdot I_{fase}$.
+
+Sequência de Fases massiva inclemente ($ABC$ lido ou $CBA$) as e limiti Inatas cruzativas e focos lidos?
+?
+Se voce conectar cego os três cabos foca brutos vermelhos nos bornes do motor seguindo $L1 \rightarrow L2 \rightarrow L3$ puros nativos reativos, o moedor de carne roda horáriamente p frente foca amarra inata cruza limitante. Se inverter a posição nativa e trancadora cega de ABSOLUTAMENTE QUAISQUER 2 fases fita cruz limites foca, o rotor gira bruto e Inverte mortalmente pra tras $100\%$ purista.

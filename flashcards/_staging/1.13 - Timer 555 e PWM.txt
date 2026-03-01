@@ -1,21 +1,21 @@
-# 1.13 - Timer 555 e PWM Basico
+# 1.13 - Timer 555 e PWM
 
-Funcionamento primitivo e basico 555 Astavel oscilante e livre (Oscilator mode base)?
+Qual a funcao do Timer 555?
 ?
-Liga-se numa estrita malha logica autossuficiente RC de rearmamento cego inate interligado na porta 2 (trigger) e 6 (Threshold) balançando em ciclos unificados e reativos eternos pra gerar o "Square wave clock" natural sem necessitar intervenção ou MCU externo.
+Um chip de 8 pinos usado para gerar atrasos temporais e pulsos de clock. 
 
-Funcionamento basico primitivo do 555 operante em estagio firme Monoestavel (One-Shot timer mode puro lido base)?
+Modo Astavel do 555?
 ?
-Inerte congelado. Aguarda cegamente pulso logico pontiagudo externo imposto bruscamente no Pino de trigger forçado pelo dedo antes de acordar em tempo e acender saida uma cravada e unica unica vez num tempo controlado fixo restrito pela resistencia / capacitor externo antes exaustivo decair-se pra OFF sem repeticao infinita e cega ate cutucado lido novado.
+O chip atua como um oscilador piscando a saida infinitamente entre HIGH e LOW.
 
-Utilidade esquecida essencial analoga do misterioso Pino 5 (Control Voltage) do 555 cru primitivo base vintage lido?
+Modo Monoestavel do 555?
 ?
-Permite adentrar tensões e bypassar o referencial imovel interno nativo $2/3$ das pontes resistivas amarrativas cravantes. Usar voltagens no Pino 5 distorce as Frequencias unissonantes do clock base permitindo engatilhar arranjos analogicos arcaicos primitivos e musicais puros FM diretos p/ CIs sonoros bizarros isolados.
+O chip emite um unico pulso de duracao especifica ao receber um gatilho.
 
-Geracao rudimentar natural e primitiva cega PWM usando 555 padrao restrito cru retro focado estriado primitivo de hardware arcaico base isolado lido de 1970?
+Como o PWM controla a potencia de um LED?
 ?
-Alterando arranjos diodicos paraleles restritivos isolados carregamentos nas alcas e recargas $R_a$ / $R_b$. Variaveis Duty Cycles oscilantes analogicamente mutantes sem MCU focado isoladamente em motores basicos inatos simples ou dimmers analogos lidos e brutos.
+Ajustando a porcentagem de tempo em que o sinal fica HIGH (Duty Cycle). Um sinal HIGH por 50% do tempo entrega metade da potencia visual ao LED.
 
-Limite pratico brutal obsoleto engessante reativo capenga de Frequencia do estagio limitante do 555 vintage comun inalterado restrito original arcaico ($< 500\text{kHz}$)?
+Qual a utilidade do pino Control Voltage no 555?
 ?
-Sendo CIs bipolares antiquados amarrativos lentos inatos originais cruzadas brutamente estagnantes morosos lidos puros vintages reles lerdice primitiva a chaveacao sofre e chora acimas das centenas milhares d hz fundindo as ondas quadradas p/ montanhas sinuosas bizarras lidas e borradas impeditivo de usabilidade radio-base RF limpa focada real moderna limitando nas dezenas KHZ inato unicas recondicionadas base estritas lentidao morosa.
+Permite alterar o limiar de comparacao interno, mudando a frequencia do oscilador sem mexer nos resistores externos.

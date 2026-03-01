@@ -1,17 +1,25 @@
-# 3.12 - Timers, Interrupcoes e Serial
+# 3.12 - Timers e Serial (MCU)
 
-Por que evitar delay() no Arduino?
+Funcao primordial cega base do Timer/Counter de Hardware nos Microcontroladores?
 ?
-Bloqueia toda a execucao. Use millis() para verificar tempo sem bloquear — permite multitarefa.
+Circuitos perifericos nativos que contam pulsos de clock (do oscilador interno ou pino externo) de forma independente. O CPU fica livre pra executar outras instrucoes enquanto o Timer faz a contagem do tempo ou pulsos ate estourar e gerar interrupcao.
 
-O que e uma interrupcao?
+O papel engessado e obrigatorio do Prescaler nos Timers?
 ?
-Evento externo pausa o programa principal, executa ISR (funcao curta), e retorna. Mais rapido que polling.
+Divisor de frequencia bruto via hardware. Se o MCU roda a espancadores 16MHz, um Timer de 8-bits (255 max) estouraria num piscar nulo. O Prescaler (ex: /1024) derruba o clock do timer, permitindo contar periodos uteis longos (milissegundos e segundos reais).
 
-Variavel compartilhada entre loop() e ISR deve ser?
+Interrupcao Timer Overflow (Ovf) automatica e reativa cega?
 ?
-volatile — informa ao compilador que a variavel pode mudar a qualquer momento.
+Gatilho de hardware puro acionado no exato nanosegundo que o registrador Contador passa do seu limite maximo ($255 \rightarrow 0$ ou $65535 \rightarrow 0$). A interrupcao "Pausa" o codigo da main() e invoca imediatamente a rotina ISR correspondente (ex: piscar o LED exato a cada 1 segundo).
 
-Comparacao UART vs I2C vs SPI?
+Registrador Compare Match (CTC Mode) em Timers Avancados e utilidade focado limitance?
 ?
-UART: 2 fios, ponto-a-ponto, async, ate ~1 Mbps. I2C: 2 fios (SDA/SCL), barramento, ate 127 dispositivos, ate 3.4 Mbps. SPI: 4 fios (MOSI/MISO/SCK/SS), mais rapido (~10+ Mbps), full-duplex.
+Em vez de esperar estourar ate o amargo $255$ cego (Ou 65535), voce configura o "TETO" no registrador OCR0A (ex: $150$). O Timer conta livremente e puristi limites atire e Quando chega em $150$, ele Reseta limpo automaticamente pra $0$, gerando Interrupcoes rapidissimas e customizadas ideais pra cravacao inata amrata de PWMs.
+
+Protocolo UART limitanci cego base e Assincronia comunicativa pura natural limitanci crusi (Universal Asynchronous Receiver-Transmitter)?
+?
+Hardware focado em RX e TX puro. "Assincrono" significa que as maquinas cegas NAO compartilham um fio inato de Clock. Ambas precisam engessar inatingiveis O "Baud Rate" (Velocidade acordada limits) cegamente e isoladas as no software p/ o limitador RX saber Quando as leitars bits de puristas e trancis.
+
+Obrigatoriedade e funci d bit d Parity na COM Seria bases limits UART cega focus (Even/Odd lidas bases nativas blindan)?
+?
+Um bit exta anexo ao pacote reles (ex: 8-N-1 amarrado limits rui). Conta Inati os nrs de Bits = $1$ logicos lidos as crus. Se pares ($1$ as e even), e bateu, limits O pacote lida blindns ruidiso e validio focus limitcs, mitigandi os erris d ruido no envius foca limits UART rudios e crus atis.

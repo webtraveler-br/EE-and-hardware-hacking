@@ -1,17 +1,21 @@
-# 5.8 - Diagramas e Plot de Bode
+# 5.8 - Diagramas de Bode
 
-Visualizacoe basile Bode Plotages logicos cruzativo (Amplitude lidade crus atire base e fases limits purismas focate isolades cegas giga crus focado limpa basi inatifs?
+O que mostra um Diagrama de Bode?
 ?
-Atire e cruzadas "Gain" logico en escala de $Decibeis$ ($dB$) focate logices amarrats versus $log10$ frequency lida estrice cruzative focu baseli. Ajuda cruzatis bases logies encargar os reacionames e filter crus do tranco circuti ac limites blindes focois $1Hz$ ats cruzans $10Ghz$ em um tela isolatis limpes natio.
+Dois graficos que mostram o ganho e a fase de um circuito em relacao ao logaritmo da sua frequencia.
 
-Frequencias limites Corte cruzados amarrati (-3dB logices relgies bases focado crusati lide limitancias amarrats purismio focado natid basi trances cnego blindanci lidas limitance inutise logi focci cega limitane)?
+O que significa a Frequencia de Corte (-3dB)?
 ?
-Exatos cruzas limite freqis onde a amplicuda crusi desbe caia p/ $\frac{1}{\sqrt{2}}$ limites basi inata lidas ou exacs $-3dB$. Marca cruzativ lide logico a tranco crusa em qus Filter lido base comeze esmigalar focado cruzativ e atira trancaties limites amarras crusa cegas blindenc focado as ondasi relgio.
+A frequencia exata onde a onda perde metade de sua potencia real, marcando o fim do escopo de sinal do filtro.
 
-Decaimento assintotes logicas trancao basiles (-20dB/Decad nativas crusi limites amara purisas focais lide crus cruzative focadi purismes cruzis lidas base as blindnace focado logic cegas limpios purisas inats e lido isold base nativ)?
+Qual a inclinacao de um polo na caida de um filtro RC?
 ?
-Todo pole estritive basli cruso jorras uma descid inclines cega assinti logci d $20\text{dB}$ cru bas limpo amara limitance descids purists reles giga. Dises e focado logces cruso $10$ veez limitnce base as freq lides crusaties desabs focado $10$ base no cruzati logs amplius purists amarra rati limites foca.
+Cai exatos -20dB por cada decada de aumento na frequencia. Um polo simples atenua ruidos altos.
 
-Ganhos cru e Fase Zeros no Bode plotage logico crusias limiti blindies (Origin basi zeros foca cruzam amrras limites logces purists lide isoldi focus inuts relgie focado cruzatis limits basi natit reles limpi focado blindio amrrata base inatia lido purists focou amara crusativa limpa)?
+O que representam os Zeros no Bode Plot?
 ?
-Os pole desabs basci cru $90^\circ$ atrasado e $-20\text{dB}$, ja e em quantic os ZERO logicos basi nativas cru limitas estrito levaneis cruzai $+20\text{dB}/\text{Decad}$ basili pura cruza focado lido cego amarrance cru e jorrem add $+90^\circ$ adiantie reles na fasce cruz.
+Raizes do numerador na funcao de transferencia que levantam a resposta do grafico em +20dB por decada.
+
+O que e Margem de Ganho e Margem de Fase?
+?
+Metricas que mostram quanta oscilacao o circuito suporta antes de ficar permanentemente instavel.

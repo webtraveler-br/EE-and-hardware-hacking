@@ -1,17 +1,21 @@
-# 0.21 - Vetores
+# 0.21 - Vetores e Forcas Fisicas
 
-O que e produto escalar $\vec{a} \cdot \vec{b}$?
+O que e um Vetor na engenharia?
 ?
-$|\vec{a}||\vec{b}|\cos(\theta) = a_xb_x + a_yb_y + a_zb_z$. Resultado: escalar. Mede "quanto $\vec{a}$ esta na direcao de $\vec{b}$".
+Uma grandeza matematica que possui tamanho e direcao ao mesmo tempo. Usado para representar forcas mecanicas, velocidade ou fluxo de campos eletromagneticos.
 
-O que e produto vetorial $\vec{a} \times \vec{b}$?
+O que sao Componentes Vetoriais (x, y, z)?
 ?
-$|\vec{a}||\vec{b}|\sin(\theta)\hat{n}$. Resultado: vetor perpendicular a ambos. Modulo = area do paralelogramo.
+A projecao do vetor nos eixos do plano cartesiano. Usado para dividir uma forca complexa e diagonal em duas forcas independentes simples de calcular.
 
-Onde o produto vetorial aparece em EE?
+O que e a Soma de Vetores?
 ?
-Forca magnetica: $\vec{F} = q\vec{v} \times \vec{B}$ — a forca e perpendicular tanto a velocidade quanto ao campo.
+Juntar duas forças aplicadas a um objeto. Se eu empurro com força X para frente, e o vento sopra com forca Y para o lado, o vetor resultante vai diagonalmente.
 
-Onde o produto escalar aparece em EE?
+O que e o Produto Escalar (Dot Product)?
 ?
-Potencia: $P = \vec{F} \cdot \vec{v}$. Fluxo: $\Phi = \vec{B} \cdot \vec{A}$.
+Multiplica forcas na mesma direcao. Mede quanto uma forca X contribui diretamente na direcao Y. Usado para calcular potencia ou trabalho mecanico real de algo se movendo.
+
+O que e o Produto Vetorial (Cross Product)?
+?
+Mede o giro ou torque. Multiplica a forca perpendicular que atua a um braço de distancia girando o eixo do motor.

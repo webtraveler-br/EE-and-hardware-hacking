@@ -1,17 +1,25 @@
-# 0.35 - Bandas de Energia
+# 0.35 - Bandas de Energia e Semicondutores
 
-Energia de um foton?
+Teoria de Bandas Semicondutoras (Banda de Valencia vs Conducao)?
 ?
-$E = hf$, onde $h = 6{,}63 \times 10^{-34}$ J·s (constante de Planck).
+Em atomos, os eletrons orbitam na banda de Valencia (imovel). Eles precisam saltar um espaço fisico proibido (Band Gap) para chegar na banda de Conducao, onde sãp livres para gerar corrente eletrica util.
 
-Qual a diferenca entre metal, semicondutor e isolante?
+Band Gap Proibido de Energia ($E_g$)?
 ?
-Metal: gap = 0 (conduz sempre). Semicondutor: gap pequeno (~1 eV, controlavel). Isolante: gap grande (> 3 eV, nao conduz).
+A brecha de potencial exato que separa as bandas. Determina a quantidade de voltagem ou calor que o eletron precisa absorver para pular as valências e virar condutor.
 
-Gap do silicio?
+Materiais Isolantes VS Condutores VS Semicondutores?
 ?
-$E_g = 1{,}12$ eV. Pequeno o suficiente para dopagem controlar a conducao, grande o suficiente para nao conduzir sozinho a temperatura ambiente.
+Condutores tem o Gap zerado (bandas sobrepostas, conduz tudo). Isolantes tem Gap gigante ($>5eV$, eletron nao pula). Semicondutores tem um Gap pequeno (ex: $1.1eV$ pro Silicio), precisando de pouca ajuda (calor ou volt) para conduzir.
 
-Por que semicondutores conduzem MAIS quando aquecem?
+Dopagem Tipo-N (N-Type Doping)?
 ?
-Temperatura maior = mais eletrons ganham energia para saltar o gap → mais portadores livres → resistencia diminui. Oposto dos metais.
+Injetar atomos de Fosforo (5 eletrons) na malha de silicio (4 eletrons). O processo propositalmente causa a "sobra" de 1 Eletron livre, injetando cargas negativas majoritarias na malha prontas pra virarem corrente.
+
+Dopagem Tipo-P (P-Type Doping)?
+?
+Injetar atomos de Boro (3 eletrons) na malha. Acaba faltando eletroes para fechar o ciclo de 4, resultando na criação de lacunas (Buracos positivos), que atraem eletron vizinho e geram movimento de conducao.
+
+Nivel de Fermi (Fermi Energy Level)?
+?
+Mapeamento termodinamico estatistico que mostra a exata regiao no gráfico onde existe 50% de probabilidade de encontrar um eletron livre vagando quente na temperatura padrao do material dopado.
