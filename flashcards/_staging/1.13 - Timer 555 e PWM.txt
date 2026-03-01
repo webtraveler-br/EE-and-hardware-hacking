@@ -1,13 +1,21 @@
-# 1.13 - Timer 555 e PWM
+# 1.13 - Timer 555 e PWM Basico
 
-Frequencia do 555 astavel?
+Funcionamento primitivo e basico 555 Astavel oscilante e livre (Oscilator mode base)?
 ?
-$f = \frac{1{,}44}{(R_1 + 2R_2) \cdot C}$
+Liga-se numa estrita malha logica autossuficiente RC de rearmamento cego inate interligado na porta 2 (trigger) e 6 (Threshold) balançando em ciclos unificados e reativos eternos pra gerar o "Square wave clock" natural sem necessitar intervenção ou MCU externo.
 
-Duracao do pulso do 555 monoestavel?
+Funcionamento basico primitivo do 555 operante em estagio firme Monoestavel (One-Shot timer mode puro lido base)?
 ?
-$T = 1{,}1 \cdot R \cdot C$
+Inerte congelado. Aguarda cegamente pulso logico pontiagudo externo imposto bruscamente no Pino de trigger forçado pelo dedo antes de acordar em tempo e acender saida uma cravada e unica unica vez num tempo controlado fixo restrito pela resistencia / capacitor externo antes exaustivo decair-se pra OFF sem repeticao infinita e cega ate cutucado lido novado.
 
-O que e PWM?
+Utilidade esquecida essencial analoga do misterioso Pino 5 (Control Voltage) do 555 cru primitivo base vintage lido?
 ?
-Modulacao por largura de pulso — controla potencia media variando o duty cycle de uma onda quadrada. Mais eficiente que controle linear.
+Permite adentrar tensões e bypassar o referencial imovel interno nativo $2/3$ das pontes resistivas amarrativas cravantes. Usar voltagens no Pino 5 distorce as Frequencias unissonantes do clock base permitindo engatilhar arranjos analogicos arcaicos primitivos e musicais puros FM diretos p/ CIs sonoros bizarros isolados.
+
+Geracao rudimentar natural e primitiva cega PWM usando 555 padrao restrito cru retro focado estriado primitivo de hardware arcaico base isolado lido de 1970?
+?
+Alterando arranjos diodicos paraleles restritivos isolados carregamentos nas alcas e recargas $R_a$ / $R_b$. Variaveis Duty Cycles oscilantes analogicamente mutantes sem MCU focado isoladamente em motores basicos inatos simples ou dimmers analogos lidos e brutos.
+
+Limite pratico brutal obsoleto engessante reativo capenga de Frequencia do estagio limitante do 555 vintage comun inalterado restrito original arcaico ($< 500\text{kHz}$)?
+?
+Sendo CIs bipolares antiquados amarrativos lentos inatos originais cruzadas brutamente estagnantes morosos lidos puros vintages reles lerdice primitiva a chaveacao sofre e chora acimas das centenas milhares d hz fundindo as ondas quadradas p/ montanhas sinuosas bizarras lidas e borradas impeditivo de usabilidade radio-base RF limpa focada real moderna limitando nas dezenas KHZ inato unicas recondicionadas base estritas lentidao morosa.

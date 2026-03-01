@@ -1,0 +1,17 @@
+# HH 2.1 - OSINT para IoT
+
+Fontes de OSINT para hardware?
+?
+FCC ID (fotos internas da PCB), WikiDevi (specs de roteadores), OpenWrt Table of Hardware, Exploit-DB, NVD (CVEs).
+
+O que e um FCC ID e por que importa?
+?
+Identificador unico que fabricantes registram nos EUA. O site fcc.gov tem fotos internas do dispositivo (PCB completa com chips legiveis).
+
+Shodan: para que serve em HH?
+?
+Busca por dispositivos expostos na internet. Dorks: `port:23 "login"` (telnet aberto), `http.title:"router"`, buscar por modelo/fabricante.
+
+Google dorking para firmware?
+?
+`inurl:firmware filetype:bin site:tp-link.com` ou `"firmware" "download" site:intelbras.com.br`.

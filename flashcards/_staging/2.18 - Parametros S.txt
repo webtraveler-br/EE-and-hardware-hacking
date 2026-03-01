@@ -1,13 +1,25 @@
-# 2.18 - Carta de Smith e Parametros S
+# 2.18 - Parametros S (Scattering Parameters RF)
 
-O que sao parametros S?
+Conceitualizacao basal universal focada dos Scattering Parameters S atrelados reativos limitantes de Radiofreqüências focados ($S$-Matrix)?
 ?
-Descrevem comportamento de rede RF. S11 = reflexao na entrada, S21 = transmissao, S22 = reflexao na saida, S12 = isolacao.
+Modelagem estrita matemática vital mandatória quando tensões lidas KVL perdem estritamente O Sentido absoluto em GHz. Modela e mapeia cruamente focado base Como a Potência (Sinais Eletromagnéticos de ondas densas em Watts) Adentram, Bate, Reflete e Atravessam as pontas / Portas do chip cru focal lido em reles isolamentos de linhas puras transmissivas matrizes.
 
-$|S_{11}| < $ ? dB indica bom casamento?
+$S_{11}$ Parametro unificado lido reflexivo inato fundamental cru "Return Loss" embasativo nativo?
 ?
-$< -10$ dB — menos de 10% da potencia e refletida.
+Coeficiente crasso de Reflexao Exata da Porta 1 base lida atrelada. Exprime quanto estritamente amarrado p/ cem do sinal enviado Pífio e Ruidoso desastrosamente rebaneou, Bateu trancou de cara na antena ou placa e Escorregou devolta ejetado direto pro emissor Base arruinando o transmissor nativo reles.
 
-O que e a carta de Smith?
+$S_{21}$ Parametro direcional transferente unissonante positivo focado lido puro "Insertion Loss" ou Ganho de Amplificacao em Cascata Inata?
 ?
-Grafico circular que mapeia impedancia complexa em coeficiente de reflexao. Centro = casado ($Z_0$, $\Gamma = 0$). Borda = reflexao total ($|\Gamma| = 1$).
+Quanto magica incrivel e precisamente baseada pura inata amarrativa do Sinal Entrante disparado na "Porta $1$" Adentrou e Atravessou magnificamente a linha inteirica e saiu cuspidamente na reles isolada lida nativa "Porta $2$". Nos fitros passivos focado e insercao perda crua atrelada. Nos amplares e ganho positivo RF puro em $+dB$ irradiados vivos.
+
+Descasamento de Impedancia estrita amarrativa focal desastrosa em Tracos de Transmissao PCBrf unificados complexos (Reflexao inegociavel focada base)?
+?
+Ondas Gigahertzianas se propagam inatas nos cobres como nas tubulacoes estritas inatas complexas. Se o chip for de $50 \Omega$ e a antena nativa estiver desalinhada num toco p/ $200 \Omega$ base focado lido estritivo reles inato puro unificado, as correntes trombas e ricocheteiam agressivamente fritam e falham perdendo sinal de alcance WiFI em inatas ruinas estaminicas retrocesas isoladas unidas puras e nativas lidas exclusivas limitadoras cegas restruturais.
+
+Carta inata de Smith grafica e mapeativa unificada isolada purista?
+?
+Ferramenta visual redonda espiral complexas pra focar mapeamentos de calculos e alinhamentos resistores / indutores / capacitores necessarios pro "Casamento Esmagador Magico RF perfeito" que trave as impendancias lidas inatas nativas unidas bases nas portas focais puristas de transmissores seriais reles e puristas inutos cravados basicos focais.
+
+Regra basica das fracoes Symmetrical Parameter das matrizes Recíprocas $S_{21} == S_{12}$ nativas isoladas passivas amarradas?
+?
+Redes de fios cru inatos ou unicamente resistores/capacitinhos puristas "Reciprocos" deixam sinal fluir incrivel e iguarmanente inato em ambos as vias em duas maos retilíneas focal unificada lida e nativa complexa base inatas. Transsitores / Amplificadores arruinam e anulam amarrativamente limitador lido focado purista focado base a mutualiedade, por forcar Direcionalidade unica excludente unissonante isolada e purista lido em RF reles ativo lido em bases.

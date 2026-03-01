@@ -1,13 +1,21 @@
-# 2.14 - Conversor Buck
+# 2.14 - Conversor Buck DC-DC
 
-Relacao saida/entrada do Buck?
+Funcao essencial reativa definidora Conversora atrelada amarrada DC do modelo BUCK inato puro (Step Down estrito lido purista)?
 ?
-$V_{out} = D \times V_{in}$, onde $D$ e o duty cycle (0 a 1). So abaixa tensao.
+Esmagar e derrubar eficientemente via chaveamentos ativos a pesada Voltagem Bruta continua proveniente cega entrante, produzindo estritamente menor amena lida e suave Voltagm regulada de Saida (Out $\le$ In) s/ torrar inutil em radiadores de lixo focado dissipante cego do passado.
 
-Ripple de corrente no indutor do Buck?
+Relacao Teorica Baseada Lida Funcional e idealizada matematica de Despejo Continuo PWM inata (Duty Cycle focado basico lido $D$ em buck)?
 ?
-$\Delta I = \frac{(V_{in} - V_{out}) \cdot D}{f \cdot L}$. Menor com frequencia e indutancia maiores.
+Formula linear direta e estritamente dócil previsível (Buck DC): A Voltagem Saida E injetadamente Unissonante In $X$ Proporção porcentagem Acionamento ($V_{out} = V_{in} \cdot D$). Ligado puro 50% dos tempo = Output sera metade Inato reativo focado estrito lido liso nativo.
 
-Componentes do Buck?
+Papel funcional vital obrigatório restritivo e magico do Indutor bobina inato (Choke amarrado serie principal base lida em buck)?
 ?
-MOSFET (chave), diodo (freewheeling), indutor (armazena energia), capacitor (filtra ripple).
+Funciona qual restritivo bizarro amortecedor "Flywheel magnetico". No pulso forte estanca os torrente armazenando e encharcando de amperes energia reativa nas bobinas pra entao quando o PWM tranca em apagao desligado, ela vazar liso cuspidamente soltando a reserva macia nos capacitores alvo preenchendo as vácuos nativos da falha eletrica.
+
+Funcao do Diodo "Free-wheeling" ou Roda-livre retificador (Diodo Schottky focado base Buck cruzador inato lido puro lido base utilitario e obrigatorio focado reativo terra amarrada isolado)?
+?
+Trancar passivo e cego amarrado enquanto $V_{in}$ flui atirado reto pro indutor. Mas quando $V_{in}$ cessa (PWM desliga) e a Bobina revoltada muda subita de polaridade querendo jorrar amper , o diodo Abre cego isolado magicamente oferendo uma ciclovia retro-caminho seguro e suave pro terra base permitindo ciclo-loop contínuo na carga reles e não rebater em queima explovida estrita reativa inata pura isolada.
+
+Impactos massivos Inatos Redutivos e miniaturizatorios beneficos do Uso Mhz chaveamentos rapidos extremos altissimos em CIs Buck modernos avancados miniaturizaveis lidos nativos basicos?
+?
+Chavear estupidamente acelerados focado incrivelmente base altissimo ($>1Mhz$) permite usar Indutores miniaturizados ridiculamenete minusculos focais limitadores base e capacitores miudos inatos, enxugando e permitindo caber e rechear p/ smartphones estritamente apertados e esguios lidos e minimalistas placas isoladas inatas.

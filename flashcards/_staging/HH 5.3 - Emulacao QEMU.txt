@@ -1,0 +1,17 @@
+# HH 5.3 - Emulacao com QEMU
+
+QEMU system mode vs user mode?
+?
+System mode: emula CPU + memoria + perifericos → roda firmware completo. User mode: `qemu-{arch}-static` → roda um unico binario de outra arquitetura.
+
+Chroot trick para emulacao?
+?
+Copiar `qemu-mipsel-static` para dentro do filesystem extraido, depois `sudo chroot squashfs-root /usr/bin/qemu-mipsel-static /bin/sh` → shell dentro do firmware.
+
+O que e Firmadyne/FAT?
+?
+Frameworks que automatizam emulacao de firmware Linux com QEMU. Configuram rede, boot, e permitem acesso web/SSH ao firmware emulado.
+
+Limitacoes da emulacao?
+?
+Hardware-specific drivers podem falhar (WiFi, GPIO). Perifericos customizados nao sao emulados. Funciona melhor para analise de software/web do que hardware-specific.

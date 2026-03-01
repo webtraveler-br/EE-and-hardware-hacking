@@ -1,9 +1,21 @@
 # 1.7 - Analise Nodal e Malhas
 
-Quando usar analise nodal?
+Analise Nodal: formulacao base?
 ?
-Quando ha muitas fontes de corrente ou poucos nos. Variaveis: tensoes nodais. Equacoes: KCL em cada no.
+Baseia-se na LKC (Lei de Kirchhoff das Correntes). Calcula as tensoes desconhecidas em todos os nos essenciais relativos a um unico no de Referencia (Terra, 0V).
 
-Quando usar analise de malhas?
+Analise de Malhas (Mesh Analysis): formulacao base?
 ?
-Quando ha muitas fontes de tensao ou poucas malhas. Variaveis: correntes de malha. Equacoes: KVL em cada malha.
+Baseia-se na LKT (Lei de Kirchhoff das Tensoes). Calcula as correntes de malha (correntes circulantes em lacos fechados independentes). Só se aplica a circuitos planares.
+
+O que e um Superno (Analise Nodal)?
+?
+Ocorre quando existe uma fonte de tensao ideal posicionada conectando diretamente dois nos essenciais (nenhum deles sendo o terra). Trata-se os dois nos como uma unica equacao KCL gigante.
+
+O que e uma Supermalha (Mesh Analysis)?
+?
+Ocorre quando ha uma fonte de corrente ideal flutuante contida na fronteira partilhada entre duas malhas. Ambas as malhas sao combinadas evadindo a passagem exclusiva pela branch da corrente.
+
+Qual metodo de analise escolher?
+?
+Se o numero de Nos e menor que Malhas: use Analise Nodal. Se numero de Malhas e menor e as fontes predominam em Tensao: use Mesh.

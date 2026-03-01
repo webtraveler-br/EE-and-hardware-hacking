@@ -1,9 +1,21 @@
-# 2.3 - Zener
+# 2.3 - Diodo Zener
 
-Como funciona o diodo Zener?
+Regiao de operacao intencional do Diodo Zener?
 ?
-Opera em breakdown reverso controlado — mantem tensao constante $V_Z$ na reversa. Usado como regulador simples ou referencia de tensao.
+Reversamente polarizado (Catodo no Positivo, Anodo no Negativo) ate exceder propositalmente a Breakdown Voltage (Efeito Avalanche), ancorando a voltagem da trilha.
 
-Como dimensionar $R_{serie}$ num regulador Zener?
+Funçao pratica fundamental do Diodo Zener num circuito?
 ?
-$R = \frac{V_{in} - V_Z}{I_Z + I_{carga}}$. Manter $I_{Z,min} \approx 5$ mA para regulacao.
+Aclopado em paralelo, funciona como um Regulador de Tensao primitivo de baixos custos para blindar conversores ou referencias MCU, impedindo a voltagem de estriar limites ($>5V$).
+
+Resumo da Corrente "Joelho" (Knee current - $I_{zk}$)?
+?
+A corrente reversa mínima necessitada para que o Zener entre definitivamente no Breakdown. Se nao suprir isso, a tensão não será estavelmente regulada e vai desmoronar.
+
+Utilidade do Resistor Serie ($R_s$) limitante e impreterível?
+?
+Se tentar atrelar a Fonte Direta de Tensao no Zener sem resistor, ele afundara o "curto" tentando sugar amperes infinitos para segurar a voltagem. $R_s$ impederá isso, ditando o gasto final.
+
+Protecao contra Picos Excedentes (Clipping)?
+?
+Atrelar 2 Diodos Zener acoplados reverso-a-reverso funciona perfeitamente ceifando/aparando as pontas destrutivas em ruidos na Rede AC ou sinais seriais, garantido maximos $+5v/-5v$.

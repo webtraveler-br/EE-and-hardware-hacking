@@ -1,13 +1,17 @@
 # 0.9 - Aplicacoes de Derivadas
 
-Como encontrar maximo ou minimo de uma funcao?
+Taxa de variacao da Corrente Base num Fio Material ($i = \frac{dq}{dt}$)?
 ?
-Iguale $f'(x) = 0$. Se $f''(x) < 0$ e maximo, se $f''(x) > 0$ e minimo.
+Pura derivada temporal descrevendo a variacao aglutinada da velocidade exata inata do acumulo cru instantâneo de pacotes carga na bitola transversal amarrada por um ponto focal instantaneo temporal no cronometro lido ativo.
 
-O que e linearizacao (Taylor 1a ordem)?
+Tensao forçada atrelada a reativação do Indutor base ($V = L \cdot \frac{di}{dt}$)?
 ?
-$f(x) \approx f(a) + f'(a)(x - a)$ para $x$ proximo de $a$
+Cravamente dependente da agressividade massiva veloz e violenta com que voce tenta matar a Corrente passante. Cortar os amperes subitos num bilionésimo d segundo causará derivados infinitos resultando Picos gigantescos de faiscas isolantes perigosas na Voltagem medida e forçada por relés rompantes (Spark).
 
-Em que condicao ocorre maxima transferencia de potencia?
+Maximos e Minimos avaliativos vitais maximos do ponto critico em analises curadas?
 ?
-Quando $R_L = R_{th}$ (carga igual a resistencia de Thevenin). Obtido igualando $dP/dR_L = 0$.
+Tirando-se a $1ª$ derivada de qualquer onda oscilatoria / consumo num SoC e a Igualando a zero na expressao base matemática cega aponta-se impreterivelmente unicamente e precisamente OS picos extatos crista ou vales afundados sem desenhar qualquer grafico.
+
+Aproximacao Linear atrelada veloz e calculos rapidos por derivadas locais em micro-curvas restritas (Series estritas de Taylor truncada)?
+?
+Substitui as curvas imensas pesadas trigonomodelares dos Diodos em equacoes horriveis usando pequenas retas unicamente e localizadamente baseadas valendo rigorosamente so em micro tensoes próximas baseadas no eixo central em prol facilitatorio simulavel de contas basicas RC rapidissimas humanas na caneta bic ignorando a caotizacao real ampla.

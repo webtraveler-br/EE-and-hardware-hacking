@@ -1,13 +1,21 @@
-# 1.1 - Tensao, Corrente e Resistencia
+# 1.1 - Tensao Corrente Resistencia
 
-Lei de Ohm?
+Lei de Ohm fundamental das grandezas ($V = R \cdot I$)?
 ?
-$V = IR$ — tensao e proporcional a corrente vezes a resistencia.
+A proporcao unificada magica limitante. Relaciona puramente tensoes ativas em terminais e amperes em fluxos contra restricoes base passivas de trancamento homogeneo inato do material testado e lido do bipolo.
 
-3 formas de calcular potencia?
+Tensao eletrica isolada restrita (Diferenca estrita basilar purista de Potencial de Trabalho ativo $W/q$)?
 ?
-$P = VI = I^2R = V^2/R$. Unidade: Watt (W).
+Medida focada isolada do trabalho brutal gasto intrínseco pela Forca de Coulomb local obrigando deslocamento d as cargas unicas dum ponto em pauta A pra desagua-las empurradas arduamente B. Vulgo $Joules/Coulombs$.
 
-Corrente e "consumida" por um componente?
+Corrente estrita unissonante real fluxica eletrica ($I = Q/t$)?
 ?
-Nao. A corrente que entra e igual a que sai. O que e consumido e energia (potencia × tempo).
+Medida fluxica temporal quantitativa amarrada no tempo lido. Contabiliza volumes amontuados da carga coulomb passando na area de medicao do chicote cortado cronometrado. Vulgo $Coulombs/Sec$.
+
+Resistencia cega estática vs Resistividade material do modelo puro (Lei da Geometria e Pouillet empirica lida original de construcao fios)?
+?
+Resistencia inerte base e um valor bruto unificado pre-pronto fixo ($10 \Omega$) lido sem analise. Ja a Resistividade base e uma propriedade unissonante e eterna INTRÍNSECA e natural nativa do Cobre versus Isolantes que compõe e modela estritamente tal resistencia juntado-se ao comprimento de tramo versus grossura estrita lida da propria malha do fio unificada.
+
+A medicao unitaria fundamental inversa Condutancia Eletrica Siemens pura natural invertida restrita crua ($G$)?
+?
+Aptidao do trecho inteiro base de conduzir liza e suave as cargas (inverso isolado direto de toda analise de "Resistencia" bruta amarrativa). Resultante medida lida e atrelada em 'Siemens'.

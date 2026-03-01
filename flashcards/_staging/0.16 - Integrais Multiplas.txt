@@ -1,13 +1,25 @@
 # 0.16 - Integrais Multiplas
 
-Para que serve uma integral dupla?
+Integrais duplas na Engenharia eletromagnetica teorica?
 ?
-Calcular "soma sobre uma area". Exemplo: carga total $Q = \iint \sigma\,dA$ numa placa com distribuicao de carga superficial.
+Permitem calcular a somatoria estrita e densa de area em regioes laminares, sendo massivamente utilitarias definindo o montante das correntes numa placa densidade $J$ ou as massas espessas.
 
-Quando usar coordenadas cilindricas $(r, \theta, z)$?
+Mudanca pra coordenadas polares em geometrias eletricas rotativas circulares ($r, \theta$)?
 ?
-Problemas com simetria axial (fios, bobinas). Elemento de area: $dA = r\,dr\,d\theta$.
+Exigida universalmente pra estripar calulos complexos de bobinas, estatores e motores transmutando contas caoticas de raizes quadradas $x^2+y^2$ em raios simples lineares radianos unicos base.
 
-Quando usar coordenadas esfericas $(r, \theta, \phi)$?
+Jacobiano obrigatorio na alteracao Polar base?
 ?
-Problemas com simetria esferica (cargas pontuais, antenas). Elemento de volume: $dV = r^2\sin\theta\,dr\,d\theta\,d\phi$.
+Toda integral que permuta entre do eixo $dx \cdot dy$ para as coordenadas curadas deve multiplicar a diferenca e integrar inserindo um " $r$ ". Resultando sempre estritamente obrigatoriamente $r \cdot dr \cdot d\theta$.
+
+Integrais de superficie (Fluxo Eletrico em tampas isolantes Gauss)?
+?
+Integral dupla somarizando total e contínuo transvessamento de espessas Linhas isoladas de vetores campos $E$ que perforam uma aba/chapa 3D isolada no vacuo dimensionada.
+
+Teorema magico rotativo analitico de Stokes?
+?
+Permuta integrais estaminas dificeis e trancadas de superfícies num caminho rotativo circulante das Linhas contíguas do Campo Magnético Ampere calculaveis facilmente nas beiras fechadas externas arameiras unicas.
+
+Teorema utilitario maximo de Divergencia (Gauss) fechado e enjaulante?
+?
+Se souber do Fluxo jorrante e denso de toda cascada externa de uma casca esferica, Gauss calcula a estrita e pontual Carga Eletrica enjaulada prisioneira do centro isolado do volume engessado nela integrando-o volumetricamente total com meros e meros fluxos cascuais.

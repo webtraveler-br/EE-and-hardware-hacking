@@ -1,9 +1,21 @@
-# 3.7 - Shift Registers
+# 3.7 - Shift Registers (Registradores de Deslocamento)
 
-O que e um shift register?
+SIPO (Serial-in, Parallel Out) aplicibilidade central?
 ?
-FFs em cadeia — dados deslocam 1 posicao a cada pulso de clock. Tipos: SISO, SIPO, PISO, PIPO.
+Utilizado primordialmente na adicao em expansao massiva e absurda sobre pinos Gpios Output de Arduinos. Em vez de 8 pinos acendendo 8 luzes, usa-se 3 pinos seriais comunicando expansoes ilimitadas.
 
-Para que serve o 74HC595?
+PISO (Parallel-in, Serial Out) na inversao de papeis?
 ?
-Shift register SIPO: expande outputs do Arduino. Com 3 pinos controla 8+ saidas.
+Usa-se opostamente para Ler e engolir exatos dezenas botões e switches simultaneamente na PCB externa aglomerada e injetar pra dentro do limitadissimo MCU utilizando apenas um punhado unitario de wires logicos.
+
+Chipset Historico 74HC595 na topologia SIPO?
+?
+O CI registrador shift output mais classicao do mundo embarcado moderno. Usado para multiplicar Outputs. Aceita clock serial a inumeros Megahertz pra despejar as variaveis nos pinouts estaticos via Latch ativo.
+
+Latch pin Register mecanismo obrigatorio?
+?
+Mantem a porta travada durante os Mhz embutidos varrendo barramento shiftando descontroladamente novos status até os registradores baterem. So abre (reflete o output) perante um pulso Latch manual na PCB liberando ruido visual nos leds.
+
+Topologia tecnica "Daisy Chain" entre Shift Registers?
+?
+É possivel e recomendavel encaixar o lixão "Q7-Tick Output Transbordado" direto no Input Logico Data do Proximo Circuito 74HC595 identico adiante. Formando filas e trens monstruosos encalonados e fluidos multiplicativos seriais sem limitadores MCU.

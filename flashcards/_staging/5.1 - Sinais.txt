@@ -1,9 +1,21 @@
-# 5.1 - Sinais
+# 5.1 - Tipos Essenciais Sinais Eletricos Matematicos
 
-Sinais fundamentais: degrau, impulso, rampa, exponencial?
+Sinal Degrau (Step Function / Heaviside) $u(t)$?
 ?
-Degrau $u(t)$: 0→1 em $t=0$. Impulso $\delta(t)$: "pancada" instantanea. Rampa $r(t) = t \cdot u(t)$: crescimento linear. Exponencial: $e^{at}$.
+Funciona ligando a chave on/off abruptamente no Universo ($t=0$). Antes disso ($t<0$), seu valor mantinha-se 0. Ao acionar e nos periodos do resto da eternidade temporal pos ($t>0$), seu valor vira cravados e congelados = 1.
 
-O que e a resposta ao degrau?
+Sinal Impulso Unitario (Dirac Delta) $\delta(t)$ magico?
 ?
-A saida do sistema quando a entrada muda abruptamente de 0 para 1. Revela velocidade, oscilacao e estabilidade do sistema.
+Fisicamente inibido. Sinal bizonho de amplitude teorica infinita infinita no minusculo e estreitissimo espaco unicamente cravado do exato tempo nulo $t=0$, porém comportamentalmente tendo inata "Área integral total cravada do conjunto = 1".
+
+Aplicabilidade "Amostral" do Impulso (Sampling integral)?
+?
+O milagroso poder que resulta ao encadear e Multiplicar qualquer senoidal funçao caotica inteira num Delta Impulso cronologico temporal. Pinça e enclausura e devolve matematicamente APENAS E ESTRITAMENTE o valor isolado pontuado naquel instante focal e imediato congelado do delta ativo.
+
+Sinal Rampa Linear Constante ($r(t)$)?
+?
+A Integral basica matematica do brutal Degrau Unitario ascendente no campo do tempo. Gera um inclinado morro temporal que vale numericamente igual e crescente o valor transcorrente do tempo atual em contagem.
+
+Analise de Sistemas Causalidade e Causais Sinais Atrelados?
+?
+Sistema real eletrico do ser "Causal" condena-o de forma inexoravel ao tempo de nao reagir profeticamente ANTES do tiro original deflagrador do Ingressado do Pulso Ocorrer. Traduz-se: a resposta calculada deve e é imperativamente igual a Zero nos tempos avaliativos $t < 0$.

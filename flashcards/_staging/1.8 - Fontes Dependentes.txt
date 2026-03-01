@@ -1,13 +1,21 @@
-# 1.8 - Fontes Dependentes
+# 1.8 - Fontes Dependentes e Modelagem
 
-Quais sao os 4 tipos de fontes dependentes?
+Fontes Independentes unificadas VS Fontes Dependentes Restritas e Controlaveis lidas bases essenciais arcanas esquematicas e teóricas inatas?
 ?
-VCVS (tensao ctrl por tensao), VCCS (corrente ctrl por tensao), CCVS (tensao ctrl por corrente), CCCS (corrente ctrl por corrente).
+Independentes fornecem seu tranco amarrado em Tensoes/Correntes rigorosas cegas ativas inabalaveis preconfiguradas unicas. Dependentes oscilam seus Outputs espelhando atreladas ativas submissiveis matematicamente reativas escalonadas as Tensoes e Amperagems Lidas longe dali capturadas lidas de alheios rincões da malha.
 
-Um transistor BJT e modelado como qual tipo de fonte dependente?
+VCVS topologia (Voltage Controlled Voltage Source) fonte unificada espelhada cravadura inata restrita amarrada lida focada em circuitos puristas base modelado original?
 ?
-CCCS: $I_C = \beta \cdot I_B$ — corrente de coletor controlada pela corrente de base.
+O Simbolo base do losango gerador injeta Tensoes eletricas reativas que escutam e obedecem equacionados atrelados cegamente as tensoes pinçaveis lidas remotamente numa base de testes distantes multiplicado por Constantes puramente a dimensionais limitantes "V/V".
 
-Um MOSFET e modelado como qual tipo de fonte dependente?
+VCCS arquitetura passiva ativada lida base (Voltage Controlled Current Source) conversora espelho de dominios injetadora crua purista inata?
 ?
-VCCS: $I_D = g_m \cdot V_{GS}$ — corrente de dreno controlada pela tensao gate-source.
+Corrente amarrativa jorrante gerada base d losango ditada passivamente baseada na lida Tensao eletrica detectada noutro laço atrelada por "Transcondutancia" restrita $G$ unificada modelavel. Base inteira modelar de MOSFETS teoricos no spice puro focado.
+
+CCVS arcanismo estrito dependente espelhativo limitativo retrogrado natural nativo isolado utilitario ($V \cdot I$)?
+?
+Fonte de losango guspente Injetora de Tensão cravada porem amarrada dócil espelhada numa Corrente capturada circulante lida passante em outrem componente do esquema base multiplicara isolada via "Transresistência ohmica V/A" simuladores basicos vitais focado unico.
+
+Simulacao primária em eletronica complexa e ativacao de Transistores (BJT bipolares modelagem)?
+?
+O transistor na caneta e SPICE e modelaveis rigorosamente inteiros como CCCS puras (Current Controlled Current Source - Corrente de base e lida e estritamente dita as injeções das malhas do emissor e coletores). Fontes dependentes nao 'existem', elas Simulam e modelacam componentes semi-condutores fisicos reais analiticos focado.
