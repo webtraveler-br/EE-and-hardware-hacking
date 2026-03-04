@@ -9,6 +9,8 @@ on:
 jobs:
   sync_progress:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
       - name: Checkout EE roadmap repo
