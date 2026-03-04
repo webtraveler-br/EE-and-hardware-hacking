@@ -1,0 +1,47 @@
+name: Sync Progress
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  sync_progress:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout EE roadmap repo
+        uses: actions/checkout@v4
+        with:
+          path: EE-and-hardware-hacking
+          
+      - name: Checkout Github Profile repo
+        uses: actions/checkout@v4
+        with:
+          repository: webtraveler-br/webtraveler-br
+          path: webtraveler-br
+          token: ${{ secrets.PROFILE_PAT }}
+          
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          
+      - name: Run progress script
+        env:
+          PROFILE_PAT: ${{ secrets.PROFILE_PAT }}
+        run: |
+          cd EE-and-hardware-hacking
+          python3 progress.py
+          
+      - name: Commit EE roadmap repo
+        run: |
+          cd EE-and-hardware-hacking
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: auto sync README progress"
+            git push
+          fi

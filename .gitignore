@@ -24,3 +24,6 @@ Thumbs.db
 *.tmp
 *~
 .tmp-profile
+
+# Análises e planejamento pessoal (não público)
+_private/

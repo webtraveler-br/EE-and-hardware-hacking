@@ -1,4 +1,4 @@
-# ⚡ Jornada de Engenharia Elétrica & Hardware Hacking
+# Jornada de Engenharia Elétrica & Hardware Hacking
 
 <div align="center">
 
@@ -27,15 +27,15 @@ A especialização em hardware hacking é o meu objetivo final — entender sist
 
 ```mermaid
 graph TD
-    P0["Pilar 0<br/>Matemática e Física<br/>36 módulos · ~87h"]
-    P1["Pilar 1<br/>Circuitos DC/AC<br/>19 módulos · ~40h"]
-    P2["Pilar 2<br/>Eletrônica + RF<br/>19 módulos · ~45h"]
-    P3["Pilar 3<br/>Digital + Embarcados<br/>15 módulos · ~35h"]
-    P4["Pilar 4<br/>Eletrotécnica + Potência<br/>17 módulos · ~40h"]
-    P5["Pilar 5<br/>Controle + DSP<br/>16 módulos · ~40h"]
-    LAB["Pilar Lab<br/>Laboratório Real<br/>19 módulos · ~60h"]
-    HHB["HH Básico<br/>38 módulos · ~77h"]
-    HHA["HH Avançado<br/>25 módulos · ~86h"]
+    P0["Módulo 0<br/>Matemática e Física<br/>0/36 módulos · ~87h"]
+    P1["Módulo 1<br/>Circuitos DC/AC<br/>0/19 módulos · ~40h"]
+    P2["Módulo 2<br/>Eletrônica + RF<br/>0/19 módulos · ~45h"]
+    P3["Módulo 3<br/>Digital + Embarcados<br/>0/15 módulos · ~35h"]
+    P4["Módulo 4<br/>Eletrotécnica + Potência<br/>0/17 módulos · ~40h"]
+    P5["Módulo 5<br/>Controle + DSP<br/>0/16 módulos · ~40h"]
+    LAB["Módulo 6<br/>Laboratório Real<br/>0/19 módulos · ~60h"]
+    HHB["HH Básico<br/>0/38 módulos · ~77h"]
+    HHA["HH Avançado<br/>0/25 módulos · ~86h"]
 
     P0 --> P1
     P1 --> P2 & P3 & P4
@@ -57,26 +57,26 @@ graph TD
 
 ---
 
-## Pilares
+## Módulos
 
-| # | Pilar | Módulos | Horas | O que cobre | Status |
+| # | Módulo | Módulos | Horas | O que cobre | Status |
 |:-:|-------|:-------:|:-----:|-------------|:------:|
-| 0 | [Matemática e Física](pillar-0-math-physics/) | 36 | ~87h | Pré-Cálculo → Cálculo I-III → EDOs → Álgebra Linear → Probabilidade → Mecânica → EM → Semicondutores | 🔲 |
-| 1 | [Circuitos DC/AC](pillar-1-circuits/) | 19 | ~40h | Ohm → KVL/KCL → Thévenin → RC/RL/RLC → AC → Fasores → Filtros → Potência | 🔲 |
-| 2 | [Eletrônica + RF](pillar-2-electronics/) | 19 | ~45h | Diodos → BJT → MOSFET → Amp-Op → DC-DC → Fontes → Linhas de TX → Smith Chart → EMC | 🔲 |
-| 3 | [Digital + Embarcados](pillar-3-digital/) | 15 | ~35h | Portas Lógicas → Boole → Karnaugh → FSMs → Arduino → ADC/PWM → Serial → IoT | 🔲 |
-| 4 | [Eletrotécnica + Potência](pillar-4-power/) | 17 | ~40h | Trifásico → Transformadores → Motores → Proteção → CLPs → Síncrono → Potência → Harmônicos | 🔲 |
-| 5 | [Controle + DSP](pillar-5-control-dsp/) | 16 | ~40h | Sinais → Fourier → Laplace → Bode → PID → Nyquist → Z-Transform → FIR/IIR → FFT | 🔲 |
-| 🔬 | [Laboratório Real](pillar-lab/) | 19 | ~60h | Bancada → Multímetro → Osciloscópio → Solda → KiCad → Arduino/ESP32 físico → Projeto completo | 🔲 |
+| 0 | [Matemática e Física](00-math-physics/) | 36 | ~87h | Pré-Cálculo → Cálculo I-III → EDOs → Álgebra Linear → Probabilidade → Mecânica → EM → Semicondutores | |
+| 1 | [Circuitos DC/AC](01-circuits/) | 19 | ~40h | Ohm → KVL/KCL → Thévenin → RC/RL/RLC → AC → Fasores → Filtros → Potência | |
+| 2 | [Eletrônica + RF](02-electronics/) | 19 | ~45h | Diodos → BJT → MOSFET → Amp-Op → DC-DC → Fontes → Linhas de TX → Smith Chart → EMC | |
+| 3 | [Digital + Embarcados](03-digital-embedded/) | 15 | ~35h | Portas Lógicas → Boole → Karnaugh → FSMs → Arduino → ADC/PWM → Serial → IoT | |
+| 4 | [Eletrotécnica + Potência](04-power-industrial/) | 17 | ~40h | Trifásico → Transformadores → Motores → Proteção → CLPs → Síncrono → Potência → Harmônicos | |
+| 5 | [Controle + DSP](05-control-dsp/) | 16 | ~40h | Sinais → Fourier → Laplace → Bode → PID → Nyquist → Z-Transform → FIR/IIR → FFT | |
+| | [Laboratório Real](06-lab/) | 19 | ~60h | Bancada → Multímetro → Osciloscópio → Solda → KiCad → Arduino/ESP32 físico → Projeto completo | |
 
 ### Hardware Hacking
 
 | Nível | Módulos | Horas | O que cobre | Status |
 |-------|:-------:|:-----:|-------------|:------:|
-| [Básico](hardware-hacking/) | 38 | ~77h | Setup → UART/SPI/I2C → JTAG → Firmware RE → RF/BLE → Side-Channel → CTFs | 🔲 |
-| [Avançado](hardware-hacking-advanced/) | 25 | ~86h | FPGA → PCIe/USB → Silício → TrustZone/SGX → Criptoanálise → OT/Automotive | 🔲 |
+| [Básico](07-hardware-hacking/) | 38 | ~77h | Setup → UART/SPI/I2C → JTAG → Firmware RE → RF/BLE → Side-Channel → CTFs | |
+| [Avançado](08-hardware-hacking-advanced/) | 25 | ~86h | FPGA → PCIe/USB → Silício → TrustZone/SGX → Criptoanálise → OT/Automotive | |
 
-🔲 = não iniciado · 🟡 = em progresso · ✅ = completo
+[ ] = não iniciado · [x] = completo
 
 ---
 
@@ -84,21 +84,28 @@ graph TD
 
 ```
 .
-├── README.md                     ← este arquivo
-├── PROGRESS.md                   ← checkboxes de todos os 204 módulos
-├── STUDY_LOG.md                  ← diário de estudo
-├── TEMPLATE_PROJECT.md           ← template pra documentar projetos
+├── README.md                        ← este arquivo
+├── PROGRESS.md                      ← checkboxes de todos os 204 módulos
+├── progress.py                      ← script automático para ver seu progresso
 │
-├── pillar-X-nome/
-│   ├── README.md                 ← roadmap completo do pilar
-│   └── projects/                 ← pastas dos projetos feitos
+├── 00-math-physics/
+│   ├── README.md                    ← roadmap completo do pilar
+│   └── projects/                    ← projetos feitos
+├── 01-circuits/
+├── 02-electronics/
+├── 03-digital-embedded/
+├── 04-power-industrial/
+├── 05-control-dsp/
+├── 06-lab/
 │
-├── hardware-hacking/
-├── hardware-hacking-advanced/
-└── assets/                       ← fotos, capturas de osciloscópio, schemas
+├── 07-hardware-hacking/
+├── 08-hardware-hacking-advanced/
+│
+├── notes/                           ← notas de criação de flashcards
+└── assets/                          ← fotos, capturas, schemas
 ```
 
-Cada pilar tem seu README com o roadmap completo e cross-references pros outros pilares. Os projetos ficam em `projects/`, documentados seguindo o [template](TEMPLATE_PROJECT.md).
+Cada pilar tem seu README com o roadmap completo e cross-references pros outros módulos. Os projetos ficam em `projects/`, documentados seguindo o [template](TEMPLATE_PROJECT.md).
 
 ---
 
