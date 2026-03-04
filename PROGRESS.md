@@ -93,7 +93,7 @@
 ### Fase 1 — DC Fundamental
 | # | Módulo | Tempo | Status |
 |:-:|--------|:--:|:------:|
-| 1.1 | Tensão, Corrente e Resistência — Os Três Pilares | 2h | [ ] |
+| 1.1 | Tensão, Corrente e Resistência — Os Três Pilares | 2h | [x] |
 | 1.2 | Resistores e Lei de Ohm | 2h | [ ] |
 | 1.3 | Divisor de Tensão e Divisor de Corrente | 2h | [ ] |
 | 1.4 | Potência e Energia | 1.5h | [ ] |
