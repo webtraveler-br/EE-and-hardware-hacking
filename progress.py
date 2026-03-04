@@ -98,12 +98,21 @@ def update_roadmaps_readme(m):
     replacer('HHB', 'HH Básico', mHHB['done'], mHHB['total'])
     replacer('HHA', 'HH Avançado', mHHA['done'], mHHA['total'])
 
+    t_mod = m0['total']+m1['total']+m2['total']+m3['total']+m4['total']+m5['total']+mL['total']+mHHB['total']+mHHA['total']
+    d_mod = m0['done']+m1['done']+m2['done']+m3['done']+m4['done']+m5['done']+mL['done']+mHHB['done']+mHHA['done']
+
+    # Substitui badge Módulos
+    c = re.sub(r'(badge/Módulos-).+?(-blueviolet)', rf'\g<1>{d_mod}%2F{t_mod}\g<2>', c)
+
     with open(path, "w") as f:
         f.write(c)
 
 def update_github_profile_readme(m):
-    path = "../github-profile/README.md"
-    if not os.path.exists(path): return
+    cwd = "../webtraveler-br" if os.environ.get("GITHUB_ACTIONS") else "../github-profile"
+    path = os.path.join(cwd, "README.md")
+    if not os.path.exists(path):
+        print(f"\n  >> (Aviso: {path} não encontrado, não foi possível atualizar o profile)")
+        return
     
     with open(path, "r") as f:
         c = f.read()
@@ -137,33 +146,5 @@ def update_github_profile_readme(m):
     with open(path, "w") as f:
         f.write(c)
         
-    try:
-        # Quando rodar no GitHub Actions, clona na pasta com nome do repo
-        cwd = "../webtraveler-br" if os.environ.get("GITHUB_ACTIONS") else "../github-profile"
-        if not os.path.exists(os.path.join(cwd, ".git")):
-            print(f"\n  >> ({os.path.basename(cwd)} modificado localmente. Para sync remoto nativo, use commit lá)")
-            return
-            
-        subprocess.run(["git", "add", "README.md"], cwd=cwd, check=True)
-        status = subprocess.run(["git", "status", "--porcelain", "README.md"], cwd=cwd, capture_output=True, text=True)
-        if status.stdout.strip():
-            print("\n  >> Sincronizando github-profile remotamente...")
-            # Configura um user dummy pro bot se necessário
-            subprocess.run(["git", "config", "user.name", "github-actions[bot]"], cwd=cwd)
-            subprocess.run(["git", "config", "user.email", "github-actions[bot]@users.noreply.github.com"], cwd=cwd)
-            
-            subprocess.run(["git", "commit", "-m", "chore: sync roadmap progress from EE repo"], cwd=cwd, check=True)
-            
-            # Se tivermos um token (ambiente Actions), empurramos nativamente
-            token = os.environ.get("PROFILE_PAT")
-            if token:
-                remote_url = f"https://x-access-token:{token}@github.com/webtraveler-br/webtraveler-br.git"
-                subprocess.run(["git", "push", remote_url, "main"], cwd=cwd, check=True)
-            else:
-                subprocess.run(["git", "push"], cwd=cwd, check=True)
-            print("  >> ✓ github-profile comitado e sincronizado com sucesso!")
-    except Exception as e:
-        print(f"Erro ao sincronizar repositório github-profile:\n{e}")
-
 if __name__ == "__main__":
     get_progress()

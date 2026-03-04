@@ -12,7 +12,7 @@
 ### Fase 1 — Pré-Cálculo
 | # | Módulo | Tempo | Status |
 |:-:|--------|:--:|:------:|
-| 0.1 | Unidades SI e Análise Dimensional | 1.5h | [ ] |
+| 0.1 | Unidades SI e Análise Dimensional | 1.5h | [x] |
 | 0.2 | Álgebra — Manipulação e Isolamento de Variáveis | 2h | [ ] |
 | 0.3 | Funções e Gráficos — A Linguagem da Engenharia | 2h | [ ] |
 | 0.4 | Trigonometria e Senóides | 2.5h | [ ] |
@@ -93,7 +93,7 @@
 ### Fase 1 — DC Fundamental
 | # | Módulo | Tempo | Status |
 |:-:|--------|:--:|:------:|
-| 1.1 | Tensão, Corrente e Resistência — Os Três Pilares | 2h | [x] |
+| 1.1 | Tensão, Corrente e Resistência — Os Três Pilares | 2h | [ ] |
 | 1.2 | Resistores e Lei de Ohm | 2h | [ ] |
 | 1.3 | Divisor de Tensão e Divisor de Corrente | 2h | [ ] |
 | 1.4 | Potência e Energia | 1.5h | [ ] |

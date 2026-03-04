@@ -4,7 +4,7 @@
 
 **Currículo autodidata de EE + Segurança de Hardware**
 
-[![Módulos](https://img.shields.io/badge/Módulos-204-blueviolet?style=for-the-badge)](#pilares)
+[![Módulos](https://img.shields.io/badge/Módulos-1%2F204-blueviolet?style=for-the-badge)](#pilares)
 [![Horas](https://img.shields.io/badge/Horas-~500-orange?style=for-the-badge)](#estatísticas)
 
 </div>
