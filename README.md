@@ -28,7 +28,7 @@ A especialização em hardware hacking é o meu objetivo final — entender sist
 ```mermaid
 graph TD
     P0["Módulo 0<br/>Matemática e Física<br/>0/36 módulos · ~87h"]
-    P1["Módulo 1<br/>Circuitos DC/AC<br/>0/19 módulos · ~40h"]
+    P1["Módulo 1<br/>Circuitos DC/AC<br/>1/19 módulos · ~40h"]
     P2["Módulo 2<br/>Eletrônica + RF<br/>0/19 módulos · ~45h"]
     P3["Módulo 3<br/>Digital + Embarcados<br/>0/15 módulos · ~35h"]
     P4["Módulo 4<br/>Eletrotécnica + Potência<br/>0/17 módulos · ~40h"]
