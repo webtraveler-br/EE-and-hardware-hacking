@@ -1,0 +1,55 @@
+Por que NAND é porta "universal"?;Porque NAND sozinha pode implementar NOT, AND e OR — é o tijolo fundamental de toda lógica digital
+1 byte;8 bits (0-255)
+1 nibble;4 bits (0-15)
+Hexadecimal;Base 16 — cada dígito hex = 4 bits
+AND;Saída 1 só se TODAS as entradas = 1. Símbolo: \(\cdot\) ou \(\wedge\)
+OR;Saída 1 se QUALQUER entrada = 1. Símbolo: \(+\) ou \(\vee\)
+NOT;Inverte a entrada. Símbolo: \(\neg\) ou barra
+NAND;AND invertido. Porta universal
+NOR;OR invertido. Também universal
+XOR;Saída 1 se entradas são diferentes. Símbolo: \(\oplus\)
+2 NMOS em série;Implementa AND (ambos ON para conduzir)
+2 NMOS em paralelo;Implementa OR (qualquer ON conduz)
+De Morgan (AND): \((A \cdot B)'\);\(A' + B'\)
+De Morgan (OR): \((A + B)'\);\(A' \cdot B'\)
+SOP (Soma de Produtos);Forma AND-OR. Cada linha da tabela-verdade com saída=1 gera 1 minterm
+POS (Produto de Somas);Forma OR-AND. Cada linha com saída=0 gera 1 maxterm
+K-map: regras de agrupamento;Agrupar 1s adjacentes em retângulos de \(2^n\) (1, 2, 4, 8). Inclui wrap-around nas bordas
+K-map: grupo de 2 células;Elimina 1 variável
+K-map: grupo de 4 células;Elimina 2 variáveis
+K-map: Don't-cares (X);Usar para fazer grupos maiores (podem ser 0 ou 1)
+MUX (Multiplexador);Seleciona 1 de N entradas. MUX 4:1 = 4 entradas, 2 seletores, 1 saída
+DEMUX (Demultiplexador);Oposto do MUX: 1 entrada \(\to\) N saídas
+Decoder;Converte código binário em linha ativa. Decoder 3:8 ativa 1 de 8 linhas
+Full Adder;Soma 2 bits + \(C_{in} \to\) Sum + \(C_{out}\)
+Flip-flop D;Captura D na borda de subida do clock \(\to\) mantém em Q
+Flip-flop JK;J=K=1 \(\to\) toggle. J=1,K=0 \(\to\) set. J=0,K=1 \(\to\) reset
+Flip-flop SR: S=R=1;Estado proibido (indefinido)
+Latch vs Flip-flop;Latch: sensível a nível. FF: sensível a borda
+Setup time;Dados devem estar estáveis antes da borda do clock
+Hold time;Dados devem permanecer estáveis depois da borda do clock
+Registrador;Array de flip-flops D \(\to\) armazena uma palavra (4, 8, 16 bits)
+Contador assíncrono (ripple);Cada Q é clock do próximo FF. Simples mas tem propagation delay acumulado
+Contador síncrono;Todos os FFs recebem o mesmo clock. Mais rápido, preferível
+Contador binário N bits;Conta de 0 a \(2^N - 1\)
+Cada flip-flop divide a frequência por...;2
+N flip-flops em cascata: divisor por...;\(2^N\)
+SIPO (Serial In, Parallel Out);Entrada serial \(\to\) saída paralela. Exemplo: 74HC595
+PISO (Parallel In, Serial Out);Entrada paralela \(\to\) saída serial. Útil para ler múltiplos botões
+74HC595 (shift register SIPO);3 pinos Arduino \(\to\) 8+ saídas. Cascateável
+FSM (Finite State Machine);Estados finitos + transições + saídas. Base de todo firmware
+Moore (tipo de FSM);Saída depende apenas do estado (mais previsível)
+Mealy (tipo de FSM);Saída depende do estado E da entrada atual (mais responsivo)
+FSM em hardware;Lógica combinacional (transições) + flip-flops (estado)
+Encoder (codificador);Oposto do decoder: N entradas → código binário. Priority encoder: resolve conflitos quando múltiplas entradas ativas
+Buffer tri-state;Saída pode ser 0, 1 ou alta impedância (Z). Permite múltiplos dispositivos no mesmo barramento
+BCD (Binary Coded Decimal);Cada dígito decimal representado por 4 bits (0000-1001). Display 7-segmentos usa BCD
+Gray code;Código onde bits adjacentes diferem em apenas 1 bit — elimina glitches em transições (encoders rotativos)
+Propagation delay;Tempo entre mudança na entrada e mudança na saída da porta. Limita frequência máxima do circuito
+Hazard (glitch) em lógica combinacional;Saída muda momentaneamente durante transição de entradas. Solução: adicionar termos de consenso ou registrar saída
+LUT (Look-Up Table);Tabela-verdade implementada em memória — base dos FPGAs (qualquer função lógica de N entradas)
+Timing diagram;Representação gráfica de sinais digitais no tempo — ferramenta fundamental para depuração
+Fan-out;Número máximo de entradas que uma saída pode acionar mantendo níveis lógicos válidos
+Níveis lógicos TTL;\(V_{IL} < 0.8\) V, \(V_{IH} > 2.0\) V, \(V_{OL} < 0.4\) V, \(V_{OH} > 2.4\) V
+Níveis lógicos CMOS (3.3 V);\(V_{IL} < 0.8\) V, \(V_{IH} > 2.0\) V, \(V_{OL} < 0.4\) V, \(V_{OH} > 2.8\) V
+Metaestabilidade;FF captura dado durante janela de setup/hold → saída oscila por tempo indefinido. Solução: sincronizar com 2 FFs em cascata

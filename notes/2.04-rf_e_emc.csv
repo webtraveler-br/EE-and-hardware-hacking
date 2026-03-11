@@ -1,0 +1,44 @@
+Quando um fio deixa de ser "só um fio"?;Quando seu comprimento se aproxima de \(\lambda/10\) — a onda se propaga pelo fio e pode refletir
+\(Z_0\) (Impedância característica da linha);\(\sqrt{L/C}\) (por unidade de comprimento)
+Cabo coaxial RG-58;50 \(\Omega\)
+Cabo coaxial TV;75 \(\Omega\)
+Par trançado Ethernet;100 \(\Omega\)
+Por que 50 \(\Omega\) é o padrão?;Compromisso entre mínima atenuação (77 \(\Omega\)) e máxima potência (30 \(\Omega\)) — média geométrica prática
+\(\Gamma\) (Coeficiente de reflexão);\((Z_L - Z_0) / (Z_L + Z_0)\)
+Casamento perfeito (\(Z_L = Z_0\));\(\Gamma = 0\) — zero reflexão, máxima transferência de potência
+Carga aberta (\(Z_L = \infty\));\(\Gamma = +1\) — reflexão total, sem inversão
+Carga em curto (\(Z_L = 0\));\(\Gamma = -1\) — reflexão total, com inversão
+SWR (Standing Wave Ratio);\((1 + |\Gamma|) / (1 - |\Gamma|)\). SWR = 1 = perfeito
+Velocidade de propagação no cabo;\(v = c / \sqrt{\varepsilon_r}\). Coaxial com polietileno: \(v \approx 0.66c\)
+Transformador \(\lambda/4\);\(Z_0 = \sqrt{Z_1 \times Z_2}\) — trecho de linha que casa impedâncias diferentes
+Carta de Smith (função);Mapa gráfico que converte impedância complexa \(Z\) em coeficiente de reflexão \(\Gamma\)
+Centro da Carta de Smith;\(Z_0\) (casado, \(\Gamma = 0\))
+Borda da Carta de Smith;\(|\Gamma| = 1\) (reflexão total)
+Mover para cima na Carta de Smith;Adiciona reatância indutiva (\(+jX\))
+Mover para baixo na Carta de Smith;Adiciona reatância capacitiva (\(-jX\))
+S-parameters (definição);Descrevem reflexão e transmissão de uma rede RF em função da frequência
+\(S_{11}\) (Reflexão na entrada);Quanto da potência incidente volta refletida. \(|S_{11}| < -10\) dB = bom casamento
+\(S_{21}\) (Transmissão/Ganho);Quanto da potência passa. \(|S_{21}| > 0\) dB = ganho
+VNA (Vector Network Analyzer);Instrumento que mede parâmetros S
+\(|S_{11}| < -10\) dB;Menos de 10% da potência é refletida
+\(|S_{11}| < -20\) dB;Menos de 1% da potência é refletida (excelente)
+EMI (Interferência Eletromagnética);Emissão eletromagnética indesejada — conduzida (pelos fios) ou irradiada (pelo ar)
+EMC (Compatibilidade Eletromagnética);Funcionar sem causar nem sofrer interferência. Normativas: CISPR, FCC, CE
+Por que todo loop de corrente é uma antena?;Corrente variável num loop cria campo magnético variável — quanto maior a área, mais irradia
+Fontes de EMI;Fontes chaveadas, motores, arcos elétricos, transmissores
+Filtro de linha;Indutores de modo comum + capacitores X/Y na entrada
+Capacitor X;Entre fase e fase (ou fase-neutro). Falha = curto \(\to\) fusível protege
+Capacitor Y;Entre fase e terra. Falha = fuga \(\to\) valor pequeno (nF) por segurança
+Plano de terra contínuo em PCB;Minimiza área de loops \(\to\) minimiza irradiação EMI
+Capacitor de desacoplamento padrão digital;100 nF cerâmico em cada \(V_{CC}\) de CI, o mais perto possível
+Regra do loop (EMC);Quanto menor a área do loop de corrente, menor a emissão EMI
+dBm (definição);Potência em dB referenciada a 1 mW. 0 dBm = 1 mW, 30 dBm = 1 W
+dBm → mW: conversão;\(P_{mW} = 10^{dBm/10}\)
+Skin effect em RF;Corrente se concentra na superfície do condutor em alta frequência. Profundidade: \(\delta = \sqrt{2\rho / (\omega\mu)}\)
+Return loss;\(-20 \log|\Gamma|\) em dB. Quanto maior, melhor o casamento
+Regra do \(\lambda/10\) na PCB;Se trilha \(> \lambda/10\), tratar como linha de transmissão (impedância controlada obrigatória)
+Blindagem EMI (princípio);Gaiola de Faraday: envolver circuito com condutor contínuo aterrado
+Ferrite bead;Filtro passa-baixa para ruído conduzido — alta impedância em RF, baixa em DC
+\(Z_L = 100\,\Omega\), \(Z_0 = 50\,\Omega\) → \(\Gamma\)?;\(+1/3\) (\((100-50)/(100+50)\))
+20 dBm → potência em mW?;\(100\) mW (\(10^{20/10}\))
+Armadilha: trilha de 5 cm a 1 GHz → “só um fio”?;Não: \(\lambda \approx 0.2\) m (\(c \times 0.66/10^9\)). \(5\) cm \(> \lambda/10 = 2\) cm → tratar como linha de transmissão

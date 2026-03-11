@@ -98,6 +98,7 @@
    - LEDs: teste no modo diodo do multímetro
    - Capacitores: multímetro com modo capacímetro, ou estime pela descarga RC
 3. **Organize**: caixa de componentes com divisórias, etiquetados
+4. **Entregável**: Lista de componentes testados + planilha de inventário com valores medidos
 
 ---
 
@@ -124,6 +125,7 @@
 3. **Meça** resistência de 5 resistores → compare com código de cores
 4. **Teste** continuidade de jumpers e fios — encontre um fio "quebrado" propositalmente
 5. **Teste** 3 LEDs no modo diodo — identifique cor pela V_f
+6. **Entregável**: 10 medições documentadas + comparação medido vs esperado + foto do setup
 
 ---
 
@@ -144,6 +146,7 @@
 3. **LEDs em série**: 2 LEDs + resistor. Calcule R considerando 2×V_f
 4. **LEDs em paralelo**: cada LED com seu próprio resistor (NUNCA compartilhe resistor em paralelo!)
 5. **Circuito com potenciômetro**: dimmer de LED analógico
+5. **Entregável**: 4 circuitos montados + medições vs teórico + fotos
 
 #### Erros Comuns da Protoboard
 - Componente com dois pinos na MESMA coluna → curto-circuito
@@ -162,6 +165,7 @@
 2. **RC rápido** (osciloscópio): R=1kΩ, C=100nF → τ=100μs. Alimente com onda quadrada 1kHz → observe carga/descarga no osciloscópio
 3. **Anti-bounce**: R=10kΩ, C=100nF no botão → compare sinal com e sem filtro RC no osciloscópio
 4. **Meça τ**: tempo para V cair a 37% (1/e) do valor inicial
+5. **Entregável**: Capturas do osciloscópio mostrando τ + medição vs RC calculado
 
 ---
 
@@ -184,6 +188,7 @@
 3. **Meça PWM do Arduino**: `analogWrite(9, 128)`. Observe duty cycle de 50%, frequência de 490Hz
 4. **2 canais**: meça V_in e V_out de um filtro RC simultaneamente → observe defasagem!
 5. **Trigger**: configure para capturar um evento único (botão pressionado → capture o bounce)
+5. **Entregável**: Capturas de tela anotadas dos 5 exercícios + medições
 
 ---
 
@@ -197,6 +202,7 @@
 3. **Regulador 7805**: adicione LM7805 → saída 5V estável. Meça com multímetro
 4. **Teste de carga**: conecte cargas de 100mA a 1A. Meça queda de tensão, toque no 7805 → ESQUENTA! Calcule P_dissipada = (V_in-5)×I
 5. **Dissipador**: adicione dissipador ao 7805 → meça temperatura com termômetro antes e depois
+6. **Entregável**: Circuito montado + medições de ripple + fotos da montagem
 
 ---
 
@@ -219,6 +225,7 @@
 3. **Solde** conectores header (mais difícil — precisa manter alinhamento)
 4. **Monte circuito funcional**: LED + resistor em placa universal, soldado permanentemente
 5. **Dessoldagem**: remova 5 componentes sem danificar a placa
+5. **Entregável**: Fotos antes/depois de cada etapa de solda + autoavaliação
 
 #### Segurança
 - NUNCA toque na ponta do ferro (350°C!)
@@ -237,6 +244,7 @@
 2. **Monte a fonte do L.6** em perfboard: ponte de diodos + capacitor + 7805 + LEDs indicadores
 3. **Adicione**: conector de entrada (P4), conector de saída (bornes), fusível
 4. **Teste**: meça V_out com carga. Funciona igual ao protoboard? (deveria funcionar MELHOR — conexões mais sólidas)
+5. **Entregável**: Placa perfboard montada + teste funcional + fotos
 
 ---
 
@@ -254,6 +262,7 @@
 1. **Crimpe** 10 conectores Dupont (macho e fêmea)
 2. **Monte** a fonte L.8 em gabinete plástico com conectores externos
 3. **Etiquete** todos os conectores e fios
+4. **Entregável**: Fonte em gabinete com conectores crimpados + fotos do resultado
 
 ---
 
@@ -275,6 +284,7 @@
 3. **Adicione**: conector P4, ponte de diodos, capacitores, LM7805, LEDs, conectores de saída
 4. **Rode ERC** e corrija todos os erros
 5. **Prompt IA**: *"Revise meu esquemático de fonte 5V com LM7805. Estou esquecendo algum capacitor de desacoplamento, proteção, ou boa prática?"*
+5. **Entregável**: Arquivo .kicad_sch completo + ERC passando + PDF exportado
 
 ---
 
@@ -300,6 +310,7 @@ Layout de PCB é como urbanismo: as trilhas são ruas, os componentes são préd
 4. **Adicione** plano de terra, furos de fixação, silkscreen informativo
 5. **Rode DRC** e corrija todos os erros
 6. **Visualize em 3D** (KiCad tem visualizador 3D integrado)
+5. **Entregável**: Arquivo .kicad_pcb + Gerbers + render 3D + DRC passando
 
 ---
 
@@ -319,6 +330,7 @@ Layout de PCB é como urbanismo: as trilhas são ruas, os componentes são préd
 4. **Ao receber**: inspecione a placa. Teste continuidade com multímetro ANTES de soldar
 5. **Solde** todos os componentes, começando pelos menores
 6. **Teste**: meça V_out, ripple, regulação com carga. FUNCIONA? 
+5. **Entregável**: PCB fabricada + montada + teste funcional + fotos do processo
 
 ---
 
@@ -334,6 +346,7 @@ Layout de PCB é como urbanismo: as trilhas são ruas, os componentes são préd
 3. **ADC + sensor**: LM35 ou NTC real. Compare leitura com termômetro
 4. **PWM + LED**: dimmer com potenciômetro. Compare suavidade com simulação
 5. **Diferenças do real**: tolerância de componentes, ruído no ADC, contato do sensor
+5. **Entregável**: 3 projetos portados + documento de diferenças Wokwi→real
 
 #### O que muda do simulador para o real
 - ADC oscila (ruído) → precisa de filtro (capacitor + média em software)
@@ -354,6 +367,7 @@ Layout de PCB é como urbanismo: as trilhas são ruas, os componentes são préd
 3. **Relé**: controle uma carga AC (lâmpada 127V) via relé. CUIDADO: isolamento!
 4. **Motor DC + L298N**: controle velocidade e sentido com PWM real
 5. **Servo**: controle ângulo com potenciômetro
+5. **Entregável**: Código funcional + fotos + medições comparadas com referência
 
 ---
 
@@ -367,6 +381,7 @@ Layout de PCB é como urbanismo: as trilhas são ruas, os componentes são préd
 3. **MQTT**: publique temperatura para broker público (HiveMQ)
 4. **Dashboard**: Node-RED ou Grafana mostrando dados em tempo real
 5. **Sleep mode**: meça consumo com multímetro. Deep sleep = ~10μA vs ativo = ~80mA
+5. **Entregável**: Código ESP32 + config MQTT + dashboard screenshot + fotos
 
 ---
 
@@ -393,6 +408,7 @@ Layout de PCB é como urbanismo: as trilhas são ruas, os componentes são préd
 2. **Monte** o circuito bugado na protoboard
 3. **Debug** sistematicamente: meça VCC, verifique continuidade, observe sinais
 4. **Documente**: qual era o bug, como encontrou, como corrigiu
+5. **Entregável**: Log de debugging (sintoma → hipótese → teste → fix) para cada bug
 
 ---
 
@@ -412,6 +428,7 @@ Layout de PCB é como urbanismo: as trilhas são ruas, os componentes são préd
 1. **Monte** circuito com Arduino + vários módulos I2C SEM caps de desacoplamento → observe erros
 2. **Adicione** 100nF em cada VCC → observe a melhoria
 3. **Meça ruído** na alimentação com osciloscópio (AC coupling): antes e depois
+5. **Entregável**: Capturas do osciloscópio antes/depois + análise escrita
 
 ---
 
@@ -439,6 +456,7 @@ Layout de PCB é como urbanismo: as trilhas são ruas, os componentes são préd
 4. **KiCad**: esquemático + layout PCB
 5. **Fabrique e monte**: PCB real
 6. **Teste**: validação funcional completa
+7. **Entregável**: Projeto completo: KiCad + firmware + fotos + documentação
 
 ---
 
@@ -464,6 +482,8 @@ Layout de PCB é como urbanismo: as trilhas são ruas, os componentes são préd
 - PID em software com auto-tune
 - Interface: OLED + encoder rotativo
 - Log de dados via MQTT/WiFi
+
+**Entregável**: Projeto completo — KiCad (esquemático + layout + Gerbers) + firmware + documentação + fotos + vídeo de funcionamento
 
 #### Checkpoint Final — Laboratório Real
 - [ ] Mede tensão, corrente e resistência com confiança

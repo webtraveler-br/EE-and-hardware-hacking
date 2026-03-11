@@ -1,0 +1,42 @@
+Por que hardware hacking existe como disciplina?;Software assume que hardware é confiável — se você controla o hardware (flash, UART, JTAG), contorna qualquer proteção de software
+Superfície de ataque mais esquecida em IoT;Interfaces de debug (UART, JTAG/SWD) deixadas habilitadas em produção
+5 superfícies de ataque em hardware;1) Acesso físico, 2) Interfaces de debug, 3) Firmware, 4) Comunicação wireless, 5) Supply chain
+Binwalk;Extrai e analisa partições e filesystems de firmwares (.bin)
+Ghidra;Disassembler/decompiler gratuito (NSA). Suporta ARM, MIPS, x86
+QEMU;Emulador de CPUs (ARM, MIPS) — roda firmware sem hardware real
+flashrom;Lê/escreve chips de flash SPI via CH341A ou Bus Pirate
+PulseView (Sigrok);Analisador lógico — decodifica protocolos (UART/SPI/I2C)
+STRIDE (modelo de ameaça);Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege
+struct.pack/unpack (Python);Converte entre inteiros e bytes brutos com endianness — essencial para comunicação com hardware
+Operação AND (&) em HH;Extrair/mascarar bits específicos (ex: val & 0xFF = byte inferior)
+Operação XOR (^) em HH;Inverter/criptografar bits. Reversível: A\(\oplus\)K\(\oplus\)K = A
+Big-endian (BE);Byte mais significativo primeiro na memória. Padrão de protocolos de rede (TCP/IP)
+Little-endian (LE);Byte menos significativo primeiro na memória. Padrão x86 e ARM
+0x12345678 em LE;Armazenado como 78 56 34 12
+Magic bytes: \(\backslash\)x7fELF;Executável ELF (Linux/ARM)
+Magic bytes: 27 05 19 56;Imagem U-Boot (uImage)
+Magic bytes: 68 73 71 73;Filesystem SquashFS
+3 tensões de operação mais comuns em IoT;1.8 V, 3.3 V, 5 V
+Level shifter (função);Converte entre níveis de tensão diferentes de forma segura. 5 V em chip 3.3 V = dano permanente!
+Regra de ouro antes de conectar;Verificar tensão de operação do alvo com multímetro. GND comum obrigatório
+USB-UART adapter;CP2102 ou CH340 — comunicação serial com dispositivos
+Analisador lógico (clone Saleae);8 canais — decodifica protocolos digitais
+CH341A;Programador de flash SPI (\(\approx\)R\$20)
+SOP8 clip;Conecta em chip flash de 8 pinos sem dessoldar
+SoC (System on Chip);Chip único com CPU + ROM + RAM + periféricos integrados
+ARM Cortex-M vs Cortex-A;Cortex-M: MCU (bare metal, IoT simples). Cortex-A: processador de aplicação (roda Linux)
+MIPS;Arquitetura comum em roteadores (MediaTek, Qualcomm Atheros)
+NOR Flash;Executa código in-place (XIP). Acesso aleatório rápido. Cara e pequena
+NAND Flash;Barata e grande. Precisa de bootloader para carregar código na RAM
+eMMC;NAND + controlador integrado. Parece HD/SSD miniatura (smartphones)
+Boot sequence;ROM de boot (imutável) \(\to\) Bootloader (U-Boot) \(\to\) Kernel Linux \(\to\) Userspace (init)
+MMIO (Memory-mapped I/O);Periféricos acessados como endereços de memória — ler/escrever registradores = ler/escrever RAM
+UART: frame;idle HIGH \(\to\) start bit (LOW) \(\to\) 8 data bits \(\to\) stop bit (HIGH)
+8N1;8 data bits, No parity, 1 stop bit (configuração UART padrão)
+Baud rates comuns em HH;9600 e 115200 (tentar 115200 primeiro!)
+Conexão cruzada UART;TX do dispositivo \(\to\) RX do adapter (e vice-versa)
+UART console de debug;Frequentemente dá root shell sem autenticação
+BusyBox;Binário único que implementa centenas de comandos Unix (ls, cat, sh, wget)
+Primeiros 60s após shell;id, uname -a, ps aux, netstat -tlnp, find / -perm -4000, cat /proc/cmdline, grep -r "password" /etc/
+/etc/shadow;Hashes de senhas — se acessível = jackpot
+/proc/mtd;Partições MTD (flash) — mostra layout da memória

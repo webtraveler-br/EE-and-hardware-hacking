@@ -4,11 +4,11 @@
 >
 > **Ferramentas**: [Falstad](https://www.falstad.com/circuit/) (portas lógicas visuais) + [Wokwi](https://wokwi.com/) (Arduino online, gratuito) + [Proteus](https://www.labcenter.com/) (simulação mista)
 >
-> **Pré-requisitos**: [Módulo 1](../01-circuits/README.md) (tensão, corrente, conceitos básicos). [Módulo 2](../02-electronics/README.md) Módulos 2.5-2.7 (BJT/MOSFET como chave).
+> **Pré-requisitos**: [Módulo 1](../01-circuits/README.md) (tensão, corrente, conceitos básicos). [Módulo 2](../02-electronics/README.md) Módulos 2.4-2.6 (BJT/MOSFET como chave).
 >
 > **Conexões com outros módulos**:
 > - **Base de**: [Módulo 0](../00-math-physics/README.md) — sistemas numéricos (Mód 0.1), álgebra booleana (digital é álgebra pura!)
-> - **Base de**: [Módulo 2](../02-electronics/README.md) — MOSFET como chave digital (Mód 2.7), níveis lógicos (3.3V vs 5V)
+> - **Base de**: [Módulo 2](../02-electronics/README.md) — MOSFET como chave digital (Mód 2.6), níveis lógicos (3.3V vs 5V)
 > - **Alimenta**: [Módulo 5](../05-control-dsp/README.md) Módulo 5.12 (controle digital), [Módulo 6 L.13-L.15](../06-lab/README.md) (Arduino/ESP32 físico)
 > - **Segurança**: [HH.0.4](../07-hardware-hacking/README.md) (sistemas numéricos), [HH.1.1-1.3](../07-hardware-hacking/README.md) (eletrônica digital, arquitetura embarcada, protocolos serial), [HH.3.1-3.3](../07-hardware-hacking/README.md) (exploração UART/SPI/I2C), [HH Avançado A.1](../08-hardware-hacking-advanced/README.md) (FPGA/Verilog)
 >
@@ -20,10 +20,29 @@
 
 | Fase | Módulos | Foco | Horas |
 |------|---------|------|-------|
-| **Lógica Combinacional** | 3.1–3.4 | Portas, álgebra booleana, Karnaugh, circuitos | ~9h |
-| **Lógica Sequencial** | 3.5–3.8 | Flip-flops, contadores, registradores, FSM | ~9h |
-| **Microcontroladores** | 3.9–3.13 | Arduino: GPIO, ADC, PWM, timers, comunicação | ~12h |
-| **Projeto Integrado** | 3.14–3.15 | Sistemas completos, integração analógico-digital | ~5h |
+| **Lógica Combinacional** | 3.1–3.3 | Portas, álgebra booleana, Karnaugh, circuitos | ~9h |
+| **Lógica Sequencial** | 3.4–3.6 | Flip-flops, contadores, registradores, FSM | ~9h |
+| **Microcontroladores** | 3.7–3.10 | Arduino: GPIO, ADC, PWM, timers, comunicação | ~12h |
+| **Projeto Integrado** | 3.11 | Sistemas completos, integração analógico-digital | ~5h |
+
+
+### Prontidão por Módulo
+
+| Módulo | Tema | Absorção |
+|--------|------|----------|
+| 3.01 | Sistemas Numéricos e Portas Lógicas | ❄️ Cold Start OK |
+| 3.02 | Álgebra Booleana e Simplificação | ❄️ Cold Start OK |
+| 3.03 | Karnaugh e Circuitos Combinacionais | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 3.04 | Flip-Flops — A Memória Digital | ❄️ Cold Start OK |
+| 3.05 | Contadores e Divisores de Frequência | ❄️ Cold Start OK |
+| 3.06 | Registradores e Máquinas de Estado | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 3.07 | Arduino — GPIO | ❄️ Cold Start OK |
+| 3.08 | ADC, Sensores, PWM e Atuadores | ❄️ Cold Start OK |
+| 3.09 | Timers, Interrupções e Comunicação Serial | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 3.10 | Comunicação Wireless e IoT | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 3.11 | ADC/DAC e Sistema Embarcado Completo | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+
+> **Legenda**: ❄️ Cards funcionam sozinhos · 🔶 Fazer projeto ANTES dos cards · 📚 Assistir vídeo/ler antes · 🔴 Material externo obrigatório
 
 ---
 
@@ -102,8 +121,8 @@ Portas lógicas são os "átomos" dos computadores. Todo processador, memória e
 
 ---
 
-### Módulo 3.3: Mapa de Karnaugh — Simplificação Visual
-**Tempo: 2.5h**
+### Módulo 3.3: Karnaugh e Circuitos Combinacionais
+**Tempo: 4.5h**
 
 #### O que memorizar
 - **Mapa de Karnaugh (K-map)**: método visual para simplificar expressões booleanas de 2, 3 ou 4 variáveis
@@ -126,8 +145,7 @@ Portas lógicas são os "átomos" dos computadores. Todo processador, memória e
 
 ---
 
-### Módulo 3.4: Circuitos Combinacionais Práticos
-**Tempo: 2h**
+#### Parte B: Circuitos Combinacionais Práticos
 
 #### O que memorizar
 - **Multiplexador (MUX)**: seleciona 1 de N entradas. MUX 4:1 = 4 entradas, 2 selectores, 1 saída
@@ -154,7 +172,7 @@ Portas lógicas são os "átomos" dos computadores. Todo processador, memória e
 
 ## Fase 2 — Lógica Sequencial
 
-### Módulo 3.5: Flip-Flops — A Memória Digital
+### Módulo 3.4: Flip-Flops — A Memória Digital
 **Tempo: 2h**
 
 #### O que memorizar
@@ -176,7 +194,7 @@ Circuitos combinacionais são "sem memória" — a saída depende apenas das ent
 
 ---
 
-### Módulo 3.6: Contadores e Divisores de Frequência
+### Módulo 3.5: Contadores e Divisores de Frequência
 **Tempo: 2h**
 
 #### O que memorizar
@@ -197,8 +215,8 @@ Circuitos combinacionais são "sem memória" — a saída depende apenas das ent
 
 ---
 
-### Módulo 3.7: Registradores de Deslocamento
-**Tempo: 1.5h**
+### Módulo 3.6: Registradores e Máquinas de Estado
+**Tempo: 4h**
 
 #### O que memorizar
 - **Shift register**: FFs em cadeia — dados se deslocam 1 posição por clock
@@ -216,8 +234,7 @@ Circuitos combinacionais são "sem memória" — a saída depende apenas das ent
 
 ---
 
-### Módulo 3.8: Máquinas de Estado Finito (FSM)
-**Tempo: 2.5h**
+#### Parte B: Máquinas de Estado Finito (FSM)
 
 #### O que memorizar
 - **FSM**: sistema com número finito de estados, transições entre eles baseadas em entradas, e saídas definidas
@@ -252,7 +269,7 @@ FSMs estão em TODO lugar: semáforo (verde→amarelo→vermelho), máquina de v
 
 ## Fase 3 — Microcontroladores (Arduino)
 
-### Módulo 3.9: Arduino — Primeiro Contato com GPIO
+### Módulo 3.7: Arduino — Primeiro Contato com GPIO
 **Tempo: 2h**
 
 #### O que memorizar
@@ -299,8 +316,8 @@ O Arduino é onde TUDO que você aprendeu se encontra: a eletrônica analógica 
 
 ---
 
-### Módulo 3.10: ADC e Sensores Analógicos
-**Tempo: 2h**
+### Módulo 3.8: ADC, Sensores, PWM e Atuadores
+**Tempo: 4h**
 
 #### O que memorizar
 - **ADC (Analog-to-Digital Converter)**: converte tensão analógica (0-5V) em número digital (0-1023). Resolução: 10 bits
@@ -330,8 +347,7 @@ O Arduino é onde TUDO que você aprendeu se encontra: a eletrônica analógica 
 
 ---
 
-### Módulo 3.11: PWM e Controle de Atuadores
-**Tempo: 2h**
+#### Parte B: PWM e Controle de Atuadores
 
 #### O que memorizar
 - **`analogWrite(pin, value)`**: gera PWM (0-255 = 0-100% duty) nos pinos PWM (~)
@@ -349,7 +365,7 @@ O Arduino é onde TUDO que você aprendeu se encontra: a eletrônica analógica 
 
 ---
 
-### Módulo 3.12: Timers, Interrupções e Comunicação Serial
+### Módulo 3.9: Timers, Interrupções e Comunicação Serial
 **Tempo: 3h**
 
 #### O que memorizar
@@ -381,7 +397,7 @@ Interrupções são como um **toque de telefone** — não importa o que você e
 
 ---
 
-### Módulo 3.13: Comunicação Wireless e IoT
+### Módulo 3.10: Comunicação Wireless e IoT
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -401,8 +417,8 @@ Interrupções são como um **toque de telefone** — não importa o que você e
 
 ## Fase 4 — Projetos Integrados
 
-### Módulo 3.14: Do Analógico ao Digital — ADC, DAC e Sampling
-**Tempo: 2.5h**
+### Módulo 3.11: ADC/DAC e Sistema Embarcado Completo
+**Tempo: 5.5h**
 
 #### O que memorizar
 - **Teorema de Nyquist**: para capturar um sinal de frequência f_max, a taxa de amostragem deve ser ≥ 2 × f_max
@@ -420,8 +436,7 @@ Interrupções são como um **toque de telefone** — não importa o que você e
 
 ---
 
-### Módulo 3.15: Projeto Final — Sistema Embarcado Completo
-**Tempo: 3h**
+#### Parte B: Projeto Final — Sistema Embarcado Completo
 
 #### O que aplicar
 Tudo dos 3 pilares! Este projeto integra circuitos analógicos, eletrônica e sistemas digitais.

@@ -4,11 +4,11 @@
 >
 > **Ferramentas**: [CADe SIMU](https://www.cadesimu.net/) (comandos elétricos e automação) + [LTspice](https://www.analog.com/ltspice) (transformadores e motores) + PC_SIMU (CLP em Ladder)
 >
-> **Pré-requisitos**: [Módulo 1](../01-circuits/README.md) completo (AC essencial!). [Módulo 0](../00-math-physics/README.md) Fase 8 (mecânica/torque para motores) e Fases 9-10 (EM para transformadores). [Módulo 2](../02-electronics/README.md) recomendado (retificadores, inversores).
+> **Pré-requisitos**: [Módulo 1](../01-circuits/README.md) completo (AC essencial!). [Módulo 0](../00-math-physics/README.md) Módulos 0.23 (mecânica/torque), 0.25-0.26 (EM/transformadores). [Módulo 2](../02-electronics/README.md) recomendado (retificadores, inversores).
 >
 > **Conexões com outros módulos**:
-> - **Base de**: [Módulo 0](../00-math-physics/README.md) — trig/fasores (Mód 0.4-0.5 → trifásico), torque/rotação (Mód 0.27 → motores), indução EM (Mód 0.33 → transformadores), termodinâmica (Mód 0.29 → dissipação)
-> - **Base de**: [Módulo 1](../01-circuits/README.md) — AC/fasores (→ trifásico), potência (→ FP industrial), transformadores (→ Mód 4.4)
+> - **Base de**: [Módulo 0](../00-math-physics/README.md) — trig/fasores (Mód 0.4-0.5 → trifásico), torque/rotação (Mód 0.23 → motores), indução EM (Mód 0.26 → transformadores), termodinâmica (Mód 0.24 → dissipação)
+> - **Base de**: [Módulo 1](../01-circuits/README.md) — AC/fasores (→ trifásico), potência (→ FP industrial), transformadores (→ Mód 4.3)
 > - **Base de**: [Módulo 2](../02-electronics/README.md) — retificadores (→ VFD), MOSFET de potência (→ inversores), reguladores (→ fontes industriais)
 > - **Alimenta**: [Módulo 5](../05-control-dsp/README.md) Módulo 5.6 (modelagem de motor como planta), [Módulo 5](../05-control-dsp/README.md) Módulo 5.9 (PID de velocidade)
 > - **Segurança**: [HH Avançado F.1-F.4](../08-hardware-hacking-advanced/README.md) (CAN bus, Modbus/PROFINET, segurança de PLCs/SCADA)
@@ -21,10 +21,32 @@
 
 | Fase | Módulos | Foco | Horas |
 |------|---------|------|-------|
-| **Sistemas Trifásicos** | 4.1–4.3 | Geração, transmissão, cargas 3Φ | ~7h |
-| **Máquinas Elétricas** | 4.4–4.7 | Transformadores, motores, partida, drives | ~10h |
-| **Proteção e Instalações** | 4.8–4.10 | Fusíveis, disjuntores, dimensionamento | ~7h |
-| **Automação Industrial** | 4.11–4.14 | Contatores, CLPs, Ladder, sensores | ~8h |
+| **Sistemas Trifásicos** | 4.1–4.2 | Geração, potência, medição 3Φ | ~6h |
+| **Máquinas Elétricas** | 4.3–4.5 | Transformadores, motores, partida, VFD | ~10h |
+| **Proteção e Instalações** | 4.6–4.7 | Fusíveis, disjuntores, dimensionamento, aterramento | ~7h |
+| **Automação Industrial** | 4.8–4.10 | Contatores, CLPs, Ladder, sensores | ~8h |
+| **Máquinas Avançadas e Potência** | 4.11–4.13 | Gerador síncrono, sistema pu, curto-circuito, harmônicos | ~7.5h |
+
+
+### Prontidão por Módulo
+
+| Módulo | Tema | Absorção |
+|--------|------|----------|
+| 4.01 | Geração e Sistema Trifásico | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 4.02 | Potência Trifásica e Medição | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 4.03 | Transformadores | ❄️ Cold Start OK |
+| 4.04 | Motor de Indução Trifásico | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 4.05 | Partida e Controle de Velocidade | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 4.06 | Proteção Elétrica | ❄️ Cold Start OK |
+| 4.07 | Instalações Elétricas e Aterramento | ❄️ Cold Start OK |
+| 4.08 | Comandos Elétricos e Contatores | ❄️ Cold Start OK |
+| 4.09 | CLP e Programação Ladder | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 4.10 | Sensores Industriais | ❄️ Cold Start OK |
+| 4.11 | Máquinas Síncronas | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 4.12 | Transmissão e Sistema Por Unidade (PU) | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 4.13 | Qualidade de Energia e Harmônicos | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+
+> **Legenda**: ❄️ Cards funcionam sozinhos · 🔶 Fazer projeto ANTES dos cards · 📚 Assistir vídeo/ler antes · 🔴 Material externo obrigatório
 
 ---
 
@@ -62,8 +84,8 @@ Imagine 3 pessoas empurrando um carrossel simultaneamente, espaçadas igualmente
 
 ---
 
-### Módulo 4.2: Potência Trifásica e Fator de Potência Industrial
-**Tempo: 2h**
+### Módulo 4.2: Potência Trifásica e Medição
+**Tempo: 3.5h**
 
 #### O que memorizar
 - **Potência trifásica (carga equilibrada)**:
@@ -86,8 +108,7 @@ Imagine 3 pessoas empurrando um carrossel simultaneamente, espaçadas igualmente
 
 ---
 
-### Módulo 4.3: Medição e Instrumentação Trifásica
-**Tempo: 1.5h**
+#### Parte B: Medição e Instrumentação Trifásica
 
 #### O que memorizar
 - **Wattímetro**: mede potência ativa. Método dos 2 wattímetros (Blondel)
@@ -105,7 +126,7 @@ Imagine 3 pessoas empurrando um carrossel simultaneamente, espaçadas igualmente
 
 ## Fase 2 — Máquinas Elétricas
 
-### Módulo 4.4: Transformadores — O Coração da Rede Elétrica
+### Módulo 4.3: Transformadores — O Coração da Rede Elétrica
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -130,7 +151,7 @@ O transformador é a razão pela qual usamos AC e não DC para transmitir energi
 
 ---
 
-### Módulo 4.5: Motor de Indução Trifásico — O Burro de Carga
+### Módulo 4.4: Motor de Indução Trifásico — O Burro de Carga
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -151,8 +172,9 @@ Imagine um campo magnético girando ao redor de um cilindro de alumínio (rotor)
 2. **Calcule**: n_s, s (com RPM nominal), I_partida (5×I_nom), P_elétrica = P_mec / η
 3. **Monte circuito equivalente** no LTspice (R1, X1, R2'/s, X2', Xm)
 4. **Simule**: varie s de 0 a 1 → plote curva torque vs velocidade (curva característica!)
-5. **Prompt IA**: *"Um motor de indução 4 polos, 60Hz, tem RPM nominal de 1740. Calcule: velocidade síncrona, escorregamento, frequência do rotor. Explique por que o rotor NUNCA pode girar na velocidade síncrona."*
-6. **Entregável**: Análise completa de motor + curva T×n
+5. **Exercício comparativo**: monte tabela para motores de 2, 4 e 6 polos (60Hz) — calcule n_s, n_r (com s=3%), f_rotor e I_partida para cada. Compare com dados reais de catálogo WEG
+6. **Prompt IA** (verificação): *"Explique por que o rotor NUNCA pode girar na velocidade síncrona. O que aconteceria com a indução e o torque?"* — compare com seu entendimento
+7. **Entregável**: Análise completa de motor + tabela comparativa 2/4/6 polos + curva T×n
 
 #### Erros Comuns
 - Confundir número de polos com número de bobinas — 4 polos = 4 polos magnéticos, não 4 bobinas
@@ -161,8 +183,8 @@ Imagine um campo magnético girando ao redor de um cilindro de alumínio (rotor)
 
 ---
 
-### Módulo 4.6: Métodos de Partida de Motores
-**Tempo: 2.5h**
+### Módulo 4.5: Partida e Controle de Velocidade
+**Tempo: 4.5h**
 
 #### O que memorizar
 - **Partida direta**: contator liga motor diretamente na rede. I_partida = 5-8× I_nom. Só para motores pequenos (< 5-7.5CV)
@@ -181,8 +203,9 @@ Dar partida direta num motor de 100CV é como ligar um chuveiro de 50kW — a re
    - Inclua proteção térmica e fusíveis
 2. **Para cada**: desenhe o diagrama de tempo (sequência de acionamento)
 3. **Compare**: corrente de partida, complexidade, custo
-4. **Prompt IA**: *"Desenhe o diagrama de tempo da partida estrela-triângulo: quando K1, K2 e K3 ligam/desligam? O que acontece com a corrente em cada transição? O que é o 'pico de comutação' Y→Δ e por que ele existe?"*
-5. **Entregável**: 2 diagramas de força + comando + análise comparativa
+4. **Diagrama de tempo**: desenhe manualmente a sequência de K1, K2, K3 (liga/desliga) e a corrente estimada em cada transição. Identifique o "pico de comutação" Y→Δ
+5. **Prompt IA** (revisão): *"Revise meu diagrama de tempo Y-Δ. Faltou algum detalhe? O pico de comutação está representado corretamente?"* — corrija com base no feedback
+6. **Entregável**: 2 diagramas de força + comando + diagrama de tempo + análise comparativa
 
 #### Erros Comuns
 - Esquecer intertravamento elétrico e mecânico na reversão → dois contatores ligados = CURTO-CIRCUITO entre fases!
@@ -191,8 +214,7 @@ Dar partida direta num motor de 100CV é como ligar um chuveiro de 50kW — a re
 
 ---
 
-### Módulo 4.7: Inversores de Frequência (VFD)
-**Tempo: 2h**
+#### Parte B: Inversores de Frequência (VFD)
 
 #### O que memorizar
 - **VFD (Variable Frequency Drive)**: retifica AC→DC → inverte DC→AC com f e V variáveis (V/f constante)
@@ -201,17 +223,19 @@ Dar partida direta num motor de 100CV é como ligar um chuveiro de 50kW — a re
 - **Parâmetros de ajuste**: rampa de aceleração/desaceleração, I_máx, f_mín/máx, tipo de carga
 - **Harmônicos**: VFDs geram harmônicos na rede (3º, 5º, 7º) → podem causar problemas. Filtros são necessários
 
-#### Projeto: "Parametrizando um Inversor"
-1. **Pesquise um VFD real** (WEG CFW500, ABB ACS580) — leia o manual
-2. **Liste os 10 parâmetros principais** e explique cada um
-3. **Cenário**: motor 10CV controlando uma esteira → defina rampa de 10s, I_máx = 150% I_nom, proteção por subtensão
-4. **Entregável**: Tabela de parametrização + justificativa para cada parâmetro
+#### Projeto: "Inversor de Frequência — Simulação e Parametrização"
+1. **Simule a curva V/f em Python**: plote V_aplicado vs f de 0 a 60Hz (V/f constante até f_nom, depois V=V_nom com f subindo → enfraquecimento de campo). Calcule torque disponível em cada região
+2. **No LTspice**: monte inversor trifásico simplificado (6-pulse) alimentando carga RL → observe forma de onda na saída (PWM → quase-senóide)
+3. **Análise de harmônicos**: aplique FFT no Python à forma de onda de saída → identifique 5º, 7º, 11º harmônicos. Calcule THD
+4. **Pesquise um VFD real** (WEG CFW500 ou ABB ACS580) — leia o manual e liste os 10 parâmetros principais
+5. **Cenário**: motor 10CV controlando esteira → defina rampa de 10s, I_máx = 150% I_nom, proteção por subtensão
+6. **Entregável**: Curva V/f + simulação LTspice + análise FFT + tabela de parametrização com justificativas
 
 ---
 
 ## Fase 3 — Proteção e Instalações
 
-### Módulo 4.8: Proteção Elétrica — Salvando Vidas e Equipamentos
+### Módulo 4.6: Proteção Elétrica — Salvando Vidas e Equipamentos
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -240,8 +264,8 @@ Sem proteção, um curto-circuito derrete fios, causa incêndio e mata. O fusív
 
 ---
 
-### Módulo 4.9: Instalações Elétricas — NBR 5410
-**Tempo: 2.5h**
+### Módulo 4.7: Instalações Elétricas e Aterramento
+**Tempo: 4.5h**
 
 #### O que memorizar
 - **Divisão de circuitos**: iluminação e tomadas em circuitos separados. Circuitos dedicados para cargas > 1200VA (chuveiro, ar-condicionado)
@@ -260,8 +284,7 @@ Sem proteção, um curto-circuito derrete fios, causa incêndio e mata. O fusív
 
 ---
 
-### Módulo 4.10: Aterramento e Sistemas TN/TT/IT
-**Tempo: 2h**
+#### Parte B: Aterramento e Sistemas TN/TT/IT
 
 #### O que memorizar
 - **TN-S**: neutro e terra separados o tempo todo. Mais seguro
@@ -281,7 +304,7 @@ Sem proteção, um curto-circuito derrete fios, causa incêndio e mata. O fusív
 
 ## Fase 4 — Automação Industrial
 
-### Módulo 4.11: Lógica de Contatores e Intertravamento
+### Módulo 4.8: Lógica de Contatores e Intertravamento
 **Tempo: 2h**
 
 #### O que memorizar
@@ -302,8 +325,8 @@ A lógica de contatores é a **programação antes dos computadores**. Cada fio 
 
 ---
 
-### Módulo 4.12: CLP — Controlador Lógico Programável (Ladder)
-**Tempo: 2.5h**
+### Módulo 4.9: CLP e Programação Ladder
+**Tempo: 4.5h**
 
 #### O que memorizar
 - **CLP/PLC**: substitui lógica de contatores por programa digital. Entradas (sensores) → Processamento → Saídas (atuadores)
@@ -318,7 +341,7 @@ A lógica de contatores é a **programação antes dos computadores**. Cada fio 
 O CLP é a evolução natural dos contatores: em vez de refazer toda a fiação para mudar a lógica, basta reprogramar. Uma fábrica inteira pode ser controlada por CLPs: esteiras, robôs, prensas, fornos — tudo coordenado por programas Ladder que qualquer técnico eletricista consegue ler (parece um diagrama elétrico!).
 
 #### Projeto: "Convertendo Contatores para CLP"
-1. **Converta cada diagrama do módulo 4.11** para programa Ladder:
+1. **Converta cada diagrama do módulo 4.8** para programa Ladder:
    - Partida direta → I0.0 (S0), I0.1 (S1) → Q0.0 (K1) + selo em Ladder
    - Reversão com intertravamento → compare com a solução em contatores
    - Estrela-Triângulo com temporizador TON
@@ -328,8 +351,7 @@ O CLP é a evolução natural dos contatores: em vez de refazer toda a fiação 
 
 ---
 
-### Módulo 4.13: CLP Avançado — Semáforo e Processos Sequenciais
-**Tempo: 2h**
+#### Parte B: CLP Avançado — Semáforo e Processos Sequenciais
 
 #### O que memorizar
 - **GRAFCET**: linguagem gráfica para processos sequenciais. Etapas + Transições + Ações
@@ -349,7 +371,7 @@ O CLP é a evolução natural dos contatores: em vez de refazer toda a fiação 
 
 ---
 
-### Módulo 4.14: Sensores Industriais e Integração
+### Módulo 4.10: Sensores Industriais e Integração
 **Tempo: 2h**
 
 #### O que memorizar
@@ -381,9 +403,9 @@ O CLP é a evolução natural dos contatores: em vez de refazer toda a fiação 
 
 ---
 
-## Fase 5 — Máquinas Avançadas e Sistemas de Potência
+## Fase 5 — Máquinas Avançadas e Sistemas de Potência (Avançado)
 
-### Módulo 4.15: Motor/Gerador Síncrono
+### Módulo 4.11: Máquinas Síncronas
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -398,15 +420,17 @@ O CLP é a evolução natural dos contatores: em vez de refazer toda a fiação 
 #### Intuição
 O gerador síncrono é o "coração" do sistema elétrico. Controlar sua excitação controla a tensão da rede. Controlar o torque mecânico (turbina) controla a frequência. Se a demanda aumenta, os geradores desaceleram momentaneamente (frequência cai) até os reguladores aumentarem a potência das turbinas. É por isso que a frequência da rede é um indicador de equilíbrio geração-carga!
 
-#### Projeto
-1. **Diagrama fasorial**: desenhe para FP=1, 0.8 ind, 0.8 cap → observe como δ e E mudam
-2. **Curva V**: plote I_armadura vs I_excitação para carga constante → identifique ponto de FP=1
-3. **Prompt IA**: *"Por que todas as usinas usam geradores síncronos e não assíncronos? Explique o controle de tensão via excitação e o controle de frequência via potência mecânica."*
+#### Projeto: "Gerador Síncrono — Análise Fasorial e Curva V"
+1. **Python — Diagrama fasorial**: use `matplotlib` (quiver/compass) para plotar os fasores V, E, jX_s×I para FP=1, 0.8 ind, 0.8 cap. Varie a excitação e observe como δ e |E| mudam
+2. **Python — Curva V**: plote I_armadura vs I_excitação para P constante (resolva V=E+jX_s×I parametricamente). Identifique o ponto de FP=1 (mínimo de I)
+3. **No LTspice**: simule gerador síncrono simplificado (fonte AC + X_s) alimentando carga. Varie excitação (amplitude de E) → observe mudança de FP e corrente
+4. **Prompt IA** (verificação): *"Por que todas as usinas usam geradores síncronos e não assíncronos? Minha simulação mostrou que aumentar a excitação muda o FP — está correto?"*
+5. **Entregável**: Diagramas fasoriais (3 FPs) + curva V + simulação LTspice + análise
 
 ---
 
-### Módulo 4.16: Introdução a Sistemas de Potência
-**Tempo: 3h**
+### Módulo 4.12: Transmissão e Sistema Por Unidade
+**Tempo: 2.5h**
 
 #### O que memorizar
 - **Sistema de potência**: geração → transmissão (HV) → distribuição (MV/LV) → consumo
@@ -419,16 +443,18 @@ O gerador síncrono é o "coração" do sistema elétrico. Controlar sua excita�
 - **Fluxo de potência (Load Flow)**: calcula V, I, P, Q em cada barra do sistema para uma dada carga. Base do planejamento
 - **Tipos de barra**: Slack (V, θ fixos — referência), PV (geração — P, V fixos), PQ (carga — P, Q fixos)
 
-#### Projeto
+#### Projeto: "Curto-Circuito e Load Flow"
 1. **Calcule Icc** num sistema simples: gerador → transformador → barra de 380V. Monte diagrama de impedâncias em pu
 2. **Verifique**: disjuntor de 25kA é suficiente para este ponto?
-3. **Load flow**: monte sistema de 3 barras → resolva com Python (método de Newton-Raphson simplificado)
-4. **Prompt IA**: *"Explique o sistema por unidade (pu) com um exemplo: gerador de 10MW, 13.8kV alimentando transformador 13.8/138kV, linha de 100km, transformador 138/13.8kV. Por que pu facilita o cálculo?"*
+3. **Exercício pu manual**: converta impedâncias de gerador (10MW, 13.8kV, X=0.15pu), transformador (13.8/138kV, X=0.08pu) e linha (100km, X=0.4Ω/km) para base comum. Compare seu resultado com Python
+4. **Load flow**: monte sistema de 3 barras → resolva com Python (método de Newton-Raphson simplificado)
+5. **Prompt IA** (verificação): *"Conferi meus cálculos de pu para este sistema. O resultado de Icc=X kA está razoável para uma barra de 380V industrial?"*
+6. **Entregável**: Cálculo de Icc em pu (manual + Python) + load flow de 3 barras + verificação de disjuntor
 
 ---
 
-### Módulo 4.17: Qualidade de Energia e Harmônicos
-**Tempo: 2h**
+### Módulo 4.13: Harmônicos e Qualidade de Energia
+**Tempo: 2.5h**
 
 #### O que memorizar
 - **Harmônicos**: frequências múltiplas da fundamental (60Hz). 3º=180Hz, 5º=300Hz, 7º=420Hz
@@ -439,10 +465,11 @@ O gerador síncrono é o "coração" do sistema elétrico. Controlar sua excita�
 - **Soluções**: filtros passivos (LC sintonizado), filtros ativos (eletrônica de potência), transformadores K
 - **Afundamento de tensão (sag)**: queda momentânea de tensão (partida de motor, falta remota). Duração: 0.5 ciclos a 1min
 
-#### Projeto
+#### Projeto: "Harmônicos — THD e Filtragem"
 1. **Gere** sinal com harmônicos em Python: v(t) = sin(ωt) + 0.3sin(3ωt) + 0.2sin(5ωt) → calcule THD
 2. **Filtre**: projete filtro LC sintonizado no 5º harmônico (300Hz) → verifique redução de THD
 3. **Simule** no LTspice: retificador trifásico → observe corrente rica em harmônicos na rede
+4. **Entregável**: Sinal com harmônicos gerado + THD calculado + filtro LC projetado + simulação LTspice
 
 #### Checkpoint — Máquinas e Potência
 - [ ] Entende gerador síncrono e controle de V/f

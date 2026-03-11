@@ -1,0 +1,58 @@
+Relutância (\(\mathcal{R}\)) de um núcleo magnético;Oposição à passagem do fluxo magnético. O ar tem altíssima relutância comparado ao aço silício
+"Joelho da Saturação" na Curva B-H do ferro;Ponto a partir do qual aumentar a corrente praticamente não aumenta mais o fluxo magnético, desperdiçando energia em calor
+Transformador (intuição);"Alavanca elétrica": troca tensão por corrente mantendo a potência constante. Se \(V\) sobe, \(I\) cai proporcionalmente
+Por que um Transformador NÃO funciona com corrente contínua (DC)?;Porque precisa de variação de fluxo (\(d\Phi/dt\)) para induzir tensão no secundário. Em DC, o fluxo é constante, logo \(d\Phi/dt = 0\).
+Relação de espiras para Transformador ideal (tensão);\(V_1 / V_2 = N_1 / N_2\)
+Relação de correntes para Transformador ideal;\(I_1 / I_2 = N_2 / N_1\) (inverso da tensão, pois \(P_{in} = P_{out}\)).
+Perdas no Cobre (\(P_{Cu}\)) de um transformador;Aquecimento causado pela resistência dos enrolamentos: \(P_{Cu} = I^2 R\)
+Perdas por Histerese num transformador;Aquecimento do núcleo de ferro devido à constante inversão do campo magnético a cada ciclo da rede
+Correntes Parasitas (Foucault) e solução;Minicorrentes induzidas dentro do núcleo de ferro maciço. Solução: laminar o núcleo (chapas finas isoladas entre si)
+Ensaio de Curto-Circuito de um transformador;Mede perdas no cobre (\(P_{Cu}\)), aplicando corrente nominal com tensão reduzida
+Ensaio a Vazio de um transformador;Mede perdas no ferro (\(P_{Fe}\)), aplicando tensão nominal sem carga no secundário
+Fórmula do Rendimento (\(\eta\)) de um transformador;\(\eta = \frac{P_{saida}}{P_{saida} + P_{Cu} + P_{Fe}}\)
+Fórmula da Regulação de Tensão em transformadores;\(\%Reg = \frac{V_{2,vazio} - V_{2,carga}}{V_{2,carga}} \times 100\%\)
+Autotransformador;Enrolamento único com derivação (tap). Mais eficiente e menor, porém sem isolação galvânica
+Conexão Dy (Delta-Estrela) em trafos trifásicos;Primário em \(\Delta\), secundário em Y. Usado em distribuição pois disponibiliza o Neutro no secundário.
+Conexão Yd (Estrela-Delta) em trafos trifásicos;Primário em Y, secundário em \(\Delta\). Sem neutro no secundário, usado em linhas de transmissão.
+Trafo Dy: relação entre tensões de linha e de fase no secundário;A tensão de fase obedece à relação de espiras. A tensão de linha do secundário é \(\sqrt{3}\) vezes a tensão de fase.
+Exemplo: Trafo Rebaixador 10:1 com \(V_1 = 380\text{V}\). Qual \(V_2\)?;38V.
+Exemplo: Trafo 5:1, \(V_1=1000\text{V}\), \(V_2=200\text{V}\), \(I_2=50\text{A}\). Qual \(I_1\)?;10A (\(50 \times 200 / 1000\)).
+Exemplo: Trafo Elevador 1:20 com \(V_1=12\text{V}\). Qual \(V_2\)?;240V.
+Exemplo: Trafo ideal \(P_{in}=1\text{kW}\), \(V_2=100\text{V}\). Qual \(I_2\)?;10A.
+Exemplo: Regulação — \(V_{2,vazio}=230\text{V}\), \(V_{2,carga}=220\text{V}\). Qual a \(\%Reg\)?;4.5% (\((230-220)/220 \times 100\)).
+Exemplo: Trafo Dy, \(V_{L,prim}=13.8\text{kV}\), relação 60:1. Tensão de fase no secundário?;230V (\(13800/60\)).
+Exemplo: \(P_{saida}=950\text{W}\), \(P_{Cu}=30\text{W}\), \(P_{Fe}=20\text{W}\). Qual \(\eta\)?;95% (\(950/1000\)).
+Por que a transmissão de energia em alta tensão reduz perdas?;Elevar \(V\) reduz \(I\) proporcionalmente. Como perdas = \(I^2R\), dobrar a tensão reduz as perdas para 1/4.
+Por que o rotor de um Motor de Indução PRECISA girar mais devagar que o campo (\(s > 0\))?;Se acompanhasse a velocidade síncrona, não haveria variação de fluxo, logo não haveria corrente induzida nem torque.
+Por que o Motor de Indução Trifásico (MIT) Gaiola de Esquilo domina >90% da indústria?;Não possui escovas nem comutador. É robusto, barato e exige manutenção quase nula.
+Fórmula da Velocidade Síncrona (\(n_s\));\(n_s = \frac{120 \times f}{p}\) (onde \(f\) é a frequência da rede e \(p\) o número de pólos).
+A velocidade do rotor (\(n_r\)) deve ser ___ que \(n_s\) para haver torque;Menor (\(n_r < n_s\)).
+Fórmula do Escorregamento (Slip) \(s\);\(s = \frac{n_s - n_r}{n_s}\)
+Faixa típica de escorregamento nominal do MIT;Entre 2% e 5%. Exemplo: motor 4 pólos/60Hz roda ~1740 rpm em vez de 1800 rpm.
+Região estável de operação na curva Torque × Velocidade do MIT;Fica entre \(n_r\) nominal e \(n_s\), onde o torque decresce com aumento de velocidade (autorregulação).
+Para que serve resistência externa em motor de rotor bobinado?;Eleva o torque de partida e reduz a corrente de inrush, ideal para cargas pesadas.
+Corrente de Inrush em Partida Direta: qual múltiplo da corrente nominal?;5 a 8 vezes \(I_{nom}\).
+O que acontece se o motor sofrer stall (trava mecânica)?;O motor pára (\(s=1\)) e absorve corrente de partida continuamente, podendo queimar os enrolamentos em minutos.
+Como um Motor de Indução Monofásico consegue partir?;Usa enrolamento auxiliar defasado (geralmente com capacitor em série) para criar uma segunda fase temporária no arranque.
+Torque de Partida (\(T_{start}\));Torque com rotor parado (\(s=1\)). Tipicamente 1.5 a 2.5 vezes o torque nominal
+Torque Máximo (Breakdown Torque);Pico na curva característica. Se a carga ultrapassar esse valor, o motor trava (stall)
+Efeito colateral da corrente de partida de motores grandes na rede;Causa queda brusca de tensão generalizada na instalação (afundamentos / voltage sags).
+No Motor DC Série, o que ocorre se rodar sem carga (a vazio)?;Acelera perigosamente. Sem carga, a corrente e o fluxo caem, e a rotação tende ao infinito — risco de destruição mecânica.
+Vantagem principal do Motor DC Série;Alto torque de partida (\(T \propto I^2\)), ideal para tração pesada (trens, bondes, veículos elétricos).
+Característica principal do Motor DC Shunt;Mantém a rotação muito constante independentemente da variação de carga. Ideal para esteiras e usinagem de precisão.
+Velocidade síncrona: 2 pólos, 60Hz;3600 RPM.
+Velocidade síncrona: 4 pólos, 60Hz;1800 RPM.
+Velocidade síncrona: 6 pólos, 60Hz;1200 RPM.
+Exemplo: \(n_s=1800\) RPM, motor gira a 1710 RPM. Qual o slip?;5% (\(90/1800\)).
+Exemplo: Motor com \(I_{nom}=20\text{A}\) em partida direta. Corrente de inrush estimada?;100A a 160A (5 a 8 vezes \(I_{nom}\)).
+Diferença principal: Máquina Síncrona vs Motor de Indução;A síncrona roda exatamente em \(n_s\) (slip = 0). O MIT requer \(s > 0\) para produzir torque. A síncrona domina a geração de energia.
+Compensador Síncrono;Motor síncrono girando sem carga mecânica — corrige fator de potência gerando ou absorvendo potência reativa
+Num Gerador Síncrono, o que acontece ao aumentar a excitação DC do rotor?;Aumenta a potência reativa (\(Q\)) injetada na rede, atuando no controle de tensão.
+Num Gerador Síncrono, de onde vem a Potência Ativa (\(P\))?;Da potência mecânica da turbina (água, vapor, vento). \(P\) depende do torque mecânico aplicado ao eixo.
+Máquina rotativa usada nas usinas hidrelétricas e termelétricas;Máquina Síncrona operando como Gerador (Alternador)
+Curva "V" da Máquina Síncrona;Gráfico \(I_{armadura}\) vs \(I_{excitação}\). Vértice (mínimo \(I_a\)) em FP=1. Sub-excitado: absorve Q. Sobre-excitado: gera Q
+Exemplo: Gerador de 2 pólos, 60Hz. Rotação do eixo?;Exatamente 3600 RPM (\(120 \times 60 / 2\)). A velocidade é inegociável para manter 60Hz na rede.
+Placa de Dados (nameplate) de um motor;Potência (CV/kW), tensão (220/380V), corrente nominal, RPM, FP, rendimento, classe de isolamento e grau de proteção IP
+Como inverter o sentido de rotação de um motor trifásico?;Basta trocar a posição de quaisquer 2 das 3 fases nos terminais do motor.
+Ligação da placa: motor 220/380V em rede 380V;Ligar em Estrela (Y) — cada bobina recebe \(380/\sqrt{3} \approx 220\)V.
+Ligação da placa: motor 220/380V em rede 220V;Ligar em Triângulo (\(\Delta\)) — cada bobina recebe 220V diretamente.

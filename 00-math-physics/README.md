@@ -26,17 +26,53 @@
 | Fase | Módulos | Foco | Horas |
 |------|---------|------|-------|
 | **Pré-Cálculo** | 0.1–0.6 | Unidades, álgebra, funções, trigonometria, complexos, dB | ~12h |
-| **Cálculo I — Derivadas** | 0.7–0.10 | Limites, derivadas, aplicações, séries de Taylor | ~10h |
-| **Cálculo II — Integrais** | 0.11–0.14 | Integrais, técnicas, aplicações, métodos numéricos | ~10h |
-| **Cálculo III — Multivariável** | 0.15–0.17 | Derivadas parciais, integrais múltiplas, cálculo vetorial | ~8h |
-| **Equações Diferenciais** | 0.18–0.20 | EDOs 1ª/2ª ordem, Laplace | ~8h |
-| **Álgebra Linear** | 0.21–0.23 | Vetores, matrizes, autovalores | ~7h |
-| **Probabilidade e Estatística** | 0.24–0.25 | Distribuições, análise de erros, tolerâncias | ~5h |
-| **Física: Mecânica e Térmica** | 0.26–0.29 | Newton, rotação, oscilações, termodinâmica | ~10h |
-| **Física: Eletromagnetismo** | 0.30–0.34 | Eletrostática, magnetismo, Faraday, Maxwell | ~12h |
-| **Física: Moderna e Semicondutores** | 0.35–0.36 | Quântica básica, bandas de energia, materiais | ~5h |
+| **Cálculo I — Derivadas** | 0.7–0.9 | Limites, derivadas, aplicações, séries de Taylor | ~10h |
+| **Cálculo II — Integrais** | 0.10–0.12 | Integrais, técnicas, aplicações, métodos numéricos | ~10h |
+| **Cálculo III — Multivariável** | 0.13–0.14 | Derivadas parciais, Laplaciano, Jacobiano, integrais múltiplas, cálculo vetorial | ~8h |
+| **Equações Diferenciais** | 0.15–0.17 | EDOs 1ª/2ª ordem, Laplace | ~8h |
+| **Álgebra Linear** | 0.18–0.20 | Vetores, matrizes, autovalores | ~7h |
+| **Probabilidade e Estatística** | 0.21–0.22 | Valor esperado, variância, Bayes, TCL, distribuições, tolerâncias | ~5h |
+| **Física: Mecânica e Térmica** | 0.23–0.24 | Newton, rotação, oscilações, termodinâmica | ~10h |
+| **Física: Eletromagnetismo** | 0.25–0.27 | Eletrostática, magnetismo, Faraday, Maxwell | ~12h |
+| **Física: Moderna e Semicondutores** | 0.28 | Quântica básica, bandas de energia, materiais | ~5h |
 
 **Total: ~87h** — equivalente a ~4 disciplinas de um curso real, comprimidas com foco em aplicação.
+
+
+### Prontidão por Módulo
+
+| Módulo | Tema | Absorção |
+|--------|------|----------|
+| 0.01 | Unidades SI, Prefixos e Análise Dimensional | ❄️ Cold Start OK |
+| 0.02 | Álgebra — Equações e Isolamento | ❄️ Cold Start OK |
+| 0.03 | Funções — Reconhecimento Rápido | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 0.04 | Trigonometria — A Linguagem AC | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 0.05 | Números Complexos — O Motor da Análise AC | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 0.06 | Logaritmos, Exponenciais e Decibéis | ❄️ Cold Start OK |
+| 0.07 | Limites e Continuidade | 📚 Estudo Prévio — vídeo/livro antes dos cards |
+| 0.08 | Derivadas — Taxa de Variação | ❄️ Cold Start OK |
+| 0.09 | Aplicações de Derivadas e Séries de Taylor | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 0.10 | O Conceito de Integral | ❄️ Cold Start OK |
+| 0.11 | Técnicas de Integração | 📚 Estudo Prévio — vídeo/livro antes dos cards |
+| 0.12 | Aplicações de Integrais e Métodos Numéricos | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 0.13 | Cálculo Multivariável — Parciais e Integrais | 📚 Estudo Prévio — vídeo/livro antes dos cards |
+| 0.14 | Cálculo Vetorial — A Linguagem de Maxwell | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 0.15 | EDOs de 1ª Ordem — Circuitos RC e RL | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 0.16 | EDOs de 2ª Ordem — RLC e Oscilações | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 0.17 | Transformada de Laplace | 📚 Estudo Prévio — vídeo/livro antes dos cards |
+| 0.18 | Vetores e Operações | ❄️ Cold Start OK |
+| 0.19 | Matrizes e Sistemas Lineares | ❄️ Cold Start OK |
+| 0.20 | Autovalores, Autovetores e Estabilidade | 📚 Estudo Prévio — vídeo/livro antes dos cards |
+| 0.21 | Probabilidade e Distribuições | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 0.22 | Estatística Aplicada e Tolerâncias | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 0.23 | Mecânica Clássica — Newton, Energia e Rotação | ❄️ Cold Start OK |
+| 0.24 | Oscilações, Ondas e Termodinâmica | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 0.25 | Eletrostática e Corrente Elétrica | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 0.26 | Magnetismo e Indução Eletromagnética | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 0.27 | Equações de Maxwell e Ondas EM | 📚 Estudo Prévio — vídeo/livro antes dos cards |
+| 0.28 | Física Moderna e Semicondutores | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+
+> **Legenda**: ❄️ Cards funcionam sozinhos · 🔶 Fazer projeto ANTES dos cards · 📚 Assistir vídeo/ler antes · 🔴 Material externo obrigatório
 
 ---
 
@@ -64,6 +100,7 @@
 1. **10 conversões rápidas** cronometradas (<30s cada): 2200μF→?mF, 3.3kΩ→?Ω, 16MHz→?Hz, etc.
 2. **Análise dimensional** de 3 fórmulas: τ=RC, f=1/(2π√LC), P=V²/R
 3. **Prompt IA**: *"Demonstre que τ=RC tem unidade de segundos expandindo Ω e F em unidades básicas."*
+4. **Entregável**: 10 conversões resolvidas + análise dimensional de 3 fórmulas
 
 #### Erros Comuns
 - Confundir **m** (mili, 10⁻³) com **M** (mega, 10⁶) — diferença de 10⁹!
@@ -86,6 +123,7 @@
 2. **3 sistemas 2×2** no papel (análise de malhas)
 3. **1 sistema 3×3** com Python
 4. **Equação RLC**: resolva s²+200s+10⁶=0 → identifique se oscila
+5. **Entregável**: 5 isolamentos + sistemas lineares resolvidos + classificação RLC
 
 #### Erros Comuns
 - Δ<0 NÃO significa "sem solução" — significa raízes complexas = oscilação!
@@ -115,6 +153,7 @@ Reconhecer o TIPO de função olhando uma fórmula é superpoder: P=I²R → "qu
 1. **No Desmos**: plote todas as 7 funções — identifique cada forma visualmente
 2. **Match**: dada uma fórmula EE, identifique o tipo de função (5 exercícios)
 3. **Prompt IA**: *"Explique por que P=V²/R e P=I²R não se contradizem. Se V dobra com R fixo, o que acontece com I e P?"*
+4. **Entregável**: 7 funções plotadas no Desmos + 5 exercícios de identificação
 
 ---
 
@@ -149,6 +188,7 @@ Cada sinal AC é um **ponto girando num círculo**. Frequência = velocidade de 
 2. **Defasagem**: plote sin(ωt) e sin(ωt+π/2) → observe 90° de atraso
 3. **5 exercícios**: dados V_p, f, φ → escreva v(t) e plote
 4. **Identidade na prática**: demonstre que sin²(x)+cos²(x)=1 é Pitágoras no círculo unitário
+5. **Entregável**: Animação Desmos + 5 exercícios de senóide + demonstração de Pitágoras
 
 #### Erros Comuns
 - Calculadora em graus quando deveria ser radianos — sin(90°)=1 mas sin(90 rad)≈0.894!
@@ -176,6 +216,7 @@ Complexos são **vetores que rastreiam magnitude E fase** simultaneamente. Em DC
 1. **Python**: visualize z₁=3+4j e z₂=5∠60° no plano complexo
 2. **10 exercícios**: 5 conversões ret↔polar, 3 mult/div polar, 2 somas retangular
 3. **Aplicação**: calcule Z = R + jωL + 1/(jωC) para R=100Ω, L=10mH, C=1μF, f=1kHz
+4. **Entregável**: Plano complexo plotado em Python + 10 exercícios resolvidos + cálculo de Z
 
 #### Erros Comuns
 - arctan dá mesmo valor para quadrantes opostos — SEMPRE verifique o quadrante!
@@ -200,6 +241,7 @@ Complexos são **vetores que rastreiam magnitude E fase** simultaneamente. Em DC
 1. **Tabela rápida** de cabeça: +3dB=?×P, -6dB=?×V, +20dB=?×V, -40dB=?×V
 2. **Cascata**: amp +26dB → filtro -12dB → amp +10dB. Ganho total em dB e em vezes
 3. **Plote** resposta de filtro RC em escala linear e log — compare utilidade
+4. **Entregável**: Tabela de dB de cabeça + cascata calculada + gráfico linear vs log
 
 #### Checkpoint — Pré-Cálculo
 - [ ] Converte prefixos SI em <30s, verifica dimensões
@@ -228,6 +270,7 @@ Você NÃO precisa calcular limites formalmente (ε-δ) na engenharia. Mas preci
 1. **Desmos**: plote f(x)=sin(x)/x → observe que f(0) não existe, mas o limite é 1
 2. **Calcule 5 limites** intuitivamente (sem ε-δ): lim(x→2) x², lim(x→0) sin(x)/x, lim(x→∞) 1/x, lim(x→0) (e^x-1)/x, lim(x→∞) e^(-x)
 3. **Conexão**: explique por que a corrente no capacitor num instante é o LIMITE da corrente média quando Δt→0
+4. **Entregável**: 5 limites calculados + conexão com capacitor explicada
 
 ---
 
@@ -255,6 +298,7 @@ Derivada responde "quão rápido muda AGORA?". A derivada de sin é cos — quan
 2. **6 derivadas manuais**: d/dt[5t²], d/dt[3sin(100t)], d/dt[12(1-e^(-t/τ))], d/dt[e^(-2t)cos(10t)], d/dt[ln(t)], d/dt[1/(1+t²)]
 3. **Aplicação**: V_C(t)=12(1-e^(-t/τ)), calcule I(t)=C×dV/dt passo a passo com regra da cadeia
 4. **Prompt IA**: *"Calcule I(t)=C×dV/dt para V(t)=5sin(2π60t) e C=100μF. O que o cosseno na resposta diz sobre a fase entre V e I no capacitor?"*
+5. **Entregável**: 6 derivadas resolvidas + I(t)=C×dV/dt passo a passo + verificação Desmos
 
 #### Erros Comuns
 - Esquecer regra da cadeia em e^(-t/τ) — derivada NÃO é e^(-t/τ), é (-1/τ)e^(-t/τ)
@@ -262,8 +306,8 @@ Derivada responde "quão rápido muda AGORA?". A derivada de sin é cos — quan
 
 ---
 
-### Módulo 0.9: Aplicações de Derivadas
-**Tempo: 2.5h**
+### Módulo 0.9: Aplicações de Derivadas e Séries de Taylor
+**Tempo: 4.5h**
 
 #### O que memorizar
 - **Máximo/mínimo**: f'(x)=0 e f''(x)<0 → máximo. f''(x)>0 → mínimo
@@ -276,11 +320,9 @@ Derivada responde "quão rápido muda AGORA?". A derivada de sin é cos — quan
 1. **Otimização**: derive P_carga = V_th²×R_L/(R_th+R_L)² em relação a R_L. Iguale a zero → encontre R_L=R_th (máxima transferência de potência!)
 2. **Linearização**: linearize a curva I-V do diodo (I=I_s×e^(V/nV_T)) em torno do ponto de operação
 3. **Prompt IA**: *"Encontre o ponto de máxima potência de um painel solar cuja curva P-V é P=V(5-0.1V²). Use derivada para achar V_mp."*
+4. **Entregável**: Otimização de máxima transferência de potência + linearização do diodo
 
 ---
-
-### Módulo 0.10: Séries de Taylor e Aproximações
-**Tempo: 2h**
 
 #### O que memorizar
 - **Taylor**: f(x) = f(a) + f'(a)(x-a) + f''(a)(x-a)²/2! + ...
@@ -296,6 +338,7 @@ Taylor diz: "qualquer função suave pode ser aproximada por polinômios". Para 
 1. **Desmos**: plote sin(x) e suas aproximações de Taylor (1, 3, 5, 7 termos) → observe a convergência
 2. **Calcule** e^0.1 usando Taylor com 1, 2, 3 termos → compare com valor real (erro?)
 3. **Aplicação**: linearize I=I_s×e^(V/V_T) em torno de V=V_Q → obtenha modelo de pequenos sinais
+4. **Entregável**: Aproximações de Taylor plotadas + cálculos manuais + linearização
 
 #### Checkpoint — Cálculo I
 - [ ] Calcula derivadas com regra da cadeia e do produto
@@ -307,7 +350,7 @@ Taylor diz: "qualquer função suave pode ser aproximada por polinômios". Para 
 
 ## Fase 3 — Cálculo II: Integrais
 
-### Módulo 0.11: O Conceito de Integral
+### Módulo 0.10: O Conceito de Integral
 **Tempo: 2h**
 
 #### O que memorizar
@@ -324,16 +367,18 @@ Se derivada="quão rápido?", integral="quanto no total?". A potência P(t) é t
 1. **3 integrais manuais**: ∫₀¹ 3t² dt, ∫₀^(π/ω) sin(ωt) dt, ∫₀^∞ e^(-t/τ) dt
 2. **Derive** E=½CV² calculando ∫₀^V CV dV (energia no capacitor)
 3. **Python**: compare `scipy.integrate.quad()` com resultado analítico
+4. **Entregável**: 3 integrais resolvidas + derivação de E=½CV² + verificação Python
 
 ---
 
-### Módulo 0.12: Técnicas de Integração
+### Módulo 0.11: Técnicas de Integração
 **Tempo: 2.5h**
 
 #### O que memorizar
 - **Substituição (u-sub)**: ∫f(g(x))g'(x)dx = ∫f(u)du. A "reversa" da regra da cadeia
 - **Integração por partes**: ∫u dv = uv - ∫v du. Para ∫t×e^(-t)dt, ∫ln(t)dt, etc.
 - **Frações parciais**: decompor 1/((s+1)(s+2)) = A/(s+1) + B/(s+2). Essencial para Laplace inversa!
+- **Polo repetido**: 1/(s+a)² → A/(s+a) + B/(s+a)². Cover-up NÃO funciona para polo repetido — use derivada ou sistema de equações
 - **Tabela de integrais**: na prática, engenheiros usam tabelas e computadores, não memorizam 200 integrais
 - **SymPy**: `from sympy import *; integrate(exp(-t)*sin(t), t)` — resolve qualquer integral
 
@@ -345,11 +390,12 @@ Frações parciais parece técnica obscura até o Módulo 5: TODA inversa de Lap
 2. **Por partes**: ∫t×e^(-t) dt (tabular method)
 3. **Frações parciais**: decomponha 5/((s+1)(s+2)) e integre cada termo
 4. **SymPy**: resolva 3 integrais difíceis automaticamente. Compare com manual
+5. **Entregável**: Integrais resolvidas por 3 técnicas + verificação com SymPy
 
 ---
 
-### Módulo 0.13: Aplicações de Integrais
-**Tempo: 2.5h**
+### Módulo 0.12: Aplicações de Integrais e Métodos Numéricos
+**Tempo: 4.5h**
 
 #### O que memorizar
 - **Valor médio**: V_avg = (1/T)∫₀ᵀ v(t) dt. Para senóide pura: V_avg = 0!
@@ -363,11 +409,9 @@ Frações parciais parece técnica obscura até o Módulo 5: TODA inversa de Lap
 2. **Calcule V_rms** de onda quadrada e onda triangular — compare com senóide
 3. **Energia**: calcule energia consumida por um chuveiro de 5500W em 15min, em J e kWh
 4. **Prompt IA**: *"Por que a concessionária usa V_rms (127V) e não V_pico (179.6V)? Qual o significado físico do valor eficaz?"*
+5. **Entregável**: V_rms derivado analiticamente + comparação 3 formas de onda + cálculo de energia
 
 ---
-
-### Módulo 0.14: Integrais Impróprias e Métodos Numéricos
-**Tempo: 2h**
 
 #### O que memorizar
 - **Integral imprópria**: limite infinito. ∫₀^∞ e^(-t/τ)dt = τ (converge!)
@@ -383,6 +427,7 @@ Integrais impróprias aparecem CONSTANTEMENTE: a energia total dissipada por um 
 1. **Calcule** ∫₀^∞ e^(-t)dt manualmente e com Python
 2. **Implemente** regra dos trapézios em Python (10 linhas) → compare com `quad()`
 3. **Energia total**: calcule ∫₀^∞ I²(t)×R dt para I(t)=I₀e^(-t/τ) num circuito RL
+4. **Entregável**: Integrais impróprias resolvidas + trapézios em Python + cálculo de energia RL
 
 #### Checkpoint — Cálculo II
 - [ ] Calcula integrais básicas e aplica técnicas (substituição, partes, frações parciais)
@@ -394,8 +439,8 @@ Integrais impróprias aparecem CONSTANTEMENTE: a energia total dissipada por um 
 
 ## Fase 4 — Cálculo III: Multivariável e Vetorial
 
-### Módulo 0.15: Derivadas Parciais e Gradiente
-**Tempo: 2.5h**
+### Módulo 0.13: Cálculo Multivariável — Parciais e Integrais
+**Tempo: 5h**
 
 #### O que memorizar
 - **Derivada parcial**: ∂f/∂x = derivada em relação a x tratando y como constante
@@ -403,6 +448,7 @@ Integrais impróprias aparecem CONSTANTEMENTE: a energia total dissipada por um 
 - **Campo elétrico**: E = -∇V (campo é o negativo do gradiente do potencial!)
 - **Diferencial total**: df = (∂f/∂x)dx + (∂f/∂y)dy. Propagação de erros!
 - **Regra da cadeia multivariável**: se f(x,y) e x=x(t), y=y(t): df/dt = (∂f/∂x)(dx/dt) + (∂f/∂y)(dy/dt)
+- **Laplaciano**: ∇²f = ∂²f/∂x² + ∂²f/∂y² + ∂²f/∂z² = ∇·(∇f). Aparece em equação de calor (∂T/∂t=α∇²T), onda e Poisson. ∇²f=0 → equação de Laplace (campo sem fontes internas)
 
 #### Intuição
 Na EE de uma variável, derivada dá a inclinação. Com múltiplas variáveis, o GRADIENTE dá a direção de máxima variação. O campo elétrico E = -∇V diz: "a direção da força sobre uma carga é a descida mais íngreme do potencial" — como uma bola rolando morro abaixo no "mapa topográfico" do potencial elétrico.
@@ -412,27 +458,28 @@ Na EE de uma variável, derivada dá a inclinação. Com múltiplas variáveis, 
 2. **Gradiente**: dado V(x,y)=kQ/√(x²+y²), calcule ∇V e mostre que E=-∇V aponta radialmente
 3. **Propagação de erros**: se R=V/I, com V=12±0.1V e I=0.1±0.005A, qual a incerteza em R?
 4. **Prompt IA**: *"Explique por que E=-∇V usando a analogia do mapa topográfico. Onde o campo é mais forte: onde as linhas equipotenciais estão próximas ou afastadas?"*
+5. **Entregável**: Gradiente calculado + propagação de erros quantificada + conexão E=-∇V demonstrada
 
 ---
-
-### Módulo 0.16: Integrais Múltiplas
-**Tempo: 2.5h**
 
 #### O que memorizar
 - **Integral dupla**: ∬f(x,y) dA — "volume sob a superfície" ou "soma sobre a área"
 - **Integral tripla**: ∭f(x,y,z) dV — "soma sobre o volume"
 - **Coordenadas cilíndricas**: (r,θ,z). dA=r dr dθ. Para problemas com simetria axial (fios, bobinas)
 - **Coordenadas esféricas**: (r,θ,φ). dV=r²sinθ dr dθ dφ. Para cargas pontuais, antenas
+- **Jacobiano**: determinante da transformação de coordenadas. Cilíndricas: J=r, esféricas: J=r²sinθ. Corrige a "área" do elemento diferencial — sem ele a integral dá resultado errado!
 - **Aplicações**: carga total Q=∬σ dA (distribuição superficial), capacitância de geometrias complexas
 
 #### Projeto
 1. **Calcule** a carga total numa placa circular com densidade σ(r) = σ₀×e^(-r/a) usando ∬σ r dr dθ
 2. **Capacitor cilíndrico**: derive C = 2πεL/ln(b/a) usando integral em coordenadas cilíndricas
 3. **Python**: use `scipy.integrate.dblquad()` para integrais duplas
+4. **Volume esférico**: derive V = 4πR³/3 integrando r²sinθ dr dθ dφ em coordenadas esféricas
+5. **Entregável**: Integral de carga circular + capacitor cilíndrico derivado + integrais em Python
 
 ---
 
-### Módulo 0.17: Cálculo Vetorial — A Linguagem de Maxwell
+### Módulo 0.14: Cálculo Vetorial — A Linguagem de Maxwell
 **Tempo: 3h**
 
 #### O que memorizar
@@ -462,10 +509,15 @@ As 4 equações de Maxwell descrevem TODO o eletromagnetismo — luz, rádio, mo
 2. **Calcule divergência e rotacional** de F=(x,y,0) e F=(-y,x,0) — qual tem div≠0? Qual tem rot≠0?
 3. **Conecte a Maxwell**: identifique qual equação de Maxwell está "por trás" de: (a) capacitor, (b) indutor, (c) transformador, (d) antena
 4. **Prompt IA**: *"Explique as 4 equações de Maxwell em português simples, uma frase por equação, e dê um dispositivo EE que depende de cada uma."*
+5. **Drills**: calcule ∇·F e ∇×F para campos vetoriais específicos (ex: F=(x²,y²,z²), F=(y,-x,0))
+6. **Entregável**: Campos vetoriais visualizados em Python + div/rot calculados + Maxwell↔dispositivos mapeados
+
+> **Nota**: A memorização formal das equações de Maxwell e suas relações com dispositivos ("Uma Frase", Equação↔Dispositivo, constantes ε₀/μ₀) é feita nos flashcards do Módulo 0.27, onde o contexto de eletromagnetismo já foi construído. Aqui o foco é no ferramental matemático: divergência, rotacional, teoremas de Gauss e Stokes.
 
 #### Checkpoint — Cálculo III
-- [ ] Calcula derivadas parciais e gradiente
-- [ ] Entende divergência e rotacional conceitualmente
+- [ ] Calcula derivadas parciais, gradiente e Laplaciano
+- [ ] Calcula divergência e rotacional de campos vetoriais
+- [ ] Entende Jacobiano e troca de coordenadas em integrais
 - [ ] Sabe que E=-∇V e o que significa
 - [ ] Conhece as 4 equações de Maxwell e o que cada uma "diz"
 
@@ -473,7 +525,7 @@ As 4 equações de Maxwell descrevem TODO o eletromagnetismo — luz, rádio, mo
 
 ## Fase 5 — Equações Diferenciais
 
-### Módulo 0.18: EDOs de 1ª Ordem — Circuitos RC e RL
+### Módulo 0.15: EDOs de 1ª Ordem — Circuitos RC e RL
 **Tempo: 3h**
 
 #### O que memorizar
@@ -496,10 +548,11 @@ TODOS os sistemas de 1ª ordem se comportam IGUAL: exponencial que estabiliza. C
 3. **Resolva com `sympy.dsolve()`** → compare
 4. **Simule no Falstad**: RC com V=12V, R=1kΩ, C=100μF → τ=0.1s → meça e confirme
 5. **Prompt IA**: *"Por que TODOS os circuitos RC (independente dos valores de R e C) têm a mesma forma de resposta exponencial? O que τ=RC controla?"*
+6. **Entregável**: EDO montada e resolvida (papel + SymPy) + simulação Falstad + verificação cruzada
 
 ---
 
-### Módulo 0.19: EDOs de 2ª Ordem — Circuito RLC e Oscilações
+### Módulo 0.16: EDOs de 2ª Ordem — Circuito RLC e Oscilações
 **Tempo: 3h**
 
 #### O que memorizar
@@ -527,6 +580,7 @@ TODOS os sistemas de 1ª ordem se comportam IGUAL: exponencial que estabiliza. C
 2. **Plote as 3 respostas** no Python para os 3 tipos (variando R)
 3. **Simule no LTspice**: RLC série com degrau → observe sub/super/criticamente amortecido
 4. **Ressonância**: aplique senóide de frequência variável → encontre f₀ onde |Z| é mínimo
+5. **Entregável**: 3 respostas RLC plotadas + simulação LTspice + ressonância identificada
 
 #### Erros Comuns
 - Confundir α com ω₀: α=R/(2L) é amortecimento, ω₀=1/√(LC) é freq natural
@@ -534,7 +588,7 @@ TODOS os sistemas de 1ª ordem se comportam IGUAL: exponencial que estabiliza. C
 
 ---
 
-### Módulo 0.20: Transformada de Laplace — Algébra no Lugar de Cálculo
+### Módulo 0.17: Transformada de Laplace — Algébra no Lugar de Cálculo
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -554,6 +608,7 @@ Laplace transforma CÁLCULO (derivadas, integrais, EDOs) em ÁLGEBRA (multiplica
 2. **Compare** com solução temporal direta — mesmo resultado, método mais simples!
 3. **Polos**: encontre polos de H(s)=1/(s²+3s+2). Estável? Simule a resposta ao impulso
 4. **SymPy**: `inverse_laplace_transform(1/(s*(1+s*0.001)), s, t)` → verifique
+5. **Entregável**: Circuito RC resolvido por Laplace (manual + SymPy) + polos identificados
 
 #### Checkpoint — Equações Diferenciais
 - [ ] Resolve EDO de 1ª ordem (RC/RL) e identifica τ
@@ -565,7 +620,7 @@ Laplace transforma CÁLCULO (derivadas, integrais, EDOs) em ÁLGEBRA (multiplica
 
 ## Fase 6 — Álgebra Linear
 
-### Módulo 0.21: Vetores e Operações
+### Módulo 0.18: Vetores e Operações
 **Tempo: 2h**
 
 #### O que memorizar
@@ -580,16 +635,18 @@ Laplace transforma CÁLCULO (derivadas, integrais, EDOs) em ÁLGEBRA (multiplica
 1. **Calcule** a·b e a×b para a=(3,4,0), b=(1,2,5)
 2. **Aplicação**: calcule a força magnética F=qv×B para q=1.6×10⁻¹⁹C, v=(10⁶,0,0)m/s, B=(0,0,0.5)T
 3. **Prompt IA**: *"Por que a força magnética F=qv×B é um produto vetorial e não escalar? O que isso diz sobre a direção da força em relação à velocidade e ao campo?"*
+4. **Entregável**: Produtos escalar/vetorial calculados + força magnética quantificada
 
 ---
 
-### Módulo 0.22: Matrizes e Sistemas Lineares
+### Módulo 0.19: Matrizes e Sistemas Lineares
 **Tempo: 2.5h**
 
 #### O que memorizar
 - **Forma matricial**: Ax = b. A=matriz dos coeficientes, x=incógnitas, b=constantes
 - **Determinante 2×2**: det=ad-bc. det=0 → sistema impossível/indeterminado
-- **Determinante 3×3**: expansão por cofatores (ou use Python)
+- **Determinante 3×3**: expansão por cofatores, ou regra de Sarrus (só funciona 3×3!). Para triangular: det = produto da diagonal
+- **Transposta**: (A^T)_{ij} = A_{ji} — linhas viram colunas. (AB)^T = B^T A^T — ordem inverte! Aparece em mínimos quadrados e matrizes simétricas
 - **Inversa**: A⁻¹ existe se det(A)≠0. x = A⁻¹b
 - **Cramer**: xᵢ = det(Aᵢ)/det(A). Prático para 2×2 no papel
 - **Eliminação gaussiana**: escalonamento → resolução. Funciona para qualquer tamanho
@@ -604,10 +661,11 @@ A matriz é uma "foto numérica" do circuito. Na análise nodal, cada nó vira u
 1. **Monte Ax=b** para circuito de 2 malhas → resolva por Cramer no papel
 2. **Monte Ax=b** para circuito de 3 nós → resolva com `np.linalg.solve()`
 3. **Verifique** que det(A)≠0 → solução única → circuito bem definido
+4. **Entregável**: Sistemas Ax=b resolvidos (papel + NumPy) + verificação de determinante
 
 ---
 
-### Módulo 0.23: Autovalores, Autovetores e Estabilidade
+### Módulo 0.20: Autovalores, Autovetores e Estabilidade
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -625,10 +683,13 @@ Autovalores respondem A pergunta fundamental: **"o sistema é estável?"**. Todo
 #### Projeto
 1. **Encontre polos** de G(s) = 1/(s²+3s+2) → s=-1, s=-2 → estável
 2. **Encontre polos** de G(s) = 1/(s²-s+2) → parte real positiva? → instável
-3. **Python**: `np.linalg.eig(A)` para matriz de circuito → interprete autovalores
+3. **Autovalores no papel**: A=[[4,2],[1,3]] → resolva det(A-λI)=0 → λ=2 e λ=5
+4. **Python**: `np.linalg.eig(A)` para matriz de circuito → interprete autovalores
+5. **Entregável**: Polos e estabilidade classificados (manual + Python) + autovalores interpretados
 
 #### Checkpoint — Álgebra Linear
 - [ ] Opera com vetores (escalar, vetorial, módulo)
+- [ ] Calcula determinante 3×3 e opera com transposta
 - [ ] Monta e resolve Ax=b para circuitos
 - [ ] Encontra autovalores e classifica estabilidade
 - [ ] Sabe que polos de G(s) = autovalores
@@ -637,16 +698,21 @@ Autovalores respondem A pergunta fundamental: **"o sistema é estável?"**. Todo
 
 ## Fase 7 — Probabilidade e Estatística para Engenharia
 
-### Módulo 0.24: Probabilidade e Distribuições
+### Módulo 0.21: Probabilidade e Distribuições
 **Tempo: 2.5h**
 
 #### O que memorizar
 - **Probabilidade**: P(A) = casos favoráveis / total. 0 ≤ P ≤ 1
+- **Valor esperado**: E[X] = Σ xᵢ P(xᵢ) — média ponderada por probabilidade. E[aX+b] = aE[X]+b (linear!)
+- **Variância**: Var(X) = E[(X-μ)²] = E[X²]-E[X]². σ = √Var. Var(aX) = a²Var(X)
+- **Independência**: P(A∩B) = P(A)·P(B). Se independentes: Var(X+Y) = Var(X)+Var(Y)
 - **Distribuição uniforme**: todos os valores igualmente prováveis. Ex: ruído de quantização do ADC
 - **Distribuição Gaussiana (Normal)**: μ=média, σ=desvio padrão. 68% em ±1σ, 95% em ±2σ, 99.7% em ±3σ
-- **Ruído elétrico**: modelado como Gaussiano! V_ruído ~ N(0, σ²)
+- **Distribuição Binomial**: P(k em n) = C(n,k)pᵏ(1-p)ⁿ⁻ᵏ. Modela testes passa/falha com n tentativas
+- **Teorema de Bayes**: P(A|B) = P(B|A)P(A)/P(B). Análise de falso positivo!
+- **Teorema Central do Limite (TCL)**: soma de N variáveis i.i.d. → Gaussiana quando N→∞. Explica por que ruído é Gaussiano!
+- **Ruído elétrico**: modelado como Gaussiano (pelo TCL)! V_ruído ~ N(0, σ²)
 - **SNR (Signal-to-Noise Ratio)**: SNR = P_sinal/P_ruído (em dB: 10log₁₀(P_s/P_n))
-- **Probabilidade condicional**: P(A|B) = P(A∩B)/P(B). Base do teorema de Bayes
 
 #### Intuição
 Ruído é INEVITÁVEL em qualquer sistema real. Todo circuito tem ruído térmico (Johnson-Nyquist): V_rms = √(4kTRΔf). Saber probabilidade permite QUANTIFICAR o ruído e "design around it". SNR determina a qualidade de qualquer sinal: áudio hi-fi precisa de SNR>90dB.
@@ -656,10 +722,13 @@ Ruído é INEVITÁVEL em qualquer sistema real. Todo circuito tem ruído térmic
 2. **Calcule** ruído térmico de R=10kΩ a T=300K, Δf=10kHz: V_rms = √(4×1.38×10⁻²³×300×10⁴×10⁴)
 3. **SNR**: sinal de 1V_rms com ruído de 1mV_rms → SNR em dB?
 4. **Prompt IA**: *"Explique por que um ADC de 10 bits tem SNR máximo de ~62dB. Como isso se relaciona com quantização?"*
+5. **Bayes**: teste de defeito com P(defeito)=1%, P(positivo|defeito)=99%, P(positivo|bom)=5%. Qual P(defeito|positivo)?
+6. **TCL**: simule soma de N dados → plote histograma para N=1,5,30 → observe convergência para Gaussiana
+7. **Entregável**: Histograma Gaussiano + ruído térmico calculado + SNR em dB + Bayes + TCL demonstrado
 
 ---
 
-### Módulo 0.25: Estatística Aplicada e Tolerâncias
+### Módulo 0.22: Estatística Aplicada e Tolerâncias
 **Tempo: 2h**
 
 #### O que memorizar
@@ -675,9 +744,13 @@ Ruído é INEVITÁVEL em qualquer sistema real. Todo circuito tem ruído térmic
 2. **Monte Carlo em Python**: simule 10.000 divisores com R1,R2 = N(10k, 500) → histograma de V_out
 3. **Compare**: pior caso vs Monte Carlo — qual é mais realista?
 4. **Tipo de tolerância**: monte Carlo com distribuição uniforme vs Gaussiana → qual é mais realista para resistores?
+5. **Entregável**: Propagação de erros + Monte Carlo (10k amostras) + comparação pior-caso vs estatístico
 
 #### Checkpoint — Probabilidade e Estatística
-- [ ] Entende distribuição Gaussiana e regra 68-95-99.7
+- [ ] Calcula E[X] e Var(X), aplica propriedades de linearidade
+- [ ] Aplica Bayes para análise de falso positivo
+- [ ] Entende distribuição Gaussiana, Binomial e regra 68-95-99.7
+- [ ] Sabe que o TCL explica por que ruído é Gaussiano
 - [ ] Calcula SNR em dB
 - [ ] Propaga erros/tolerâncias em circuitos
 - [ ] Usa Monte Carlo para análise estatística
@@ -686,8 +759,8 @@ Ruído é INEVITÁVEL em qualquer sistema real. Todo circuito tem ruído térmic
 
 ## Fase 8 — Física: Mecânica e Termodinâmica
 
-### Módulo 0.26: Leis de Newton, Energia e Potência
-**Tempo: 2.5h**
+### Módulo 0.23: Mecânica Clássica — Newton, Energia e Rotação
+**Tempo: 5h**
 
 #### O que memorizar
 - **1ª Lei (Inércia)**: corpo em repouso permanece em repouso. Análogo: indutor resiste a mudança de corrente!
@@ -707,11 +780,9 @@ Mecânica e circuitos são GOVERNADOS pelas mesmas leis! F=ma (mecânica) ↔ V=
 1. **Monte a tabela** de analogias completa: F↔V, v↔I, m↔L, 1/k↔C, b↔R, Ec↔E_L, Ep↔E_C
 2. **Calcule**: energia de um motor de 250W funcionando por 2h → E = P×t (em J e kWh)
 3. **Eficiência**: motor com P_in=500W e P_mec=400W → η=80%, P_calor=100W
+4. **Entregável**: Tabela de analogias mec↔elét + cálculos de energia e eficiência
 
 ---
-
-### Módulo 0.27: Rotação, Torque e Momento de Inércia
-**Tempo: 2.5h**
 
 #### O que memorizar
 - **Torque**: τ = r × F = r×F×sin(θ). Unidade: N·m. "Força que faz girar"
@@ -730,11 +801,12 @@ Motores são o tema central do Módulo 4. A equação P = τ×ω determina TUDO:
 1. **Converta**: motor de 3CV (2237W), 1740RPM → calcule torque τ = P/ω
 2. **Momento de inércia**: calcule J e energia cinética de roda de 5kg, r=15cm a 1000RPM
 3. **Prompt IA**: *"Um motor de 1CV aciona uma esteira. Se dobrar a carga (torque), o que acontece com a velocidade para manter a potência constante? E com a corrente?"*
+4. **Entregável**: Torque calculado + momento de inércia + conversão RPM↔rad/s
 
 ---
 
-### Módulo 0.28: Oscilações e Ondas
-**Tempo: 2.5h**
+### Módulo 0.24: Oscilações, Ondas e Termodinâmica
+**Tempo: 5h**
 
 #### O que memorizar
 - **MHS (Movimento Harmônico Simples)**: x(t) = A×sin(ωt+φ). ω = √(k/m) para mola, ω₀ = 1/√(LC) para RLC!
@@ -750,11 +822,9 @@ Motores são o tema central do Módulo 4. A equação P = τ×ω determina TUDO:
 1. **Python**: simule MHS amortecido x(t) = Ae^(-αt)sin(ω_d×t) para 3 valores de amortecimento
 2. **Ressonância**: plote amplitude vs frequência de excitação → observe o pico em ω₀
 3. **Ondas EM**: calcule λ para: FM 100MHz, WiFi 2.4GHz, luz visível 500THz
+4. **Entregável**: MHS amortecido plotado (3 amortecimentos) + ressonância + comprimentos de onda EM
 
 ---
-
-### Módulo 0.29: Termodinâmica e Circuitos Térmicos
-**Tempo: 2.5h**
 
 #### O que memorizar
 - **Temperatura**: medida de agitação molecular. K = °C + 273.15
@@ -773,6 +843,7 @@ Dissipação térmica é o LIMITADOR prático de todo circuito de potência. Um 
 1. **Circuito térmico**: MOSFET com R_DS(on)=50mΩ, I=10A, R_th_jc=1.5°C/W, R_th_cs=0.5°C/W. Qual R_th_sa máximo se T_amb=40°C, T_j_max=150°C?
 2. **Analogia completa**: desenhe o circuito térmico como se fosse elétrico (fonte de corrente = potência, resistores = R_th, tensão = temperatura)
 3. **Prompt IA**: *"Por que dissipadores de calor têm aletas? Explique usando o conceito de resistência térmica e área de superfície."*
+4. **Entregável**: Circuito térmico dimensionado + analogia desenhada + R_th_sa calculado
 
 #### Checkpoint — Mecânica e Térmica
 - [ ] Conhece as analogias mecânica↔elétrica
@@ -784,8 +855,8 @@ Dissipação térmica é o LIMITADOR prático de todo circuito de potência. Um 
 
 ## Fase 9 — Física: Eletromagnetismo Completo
 
-### Módulo 0.30: Eletrostática — Cargas, Campos e Potencial
-**Tempo: 2.5h**
+### Módulo 0.25: Eletrostática e Corrente Elétrica
+**Tempo: 4.5h**
 
 #### O que memorizar
 - **Carga**: Q em Coulombs. Elétron: q = -1.6×10⁻¹⁹ C. 1A = 1C/s
@@ -802,11 +873,9 @@ Dissipação térmica é o LIMITADOR prático de todo circuito de potência. Um 
 1. **Visualize**: linhas de campo de carga pontual, dipolo, placas paralelas (simulador)
 2. **Gauss**: derive E de esfera carregada, cilindro infinito, plano infinito usando simetria
 3. **Calcule C** de capacitor de placas 1cm×1cm, separação 1mm, dielétrico ε_r=100
+4. **Entregável**: Linhas de campo visualizadas + Gauss aplicado + capacitância calculada
 
 ---
-
-### Módulo 0.31: Corrente, Resistência e Lei de Ohm Microscópica
-**Tempo: 2h**
 
 #### O que memorizar
 - **Corrente**: I = dQ/dt = nqvₐA (n=densidade de portadores, vₐ=velocidade de deriva)
@@ -824,11 +893,12 @@ Lei de Ohm é um RESUMO estatístico de bilhões de elétrons colidindo com áto
 1. **Calcule** R de um fio de cobre de 100m, 2.5mm² de seção → compare com tabela NBR 5410
 2. **Temperatura**: fio começa com R=4Ω a 20°C (α=0.004/°C). Qual R a 80°C?
 3. **Prompt IA**: *"Se elétrons se movem a ~0.1mm/s, como a lâmpada acende instantaneamente quando aperto o interruptor?"*
+4. **Entregável**: Resistência de fio calculada + efeito da temperatura quantificado
 
 ---
 
-### Módulo 0.32: Magnetostática — Campos de Correntes
-**Tempo: 2.5h**
+### Módulo 0.26: Magnetismo e Indução Eletromagnética
+**Tempo: 5h**
 
 #### O que memorizar
 - **Campo de fio reto**: B = μ₀I/(2πr). Regra da mão direita
@@ -846,11 +916,9 @@ Lei de Ohm é um RESUMO estatístico de bilhões de elétrons colidindo com áto
 2. **Solenoide**: 500 espiras, 20cm, I=2A → calcule B interno e L
 3. **Motor**: calcule torque de bobina 100 espiras, 5cm×5cm, I=1A, B=0.3T
 4. **Prompt IA**: *"Por que o núcleo de ferro aumenta a indutância de uma bobina por ~5000×? O que são domínios magnéticos?"*
+5. **Entregável**: Campos B calculados + solenoide dimensionado + torque de motor quantificado
 
 ---
-
-### Módulo 0.33: Indução Eletromagnética — Faraday e Lenz
-**Tempo: 2.5h**
 
 #### O que memorizar
 - **Lei de Faraday**: fem = -N×dΦ/dt. Variação de fluxo → tensão induzida
@@ -870,10 +938,11 @@ A fem do gerador é NBAω×sin(ωt) — esta é A ORIGEM de toda AC! Uma bobina 
 1. **Gerador**: N=100, B=0.5T, A=50cm², ω=377rad/s(60Hz) → calcule fem_pico
 2. **Transformador no LTspice**: N₁=2200, N₂=110 → 220V→11V. Verifique relação de espiras
 3. **Prompt IA**: *"Explique correntes de Foucault: por que núcleos de transformadores são laminados e não maciços? Calcule a redução de perdas."*
+4. **Entregável**: fem de gerador calculada + transformador simulado no LTspice
 
 ---
 
-### Módulo 0.34: Equações de Maxwell e Ondas Eletromagnéticas
+### Módulo 0.27: Equações de Maxwell e Ondas Eletromagnéticas
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -898,6 +967,7 @@ Maxwell mostrou que luz, rádio, WiFi, raios X — TUDO é a mesma coisa: ondas 
 1. **Calcule λ** para: AM 1000kHz, FM 100MHz, WiFi 2.4GHz, 5G 28GHz, luz 600nm
 2. **Antena λ/4**: para FM 100MHz, qual o comprimento? Para WiFi? Compare com antenas reais
 3. **Prompt IA**: *"Explique como Maxwell 'previu' as ondas EM matematicamente, antes de Hertz demonstrá-las experimentalmente. Qual o papel do termo ε₀∂E/∂t?"*
+4. **Entregável**: Comprimentos de onda calculados + antena λ/4 dimensionada
 
 #### Checkpoint — Eletromagnetismo
 - [ ] Calcula campos E e B de distribuições simples
@@ -909,8 +979,8 @@ Maxwell mostrou que luz, rádio, WiFi, raios X — TUDO é a mesma coisa: ondas 
 
 ## Fase 10 — Física Moderna e Semicondutores
 
-### Módulo 0.35: Mecânica Quântica para Engenheiros
-**Tempo: 2.5h**
+### Módulo 0.28: Física Moderna e Semicondutores
+**Tempo: 5h**
 
 #### O que memorizar
 - **Quantização**: energia vem em "pacotes" (fótons). E = hf (h = 6.63×10⁻³⁴ J·s)
@@ -930,11 +1000,9 @@ Toda a eletrônica existe por causa do gap de 1.12eV do silício. Pequeno o sufi
 1. **Calcule** energia de fóton de: luz vermelha (700nm), LED azul (470nm), raio X (0.1nm)
 2. **Visualize**: diagrama de bandas para metal, semicondutor e isolante (desenhe os gaps)
 3. **Prompt IA**: *"Explique por que LEDs de cores diferentes têm tensões de limiar diferentes (vermelho~1.8V, azul~3.3V). Conecte isso com E=hf e o gap do material."*
+4. **Entregável**: Energias de fóton calculadas + diagrama de bandas desenhado
 
 ---
-
-### Módulo 0.36: Semicondutores — De Átomos a Transistores
-**Tempo: 2.5h**
 
 #### O que memorizar
 - **Silício intrínseco**: 4 elétrons de valência, cristal covalente, pouco condutivo
@@ -954,6 +1022,7 @@ A junção PN é o "coração" de toda eletrônica. É uma válvula de mão úni
 1. **Desenhe**: diagrama de bandas da junção PN em equilíbrio, direta e reversa
 2. **Plote** a equação do diodo I = I_s(e^(V/V_T)-1) para I_s=10nA, T=300K → observe a exponencial
 3. **Prompt IA**: *"Explique por que V_limiar do diodo de silício é ~0.7V e do germânio é ~0.3V. Relacione com o gap do material e a tensão térmica V_T."*
+4. **Entregável**: Diagrama de bandas da junção PN + curva I-V plotada em Python
 
 #### Checkpoint Final — Base Completa!
 - [ ] Entende bandas de energia e por que semicondutores são especiais

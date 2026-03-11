@@ -20,10 +20,35 @@
 
 | Fase | Módulos | Foco | Horas |
 |------|---------|------|-------|
-| **Sinais e Sistemas** | 5.1–5.3 | Sinais, convolução, Fourier, frequência | ~8h |
-| **Modelagem e Laplace** | 5.4–5.6 | Transformada de Laplace, funções de transferência, blocos | ~7h |
-| **Análise e Projeto** | 5.7–5.10 | Estabilidade, Bode, Nyquist, PID | ~10h |
-| **Avançado** | 5.11–5.12 | Lugar das raízes, introdução a controle digital | ~5h |
+| **Sinais e Sistemas** | 5.1–5.2 | Sinais, convolução, Fourier, frequência | ~8h |
+| **Modelagem e Laplace** | 5.3–5.5 | Transformada de Laplace, funções de transferência, blocos | ~7h |
+| **Análise e Projeto** | 5.6–5.9 | Estabilidade, Bode, PID, projeto e lugar das raízes | ~11h |
+| **Controle Digital** | 5.10 | Introdução a controle digital | ~3h |
+| **DSP** | 5.11–5.14 | Amostragem, transformada Z, filtros, FFT | ~10h |
+
+
+### Prontidão por Módulo
+
+| Módulo | Tema | Absorção |
+|--------|------|----------|
+| 5.01 | Sinais — Classificação e Operações | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.02 | Convolução e Resposta ao Impulso | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.03 | Transformada de Fourier e FFT | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.04 | Transformada de Laplace | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.05 | Função de Transferência e Blocos | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.06 | Modelagem de Sistemas Físicos | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.07 | Estabilidade | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.08 | Diagrama de Bode | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.09 | Controlador PID | ❄️ Cold Start OK |
+| 5.10 | Compensadores Lead e Lag | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.11 | Lugar das Raízes (Root Locus) | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.12 | Controle Digital | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.13 | Amostragem, Nyquist e Aliasing | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.14 | Transformada Z | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.15 | Filtros Digitais FIR e IIR | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 5.16 | FFT Prática e Análise Espectral | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+
+> **Legenda**: ❄️ Cards funcionam sozinhos · 🔶 Fazer projeto ANTES dos cards · 📚 Assistir vídeo/ler antes · 🔴 Material externo obrigatório
 
 ---
 
@@ -84,8 +109,8 @@ O degrau unitário é o sinal mais importante para controle — quando você "li
 
 ---
 
-### Módulo 5.2: Convolução — A Operação Fundamental
-**Tempo: 2.5h**
+### Módulo 5.2: Convolução e Transformada de Fourier
+**Tempo: 5.5h**
 
 #### O que memorizar
 - **Convolução**: `y(t) = x(τ) × h(t-τ) dτ` = x(t) * h(t). Operação que define a saída de um sistema linear
@@ -120,10 +145,7 @@ Convolução é como uma **impressão digital do sistema**. Se você der uma "pa
 4. **Circuito RC**: h(t) = (1/RC)×e^(-t/RC). Convolva com degrau → V_capacitor(t). Compare com fórmula analítica
 5. **Entregável**: Implementação de convolução + aplicação em circuito RC + visualizações
 
----
-
-### Módulo 5.3: Transformada de Fourier — O Mundo das Frequências
-**Tempo: 3h**
+#### Parte B: Transformada de Fourier — O Mundo das Frequências
 
 #### O que memorizar
 - **Série de Fourier**: qualquer sinal periódico = soma infinita de senóides. `x(t) = a₀ + Σ(aₙcos(nωt) + bₙsen(nωt))`
@@ -179,7 +201,7 @@ Fourier é a **ideia mais poderosa de toda a engenharia**. Diz que QUALQUER sina
 
 ## Fase 2 — Modelagem e Transformada de Laplace
 
-### Módulo 5.4: Transformada de Laplace — A Ferramenta Universal
+### Módulo 5.3: Transformada de Laplace — A Ferramenta Universal
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -208,8 +230,9 @@ A "mágica": derivação no tempo vira multiplicação por s. Integração vira 
    f = inverse_laplace_transform(F, s, t)
    print(f)  # 12 - 12*exp(-1000*t)
    ```
-4. **Prompt IA**: *"Resolva o circuito RLC série por Laplace com V1=degrau de 10V, R=100Ω, L=10mH, C=1μF. Identifique os polos, determine se é sub/super/criticamente amortecido, e plote a resposta v_C(t)."*
-5. **Entregável**: 2 circuitos resolvidos por Laplace + verificação com simulação
+4. **Exercício RLC completo**: resolva o circuito RLC série (V=10V, R=100Ω, L=10mH, C=1μF) por Laplace manualmente — frações parciais + tabela inversa. Identifique polos, classifique amortecimento, e verifique com `sympy.inverse_laplace_transform()`
+5. **Prompt IA** (verificação): *"Resolvi o RLC por Laplace e obtive polos em s=___. Minha classificação de amortecimento está correta? A resposta v_C(t) faz sentido fisicamente?"*
+6. **Entregável**: 2 circuitos resolvidos por Laplace (RC + RLC) + verificação com SymPy e simulação
 
 #### Erros Comuns
 - Esquecer as condições iniciais ao transformar derivadas: L{f'(t)} = sF(s) - f(0⁻). Se f(0) ≠ 0, o resultado muda!
@@ -218,7 +241,7 @@ A "mágica": derivação no tempo vira multiplicação por s. Integração vira 
 
 ---
 
-### Módulo 5.5: Função de Transferência e Diagramas de Blocos
+### Módulo 5.4: Função de Transferência e Diagramas de Blocos
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -258,7 +281,7 @@ Os polos são como **pesos cósmicos** — puxam a resposta. Polo real negativo 
 
 ---
 
-### Módulo 5.6: Modelagem de Sistemas Físicos
+### Módulo 5.5: Modelagem de Sistemas Físicos
 **Tempo: 2h**
 
 #### O que memorizar
@@ -285,7 +308,7 @@ Os polos são como **pesos cósmicos** — puxam a resposta. Polo real negativo 
 
 ## Fase 3 — Análise e Projeto de Controladores
 
-### Módulo 5.7: Estabilidade — Quando o Sistema Explode
+### Módulo 5.6: Estabilidade — Quando o Sistema Explode
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -309,7 +332,7 @@ Estabilidade é literalmente **vida ou morte** em controle. Um sistema de contro
 
 ---
 
-### Módulo 5.8: Diagrama de Bode — Frequência como Linguagem
+### Módulo 5.7: Diagrama de Bode — Frequência como Linguagem
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -338,7 +361,7 @@ O diagrama de Bode é o **raio-X** do sistema em frequência. Mostra como o sist
 
 ---
 
-### Módulo 5.9: Controlador PID — O Rei da Indústria
+### Módulo 5.8: Controlador PID — O Rei da Indústria
 **Tempo: 3h**
 
 #### O que memorizar
@@ -393,8 +416,8 @@ Um PID bem sintonizado faz o motor chegar à velocidade desejada rápido, sem os
 
 ---
 
-### Módulo 5.10: Projeto de Controlador por Bode
-**Tempo: 2.5h**
+### Módulo 5.9: Projeto por Bode e Lugar das Raízes
+**Tempo: 5h**
 
 #### O que memorizar
 - **Especificações de desempenho**: margem de fase → overshoot, bandwidth → velocidade de resposta
@@ -409,18 +432,7 @@ Um PID bem sintonizado faz o motor chegar à velocidade desejada rápido, sem os
 3. **Projeto**: plote Bode de G → identifique PM atual → projete compensador lead para atingir spec
 4. **Entregável**: Compensador projetado + Bode antes/depois + resposta ao degrau
 
-#### Checkpoint — Fim da Fase Análise e Projeto
-- [ ] Verifica estabilidade com Routh-Hurwitz
-- [ ] Lê e interpreta diagramas de Bode (margens de ganho e fase)
-- [ ] Sintoniza PID (por tentativa e por Ziegler-Nichols)
-- [ ] Entende a relação PM↔overshoot, BW↔velocidade
-
----
-
-## Fase 4 — Tópicos Avançados
-
-### Módulo 5.11: Lugar das Raízes
-**Tempo: 2.5h**
+#### Parte B: Lugar das Raízes
 
 #### O que memorizar
 - **Lugar das raízes**: gráfico dos polos de malha fechada variando o ganho K de 0 a ∞
@@ -434,9 +446,18 @@ Um PID bem sintonizado faz o motor chegar à velocidade desejada rápido, sem os
 3. **Projete K** para ζ = 0.5 → trace reta ζ = cos(θ) no root locus → encontre K no cruzamento
 4. **Entregável**: Root locus + K projetado + resposta ao degrau
 
+#### Checkpoint — Fim da Fase Análise e Projeto
+- [ ] Verifica estabilidade com Routh-Hurwitz
+- [ ] Lê e interpreta diagramas de Bode (margens de ganho e fase)
+- [ ] Sintoniza PID (por tentativa e por Ziegler-Nichols)
+- [ ] Projeta compensadores lead/lag e interpreta root locus
+- [ ] Entende a relação PM↔overshoot, BW↔velocidade
+
 ---
 
-### Módulo 5.12: Introdução a Controle Digital
+## Fase 4 — Controle Digital
+
+### Módulo 5.10: Introdução a Controle Digital
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -468,7 +489,7 @@ Na indústria, quase todos os controladores PID são DIGITAIS — rodam num CLP,
 3. **Compare** com PID contínuo (Python) → observe efeito de T diferente (1ms, 10ms, 100ms, 1s)
 4. **Entregável**: PID digital no Arduino + comparação contínuo vs discreto
 
-#### Checkpoint Final — Módulo 5 Completo!
+#### Checkpoint — Fim da Fase Controle Digital
 - [ ] Calcula FFT e interpreta espectro de frequências
 - [ ] Aplica Laplace para resolver circuitos e modelar sistemas
 - [ ] Analisa estabilidade (Routh, Bode, root locus)
@@ -478,7 +499,7 @@ Na indústria, quase todos os controladores PID são DIGITAIS — rodam num CLP,
 
 ---
 
-> Parabéns! Ao completar todos os 5 pilares, você terá o equivalente a um **currículo completo de Engenharia Elétrica**, com a vantagem de ter praticado cada conceito em simulação.
+> Parabéns! Ao completar todos os pilares de Controle e DSP, você terá o equivalente a um **currículo completo de Engenharia Elétrica**, com a vantagem de ter praticado cada conceito em simulação.
 >
 > [Voltar ao Índice](../README.md)
 
@@ -486,7 +507,7 @@ Na indústria, quase todos os controladores PID são DIGITAIS — rodam num CLP,
 
 ## Fase 5 — Processamento Digital de Sinais (DSP)
 
-### Módulo 5.13: Amostragem, Nyquist e Aliasing
+### Módulo 5.11: Amostragem, Nyquist e Aliasing
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -504,10 +525,11 @@ Aliasing é como o efeito "rodas girando ao contrário" em filmes: a câmera (am
 1. **Demonstre aliasing** no Python: gere senóide de 90Hz, amostra a 100Hz → observe "fantasma" em 10Hz
 2. **Calcule** SNR de ADC de 10 bits (Arduino) e 24 bits (áudio profissional)
 3. **Prompt IA**: *"Explique por que CDs usam 44.1kHz de taxa de amostragem. Qual é a frequência máxima que pode reproduzir? Por que não 40kHz?"*
+4. **Entregável**: Demonstração de aliasing em Python + cálculo de SNR + análise de taxa de amostragem
 
 ---
 
-### Módulo 5.14: Transformada Z — Laplace do Mundo Discreto
+### Módulo 5.12: Transformada Z — Laplace do Mundo Discreto
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -526,10 +548,11 @@ Z é para sistemas discretos o que Laplace é para contínuos. A grande diferen�
 1. **Converta** filtro RC analógico H(s)=1/(RCs+1) para discreto usando bilinear (Tustin): s = (2/T)(z-1)/(z+1)
 2. **Plote** resposta em frequência do filtro discreto → compare com o analógico
 3. **Encontre polos** de H(z) → estão dentro do círculo unitário?
+4. **Entregável**: Filtro RC convertido para discreto (bilinear) + resposta em frequência + polos no plano z
 
 ---
 
-### Módulo 5.15: Filtros Digitais FIR e IIR
+### Módulo 5.13: Filtros Digitais FIR e IIR
 **Tempo: 3h**
 
 #### O que memorizar
@@ -550,10 +573,11 @@ Z é para sistemas discretos o que Laplace é para contínuos. A grande diferen�
 3. **Compare**: resposta em frequência, atraso de grupo, número de operações por amostra
 4. **Aplique**: filtre sinal ruidoso (senóide + ruído branco) com ambos → ouça/plote a diferença
 5. **Prompt IA**: *"Quando devo usar FIR vs IIR? Dê 3 cenários reais onde cada um é melhor."*
+6. **Entregável**: Filtros FIR e IIR projetados + comparação (resposta, atraso, custo computacional) + sinal filtrado
 
 ---
 
-### Módulo 5.16: DSP Prático — FFT, Janelamento e Análise Espectral
+### Módulo 5.14: DSP Prático — FFT, Janelamento e Análise Espectral
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -572,6 +596,7 @@ Z é para sistemas discretos o que Laplace é para contínuos. A grande diferen�
 2. **Espectrograma**: gere chirp (frequência crescente) e plote espectrogram com `scipy.signal.spectrogram()`
 3. **Ruído**: gere ruído branco, calcule PSD com `scipy.signal.welch()` → deve ser plano!
 4. **Aplicação real**: analise arquivo de áudio (.wav) → identifique frequências dominantes
+5. **Entregável**: Efeito de janelamento demonstrado + espectrograma + PSD de ruído branco + análise de áudio real
 
 #### Checkpoint — DSP
 - [ ] Entende Nyquist, aliasing, e por que filtro anti-aliasing é obrigatório

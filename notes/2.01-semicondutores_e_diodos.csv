@@ -1,0 +1,41 @@
+O que a junção PN cria e por quê?;Elétrons e lacunas se recombinam na interface, criando zona de depleção com campo elétrico interno — barreira que só polarização direta vence
+Semicondutor tipo N;Dopado com átomos de 5 elétrons de valência (fósforo) \(\to\) excesso de elétrons livres
+Semicondutor tipo P;Dopado com átomos de 3 elétrons de valência (boro) \(\to\) excesso de lacunas
+Polarização direta do diodo;Ânodo (+) mais positivo que cátodo (\(-\)) \(\to\) corrente flui
+Polarização reversa do diodo;Corrente \(\approx 0\) (apenas fuga em nA)
+Tensão de limiar — Silício;\(\approx 0.7\) V
+Tensão de limiar — Germânio;\(\approx 0.3\) V
+Tensão de limiar — LED;\(\approx 1.8{-}3.5\) V (depende da cor)
+Modelo ideal do diodo;Chave: ON = curto-circuito, OFF = circuito aberto
+Modelo prático do diodo;Queda fixa de 0.7 V quando conduzindo
+Modelo exponencial do diodo;\(I = I_s (e^{V/nV_T} - 1)\), onde \(V_T \approx 26\) mV a 25°C
+\(r_d\) (Resistência dinâmica do diodo);\(V_T / I_D\)
+Resistor limitador de LED: \(R\);\(R = (V_{fonte} - V_{LED}) / I_{LED}\)
+Diodo de sinal clássico;1N4148
+Diodo de potência clássico;1N4007
+Retificador meia-onda;1 diodo \(\to\) só passa semionda positiva. \(V_{DC,med} = V_{pico}/\pi\)
+Retificador onda completa (ponte de Graetz);4 diodos \(\to\) ambas semiondas viram positivas. \(V_{DC,med} = 2V_{pico}/\pi\)
+Frequência do ripple (meia-onda, rede 60 Hz);60 Hz
+Frequência do ripple (onda completa, rede 60 Hz);120 Hz
+Filtro capacitivo (função);Capacitor em paralelo com a carga — "alisa" os pulsos DC
+\(V_{ripple}\) (Tensão de ripple no filtro capacitivo);\(V_{ripple} \approx I_{carga} / (f \times C)\)
+Tensão DC com filtro (ponte retificadora);\(\approx V_{pico} - 2V_d\) (\(\approx\)1.4 V de queda nos 2 diodos)
+O que o Zener faz que um diodo normal não faz?;Opera em breakdown reverso controlado — mantém tensão constante desperdiçando excesso como calor
+Regulador Zener (circuito);\(R_{serie}\) + Zener em paralelo com carga \(\to V_{carga} \approx V_Z\)
+\(R_{serie}\) do regulador Zener;\(R = (V_{in} - V_Z) / (I_Z + I_{carga})\)
+Clipper (ceifador);Limita tensão a um valor máx/mín usando diodo + resistor
+Clamper (grampeador);Adiciona nível DC a sinal AC usando capacitor + diodo
+Dobrador de tensão;Cascata de diodos + capacitores: \(V_{out} \approx 2 \times V_{pico}\)
+Proteção ESD com diodos;Diodos nos pinos de I/O para absorver descargas eletrostáticas
+Diodo Schottky;Junção metal-semicondutor: \(V_F \approx 0.2{-}0.3\) V, recovery ultra-rápido. Usado em fontes chaveadas e RF
+PIV (Peak Inverse Voltage);Tensão reversa máxima que o diodo suporta. Ponte retificadora: PIV \(= V_{pico}\)
+Tensão reversa de breakdown;Tensão reversa onde corrente cresce abruptamente — destrutivo em diodo normal, controlado no Zener
+Corrente de recuperação reversa (\(t_{rr}\));Tempo para o diodo "desligar". Schottky: \(\approx 0\). Retificador: \(\approx \mu\)s. Crítico em alta frequência
+Diodo de potência: diferença para diodo de sinal;Maior área de junção, maior \(I_F\), maior \(t_{rr}\), encapsulamento com dissipador
+Curva I-V do diodo ideal vs real;Ideal: degrau em \(V_{th}\). Real: exponencial com \(V_{th}\) gradual e corrente de fuga reversa
+LED: cor vs \(V_F\);Vermelho \(\approx 1.8\) V, Amarelo \(\approx 2.0\) V, Verde \(\approx 2.2\) V, Azul/Branco \(\approx 3.0{-}3.5\) V
+Photodiodo;Opera em polarização reversa — corrente proporcional à luz incidente. Usado em fibra óptica e sensores
+LED: \(V_{fonte} = 5\) V, \(V_F = 2\) V, \(I = 20\) mA → \(R\)?;\(150\,\Omega\) (\((5 - 2)/0.02\))
+Ponte retificadora: \(V_{pico} = 17\) V → \(V_{DC}\) com filtro capacitivo?;\(\approx 15.6\) V (\(V_{pico} - 2V_d = 17 - 1.4\))
+\(V_{AK} = 0.5\) V em diodo de silício → conduzindo ou cortado?;Cortado (\(V_{AK} < 0.7\) V, abaixo do limiar)
+Armadilha: PIV na ponte retificadora = \(2 V_{pico}\)?;Não: PIV \(= V_{pico}\) na ponte de Graetz. \(2V_{pico}\) é para retificador com tap central

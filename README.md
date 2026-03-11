@@ -19,7 +19,7 @@ A ideia é simples: **simular primeiro, entender intuitivamente, depois formaliz
 
 A especialização em hardware hacking é o meu objetivo final — entender sistemas por dentro e saber como quebrá-los.
 
-**Progresso detalhado**: [PROGRESS.md](PROGRESS.md) · **Diário de estudo**: [STUDY_LOG.md](STUDY_LOG.md)
+**Progresso detalhado**: [PROGRESS.md](PROGRESS.md) · **Diário de estudo**: [STUDY_LOG.md](STUDY_LOG.md) · **Guia de absorção**: [GUIA_DE_ESTUDO.md](GUIA_DE_ESTUDO.md)
 
 ---
 
@@ -86,6 +86,7 @@ graph TD
 .
 ├── README.md                        ← este arquivo
 ├── PROGRESS.md                      ← checkboxes de todos os 204 módulos
+├── GUIA_DE_ESTUDO.md                ← guia cold start / projeto ponte / warm start
 ├── progress.py                      ← script automático para ver seu progresso
 │
 ├── 00-math-physics/
@@ -128,7 +129,7 @@ Cada pilar tem seu README com o roadmap completo e cross-references pros outros 
 
 ## Como navegar
 
-**Se tá estudando**: pega o pilar que te interessa, abre o README, segue os módulos na ordem. Cada projeto que terminar, joga em `projects/` usando o template e marca no PROGRESS.md.
+**Se tá estudando**: **leia o [GUIA_DE_ESTUDO.md](GUIA_DE_ESTUDO.md) primeiro** — ele diz pra cada módulo se você deve começar pelos cards (❄️), pelo projeto (🔶), ou por material externo (📚/🔴). Depois pega o pilar que te interessa, abre o README, segue os módulos na ordem. Cada projeto que terminar, joga em `projects/` usando o template e marca no PROGRESS.md.
 
 **Se tá avaliando**: olha o [PROGRESS.md](PROGRESS.md) pra ter uma visão geral, depois entra nas pastas de `projects/` pra ver o que foi feito na prática. O [STUDY_LOG.md](STUDY_LOG.md) mostra consistência.
 

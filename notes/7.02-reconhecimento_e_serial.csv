@@ -1,0 +1,23 @@
+OSINT para IoT: FCC ID;Buscar no fcc.gov revela fotos internas, esquemáticos e informações de RF do dispositivo
+OSINT: firmware público;Muitos fabricantes disponibilizam firmware para download no site de suporte
+Análise visual de PCB: objetivo;Identificar SoC, flash, interfaces debug (UART, JTAG), reguladores de tensão e test points
+Identificação de chips na PCB;Ler markings (part number) e buscar datasheet — revela toda a arquitetura do alvo
+UART no PCB: como identificar pinos;4 pads alinhados próximos à borda. TX oscila no boot (analisador lógico), RX = HIGH, GND = 0 V, VCC = 3.3 V
+Baud rate desconhecido: como descobrir;Medir duração do bit mais curto no analisador lógico. \(1/T_{bit}\) = baud rate
+Lixo na tela do terminal serial;Causa provável: baud rate errado
+Nada aparece no UART;Primeira ação: inverter TX/RX
+Pinout SPI flash SOIC-8;P1=CS, P2=MISO, P3=WP, P4=GND, P5=MOSI, P6=CLK, P7=HOLD, P8=VCC
+Opcode de leitura SPI;0x03 + 3 bytes de endereço \(\to\) dados fluem por MISO
+Dump de flash com CH341A;SOP8 clip no chip + flashrom para ler/escrever
+Endereço EEPROM I2C típico;0x50 a 0x57 (pinos A0-A2 definem endereço)
+i2cdetect -y 1;Lista todos os dispositivos no barramento I2C
+EEPROMs guardam;Números de série, chaves de licença, configurações, calibração
+Full Serial Attack Chain;UART \(\to\) shell \(\to\) identificar flash \(\to\) dump SPI \(\to\) extrair filesystem \(\to\) analisar
+Como identificar chip desconhecido na PCB?;Ler marking, procurar datasheet pelo part number. Sem marking: medir pinos com multímetro (VCC, GND, I/O)
+Pistas visuais para identificar camadas da PCB;Placa fina = 2L, mais espessa = 4+L. Via-in-pad e BGA sugerem multicamadas. Vias cegas/enterradas = fabricação avançada
+Leitura de datasheet: seções-chave para HH;Pinout, absolute maximum ratings, interface de comunicação, timing diagrams, registradores de configuração
+Test pads e headers não populados;Pistas para UART/JTAG/SWD de debug deixados na produção. Procurar grupos de 3-4 pads alinhados
+Credenciais padrão em IoT;root/root, admin/admin, admin/password, toor/toor. Sempre testar credenciais de fábrica do fabricante
+nmap para descoberta IoT;nmap -sV -p- alvo. Portas comuns: 23 (Telnet), 80/443 (Web), 554 (RTSP), 8080 (debug), 5555 (ADB)
+Identificar versão de firmware;Strings no dump (grep -i "version"), cabeçalho do bootloader, interface web/CLI, nome do arquivo no servidor de update
+Logic analyzer vs osciloscópio para serial;Logic analyzer: captura digital, decode de protocolo, muitos canais. Osciloscópio: analisa qualidade do sinal, timing, tensão

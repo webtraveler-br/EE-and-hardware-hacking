@@ -1,0 +1,59 @@
+Por que controle digital dominou a indústria?;Microcontrolador faz PID em software — muda parâmetros sem trocar componentes, implementa anti-windup, logging e adaptação
+O que \(z^{-1}\) significa em hardware?;Um registrador (flip-flop D) — atraso de exatamente 1 clock. Filtro digital = cadeia de registradores + multiplicadores
+Cadeia de controle digital;Sensor \(\to\) ADC \(\to\) processamento \(\to\) DAC \(\to\) atuador
+Relação Transformada Z e Laplace;\(z = e^{sT}\) — Z é a equivalente discreta de Laplace
+Estabilidade em Z;Todos os polos dentro do círculo unitário (\(|z| < 1\))
+Semiplano esquerdo (Laplace) \(\leftrightarrow\) Z;Mapeia no interior do círculo unitário
+\(z^{-1}\) (significado);Atraso de 1 amostra (= registrador em hardware digital)
+PID digital (equação de diferenças);\(u[n] = u[n{-}1] + K_p(e[n]{-}e[n{-}1]) + K_i T e[n] + \frac{K_d}{T}(e[n]{-}2e[n{-}1]+e[n{-}2])\)
+Escolha do período \(T\) em controle digital;\(T \leq \tau/10\) (10\(\times\) mais rápido que a constante de tempo do sistema)
+Loop de controle em MCU;Timer \(\to\) ISR \(\to\) lê ADC \(\to\) calcula PID \(\to\) atualiza PWM
+Discretização de derivada;\((e[n] - e[n{-}1]) / T\) (diferença finita)
+Discretização de integral;Soma acumulada: \(\sum e[k] \times T\)
+Conversão \(s \to z\) (Bilinear/Tustin);\(s = (2/T)(z-1)/(z+1)\)
+Por que aliasing é irreversível?;Duas frequências diferentes produzem as mesmas amostras — após amostragem, não dá para distinguir a original
+Teorema de Nyquist-Shannon;Para reconstruir perfeitamente: \(f_s \geq 2 \times f_{max}\)
+Frequência de Nyquist;\(f_s / 2\) — frequência máxima representável sem aliasing
+Aliasing (definição);Frequência acima de Nyquist "dobra" e aparece como frequência falsa mais baixa. Irreversível
+Filtro anti-aliasing;Passa-baixa analógico obrigatório ANTES do ADC (corta \(f > f_s/2\)). Deve ser analógico pois digital age após o ADC
+Quantização;Converter amplitude contínua em \(2^N\) níveis discretos
+SNR máximo de ADC;\(6.02N + 1.76\) dB (onde \(N\) = número de bits)
+Oversampling;Amostrar muito acima de Nyquist \(\Rightarrow\) relaxa exigência do filtro anti-aliasing
+\(X(z)\) (Transformada Z);\(X(z) = \sum x[n] \cdot z^{-n}\) — equivalente discreta de Laplace
+Par Z: \(\delta[n]\);\(\delta[n] \leftrightarrow 1\)
+Par Z: \(u[n]\);\(u[n] \leftrightarrow z/(z-1)\)
+Par Z: \(a^n u[n]\);\(a^n u[n] \leftrightarrow z/(z-a)\)
+Atraso em Z: \(\mathcal{Z}\{x[n{-}1]\}\);\(z^{-1} X(z)\)
+\(H(z)\) (Função de transferência discreta);\(Y(z)/X(z)\) — mesma ideia que \(G(s)\), mas para sistemas discretos
+FIR (Finite Impulse Response);\(y[n] = \sum b_k \cdot x[n{-}k]\) — usa somente entradas passadas, sem feedback
+FIR: estabilidade;Sempre estável (sem polos, sem feedback)
+FIR: fase linear;Possível — atraso constante para todas as frequências (crítico em áudio e comunicações)
+FIR: desvantagem;Precisa de mais coeficientes para mesma atenuação que IIR
+IIR (Infinite Impulse Response);\(y[n] = \sum b_k x[n{-}k] - \sum a_k y[n{-}k]\) — usa saídas passadas (feedback)
+IIR: vantagem;Mais eficiente — menos coeficientes para mesma performance que FIR
+IIR: risco;Pode ser instável (polos fora do círculo unitário)
+IIR: origem;Derivados de filtros analógicos clássicos (Butterworth, Chebyshev, Elliptic)
+Filtro Butterworth;Maximamente plano na banda passante (sem ripple)
+Filtro Chebyshev;Ripple na banda passante, mas transição mais abrupta que Butterworth
+Design FIR por janelamento;Truncar \(h[n]\) ideal com janela (Hamming, Hanning, Blackman)
+FFT de \(N\) pontos: resolução \(\Delta f\);\(\Delta f = f_s / N\)
+Spectral leakage (vazamento espectral);Energia de uma frequência "vaza" para bins vizinhos quando a janela FFT corta o sinal no meio de um ciclo
+Zero-padding na FFT;Adicionar zeros NÃO melhora resolução real, apenas interpola o espectro (aparência mais suave)
+Janela retangular (sem janela);Melhor resolução em frequência, pior vazamento espectral
+Janela Hanning/Hamming;Bom compromisso entre resolução e vazamento espectral
+Janela Blackman;Mínimo vazamento espectral, pior resolução em frequência
+Espectrograma (STFT);FFT em janelas deslizantes \(\Rightarrow\) gráfico tempo \(\times\) frequência \(\times\) amplitude. FFT é foto, espectrograma é filme
+PSD (Power Spectral Density);Potência por banda de frequência. Unidade: V\(^2\)/Hz
+Método de Welch;Estimativa de PSD com média de segmentos sobrepostos \(\Rightarrow\) reduz variância
+ADC de \(N = 10\) bits → SNR máximo?;\(62\) dB (\(6.02 \times 10 + 1.76\))
+FFT com \(N = 2048\), \(f_s = 44100\) Hz → resolução \(\Delta f\)?;\(\approx 21.5\) Hz (\(44100 / 2048\))
+Sinal com \(f_{max} = 4\) kHz → \(f_s\) mínima (Nyquist)?;\(8\) kHz (\(2 \times 4000\))
+Sistema com \(\tau = 50\) ms → \(T\) máximo para controle digital?;\(5\) ms (\(\tau / 10\))
+\(\mathcal{Z}\{(0.8)^n u[n]\}\)?;\(z/(z - 0.8)\) (par Z: \(a^n u[n] \leftrightarrow z/(z-a)\))
+Aplicação exige fase linear (áudio/comunicações) → FIR ou IIR?;FIR — coeficientes simétricos garantem atraso constante em todas as frequências
+MCU com pouca RAM, filtro passa-baixa de ordem alta → FIR ou IIR?;IIR — mesma atenuação com menos coeficientes que FIR
+Vazamento espectral severo na FFT → qual janela aplicar?;Blackman — mínimo vazamento, ao custo de pior resolução em frequência
+Ripple na banda passante é aceitável, precisa transição abrupta → tipo de filtro?;Chebyshev — transição mais abrupta que Butterworth, ao custo de ripple
+Armadilha: zero-padding na FFT melhora a resolução espectral?;Não — apenas interpola (suaviza). Resolução real = \(f_s / N\) amostras originais
+Armadilha: filtro anti-aliasing pode ser implementado em software (digital)?;Não — deve ser analógico ANTES do ADC. Após amostragem, aliasing já é irreversível
+Armadilha: polo de \(H(z)\) em \(z = 1\) → sistema estável?;Não — estabilidade exige \(|z| < 1\) (estritamente dentro). \(|z| = 1\) é marginalmente estável

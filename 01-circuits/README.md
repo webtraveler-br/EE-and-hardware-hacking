@@ -20,17 +20,40 @@
 
 | Fase | Módulos | Foco | Horas |
 |------|---------|------|-------|
-| **DC Básico** | 1.1–1.5 | Tensão, corrente, resistência, leis de Kirchhoff | ~10h |
-| **DC Avançado** | 1.6–1.9 | Thévenin, Norton, superposição, análise nodal/malha | ~9h |
-| **Transitórios** | 1.10–1.13 | Capacitores, indutores, circuitos RC/RL/RLC | ~9h |
-| **AC** | 1.14–1.18 | Corrente alternada, fasores, impedância, potência, filtros | ~12h |
+| **DC Básico** | 1.1–1.5 | Tensão, corrente, resistência, código de cores, Kirchhoff, superposição | ~10h |
+| **DC Avançado** | 1.6–1.8 | Thévenin, Norton, análise nodal/malha, fontes dependentes | ~9h |
+| **Transitórios** | 1.9–1.11 | Capacitores, indutores, circuitos RC/RL/RLC, Timer 555 | ~9h |
+| **AC** | 1.12–1.15 | Corrente alternada, fasores, impedância, potência, filtros | ~12h |
+
+
+### Prontidão por Módulo
+
+| Módulo | Tema | Absorção |
+|--------|------|----------|
+| 1.01 | Tensão, Corrente e Resistência | ❄️ Cold Start OK |
+| 1.02 | Código de Cores e Datasheets | ❄️ Cold Start OK |
+| 1.03 | Resistores em Série e Paralelo | ❄️ Cold Start OK |
+| 1.04 | Leis de Kirchhoff — KVL e KCL | ❄️ Cold Start OK |
+| 1.05 | Fontes Reais e Superposição | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 1.06 | Thévenin e Norton | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 1.07 | Análise Nodal e de Malhas | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 1.08 | Fontes Dependentes e Fluxo de Decisão DC | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 1.09 | Capacitores | ❄️ Cold Start OK |
+| 1.10 | Indutores | ❄️ Cold Start OK |
+| 1.11 | Circuito RLC, Ressonância e Aplicações | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 1.12 | Senóides e Valores RMS | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 1.13 | Impedância | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 1.14 | Fasores | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 1.15 | Potência AC e Filtros | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+
+> **Legenda**: ❄️ Cards funcionam sozinhos · 🔶 Fazer projeto ANTES dos cards · 📚 Assistir vídeo/ler antes · 🔴 Material externo obrigatório
 
 ---
 
 ## Fase 1 — Corrente Contínua: Fundamentos
 
-### Módulo 1.1: Tensão, Corrente e Resistência — Os 3 Pilares
-**Tempo: 2h**
+### Módulo 1.1: Tensão, Corrente e Resistência
+**Tempo: 1.5h**
 
 #### O que memorizar
 - **Tensão (V)**: diferença de potencial elétrico entre dois pontos. Unidade: Volt (V). É a "pressão" que empurra cargas
@@ -79,7 +102,7 @@ A Lei de Ohm diz: com mais pressão (tensão), mais água flui (corrente). Com c
 
 ---
 
-### Módulo 1.1B: Lendo Componentes Reais — Código de Cores e Datasheets
+### Módulo 1.2: Código de Cores e Datasheets
 **Tempo: 1h**
 
 #### O que memorizar
@@ -101,7 +124,7 @@ Na simulação, você escolhe "1kΩ" e pronto. Na vida real, precisa pegar o res
 
 ---
 
-### Módulo 1.2: Resistores em Série e Paralelo
+### Módulo 1.3: Resistores em Série e Paralelo
 **Tempo: 2h**
 
 #### O que memorizar
@@ -140,7 +163,7 @@ Na simulação, você escolhe "1kΩ" e pronto. Na vida real, precisa pegar o res
 
 ---
 
-### Módulo 1.3: Leis de Kirchhoff — KVL e KCL
+### Módulo 1.4: Leis de Kirchhoff — KVL e KCL
 **Tempo: 2h**
 
 #### O que memorizar
@@ -182,8 +205,8 @@ Na simulação, você escolhe "1kΩ" e pronto. Na vida real, precisa pegar o res
 
 ---
 
-### Módulo 1.4: Fontes Reais, Potência e Eficiência
-**Tempo: 1.5h**
+### Módulo 1.5: Fontes Reais e Superposição
+**Tempo: 3.5h**
 
 #### O que memorizar
 - **Fonte ideal de tensão**: mantém V constante independente da corrente. Resistência interna = 0. **Não existe na realidade**
@@ -215,8 +238,7 @@ Uma bateria de carro tem V = 12.6V quando descarregada em repouso. Mas quando vo
 
 ---
 
-### Módulo 1.5: Circuitos com Múltiplas Fontes — Superposição
-**Tempo: 2h**
+#### Parte B: Superposição — Múltiplas Fontes
 
 #### O que memorizar
 - **Princípio da Superposição**: em circuitos lineares com múltiplas fontes, a resposta total é a soma das respostas individuais
@@ -366,8 +388,7 @@ Um transistor BJT é essencialmente uma **fonte de corrente controlada por corre
 
 ---
 
-### Módulo 1.9: Projeto DC Integrado — Analisador de Circuito
-**Tempo: 2h**
+#### Parte B: Projeto DC Integrado — Analisador de Circuito
 
 #### O que memorizar
 - **Fluxo de análise DC completo**: identificar série/paralelo → simplificar → Thévenin/Norton → nodal/malhas → resolver
@@ -400,7 +421,7 @@ Um transistor BJT é essencialmente uma **fonte de corrente controlada por corre
 
 ## Fase 3 — Transitórios: Quando o Tempo Importa
 
-### Módulo 1.10: Capacitores — Armazenando Carga
+### Módulo 1.9: Capacitores — Armazenando Carga
 **Tempo: 2h**
 
 #### O que memorizar
@@ -446,7 +467,7 @@ Capacitor = **balde de água**. A tensão é o nível da água. A corrente é o 
 
 ---
 
-### Módulo 1.11: Indutores — Armazenando Campo Magnético
+### Módulo 1.10: Indutores — Armazenando Campo Magnético
 **Tempo: 2h**
 
 #### O que memorizar
@@ -483,8 +504,8 @@ Indutor = **roda d'água pesada** (volante de inércia). Uma vez girando (corren
 
 ---
 
-### Módulo 1.12: Circuito RLC — O Sistema Completo
-**Tempo: 2.5h**
+### Módulo 1.11: Circuito RLC, Ressonância e Aplicações
+**Tempo: 4.5h**
 
 #### O que memorizar
 - **RLC série**: R + L + C em série com uma fonte. Equação: `L × d²i/dt² + R × di/dt + i/C = V_fonte`
@@ -517,8 +538,7 @@ Se R é pequeno (pouco atrito), o balanço oscila muitas vezes (subamortecido, Q
 
 ---
 
-### Módulo 1.13: Aplicações de Transitórios — Timer 555 e PWM
-**Tempo: 2h**
+#### Parte B: Timer 555 e PWM
 
 #### O que memorizar
 - **Timer 555**: CI analógico clássico que usa carga/descarga de capacitor para gerar pulsos
@@ -553,7 +573,7 @@ O 555 é a **aplicação perfeita** de tudo que você aprendeu: capacitor carreg
 
 ## Fase 4 — Corrente Alternada: O Mundo Real
 
-### Módulo 1.14: Introdução a AC — Senóides e Valores RMS
+### Módulo 1.12: Introdução a AC — Senóides e Valores RMS
 **Tempo: 2h**
 
 #### O que memorizar
@@ -584,7 +604,7 @@ A rede elétrica da sua casa NÃO é 127V constante — é uma onda senoidal que
 
 ---
 
-### Módulo 1.15: Impedância — Resistência no Mundo AC
+### Módulo 1.13: Impedância — Resistência no Mundo AC
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -621,7 +641,7 @@ Números complexos parecem assustadores, mas são apenas uma ferramenta para ras
 
 ---
 
-### Módulo 1.16: Fasores e Análise de Circuitos AC
+### Módulo 1.14: Fasores e Análise de Circuitos AC
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -648,8 +668,8 @@ Fasores são o truque genial que transformou AC complexo em cálculos simples. E
 
 ---
 
-### Módulo 1.17: Potência em AC — Ativa, Reativa e Aparente
-**Tempo: 2h**
+### Módulo 1.15: Potência AC e Filtros
+**Tempo: 4.5h**
 
 #### O que memorizar
 - **Potência Ativa (P)**: potência real, faz trabalho útil (calor, luz, movimento). Unidade: Watt (W). `P = V×I×cos(φ)`
@@ -679,8 +699,7 @@ Imagine que você pede uma cerveja num bar. A espuma é a **potência reativa** 
 
 ---
 
-### Módulo 1.18: Filtros Passivos e Ressonância
-**Tempo: 2.5h**
+#### Parte B: Filtros Passivos e Ressonância
 
 #### O que memorizar
 - **Filtro passa-baixas (RC)**: `f_c = 1/(2πRC)`. Deixa passar frequências abaixo de f_c, atenua acima. -20dB/década
@@ -709,7 +728,7 @@ Filtros são os "peneiradores" de frequência. O rádio FM funciona com um filtr
 6. **Entregável**: 3 filtros + Bode plots + equalizador simulado
 
 #### Checkpoint Final — Módulo 1 Completo!
-Parabéns! Ao completar todos os 18 módulos, você deve conseguir:
+Parabéns! Ao completar todos os 15 módulos, você deve conseguir:
 - [ ] Analisar qualquer circuito DC com múltiplas fontes e componentes
 - [ ] Calcular transitórios RC/RL/RLC e dimensionar timers
 - [ ] Trabalhar com fasores e impedância em circuitos AC

@@ -1,0 +1,74 @@
+Modulação — definição;Processo de variar amplitude, frequência ou fase de uma portadora para transmitir informação
+Portadora (carrier) — papel no sistema de comunicação;Onda senoidal de alta frequência que transporta o sinal de informação (mensagem)
+Banda base (baseband);Faixa de frequência original do sinal de mensagem, antes da modulação
+Banda passante (passband);Faixa de frequência ocupada pelo sinal modulado em torno da portadora
+AM — Modulação em Amplitude;\(s(t) = [1 + m(t)] A_c \cos(2\pi f_c t)\); varia a amplitude da portadora
+Índice de modulação AM \(m_a\);\(m_a = \frac{A_m}{A_c}\); se \(m_a > 1\) ocorre sobre-modulação (distorção)
+Largura de banda AM (DSB-FC);\(BW = 2 f_m\), onde \(f_m\) é a máxima frequência do sinal modulante
+AM-DSB-SC — portadora suprimida;Elimina a portadora, transmite apenas bandas laterais; economia de potência mas requer detecção coerente
+SSB — Single Sideband;Transmite apenas 1 banda lateral; \(BW = f_m\); metade da largura de AM convencional
+FM — Modulação em Frequência;\(f_i(t) = f_c + k_f m(t)\); varia a freq. instantânea proporcionalmente ao sinal
+Índice de modulação FM \(\beta\);\(\beta = \frac{\Delta f}{f_m}\); \(\Delta f = k_f A_m\) é o desvio máximo de frequência
+Largura de banda FM (regra de Carson);\(BW \approx 2(\Delta f + f_m) = 2 f_m (\beta + 1)\)
+PM — Modulação em Fase;Fase instantânea proporcional ao sinal: \(\phi(t) = k_p m(t)\); relacionada a FM via derivada
+AM vs FM — comparação de robustez a ruído;FM é mais robusta a ruído que AM, ao custo de maior largura de banda
+ASK (Amplitude-Shift Keying);Amplitude da portadora assume valores discretos para codificar bits; simples mas sensível a ruído
+FSK (Frequency-Shift Keying);Frequência da portadora alterna entre \(f_1\) (bit 0) e \(f_2\) (bit 1); robusto a ruído
+PSK (Phase-Shift Keying);Fase da portadora codifica os bits; BPSK usa 0° e 180°
+BPSK — bits por símbolo e BER;\(1\) bit/símbolo; \(P_e = Q\left(\sqrt{\frac{2E_b}{N_0}}\right)\)
+QPSK — Quadrature PSK;\(2\) bits/símbolo (4 fases: 45°, 135°, 225°, 315°); mesma BER do BPSK por bit
+QAM — Quadrature Amplitude Modulation;Combina variação de amplitude e fase; \(M\)-QAM transmite \(\log_2 M\) bits/símbolo
+16-QAM — constelação;16 pontos no plano I-Q; 4 bits/símbolo; usado em Wi-Fi e LTE
+Taxa de símbolo (baud) vs taxa de bits;Taxa de bits \(= R_s \cdot \log_2 M\), onde \(R_s\) é a taxa de símbolos em baud
+Diagrama de constelação — interpretação;Eixo I (in-phase) e Q (quadratura); cada ponto = 1 símbolo, distância entre pontos afeta BER
+Teorema de Shannon-Hartley;\(C = B \log_2(1 + \text{SNR})\); capacidade máxima do canal em bits/s
+Limite de Shannon — significado prático;Taxa máxima com erro arbitrariamente pequeno; acima de \(C\) erros são inevitáveis
+SNR (Signal-to-Noise Ratio) em dB;\(\text{SNR}_{dB} = 10 \log_{10}(P_s/P_n)\)
+\(E_b/N_0\) — energia por bit sobre densidade de ruído;Métrica fundamental para comparar modulações: \(E_b/N_0 = \frac{S}{N} \cdot \frac{B}{R_b}\)
+BER — Bit Error Rate;Fração de bits recebidos com erro; depende de \(E_b/N_0\) e da modulação usada
+Canal AWGN (Additive White Gaussian Noise);Modelo de canal com ruído branco gaussiano somado ao sinal; base para análise de BER
+Largura de banda de Nyquist (banda base);\(B_{min} = R_s / 2\); mínima largura de banda para transmitir \(R_s\) símbolos/s sem ISI
+Taxa máxima de Nyquist sem ISI;\(R_s = 2B\) símbolos/s para canal de banda \(B\) Hz
+ISI — Interferência Intersimbólica;Sobreposição de pulsos consecutivos quando a banda do canal é insuficiente; combatida com equalização
+Filtro casado (Matched Filter);Maximiza SNR na amostragem; resposta ao impulso = versão invertida no tempo do pulso transmitido
+Filtro cosseno levantado — fator roll-off \(\alpha\);\(BW = \frac{R_s}{2}(1+\alpha)\); \(\alpha = 0\) é Nyquist ideal, \(\alpha = 1\) dobra a banda
+OFDM — Orthogonal Frequency-Division Multiplexing;Divide dados em sub-portadoras ortogonais; robusto contra multipercurso; usa FFT/IFFT
+OFDM — vantagem contra multipercurso;Prefixo cíclico absorve atrasos, transformando canal seletivo em frequência em canais planos paralelos
+OFDM — relação com FFT;Modulação: IFFT gera sinal no tempo; demodulação: FFT recupera sub-portadoras
+DSSS (Direct-Sequence Spread Spectrum);Multiplica dados por código PN de alta taxa; espalha energia na frequência; ganho de processamento \(= \frac{BW_{ss}}{R_b}\)
+FHSS (Frequency-Hopping Spread Spectrum);Portadora salta entre frequências segundo sequência pseudoaleatória; usado em Bluetooth
+Ganho de processamento (Spread Spectrum);\(G_p = \frac{BW_{\text{espalhada}}}{BW_{\text{dados}}}\); melhora rejeição de interferência
+Multiplexação FDM;Múltiplos sinais compartilham a banda em frequências distintas simultaneamente
+Multiplexação TDM;Múltiplos sinais compartilham o canal em intervalos de tempo alternados
+CDMA — Code Division Multiple Access;Usuários transmitem simultaneamente na mesma banda separados por códigos ortogonais
+Enlace de comunicação — componentes básicos;Fonte → Codificador → Modulador → Canal → Demodulador → Decodificador → Destino
+Codificação de canal — objetivo;Adicionar redundância para detectar/corrigir erros introduzidos pelo canal
+Código de repetição — exemplo simples;Cada bit transmitido \(n\) vezes; taxa de código \(R = 1/n\); detecção por maioria
+Código de Hamming — distância mínima;Distância mínima \(d_{min} = 3\); corrige 1 erro, detecta 2 erros
+Taxa de código (code rate) \(R\);\(R = k/n\); \(k\) bits de informação em \(n\) bits transmitidos; quanto menor \(R\), mais redundância
+Link budget — equação de Friis (forma dB);\(P_r = P_t + G_t + G_r - L_p\), onde \(L_p = 20\log_{10}(4\pi d/\lambda)\) é a perda no espaço livre
+Margem de desvanecimento (fade margin);Potência extra acima da sensibilidade mínima para compensar variações do canal
+Ruído térmico — potência;\(N = k_B T B\); \(k_B = 1.38 \times 10^{-23}\) J/K, \(T\) em kelvin, \(B\) em Hz
+Figura de ruído \(NF\) (dB);\(NF = 10\log_{10}(F)\); \(F = \text{SNR}_{in}/\text{SNR}_{out}\); mede degradação de SNR pelo receptor
+Temperatura de ruído equivalente;\(T_e = T_0 (F - 1)\), com \(T_0 = 290\) K
+Eficiência espectral;\(\eta = R_b / BW\) em bits/s/Hz; QAM-64 atinge \(\eta \approx 6\) bits/s/Hz
+MIMO — conceito básico;Múltiplas antenas no transmissor e receptor; aumenta capacidade e/ou diversidade
+Diversidade — objetivo em comunicações;Combater desvanecimento transmitindo réplicas do sinal por caminhos independentes
+Fading (desvanecimento) — tipos principais;Plano (flat) vs seletivo em frequência; lento vs rápido (em relação ao tempo de símbolo)
+Modulação digital — tabela resumo bits/símbolo;BPSK: 1; QPSK: 2; 8-PSK: 3; 16-QAM: 4; 64-QAM: 6; 256-QAM: 8
+PCM — Pulse Code Modulation;Amostragem + quantização + codificação binária de sinal analógico; base da telefonia digital
+Teorema da amostragem (Nyquist-Shannon);\(f_s \geq 2 f_{max}\) para reconstrução perfeita do sinal
+Quantização — erro máximo;\(\Delta/2\), onde \(\Delta = \frac{V_{pp}}{2^n}\) é o passo de quantização para \(n\) bits
+SNR de quantização (PCM);\(\text{SNR}_q \approx 6.02n + 1.76\) dB para \(n\) bits de quantização
+Canal \(B = 200\) kHz, SNR = 15 → capacidade de Shannon?;\(800\) kbit/s (\(200000 \times \log_2(16) = 200000 \times 4\))
+64-QAM → bits por símbolo?;\(6\) (\(\log_2 64\))
+FM: \(\Delta f = 75\) kHz, \(f_m = 15\) kHz → BW (Carson)?;\(180\) kHz (\(2(\Delta f + f_m) = 2 \times 90\))
+Canal \(B = 4\) kHz → taxa máxima de Nyquist sem ISI?;\(8000\) símbolos/s (\(R_s = 2B\))
+PCM com \(n = 8\) bits → SNR de quantização?;\(\approx 49.9\) dB (\(6.02 \times 8 + 1.76\))
+\(f_s = 44100\) Hz → freq. máxima reconstituível?;\(22050\) Hz (\(f_s/2\), teorema de Nyquist-Shannon)
+Link budget: \(P_t = 20\) dBm, \(G_t = 10\) dB, \(G_r = 3\) dB, \(L_p = 100\) dB → \(P_r\)?;\(-67\) dBm (\(20 + 10 + 3 - 100\))
+Canal com multipercuàrso severo → qual modulação?;OFDM (prefixo cíclico absorve atrasos, sub-portadoras estreitas)
+Ambiente militar com interferência intencional → técnica de espalhamento?;DSSS (ganho de processamento rejeita interferência de banda estreita)
+SNR alto, maximizar eficiência espectral → modulação?;QAM de alta ordem (64-QAM ou 256-QAM): mais bits/símbolo
+Armadilha: QAM-16 tem 16 bits por símbolo?;Não: \(\log_2 16 = 4\) bits/símbolo. O número no nome é pontos na constelação
+Armadilha: dobrar SNR dobra capacidade de Shannon?;Não: \(C = B\log_2(1+\text{SNR})\). Relação logarítmica, não linear

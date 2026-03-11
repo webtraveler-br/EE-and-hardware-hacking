@@ -4,10 +4,10 @@
 >
 > **Ferramentas**: [LTspice](https://www.analog.com/ltspice) (análise precisa com modelos SPICE reais) + [Falstad](https://www.falstad.com/circuit/) (intuição visual)
 >
-> **Pré-requisitos**: [Módulo 1](../01-circuits/README.md) completo (KVL/KCL, Thévenin, fasores, filtros). [Módulo 0](../00-math-physics/README.md) Fases 9-10 (EM, semicondutores/junção PN) para entender a física dos diodos e transistores.
+> **Pré-requisitos**: [Módulo 1](../01-circuits/README.md) completo (KVL/KCL, Thévenin, fasores, filtros). [Módulo 0](../00-math-physics/README.md) Módulos 0.25-0.28 (EM, semicondutores/junção PN) para entender a física dos diodos e transistores.
 >
 > **Conexões com outros módulos**:
-> - **Base de**: [Módulo 0](../00-math-physics/README.md) — junção PN (Mód 0.36), bandas de energia (Mód 0.35), ondas EM (Mód 0.34 → Módulos 2.17-2.19 RF), probabilidade (Mód 0.24-0.25 → tolerâncias)
+> - **Base de**: [Módulo 0](../00-math-physics/README.md) — junção PN e bandas de energia (Mód 0.28), ondas EM (Mód 0.27 → Módulos 2.12-2.14 RF), probabilidade (Mód 0.21-0.22 → tolerâncias)
 > - **Base de**: [Módulo 1](../01-circuits/README.md) — Thévenin (→ polarização BJT), divisor de tensão (→ Zener), filtros RC (→ filtros ativos), potência (→ conversores)
 > - **Alimenta**: [Módulo 3](../03-digital-embedded/README.md) (MOSFET como chave digital), [Módulo 4](../04-power-industrial/README.md) (retificadores, inversores, VFDs), [Módulo 6 L.6](../06-lab/README.md) (fonte real 5V)
 > - **Segurança**: [HH.1.1](../07-hardware-hacking/README.md) (níveis lógicos, pull-ups), [HH.6.1](../07-hardware-hacking/README.md) (RF/SDR), [HH Avançado B.1](../08-hardware-hacking-advanced/README.md) (integridade de sinal)
@@ -20,10 +20,33 @@
 
 | Fase | Módulos | Foco | Horas |
 |------|---------|------|-------|
-| **Semicondutores Básicos** | 2.1–2.4 | Diodos, retificadores, Zener, LEDs | ~9h |
-| **Transistores** | 2.5–2.8 | BJT, MOSFET, amplificação, chaveamento | ~10h |
-| **Amplificadores Operacionais** | 2.9–2.12 | Amp-ops, filtros ativos, osciladores | ~9h |
-| **Eletrônica de Potência** | 2.13–2.16 | Reguladores, Buck/Boost, inversores, fontes | ~10h |
+| **Semicondutores Básicos** | 2.1–2.3 | Diodos, retificadores, Zener, LEDs | ~7h |
+| **Transistores** | 2.4–2.6 | BJT, MOSFET, amplificação, chaveamento | ~10h |
+| **Amplificadores Operacionais** | 2.7–2.8 | Amp-ops, filtros ativos, osciladores | ~9h |
+| **Eletrônica de Potência** | 2.9–2.11 | Reguladores, Buck/Boost, inversores, fontes | ~10h |
+| **RF e EMC** | 2.12–2.14 | Linhas de transmissão, Smith, parâmetros S, EMC | ~8h |
+
+
+### Prontidão por Módulo
+
+| Módulo | Tema | Absorção |
+|--------|------|----------|
+| 2.01 | O Diodo — A Válvula Eletrônica | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 2.02 | Retificadores — De AC para DC | ❄️ Cold Start OK |
+| 2.03 | Diodo Zener e Aplicações de Diodos | ❄️ Cold Start OK |
+| 2.04 | BJT como Chave | ❄️ Cold Start OK |
+| 2.05 | BJT como Amplificador | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 2.06 | MOSFET e Projeto Integrado | ❄️ Cold Start OK |
+| 2.07 | Amp-Op — Regras de Ouro | ❄️ Cold Start OK |
+| 2.08 | Filtros, Osciladores e Fonte Regulada | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 2.09 | Reguladores Lineares vs Chaveados | ❄️ Cold Start OK |
+| 2.10 | Conversor Buck (Step-Down) | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 2.11 | Boost, Buck-Boost e Inversores | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 2.12 | Linhas de Transmissão | 🔴 Material Externo Obrigatório — cards insuficientes para cold start |
+| 2.13 | Carta de Smith e Parâmetros S | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+| 2.14 | EMC — Compatibilidade Eletromagnética | 🔶 Projeto Ponte — fazer projeto ANTES dos cards |
+
+> **Legenda**: ❄️ Cards funcionam sozinhos · 🔶 Fazer projeto ANTES dos cards · 📚 Assistir vídeo/ler antes · 🔴 Material externo obrigatório
 
 ---
 
@@ -97,8 +120,8 @@ Todo carregador de celular, fonte de notebook, e TV começa com um **retificador
 
 ---
 
-### Módulo 2.3: Diodo Zener — O Regulador Natural
-**Tempo: 1.5h**
+### Módulo 2.3: Diodo Zener e Aplicações de Diodos
+**Tempo: 3h**
 
 #### O que memorizar
 - **Zener**: diodo projetado para operar em breakdown reverso — mantém tensão **constante** (V_Z) na reversa
@@ -119,8 +142,7 @@ O Zener é como uma **válvula de pressão reguladora** — não importa quanta 
 
 ---
 
-### Módulo 2.4: Aplicações de Diodos — Clamping, Clipping, Proteção
-**Tempo: 1.5h**
+#### Parte B: Aplicações de Diodos — Clamping, Clipping, Proteção
 
 #### O que memorizar
 - **Clipper (ceifador)**: limita tensão a um valor máximo/mínimo. Diodo + resistor
@@ -145,7 +167,7 @@ O Zener é como uma **válvula de pressão reguladora** — não importa quanta 
 
 ## Fase 2 — Transistores: O Coração da Eletrônica
 
-### Módulo 2.5: BJT — O Transistor Bipolar como Chave
+### Módulo 2.4: BJT — O Transistor Bipolar como Chave
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -181,7 +203,7 @@ O BJT é como um **registro de água controlado por um cano fino**. Um fluxo PEQ
 
 ---
 
-### Módulo 2.6: BJT — O Transistor como Amplificador
+### Módulo 2.5: BJT — O Transistor como Amplificador
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -216,8 +238,8 @@ Polarizar um BJT é como posicionar uma bola no MEIO de uma ladeira. Se colocar 
 
 ---
 
-### Módulo 2.7: MOSFET — O Transistor Moderno
-**Tempo: 2.5h**
+### Módulo 2.6: MOSFET e Projeto Integrado
+**Tempo: 4.5h**
 
 #### O que memorizar
 - **MOSFET**: Gate (G), Drain (D), Source (S). Gate isolado = corrente de gate ≈ 0! (impedância de entrada ≈ infinita)
@@ -242,8 +264,7 @@ Se o BJT é um registro controlado por fluxo de água na base (corrente), o MOSF
 
 ---
 
-### Módulo 2.8: Projeto Integrado — Chaveamento e Amplificação
-**Tempo: 2h**
+#### Parte B: Projeto Integrado — Chaveamento e Amplificação
 
 #### O que memorizar
 - **Darlington**: 2 BJTs em cascata → β_total = β1 × β2. Ganho enorme, mas V_CE_sat ≈ 1.4V
@@ -267,7 +288,7 @@ Se o BJT é um registro controlado por fluxo de água na base (corrente), o MOSF
 
 ## Fase 3 — Amplificadores Operacionais
 
-### Módulo 2.9: O Amp-Op Ideal — Regras de Ouro
+### Módulo 2.7: O Amp-Op Ideal — Regras de Ouro
 **Tempo: 2h**
 
 #### O que memorizar
@@ -303,8 +324,8 @@ Se A = ∞ e V_out é finito, então (V+ - V-) = V_out / A = finito / ∞ = 0. L
 
 ---
 
-### Módulo 2.10: Filtros Ativos e Instrumentação
-**Tempo: 2.5h**
+### Módulo 2.8: Filtros, Osciladores e Fonte Regulada
+**Tempo: 7h**
 
 #### O que memorizar
 - **Filtro ativo**: amp-op + R + C. Vantagens sobre passivo: ganho ≥ 1, impedância de saída baixa, pode cascatear
@@ -326,8 +347,7 @@ Se A = ∞ e V_out é finito, então (V+ - V-) = V_out / A = finito / ∞ = 0. L
 
 ---
 
-### Módulo 2.11: Osciladores e Geradores de Sinal
-**Tempo: 2h**
+#### Parte B: Osciladores e Geradores de Sinal
 
 #### O que memorizar
 - **Condição de oscilação (Barkhausen)**: ganho de malha = 1, fase de malha = 0° (ou 360°)
@@ -344,8 +364,7 @@ Se A = ∞ e V_out é finito, então (V+ - V-) = V_out / A = finito / ∞ = 0. L
 
 ---
 
-### Módulo 2.12: Projeto Integrado — Fonte de Bancada Regulada
-**Tempo: 2.5h**
+#### Parte C: Fonte de Bancada Regulada
 
 #### O que memorizar
 - **Regulador linear (LM317)**: V_out = 1.25 × (1 + R2/R1). Ajustável de 1.25V a 37V
@@ -373,7 +392,7 @@ Se A = ∞ e V_out é finito, então (V+ - V-) = V_out / A = finito / ∞ = 0. L
 
 ## Fase 4 — Eletrônica de Potência
 
-### Módulo 2.13: Reguladores Lineares vs Chaveados
+### Módulo 2.9: Reguladores Lineares vs Chaveados
 **Tempo: 2h**
 
 #### O que memorizar
@@ -396,7 +415,7 @@ Regulador linear é como controlar a vazão de água com um **registro parcialme
 
 ---
 
-### Módulo 2.14: Conversor Buck (Step-Down)
+### Módulo 2.10: Conversor Buck (Step-Down)
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -431,8 +450,8 @@ O Buck é como uma **caixa d'água com boia**. O MOSFET (torneira) abre → águ
 
 ---
 
-### Módulo 2.15: Conversor Boost (Step-Up) e Buck-Boost
-**Tempo: 2.5h**
+### Módulo 2.11: Boost, Buck-Boost e Inversores
+**Tempo: 5h**
 
 #### O que memorizar
 - **Boost**: V_out > V_in. `V_out = V_in / (1 - D)`. D=0.5 → V_out = 2×V_in
@@ -448,8 +467,7 @@ O Buck é como uma **caixa d'água com boia**. O MOSFET (torneira) abre → águ
 
 ---
 
-### Módulo 2.16: Inversores e Fontes Chaveadas Completas
-**Tempo: 2.5h**
+#### Parte B: Inversores e Fontes Chaveadas Completas
 
 #### O que memorizar
 - **Inversor**: converte DC → AC. H-bridge com PWM sinusoidal (SPWM) → filtro → senóide limpa
@@ -481,7 +499,7 @@ O Buck é como uma **caixa d'água com boia**. O MOSFET (torneira) abre → águ
 
 ## Fase 6 — Introdução a RF e Linhas de Transmissão
 
-### Módulo 2.17: Linhas de Transmissão e Impedância Característica
+### Módulo 2.12: Linhas de Transmissão e Impedância Característica
 **Tempo: 3h**
 
 #### O que memorizar
@@ -500,10 +518,11 @@ Em DC e baixas frequências, um fio é só um fio. Mas em MHz/GHz, o fio se torn
 1. **Calcule** λ para 100MHz, 1GHz, 10GHz → a partir de qual frequência um fio de 10cm é "linha de transmissão"?
 2. **Calcule Γ** para Z₀=50Ω com cargas de: 50Ω, 0Ω (curto), ∞ (aberto), 100Ω, 25Ω
 3. **Prompt IA**: *"Por que cabos de antena de TV são 75Ω e cabos de laboratório/rádio são 50Ω? O que acontece se conectar uma antena de 300Ω num cabo de 75Ω sem balun?"*
+4. **Entregável**: Cálculos de λ e Γ para 5 cargas + análise de quando fio vira linha de transmissão
 
 ---
 
-### Módulo 2.18: Carta de Smith e Parâmetros S
+### Módulo 2.13: Carta de Smith e Parâmetros S
 **Tempo: 2.5h**
 
 #### O que memorizar
@@ -521,10 +540,11 @@ Em DC e baixas frequências, um fio é só um fio. Mas em MHz/GHz, o fio se torn
 1. **Use simulador de Carta de Smith online**: plote impedância de antena e adicione L/C para casar
 2. **Leia datasheet de filtro SAW**: interprete S21 (transmissão) e S11 (casamento)
 3. **Prompt IA**: *"Explique a carta de Smith como se fosse um GPS de impedância: onde estou (Z_carga), onde quero chegar (Z₀=50Ω), e quais componentes L/C uso para 'andar' na carta."*
+4. **Entregável**: Casamento de impedância no simulador de Smith + interpretação de datasheet com parâmetros S
 
 ---
 
-### Módulo 2.19: EMC — Compatibilidade Eletromagnética
+### Módulo 2.14: EMC — Compatibilidade Eletromagnética
 **Tempo: 2h**
 
 #### O que memorizar
@@ -540,6 +560,7 @@ Em DC e baixas frequências, um fio é só um fio. Mas em MHz/GHz, o fio se torn
 1. **Identifique** 5 fontes de EMI em um esquemático de placa com microcontrolador + fonte chaveada
 2. **Projete** filtro de linha básico (CMC + caps X2/Y1) para fonte de alimentação
 3. **Prompt IA**: *"Explique por que placas com plano de terra contínuo emitem menos EMI que placas com trilhas de terra. Use o conceito de área de loop."*
+4. **Entregável**: 5 fontes de EMI identificadas em esquemático + filtro de linha projetado + checklist de boas práticas
 
 #### Checkpoint — RF e EMC
 - [ ] Sabe quando um fio se comporta como linha de transmissão (λ/10)
