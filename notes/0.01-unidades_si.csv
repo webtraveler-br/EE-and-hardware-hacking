@@ -20,7 +20,7 @@ Qual a unidade SI de Indutância e sua decomposição?;H (henry) = V\(\cdot\)s/A
 Qual a unidade SI de Fluxo Magnético e sua decomposição?;Wb (weber) = V\(\cdot\)s (volt-segundo)
 Qual a unidade SI de Potência e sua decomposição?;W (watt) = J/s = V\(\cdot\)A (joule por segundo, ou volt-ampere)
 Qual a unidade SI de Pressão e sua decomposição?;Pa (pascal) = N/m\(^2\) (newton por metro quadrado)
-Qual a unidade SI de Iluminação (E)?;lx (lux) = \(\frac{\text{cd}}{\text{m}^2}\)
+Qual a unidade SI de Iluminação (E)?;lx (lux) = \(\frac{\text{lm}}{\text{m}^2}\)
 Qual a unidade SI de Densidade (D)?;\(\text{kg/m}^3\)
 Qual a unidade SI de Velocidade (v)?;\(\text{m/s}\)
 Qual a unidade SI de Volume (V)?;\(\text{m}^3\)
