@@ -1,40 +1,40 @@
-Erro de arredondamento vs truncamento;Arredondamento: diferença ao representar valor real em ponto flutuante; truncamento: cortar termos de série infinita
-Representação IEEE 754 (ponto flutuante 64-bit);\((-1)^s \times 1.f \times 2^{e-1023}\); 1 bit sinal, 11 expoente, 52 mantissa
-Épsilon de máquina \(\epsilon_{mach}\) (double);Menor valor tal que \(1 + \epsilon > 1\); para double: \(\epsilon \approx 2.2 \times 10^{-16}\)
+Erro de arredondamento vs truncamento;Arredondamento: diferença ao representar valor real em ponto flutuante, truncamento: cortar termos de série infinita
+Representação IEEE 754 (ponto flutuante 64-bit);\((-1)^s \times 1.f \times 2^{e-1023}\), 1 bit sinal, 11 expoente, 52 mantissa
+Épsilon de máquina \(\epsilon_{mach}\) (double);Menor valor tal que \(1 + \epsilon > 1\), para double: \(\epsilon \approx 2.2 \times 10^{-16}\)
 Erro absoluto e relativo;\(|x - \hat{x}|\) e \(\frac{|x - \hat{x}|}{|x|}\)
-Cancelamento catastrófico;Subtração de valores próximos amplifica erros relativos; evitar reformulando a expressão
-Método da bisseção — princípio;Se \(f(a) \cdot f(b) < 0\), existe raiz em \([a,b]\); dividir intervalo ao meio iterativamente
-Método da bisseção — taxa de convergência;Linear; reduz erro pela metade a cada iteração: \(|e_n| \leq \frac{b-a}{2^n}\)
+Cancelamento catastrófico;Subtração de valores próximos amplifica erros relativos, evitar reformulando a expressão
+Método da bisseção — princípio;Se \(f(a) \cdot f(b) < 0\), existe raiz em \([a,b]\), dividir intervalo ao meio iterativamente
+Método da bisseção — taxa de convergência;Linear, reduz erro pela metade a cada iteração: \(|e_n| \leq \frac{b-a}{2^n}\)
 Método de Newton-Raphson — iteração;\(x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}\)
 Newton-Raphson — taxa de convergência;Quadrática (se raiz simples e \(x_0\) suficientemente próximo): \(|e_{n+1}| \approx C |e_n|^2\)
 Newton-Raphson — quando falha;Se \(f'(x_n) = 0\) (divisão por zero), ou se \(x_0\) longe da raiz, ou raízes múltiplas
-Método da secante — iteração;\(x_{n+1} = x_n - f(x_n) \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}\); não requer \(f'\)
-Método da secante — ordem de convergência;\(\approx 1.618\) (número áureo); superlinear, entre bisseção e Newton
+Método da secante — iteração;\(x_{n+1} = x_n - f(x_n) \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}\), não requer \(f'\)
+Método da secante — ordem de convergência;\(\approx 1.618\) (número áureo), superlinear, entre bisseção e Newton
 Método do ponto fixo — princípio;Reescrever \(f(x)=0\) como \(x = g(x)\) e iterar \(x_{n+1} = g(x_n)\)
 Convergência do ponto fixo — condição;\(|g'(x)| < 1\) na vizinhança do ponto fixo garante convergência
 Interpolação polinomial de Lagrange;\(P(x) = \sum_{i=0}^{n} y_i \prod_{j \neq i} \frac{x - x_j}{x_i - x_j}\)
 Fenômeno de Runge;Oscilações crescentes nas bordas ao usar polinômio de alto grau com pontos equiespaçados
-Interpolação por splines cúbicas;Polinômios cúbicos por trecho com continuidade de \(f\), \(f'\), \(f''\) nos nós; evita Runge
+Interpolação por splines cúbicas;Polinômios cúbicos por trecho com continuidade de \(f\), \(f'\), \(f''\) nos nós, evita Runge
 Diferença dividida de Newton — definição;\(f[x_i, x_{i+1}] = \frac{f(x_{i+1}) - f(x_i)}{x_{i+1} - x_i}\)
-Derivada numérica — diferença central;\(f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}\); erro \(O(h^2)\)
-Derivada numérica — diferença progressiva;\(f'(x) \approx \frac{f(x+h) - f(x)}{h}\); erro \(O(h)\)
-Regra do trapézio — fórmula;\(\int_a^b f(x)\,dx \approx \frac{h}{2}[f(a) + 2\sum f(x_i) + f(b)]\), \(h = (b-a)/n\); erro \(O(h^2)\)
-Regra de Simpson 1/3 — fórmula;\(\int_a^b f(x)\,dx \approx \frac{h}{3}[f(x_0) + 4f(x_1) + 2f(x_2) + \cdots + f(x_n)]\); erro \(O(h^4)\)
+Derivada numérica — diferença central;\(f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}\), erro \(O(h^2)\)
+Derivada numérica — diferença progressiva;\(f'(x) \approx \frac{f(x+h) - f(x)}{h}\), erro \(O(h)\)
+Regra do trapézio — fórmula;\(\int_a^b f(x)\,dx \approx \frac{h}{2}[f(a) + 2\sum f(x_i) + f(b)]\), \(h = (b-a)/n\), erro \(O(h^2)\)
+Regra de Simpson 1/3 — fórmula;\(\int_a^b f(x)\,dx \approx \frac{h}{3}[f(x_0) + 4f(x_1) + 2f(x_2) + \cdots + f(x_n)]\), erro \(O(h^4)\)
 Simpson 1/3 — requisito;Número de subintervalos \(n\) deve ser par
-Quadratura de Gauss — vantagem;Escolha ótima de pontos e pesos; exata para polinômios de grau \(\leq 2n-1\) com \(n\) pontos
-Método de Euler — iteração para EDOs;\(y_{n+1} = y_n + h \cdot f(t_n, y_n)\); erro local \(O(h^2)\), erro global \(O(h)\)
-Euler melhorado (Heun) — ideia;Prediz com Euler, depois corrige com média das inclinações nos dois extremos; erro global \(O(h^2)\)
-Runge-Kutta 4ª ordem (RK4) — forma geral;\(y_{n+1} = y_n + \frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4)\); erro local \(O(h^5)\), global \(O(h^4)\)
-RK4 — cálculo dos \(k_i\);\(k_1 = f(t,y)\); \(k_2 = f(t+h/2, y+hk_1/2)\); \(k_3 = f(t+h/2, y+hk_2/2)\); \(k_4 = f(t+h, y+hk_3)\)
-Estabilidade de métodos numéricos para EDOs;Passo \(h\) deve respeitar a região de estabilidade do método; \(h\) grande → soluções divergem
-Resolução de sistemas lineares — eliminação de Gauss;Triangularização via operações elementares + substituição regressiva; custo \(O(n^3)\)
-Pivotamento parcial (Gauss);Trocar linhas para usar o maior pivô em módulo; melhora estabilidade numérica
-Decomposição LU;\(A = LU\); resolve \(Ax = b\) em dois passos: \(Ly = b\), \(Ux = y\); útil quando \(b\) muda
-Número de condição \(\kappa(A)\);\(\kappa(A) = \|A\| \cdot \|A^{-1}\|\); se \(\kappa \gg 1\), sistema é mal-condicionado
+Quadratura de Gauss — vantagem;Escolha ótima de pontos e pesos, exata para polinômios de grau \(\leq 2n-1\) com \(n\) pontos
+Método de Euler — iteração para EDOs;\(y_{n+1} = y_n + h \cdot f(t_n, y_n)\), erro local \(O(h^2)\), erro global \(O(h)\)
+Euler melhorado (Heun) — ideia;Prediz com Euler, depois corrige com média das inclinações nos dois extremos, erro global \(O(h^2)\)
+Runge-Kutta 4ª ordem (RK4) — forma geral;\(y_{n+1} = y_n + \frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4)\), erro local \(O(h^5)\), global \(O(h^4)\)
+RK4 — cálculo dos \(k_i\);\(k_1 = f(t,y)\), \(k_2 = f(t+h/2, y+hk_1/2)\), \(k_3 = f(t+h/2, y+hk_2/2)\), \(k_4 = f(t+h, y+hk_3)\)
+Estabilidade de métodos numéricos para EDOs;Passo \(h\) deve respeitar a região de estabilidade do método, \(h\) grande → soluções divergem
+Resolução de sistemas lineares — eliminação de Gauss;Triangularização via operações elementares + substituição regressiva, custo \(O(n^3)\)
+Pivotamento parcial (Gauss);Trocar linhas para usar o maior pivô em módulo, melhora estabilidade numérica
+Decomposição LU;\(A = LU\), resolve \(Ax = b\) em dois passos: \(Ly = b\), \(Ux = y\), útil quando \(b\) muda
+Número de condição \(\kappa(A)\);\(\kappa(A) = \|A\| \cdot \|A^{-1}\|\), se \(\kappa \gg 1\), sistema é mal-condicionado
 Método iterativo de Jacobi;\(x_i^{(k+1)} = \frac{1}{a_{ii}}\left(b_i - \sum_{j \neq i} a_{ij} x_j^{(k)}\right)\)
-Método iterativo de Gauss-Seidel;Similar a Jacobi, mas usa \(x_j^{(k+1)}\) assim que disponível; converge mais rápido em geral
-Mínimos quadrados — ajuste linear;\(\min \sum (y_i - (a + bx_i))^2\); \(b = \frac{n\sum x_i y_i - \sum x_i \sum y_i}{n\sum x_i^2 - (\sum x_i)^2}\)
-Método de Newton para sistemas não-lineares;\(\vec{x}_{n+1} = \vec{x}_n - J(\vec{x}_n)^{-1} \vec{F}(\vec{x}_n)\); \(J\) é a matriz Jacobiana
+Método iterativo de Gauss-Seidel;Similar a Jacobi, mas usa \(x_j^{(k+1)}\) assim que disponível, converge mais rápido em geral
+Mínimos quadrados — ajuste linear;\(\min \sum (y_i - (a + bx_i))^2\), \(b = \frac{n\sum x_i y_i - \sum x_i \sum y_i}{n\sum x_i^2 - (\sum x_i)^2}\)
+Método de Newton para sistemas não-lineares;\(\vec{x}_{n+1} = \vec{x}_n - J(\vec{x}_n)^{-1} \vec{F}(\vec{x}_n)\), \(J\) é a matriz Jacobiana
 Euler: \(y' = y\), \(y_0 = 1\), \(h = 0.1\) → \(y_1\)?;\(1.1\) (\(y_1 = 1 + 0.1 \times 1\))
 Newton: \(f(x) = x^2 - 4\), \(x_0 = 3\) → \(x_1\)?;\(\approx 2.167\) (\(3 - 5/6\), pois \(f(3)=5\), \(f'(3)=6\))
 Bisseção: \(f(1) < 0\), \(f(3) > 0\) → próximo ponto?;\(x = 2\) (ponto médio de \([1, 3]\))

@@ -1,0 +1,40 @@
+\(c \ (\text{Velocidade da Luz no Vácuo})\);\(\frac{1}{\sqrt{\epsilon_0\mu_0}} = 3.0 \times 10^8 \text{ m/s}\)
+\(u_E \ (\text{Densidade de Energia do Campo Elétrico})\);\(\frac{1}{2}\epsilon_0 E^2\)
+\(u_B \ (\text{Densidade de Energia do Campo Magnético})\);\(\frac{1}{2\mu_0} B^2\)
+\(I \ (\text{Luz Despolarizada através de Filtro Polarizador})\);\(\frac{1}{2}I_0\)
+Impedância característica do espaço livre \(Z_0\);\(\approx 377\ \Omega \quad \left(Z_0 = \sqrt{\frac{\mu_0}{\epsilon_0}}\right)\)
+O que é blindagem eletromagnética (shielding)?;\(\text{Invólucro condutor (gaiola de Faraday) que atenua campos EM externos, protegendo circuitos internos contra EMI.}\)
+O que é EMI (Interferência Eletromagnética)?;\(\text{Ruído eletromagnético indesejado acoplado a circuitos por radiação ou condução, degradando sinais.}\)
+Três técnicas básicas para reduzir EMI em PCBs;\(\text{1) Plano de terra contínuo. 2) Trilhas curtas e diretas. 3) Capacitores de desacoplamento perto dos CIs.}\)
+Qual a condição para uma antena irradiar eficientemente?;\(\text{Dimensão da antena } \approx \lambda/4 \text{ ou } \lambda/2\text{. Antenas muito menores que } \lambda \text{ são ineficientes.}\)
+Diferença entre campo próximo (near field) e campo distante (far field);\(\text{Próximo } (r < \lambda/2\pi)\text{: campos E e B independentes, não irradiam. Distante } (r \gg \lambda)\text{: onda EM propagante com } E \perp B\text{.}\)
+Por que linhas de transmissão precisam de casamento de impedância?;\(\text{Descasamento causa reflexão de sinal. No casamento perfeito } (Z_L = Z_0)\text{, toda potência é entregue à carga.}\)
+Equação de onda eletromagnética no vácuo;\(\nabla^2 \vec{E} = \mu_0 \epsilon_0 \frac{\partial^2 \vec{E}}{\partial t^2}\), velocidade \(c = 1/\sqrt{\mu_0 \epsilon_0}\)
+Relação \(c = \lambda f\);\(\lambda\) = comprimento de onda, \(f\) = frequência, válida para qualquer onda EM
+Espectro eletromagnético — ordem crescente de frequência;Rádio → Micro-ondas → Infravermelho → Visível → Ultravioleta → Raios-X → Raios Gama
+Luz visível — faixa de comprimento de onda;\(\approx 380\) nm (violeta) a \(700\) nm (vermelho)
+Índice de refração \(n\);\(n = c/v\), razão entre velocidade no vácuo e no meio, para vidro \(n \approx 1.5\)
+Lei de Snell (refração);\(n_1 \sin\theta_1 = n_2 \sin\theta_2\)
+Reflexão — lei básica;Ângulo de incidência = ângulo de reflexão, medidos à normal da superfície
+Ângulo crítico (reflexão total interna);\(\theta_c = \arcsin(n_2/n_1)\), com \(n_1 > n_2\), acima de \(\theta_c\) toda luz é refletida
+Reflexão total interna — aplicação principal;Guia de luz em fibras ópticas: núcleo (\(n_1\)) com índice maior que a casca (\(n_2\))
+Fibra óptica — abertura numérica \(NA\);\(NA = \sqrt{n_1^2 - n_2^2}\), define o cone de aceitação de luz
+Difração — condição para observação;Ocorre quando o obstáculo/fenda tem dimensão comparável ao comprimento de onda \(\lambda\)
+Difração de fenda simples — mínimos;\(a \sin\theta = m\lambda\), \(m = \pm 1, \pm 2, \dots\), \(a\) = largura da fenda
+Interferência de dupla fenda (Young) — máximos;\(d \sin\theta = m\lambda\), \(m = 0, \pm 1, \pm 2, \dots\), \(d\) = distância entre fendas
+Interferência construtiva — condição;Diferença de caminho óptico = \(m\lambda\) (múltiplo inteiro de \(\lambda\))
+Interferência destrutiva — condição;Diferença de caminho óptico = \((m + 1/2)\lambda\)
+Equação da lente delgada;\(\frac{1}{f} = \frac{1}{d_o} + \frac{1}{d_i}\), \(f\) = distância focal
+Lente convergente — sinal de \(f\);\(f > 0\), focaliza raios paralelos num ponto real
+Lente divergente — sinal de \(f\);\(f < 0\), diverge raios, imagem virtual do mesmo lado do objeto
+Ampliação linear (lente/espelho);\(M = -\frac{d_i}{d_o}\), \(|M|>1\) amplia, \(M<0\) inverte
+Equação do espelho esférico;\(\frac{1}{f} = \frac{1}{d_o} + \frac{1}{d_i}\), \(f = R/2\), \(R\) = raio de curvatura
+Dispersão da luz;Índice de refração depende de \(\lambda\), prisma separa cores (vermelho desvia menos, violeta mais)
+Lei de Malus (polarização);\(I = I_0 \cos^2\theta\), \(I_0\) = intensidade da luz polarizada incidente, \(\theta\) = ângulo com o polarizador
+Ângulo de Brewster;\(\theta_B = \arctan(n_2/n_1)\), luz refletida é totalmente polarizada no plano de incidência
+Efeito Doppler (ondas EM);\(f_{obs} = f_s \sqrt{\frac{1 \pm v/c}{1 \mp v/c}}\), aproximação: \(\Delta f / f \approx v/c\) para \(v \ll c\)
+Efeito fotoelétrico — equação de Einstein;\(E_k = hf - \phi\), \(h\) = constante de Planck, \(\phi\) = função trabalho, fóton deve ter \(hf \geq \phi\)
+Dualidade onda-partícula;Fótons comportam-se como ondas (difração) e partículas (fotoelétrico), \(E = hf\), \(p = h/\lambda\)
+Princípio de Huygens;Cada ponto da frente de onda atua como fonte de ondas esféricas secundárias
+Coerência — definição em óptica;Relação de fase constante entre dois pontos do campo, necessária para interferência estável
+Laser — propriedades da luz emitida;Monocromática, coerente, colimada e de alta intensidade

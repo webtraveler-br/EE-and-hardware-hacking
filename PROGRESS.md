@@ -329,3 +329,64 @@
 | F.2 | Automotive Security | 3h | [ ] |
 | F.3 | Modbus e PROFINET | 3h | [ ] |
 | F.4 | Segurança de PLCs e SCADA | 3h | [ ] |
+
+---
+
+## Módulo 9 — HTB CPTS (~120h)
+[Roadmap completo](09-cpts/README.md)
+
+### Fase 1 — Fundamentos
+| # | Módulo | Tempo | Status |
+|:-:|--------|:--:|:------:|
+| 9.01 | Processo de Pentest | 3h | [ ] |
+| 9.02 | Fundamentos e Setup | 5h | [ ] |
+
+### Fase 2 — Reconhecimento
+| # | Módulo | Tempo | Status |
+|:-:|--------|:--:|:------:|
+| 9.03 | Enumeração de Rede com Nmap | 4h | [ ] |
+| 9.04 | Footprinting | 5h | [ ] |
+| 9.05 | Coleta de Informação Web | 4h | [ ] |
+| 9.06 | Avaliação de Vulnerabilidades | 3h | [ ] |
+
+### Fase 3 — Exploração Inicial
+| # | Módulo | Tempo | Status |
+|:-:|--------|:--:|:------:|
+| 9.07 | Transferência de Arquivos | 3h | [ ] |
+| 9.08 | Shells e Payloads | 5h | [ ] |
+| 9.09 | Metasploit Framework | 4h | [ ] |
+| 9.10 | Ataques a Senhas | 6h | [ ] |
+| 9.11 | Ataque a Serviços Comuns | 5h | [ ] |
+| 9.12 | Pivoting e Tunneling | 5h | [ ] |
+
+### Fase 4 — Active Directory
+| # | Módulo | Tempo | Status |
+|:-:|--------|:--:|:------:|
+| 9.13 | Active Directory | 10h | [ ] |
+
+### Fase 5 — Web Attacks
+| # | Módulo | Tempo | Status |
+|:-:|--------|:--:|:------:|
+| 9.14 | Web Proxies | 3h | [ ] |
+| 9.15 | Fuzzing Web com Ffuf | 3h | [ ] |
+| 9.16 | Brute Force de Login | 3h | [ ] |
+| 9.17 | SQL Injection | 4h | [ ] |
+| 9.18 | SQLMap | 3h | [ ] |
+| 9.19 | Cross-Site Scripting (XSS) | 3h | [ ] |
+| 9.20 | File Inclusion (LFI/RFI) | 3h | [ ] |
+| 9.21 | Ataques via Upload | 3h | [ ] |
+| 9.22 | Command Injection | 3h | [ ] |
+| 9.23 | Ataques Web Avançados | 5h | [ ] |
+| 9.24 | Ataque a Aplicações Comuns | 8h | [ ] |
+
+### Fase 6 — Privilege Escalation
+| # | Módulo | Tempo | Status |
+|:-:|--------|:--:|:------:|
+| 9.25 | Escalação de Privilégios Linux | 5h | [ ] |
+| 9.26 | Escalação de Privilégios Windows | 5h | [ ] |
+
+### Fase 7 — Finalização
+| # | Módulo | Tempo | Status |
+|:-:|--------|:--:|:------:|
+| 9.27 | Documentação e Relatórios | 2h | [ ] |
+| 9.28 | Ataque a Redes Corporativas | 4h | [ ] |

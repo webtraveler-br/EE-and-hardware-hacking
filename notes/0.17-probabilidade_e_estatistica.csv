@@ -1,6 +1,6 @@
 Espaço amostral \(\Omega\);Conjunto de todos os resultados possíveis de um experimento aleatório
 Evento em probabilidade;Subconjunto do espaço amostral \(\Omega\)
-Axiomas de Kolmogorov (3 axiomas);1) \(P(A) \geq 0\); 2) \(P(\Omega) = 1\); 3) Se \(A \cap B = \emptyset\), \(P(A \cup B) = P(A) + P(B)\)
+Axiomas de Kolmogorov (3 axiomas);1) \(P(A) \geq 0\), 2) \(P(\Omega) = 1\), 3) Se \(A \cap B = \emptyset\), \(P(A \cup B) = P(A) + P(B)\)
 \(P(A^c)\) (complemento);\(1 - P(A)\)
 Regra da adição \(P(A \cup B)\);\(P(A) + P(B) - P(A \cap B)\)
 Definição ingênua (naive) de probabilidade;\(P(A) = \frac{\text{casos favoráveis}}{\text{casos totais}}\), válida se desfechos equiprováveis
@@ -9,14 +9,14 @@ Permutação de \(n\) objetos distintos;\(n!\)
 Arranjo \(A(n,k)\) — ordem importa, sem reposição;\(\frac{n!}{(n-k)!}\)
 Combinação \(\binom{n}{k}\) — ordem não importa, sem reposição;\(\frac{n!}{k!(n-k)!}\)
 Amostragem com reposição, ordem não importa;\(\binom{n+k-1}{k}\)
-Eventos independentes — definição;\(P(A \cap B) = P(A) \cdot P(B)\); saber \(A\) não altera \(P(B)\)
+Eventos independentes — definição;\(P(A \cap B) = P(A) \cdot P(B)\), saber \(A\) não altera \(P(B)\)
 Probabilidade condicional \(P(A|B)\);\(\frac{P(A \cap B)}{P(B)}\)
 Teorema de Bayes;\(P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}\)
 Teorema da probabilidade total (LOTP);\(P(A) = \sum_{i} P(A|B_i) P(B_i)\), com \(\{B_i\}\) partição de \(\Omega\)
 Leis de De Morgan em probabilidade;\((A \cup B)^c = A^c \cap B^c\) e \((A \cap B)^c = A^c \cup B^c\)
 PMF — função massa de probabilidade (discreta);\(p_X(x) = P(X = x)\), com \(\sum_x p_X(x) = 1\)
-PDF — função densidade de probabilidade (contínua);\(f_X(x) \geq 0\) e \(\int_{-\infty}^{\infty} f_X(x)\,dx = 1\); \(P(a \leq X \leq b) = \int_a^b f(x)\,dx\)
-CDF — função distribuição acumulada;\(F_X(x) = P(X \leq x)\); crescente, contínua à direita, \(F(-\infty)=0\), \(F(\infty)=1\)
+PDF — função densidade de probabilidade (contínua);\(f_X(x) \geq 0\) e \(\int_{-\infty}^{\infty} f_X(x)\,dx = 1\), \(P(a \leq X \leq b) = \int_a^b f(x)\,dx\)
+CDF — função distribuição acumulada;\(F_X(x) = P(X \leq x)\), crescente, contínua à direita, \(F(-\infty)=0\), \(F(\infty)=1\)
 Relação CDF ↔ PDF (contínua);\(f(x) = F'(x)\) e \(F(x) = \int_{-\infty}^{x} f(t)\,dt\)
 Valor esperado \(E(X)\) — discreta;\(\sum_x x \cdot P(X=x)\)
 Valor esperado \(E(X)\) — contínua;\(\int_{-\infty}^{\infty} x \cdot f(x)\,dx\)
@@ -31,25 +31,25 @@ Correlação \(\rho(X,Y)\);\(\frac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}\), sempre
 Se \(X \perp Y\) então \(\text{Cov}(X,Y)\) =;0 (mas a recíproca não vale em geral)
 \(\text{Var}(X+Y)\) caso geral;\(\text{Var}(X) + \text{Var}(Y) + 2\text{Cov}(X,Y)\)
 \(\text{Var}(X+Y)\) se \(X \perp Y\);\(\text{Var}(X) + \text{Var}(Y)\)
-Distribuição Bernoulli \(\text{Bern}(p)\);\(P(X=1)=p\), \(P(X=0)=1-p\); \(E=p\), \(\text{Var}=p(1-p)\)
-Distribuição Binomial \(\text{Bin}(n,p)\);\(P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}\); \(E=np\), \(\text{Var}=np(1-p)\)
-Distribuição Geométrica \(\text{Geom}(p)\) — falhas antes do 1º sucesso;\(P(X=k) = (1-p)^k p\); \(E = \frac{1-p}{p}\), \(\text{Var} = \frac{1-p}{p^2}\)
+Distribuição Bernoulli \(\text{Bern}(p)\);\(P(X=1)=p\), \(P(X=0)=1-p\), \(E=p\), \(\text{Var}=p(1-p)\)
+Distribuição Binomial \(\text{Bin}(n,p)\);\(P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}\), \(E=np\), \(\text{Var}=np(1-p)\)
+Distribuição Geométrica \(\text{Geom}(p)\) — falhas antes do 1º sucesso;\(P(X=k) = (1-p)^k p\), \(E = \frac{1-p}{p}\), \(\text{Var} = \frac{1-p}{p^2}\)
 Propriedade sem memória (Geométrica);\(P(X > s+t \mid X > s) = P(X > t)\)
-Distribuição Poisson \(\text{Pois}(\lambda)\);\(P(X=k) = \frac{e^{-\lambda} \lambda^k}{k!}\); \(E = \lambda\), \(\text{Var} = \lambda\)
+Distribuição Poisson \(\text{Pois}(\lambda)\);\(P(X=k) = \frac{e^{-\lambda} \lambda^k}{k!}\), \(E = \lambda\), \(\text{Var} = \lambda\)
 Aproximação Binomial → Poisson;\(\text{Bin}(n,p) \approx \text{Pois}(np)\) quando \(n\) grande e \(p\) pequeno
 Soma de Poissons independentes;\(\text{Pois}(\lambda_1) + \text{Pois}(\lambda_2) = \text{Pois}(\lambda_1+\lambda_2)\)
-Distribuição Uniforme contínua \(U(a,b)\);\(f(x) = \frac{1}{b-a}\) em \([a,b]\); \(E = \frac{a+b}{2}\), \(\text{Var} = \frac{(b-a)^2}{12}\)
+Distribuição Uniforme contínua \(U(a,b)\);\(f(x) = \frac{1}{b-a}\) em \([a,b]\), \(E = \frac{a+b}{2}\), \(\text{Var} = \frac{(b-a)^2}{12}\)
 Distribuição Normal \(N(\mu, \sigma^2)\) — PDF;\(f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-(x-\mu)^2/(2\sigma^2)}\)
 Padronização da Normal;\(Z = \frac{X - \mu}{\sigma} \sim N(0,1)\)
 Regra 68-95-99.7 (Normal);\(\approx 68\%\) em \(\pm 1\sigma\), \(95\%\) em \(\pm 2\sigma\), \(99.7\%\) em \(\pm 3\sigma\)
-Distribuição Exponencial \(\text{Exp}(\lambda)\) — PDF;\(f(x) = \lambda e^{-\lambda x}\) para \(x \geq 0\); \(E = 1/\lambda\), \(\text{Var} = 1/\lambda^2\)
-Propriedade sem memória (Exponencial);\(P(X > s+t \mid X > s) = P(X > t)\); única distribuição contínua com esta propriedade
+Distribuição Exponencial \(\text{Exp}(\lambda)\) — PDF;\(f(x) = \lambda e^{-\lambda x}\) para \(x \geq 0\), \(E = 1/\lambda\), \(\text{Var} = 1/\lambda^2\)
+Propriedade sem memória (Exponencial);\(P(X > s+t \mid X > s) = P(X > t)\), única distribuição contínua com esta propriedade
 Mínimo de Exponenciais independentes;\(\min(X_1, \dots, X_k) \sim \text{Exp}(\lambda_1 + \cdots + \lambda_k)\)
-Distribuição Gamma \(\Gamma(a, \lambda)\) — interpretação;Tempo de espera até o \(a\)-ésimo evento num processo Poisson de taxa \(\lambda\); \(E = a/\lambda\)
+Distribuição Gamma \(\Gamma(a, \lambda)\) — interpretação;Tempo de espera até o \(a\)-ésimo evento num processo Poisson de taxa \(\lambda\), \(E = a/\lambda\)
 Relação Gamma-Exponencial;\(\Gamma(1, \lambda) = \text{Exp}(\lambda)\)
-Distribuição Beta \(\text{Beta}(a,b)\) — suporte e esperança;Suporte \([0,1]\); \(E = \frac{a}{a+b}\); prior conjugada da Binomial
-\(\chi^2_n\) (Chi-quadrado com \(n\) graus de liberdade);\(\chi^2_n = Z_1^2 + \cdots + Z_n^2\) com \(Z_i \sim N(0,1)\) i.i.d.; equivale a \(\Gamma(n/2, 1/2)\)
-Função geradora de momentos (MGF);\(M_X(t) = E(e^{tX})\); o \(k\)-ésimo momento é \(M_X^{(k)}(0)\)
+Distribuição Beta \(\text{Beta}(a,b)\) — suporte e esperança;Suporte \([0,1]\), \(E = \frac{a}{a+b}\), prior conjugada da Binomial
+\(\chi^2_n\) (Chi-quadrado com \(n\) graus de liberdade);\(\chi^2_n = Z_1^2 + \cdots + Z_n^2\) com \(Z_i \sim N(0,1)\) i.i.d., equivale a \(\Gamma(n/2, 1/2)\)
+Função geradora de momentos (MGF);\(M_X(t) = E(e^{tX})\), o \(k\)-ésimo momento é \(M_X^{(k)}(0)\)
 MGF de soma de v.a. independentes;\(M_{X+Y}(t) = M_X(t) \cdot M_Y(t)\)
 Lei dos Grandes Números (LLN);\(\bar{X}_n = \frac{1}{n}\sum X_i \to \mu\) (quase certamente) quando \(n \to \infty\)
 Teorema Central do Limite (CLT);\(\frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} \xrightarrow{d} N(0,1)\) para \(n\) grande, independente da distribuição original
@@ -58,16 +58,16 @@ Lei de Adam (esperança total);\(E(Y) = E(E(Y|X))\)
 Lei de Eve (variância total);\(\text{Var}(Y) = E(\text{Var}(Y|X)) + \text{Var}(E(Y|X))\)
 Desigualdade de Markov;\(P(X \geq a) \leq \frac{E|X|}{a}\) para \(a > 0\)
 Desigualdade de Chebyshev;\(P(|X - \mu| \geq a) \leq \frac{\sigma^2}{a^2}\)
-Desigualdade de Jensen;\(E(g(X)) \geq g(E(X))\) se \(g\) é convexa; inverte se côncava
-Cadeia de Markov — propriedade de Markov;\(P(X_{n+1}=j \mid X_0, \dots, X_n) = P(X_{n+1}=j \mid X_n)\); futuro depende só do presente
-Matriz de transição \(Q\) (Markov);\(q_{ij} = P(X_{n+1}=j \mid X_n=i)\); prob. de ir de \(i\) para \(j\) em 1 passo
-Distribuição estacionária \(\vec{s}\) (Markov);\(\vec{s}Q = \vec{s}\); para cadeia irredutível e aperiódica, \(s_i = 1/E[\text{retorno a } i]\)
+Desigualdade de Jensen;\(E(g(X)) \geq g(E(X))\) se \(g\) é convexa, inverte se côncava
+Cadeia de Markov — propriedade de Markov;\(P(X_{n+1}=j \mid X_0, \dots, X_n) = P(X_{n+1}=j \mid X_n)\), futuro depende só do presente
+Matriz de transição \(Q\) (Markov);\(q_{ij} = P(X_{n+1}=j \mid X_n=i)\), prob. de ir de \(i\) para \(j\) em 1 passo
+Distribuição estacionária \(\vec{s}\) (Markov);\(\vec{s}Q = \vec{s}\), para cadeia irredutível e aperiódica, \(s_i = 1/E[\text{retorno a } i]\)
 Intervalo de confiança \((1-\alpha)\) para \(\mu\) (Normal, \(\sigma\) conhecido);\(\bar{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}\)
 Teste de hipóteses — erro tipo I;\(P(\text{rejeitar } H_0 \mid H_0 \text{ verdadeira}) = \alpha\) (nível de significância)
 Teste de hipóteses — erro tipo II;\(P(\text{não rejeitar } H_0 \mid H_1 \text{ verdadeira}) = \beta\)
 p-valor — definição;Probabilidade de observar resultado tão ou mais extremo que o obtido, assumindo \(H_0\) verdadeira
 Distribuição hipergeométrica \(\text{HGeom}(w,b,n)\) — interpretação;Número de sucessos em amostra sem reposição de \(n\) itens de população com \(w\) bons e \(b\) ruins
-Distribuição Binomial Negativa \(\text{NBin}(r,p)\);Número de falhas antes do \(r\)-ésimo sucesso; \(E = r(1-p)/p\)
+Distribuição Binomial Negativa \(\text{NBin}(r,p)\);Número de falhas antes do \(r\)-ésimo sucesso, \(E = r(1-p)/p\)
 Processo de Poisson — definição;Chegadas a taxa \(\lambda\): nº em intervalo \(t\) é \(\text{Pois}(\lambda t)\) e intervalos disjuntos são independentes
 Processo de Poisson — tempos entre chegadas;Inter-chegadas i.i.d. \(\sim \text{Exp}(\lambda)\)
 \(X \sim \text{Bin}(10, 0.3)\) → \(E(X)\)?;\(3\) (\(np = 10 \times 0.3\))

@@ -4,8 +4,8 @@
 
 **Currículo autodidata de EE + Segurança de Hardware**
 
-[![Módulos](https://img.shields.io/badge/Módulos-1%2F204-blueviolet?style=for-the-badge)](#pilares)
-[![Horas](https://img.shields.io/badge/Horas-~500-orange?style=for-the-badge)](#estatísticas)
+[![Módulos](https://img.shields.io/badge/Módulos-1%2F232-blueviolet?style=for-the-badge)](#pilares)
+[![Horas](https://img.shields.io/badge/Horas-~620-orange?style=for-the-badge)](#estatísticas)
 
 </div>
 
@@ -13,7 +13,7 @@
 
 ## O que é isso?
 
-Meu currículo autodidata de Engenharia Elétrica, desenvolvido em paralelo com minha graduação na UTFPR. São 7 pilares de EE (do básico ao avançado) + 2 roadmaps de hardware hacking, totalizando ~500 horas de estudo com projetos práticos documentados.
+Meu currículo autodidata de Engenharia Elétrica, desenvolvido em paralelo com minha graduação na UTFPR. São 7 pilares de EE (do básico ao avançado) + 2 roadmaps de hardware hacking + path de certificação HTB CPTS, totalizando ~620 horas de estudo com projetos práticos documentados.
 
 A ideia é simples: **simular primeiro, entender intuitivamente, depois formalizar**. Cada módulo tem teoria focada + um projeto prático que vai pra este repositório.
 
@@ -43,8 +43,10 @@ graph TD
     P1 -.->|em paralelo| LAB
     P5 -.->|especialização| HHB
     HHB --> HHA
+    P3 & HHB -.->|pentest| CPTS["CPTS<br/>HTB Pentest<br/>0/28 módulos · ~120h"]
 
     style P0 fill:#3b82f6,color:#fff,stroke:#2563eb
+    style CPTS fill:#059669,color:#fff,stroke:#047857
     style P1 fill:#f59e0b,color:#fff,stroke:#d97706
     style P2 fill:#10b981,color:#fff,stroke:#059669
     style P3 fill:#8b5cf6,color:#fff,stroke:#7c3aed
@@ -76,6 +78,12 @@ graph TD
 | [Básico](07-hardware-hacking/) | 38 | ~77h | Setup → UART/SPI/I2C → JTAG → Firmware RE → RF/BLE → Side-Channel → CTFs | |
 | [Avançado](08-hardware-hacking-advanced/) | 25 | ~86h | FPGA → PCIe/USB → Silício → TrustZone/SGX → Criptoanálise → OT/Automotive | |
 
+### Certificação
+
+| Cert | Módulos | Horas | O que cobre | Status |
+|------|:-------:|:-----:|-------------|:------:|
+| [HTB CPTS](09-cpts/) | 28 | ~120h | Pentest Process → Nmap → Web Attacks → AD → Privesc → Reporting | |
+
 [ ] = não iniciado · [x] = completo
 
 ---
@@ -85,7 +93,7 @@ graph TD
 ```
 .
 ├── README.md                        ← este arquivo
-├── PROGRESS.md                      ← checkboxes de todos os 204 módulos
+├── PROGRESS.md                      ← checkboxes de todos os 232 módulos
 ├── GUIA_DE_ESTUDO.md                ← guia cold start / projeto ponte / warm start
 ├── progress.py                      ← script automático para ver seu progresso
 │
@@ -101,6 +109,8 @@ graph TD
 │
 ├── 07-hardware-hacking/
 ├── 08-hardware-hacking-advanced/
+│
+├── 09-cpts/                        ← HTB CPTS certification path
 │
 ├── notes/                           ← notas de criação de flashcards
 └── assets/                          ← fotos, capturas, schemas

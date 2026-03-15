@@ -1,0 +1,23 @@
+# Histórico git — nunca relevante para contexto de IA
+.git/
+
+# Backups antigos — substituídos pelos CSVs em notes/
+notes_bkp/
+
+# Planejamento pessoal — privado, não necessário para tarefas técnicas
+_private/
+
+# Banco de exercícios — 56K, carregado somente quando explicitamente pedido
+BANCO_DE_EXERCICIOS.md
+
+# Binários e arquivos gerados
+*.zip
+*.pyc
+__pycache__/
+*.raw
+*.log
+*.bak
+*.tmp
+
+# Assets vazios
+assets/
