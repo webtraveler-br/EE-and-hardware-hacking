@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="study-shell reveal">
+  <!-- Deck picker - collapsible sidebar on desktop, drawer on mobile -->
+  <aside class="deck-drawer" id="deck-drawer">
+    <div class="deck-drawer-head">
+      <h2>Baralhos</h2>
+      <button id="close-drawer-btn" class="icon-btn" type="button" aria-label="Fechar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="deck-list" class="deck-list" role="listbox" aria-label="Seleção de baralho"></div>
+  </aside>
+
+  <div class="study-main">
+    <!-- Top bar with session info -->
+    <header class="study-topbar">
+      <button id="open-drawer-btn" class="icon-btn" type="button" aria-label="Baralhos">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="session-info">
+        <span id="session-deck-label" class="session-deck-label">Todos os baralhos</span>
+        <span id="session-card-type" class="session-card-type"></span>
+      </div>
+      <div class="session-counters" id="session-counters">
+        <span class="sc-pill due" title="Vencidos"><span id="sc-due">0</span> rev</span>
+        <span class="sc-pill fresh" title="Novos"><span id="sc-new">0</span> novos</span>
+        <span class="sc-pill today" title="Hoje"><span id="sc-today">0</span> hoje</span>
+      </div>
+    </header>
+
+    <!-- Progress bar -->
+    <div class="session-progress">
+      <div class="session-progress-bar" id="session-progress-bar"></div>
+    </div>
+
+    <!-- The flashcard -->
+    <div class="card-stage" id="card-stage">
+      <div class="flashcard" id="flashcard">
+        <div class="flashcard-inner" id="flashcard-inner">
+          <!-- Front -->
+          <div class="flashcard-face flashcard-front">
+            <div class="face-label">Pergunta</div>
+            <div id="question-content" class="face-content markdown-body"></div>
+          </div>
+          <!-- Back -->
+          <div class="flashcard-face flashcard-back">
+            <div class="face-label">Resposta</div>
+            <div id="answer-content" class="face-content markdown-body"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div class="study-empty hidden" id="study-empty">
+        <div class="empty-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h2>Sessão completa</h2>
+        <p id="empty-message">Nada pendente neste deck. Bom trabalho.</p>
+        <div class="session-summary" id="session-summary"></div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <footer class="study-footer" id="study-footer">
+      <button id="reveal-btn" class="reveal-btn" type="button">
+        <span>Mostrar resposta</span>
+        <kbd>Espaço</kbd>
+      </button>
+
+      <div id="rating-actions" class="rating-bar hidden">
+        <button class="rate-btn rate-again" data-rating="1" type="button">
+          <span class="rate-label">Esqueci</span>
+          <kbd>1</kbd>
+        </button>
+        <button class="rate-btn rate-hard" data-rating="2" type="button">
+          <span class="rate-label">Difícil</span>
+          <kbd>2</kbd>
+        </button>
+        <button class="rate-btn rate-good" data-rating="3" type="button">
+          <span class="rate-label">Bom</span>
+          <kbd>3</kbd>
+        </button>
+        <button class="rate-btn rate-easy" data-rating="4" type="button">
+          <span class="rate-label">Fácil</span>
+          <kbd>4</kbd>
+        </button>
+      </div>
+    </footer>
+
+    <!-- Keyboard hint -->
+    <p class="kbd-hint" id="kbd-hint">
+      <kbd>Espaço</kbd> revelar &middot; <kbd>1</kbd>-<kbd>4</kbd> avaliar &middot; <kbd>U</kbd> desfazer
+    </p>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script defer src="/static/js/study.js"></script>
+{% endblock %}

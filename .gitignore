@@ -1,11 +1,14 @@
 # Dependências de ferramentas
 __pycache__/
 *.pyc
+.pytest_cache/
 .ipynb_checkpoints/
+.venv
 
 # IDEs
 .vscode/
 .idea/
+.claude
 
 # OS
 .DS_Store
@@ -26,5 +29,25 @@ Thumbs.db
 .tmp-profile
 
 # Análises e planejamento pessoal (não público)
-_private/
 notes_bkp/
+
+# Copilot local instruction override
+copilot-instructions.md
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+id_rsa
+id_ed25519
+
+# Runtime web app
+data/
+*.db
+scripts/deploy_debian.sh

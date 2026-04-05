@@ -1,0 +1,21 @@
+services:
+  roadmap-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: "${APP_UID:-1000}:${APP_GID:-1000}"
+    container_name: roadmap-web
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "${WEB_PORT:-8088}:8088"
+    volumes:
+      - ./data:/srv/roadmap/data
+      - ./:/srv/roadmap/workspace:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8088/healthz', timeout=2).read()"]
+      interval: 20s
+      timeout: 5s
+      retries: 6
+      start_period: 25s

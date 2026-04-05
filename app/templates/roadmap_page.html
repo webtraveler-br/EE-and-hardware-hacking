@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="doc-layout reveal">
+  <aside class="doc-aside">
+    <div class="panel">
+      <h2>Contexto</h2>
+      <p class="muted small">{{ doc.rel_path }}</p>
+      {% if track %}
+      <p class="muted">{{ track.label }} · {{ track.title }}</p>
+      {% endif %}
+      <div class="stack-gap">
+        <a class="btn" href="/roadmap">Voltar ao painel</a>
+        {% if user %}
+        <a class="btn primary" href="/study">Sessão de estudo</a>
+        {% else %}
+        <a class="btn primary" href="/auth/login">Entrar para estudar</a>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if focus_deck %}
+    <div class="panel">
+      <h3>Deck deste roadmap</h3>
+      <p class="muted small">{{ focus_deck.deck_uid }} · {{ focus_deck.card_count }} cards</p>
+      {% if user %}
+      <a class="btn primary" href="/study?deck={{ focus_deck.deck_uid }}">Estudar este deck</a>
+      {% else %}
+      <a class="btn primary" href="/auth/login">Entrar para estudar este deck</a>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="panel">
+      <h3>Decks relacionados</h3>
+      {% if related_decks %}
+      <ul class="deck-list-clean">
+        {% for deck in related_decks %}
+        <li class="deck-item-links">
+          <div class="deck-item-main">
+            {% if deck.roadmap_slug %}
+            <a href="/roadmap/{{ deck.roadmap_slug }}">{{ deck.deck_uid }}</a>
+            {% else %}
+            <span>{{ deck.deck_uid }}</span>
+            {% endif %}
+            <span class="muted">{{ deck.card_count }} cards</span>
+          </div>
+          <div class="deck-item-actions">
+            {% if deck.roadmap_slug and deck.roadmap_slug != doc.slug %}
+            <a class="ghost-btn small-btn" href="/roadmap/{{ deck.roadmap_slug }}">Roadmap</a>
+            {% endif %}
+            <a class="ghost-btn small-btn" href="/study?deck={{ deck.deck_uid }}">Estudar</a>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="muted small">Esta trilha ainda nao possui outros decks relacionados.</p>
+      {% endif %}
+    </div>
+  </aside>
+
+  <article class="article markdown-body" data-enhance="markdown">
+    <header class="article-head">
+      <h1>{{ doc.title }}</h1>
+      <p class="muted">{{ doc.rel_path }}</p>
+    </header>
+    <div class="article-content">
+      {{ doc_html | safe }}
+    </div>
+  </article>
+</section>
+{% endblock %}

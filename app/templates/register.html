@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="auth-wrap reveal">
+  <h1>Criar conta</h1>
+  <p>Cadastro mínimo para salvar sessão e histórico de revisão.</p>
+
+  <form id="auth-form" data-mode="register" class="auth-form">
+    <label>
+      Usuário
+      <input name="username" required minlength="3" maxlength="32" autocomplete="username" />
+    </label>
+
+    <label>
+      Email (opcional)
+      <input name="email" maxlength="120" autocomplete="email" />
+    </label>
+
+    <label>
+      Senha
+      <input type="password" name="password" required minlength="10" autocomplete="new-password" />
+    </label>
+
+    <label class="bot-trap" aria-hidden="true">
+      Website
+      <input name="honeypot" tabindex="-1" autocomplete="off" />
+    </label>
+
+    <button class="btn primary" type="submit">Criar conta</button>
+    <p id="auth-status" class="auth-status"></p>
+  </form>
+
+  <p class="auth-footnote">Já tem conta? <a href="/auth/login">Entrar</a></p>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script defer src="/static/js/auth.js"></script>
+{% endblock %}

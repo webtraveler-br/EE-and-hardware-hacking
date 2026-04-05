@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="auth-wrap reveal">
+  <h1>Entrar</h1>
+  <p>Use usuário ou email para acessar sua sessão de revisão.</p>
+
+  <form id="auth-form" data-mode="login" class="auth-form">
+    <label>
+      Usuário ou email
+      <input name="login" required minlength="3" maxlength="120" autocomplete="username" />
+    </label>
+
+    <label>
+      Senha
+      <input type="password" name="password" required autocomplete="current-password" />
+    </label>
+
+    <label class="bot-trap" aria-hidden="true">
+      Website
+      <input name="honeypot" tabindex="-1" autocomplete="off" />
+    </label>
+
+    <button class="btn primary" type="submit">Entrar</button>
+    <p id="auth-status" class="auth-status"></p>
+  </form>
+
+  <p class="auth-footnote">Não tem conta? <a href="/auth/register">Criar conta</a></p>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script defer src="/static/js/auth.js"></script>
+{% endblock %}

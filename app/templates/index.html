@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero reveal">
+  <p class="eyebrow">Painel principal</p>
+  <h1>Encontre o deck certo em segundos e entre no estudo sem fricção.</h1>
+  <p class="muted maxw">Fluxo sugerido: abrir o roadmap do deck atual, revisar no FSRS e fechar com prática.</p>
+
+  <div class="hero-actions">
+    {% if user %}
+    <a class="btn primary" href="/study">Abrir sessão de estudo</a>
+    {% else %}
+    <a class="btn primary" href="/auth/login">Entrar para estudar</a>
+    <a class="btn" href="/auth/register">Criar conta</a>
+    {% endif %}
+    <a class="btn" href="/roadmap">Abrir catálogo de roadmaps</a>
+  </div>
+
+  <div class="stats-row">
+    <article class="stat-tile"><p>Decks</p><strong>{{ project_stats.decks }}</strong></article>
+    <article class="stat-tile"><p>Cards</p><strong>{{ project_stats.cards }}</strong></article>
+  </div>
+
+  <div class="flow-inline">
+    <article class="flow-step">
+      <span class="chip">1</span>
+      <h3>Abrir roadmap do deck</h3>
+      <p class="muted small">Contexto rápido do que estudar agora.</p>
+    </article>
+    <article class="flow-step">
+      <span class="chip">2</span>
+      <h3>Revisar no FSRS</h3>
+      <p class="muted small">Sessão com due, novos e progresso por deck.</p>
+    </article>
+    <article class="flow-step">
+      <span class="chip">3</span>
+      <h3>Aplicar no projeto</h3>
+      <p class="muted small">Fechar ciclo com evidência prática.</p>
+    </article>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="section-head">
+    <h2>Atalho por deck</h2>
+    <a class="link-inline" href="/roadmap">Ver catálogo completo</a>
+  </div>
+
+  <div class="panel deck-finder">
+    <div class="search-wrap">
+      <input id="home-deck-filter" type="search" placeholder="Buscar por deck ou assunto (ex: 5.02, controle, filtros)" />
+    </div>
+
+    <div class="deck-catalog" id="home-deck-catalog">
+      {% for deck in deck_catalog %}
+      <article class="deck-catalog-item" data-search="{{ (deck.deck_uid ~ ' ' ~ deck.title ~ ' ' ~ deck.track_label ~ ' ' ~ deck.track_title) | lower }}">
+        <div class="deck-catalog-main">
+          <p class="deck-code">{{ deck.deck_uid }}</p>
+          <p class="muted small">{{ deck.title }}</p>
+          <p class="muted tiny">{{ deck.card_count }} cards</p>
+        </div>
+        <div class="deck-catalog-actions">
+          {% if deck.roadmap_slug %}
+          <a class="ghost-btn small-btn" href="/roadmap/{{ deck.roadmap_slug }}">Roadmap</a>
+          {% endif %}
+          {% if user %}
+          <a class="ghost-btn small-btn" href="/study?deck={{ deck.deck_uid }}">Estudar</a>
+          {% else %}
+          <a class="ghost-btn small-btn" href="/auth/login">Entrar</a>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <p class="muted small hidden" id="home-deck-empty">Nenhum deck encontrado para este filtro.</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const homeDeckFilter = document.getElementById("home-deck-filter");
+  const homeDeckItems = [...document.querySelectorAll("#home-deck-catalog .deck-catalog-item")];
+  const homeDeckEmpty = document.getElementById("home-deck-empty");
+
+  if (homeDeckFilter) {
+    homeDeckFilter.addEventListener("input", () => {
+      const term = homeDeckFilter.value.toLowerCase().trim();
+      let visible = 0;
+      for (const item of homeDeckItems) {
+        const matches = !term || item.dataset.search.includes(term);
+        item.classList.toggle("hidden", !matches);
+        if (matches) {
+          visible += 1;
+        }
+      }
+      if (homeDeckEmpty) {
+        homeDeckEmpty.classList.toggle("hidden", visible > 0);
+      }
+    });
+  }
+</script>
+{% endblock %}
