@@ -112,15 +112,30 @@ a:hover {
 }
 
 .brand {
-  font-family: var(--mono);
-  font-size: 0.86rem;
-  letter-spacing: 0.03em;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: #7ef3d9;
 }
 
 .brand:hover {
   text-decoration: none;
+}
+
+.brand-mark {
+  border: 1px solid #2d8f87;
+  border-radius: 999px;
+  background: rgba(39, 211, 176, 0.15);
+  color: #9fffe8;
+  font: 700 0.66rem var(--mono);
+  letter-spacing: 0.04em;
+  padding: 0.12rem 0.42rem;
+  white-space: nowrap;
+}
+
+.brand-label {
+  font: 600 0.86rem var(--mono);
+  letter-spacing: 0.03em;
 }
 
 .nav-toggle {

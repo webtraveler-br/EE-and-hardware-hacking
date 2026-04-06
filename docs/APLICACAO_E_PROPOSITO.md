@@ -23,6 +23,7 @@
 19. [Runbook de Manutencao](#runbook-de-manutencao)
 20. [Decisoes Tecnicas e Limites Atuais](#decisoes-tecnicas-e-limites-atuais)
 21. [Proximos Passos Recomendados](#proximos-passos-recomendados)
+22. [Aplicativo Android e Sync Offline](#aplicativo-android-e-sync-offline)
 
 ---
 
@@ -93,7 +94,8 @@ Com a aplicacao, o fluxo fica padronizado em um unico ambiente:
 - Templates server-side: Jinja2
 - Algoritmo de repeticao: FSRS
 - Conteudo: Markdown (roadmaps + decks)
-- Frontend: HTML/CSS/JS (sem framework pesado)
+- Frontend web: HTML/CSS/JS (sem framework pesado)
+- Cliente mobile: Android nativo (Kotlin + WebView + modo offline)
 
 ### Diagrama de componentes
 
@@ -143,6 +145,11 @@ app/
   templates/               # Jinja2 pages
   static/                  # CSS e JS
 
+android-app/
+  app/src/main/java/com/roadmap/eehh/MainActivity.kt
+  app/src/main/java/com/roadmap/eehh/OfflineStudyActivity.kt
+  README.md
+
 content/
   roadmaps/
     decks/*.md             # roadmaps por deck
@@ -157,6 +164,7 @@ tests/
   test_flashcards.py
   test_study_selection.py
   test_pow.py
+  test_sync_routes.py
 ```
 
 ---
@@ -285,11 +293,17 @@ Arquivo: `app/models.py`
    - historico de revisoes
    - rating, duracao, estado antigo/novo, due antes/depois
 
+6. `SyncEvent`
+  - chave de idempotencia para sincronizacao offline
+  - restricao unica `user_id + event_id`
+  - impede reaplicacao da mesma revisao no servidor
+
 ### Relacionamentos principais
 
 - `Deck` 1:N `Card`
 - `User` N:N `Card` via `UserCardState`
 - `User` 1:N `ReviewLog`
+- `User` 1:N `SyncEvent`
 
 ---
 
@@ -382,6 +396,30 @@ python3 scripts/reindex_flashcards.py
 
 - `GET /api/stats/summary`
   - overview global + progresso por deck
+
+### Endpoints de sync offline
+
+- `GET /api/sync/export`
+  - query: `deck_uid` (default: `all`)
+  - retorna snapshot de cards ativos com estado por usuario:
+    - conteudo (`question_md`, `answer_md`, `content_hash`)
+    - metadados (`deck_uid`, `deck_title`, `position`)
+    - estado (`is_new`, `due_at`, `fsrs_state`, `fsrs_step`, `reps`, `lapses`)
+  - inclui `decks` e `quick_stats` para atualizar UI
+
+- `POST /api/sync/import`
+  - payload: lista de eventos `{event_id, card_uid, rating, duration_ms, reviewed_at}`
+  - validacoes:
+    - maximo de 1000 eventos por request
+    - normalizacao e parse de `reviewed_at`
+    - remocao de duplicados no proprio payload
+  - processamento:
+    - ordena por `reviewed_at` ascendente
+    - aplica FSRS para cada evento valido
+    - grava `ReviewLog`, atualiza `UserCardState`, registra `SyncEvent`
+  - resposta:
+    - `accepted`, `duplicates`, `errors`
+    - `decks` e `quick_stats` atualizados
 
 ### Endpoints de pagina
 
@@ -551,6 +589,7 @@ DEPLOY_HOST=user@server DEPLOY_DIR=/srv/roadmap_web HEALTH_PUBLIC=https://exampl
 O script faz:
 
 - sincronizacao de codigo (preservando `data/` e `.env` remotos)
+- exclusao de artefatos pesados do Android no sync (`android-app/.gradle`, `android-app/build`, `android-app/app/build`)
 - `docker compose up --build -d` no servidor
 - validacao de `healthz` local e publico
 
@@ -600,6 +639,63 @@ O script faz:
 
 ---
 
+## Aplicativo Android e Sync Offline
+
+### Escopo atual do app Android
+
+Cliente em `android-app/` com:
+
+- `MainActivity`: WebView da aplicacao web
+- `OfflineStudyActivity`: estudo offline e sincronizacao
+- persistencia de sessao por cookie (SharedPreferences)
+
+### Persistencia de sessao no Android
+
+Problema resolvido: sessao era perdida entre aberturas do app.
+
+Comportamento implementado:
+
+1. cookies sao lidos do `CookieManager`
+2. header de cookie e salvo em `SharedPreferences`
+3. no startup, cookies sao restaurados antes de abrir a URL
+
+Resultado: o app mantem login entre relancamentos (respeitando expiracao do cookie servidor).
+
+### Armazenamento offline local
+
+Arquivos locais em `filesDir`:
+
+- `offline_cards_v1.json`: snapshot dos cards e estado
+- `offline_pending_reviews_v1.json`: fila de eventos pendentes
+
+### Fluxo offline -> online
+
+1. usuario loga online no app
+2. app chama `GET /api/sync/export?deck_uid=all` para baixar snapshot
+3. usuario revisa offline; cada review gera evento com:
+  - `event_id` (UUID)
+  - `card_uid`
+  - `rating`
+  - `duration_ms`
+  - `reviewed_at`
+4. app envia fila em `POST /api/sync/import`
+5. servidor processa com idempotencia por `SyncEvent`
+6. app remove eventos sincronizados e faz novo `sync/export` para atualizar estado local
+
+### Garantias do sync
+
+- retries seguros: mesmo evento pode ser reenviado sem duplicar review
+- idempotencia forte por usuario+evento no banco
+- consistencia eventual: apos import+export, estado local converge com servidor
+
+### Observacoes de implementacao
+
+- a ordenacao de eventos no import e por `reviewed_at` para manter causalidade da fila offline
+- eventos invalidos (ex.: card removido) retornam em `errors` sem travar o lote inteiro
+- agendamento local offline e simplificado; estado final autoritativo vem do servidor apos sync
+
+---
+
 ## Renderizacao de Markdown e Matematica
 
 ### No backend (roadmap docs)
@@ -624,6 +720,7 @@ Suite atual em `tests/` cobre:
 - parsing/sync de flashcards
 - selecao de proximo card
 - roundtrip de proof-of-work
+- import/export de sync offline com idempotencia (`tests/test_sync_routes.py`)
 
 Executar:
 
@@ -699,6 +796,52 @@ python -m pytest
 3. Expor endpoint de refresh de indice com autenticacao
 4. Criar pagina de operacao com status de import/reindex
 5. Incluir testes E2E dos fluxos de autenticacao e estudo
+
+---
+
+## Atualizacoes Recentes (2026-04-06)
+
+### 1) App Android com sessao persistente e modo offline
+
+Escopo implementado:
+
+- persistencia de cookie de sessao no Android (`MainActivity`)
+- nova tela `OfflineStudyActivity` para estudo offline
+- download de snapshot (`/api/sync/export`)
+- fila local de revisoes pendentes
+- sincronizacao posterior (`/api/sync/import`)
+
+### 2) Backend de sync offline
+
+Escopo implementado:
+
+- tabela `sync_events` para idempotencia
+- endpoint `GET /api/sync/export`
+- endpoint `POST /api/sync/import`
+- deduplicacao no payload + deduplicacao persistente por `event_id`
+- processamento ordenado por horario de review
+
+### 3) Qualidade e testes
+
+- novos testes em `tests/test_sync_routes.py`
+- suite local executada com sucesso (8 testes)
+
+### 4) Deploy e validacao operacional
+
+Deploy executado com sucesso usando `scripts/deploy_debian.sh`, incluindo:
+
+- rebuild da imagem e restart do servico
+- health check local (`127.0.0.1:8088/healthz`) OK
+- health check publico (`https://seu-host-publico/healthz`) OK
+- smoke test de rotas principais OK (`/`, `/roadmap`, `/study`, `/stats`)
+- container em estado `healthy`
+
+### 5) Hardening operacional mantido
+
+- app em bind local no host (`127.0.0.1:8088`), exposto externamente via Tailscale Funnel
+- permissoes de `.env` restritas no servidor
+- fail2ban ativo
+- n8n e app permanecem publicados via HTTPS conforme requisito
 
 ---
 

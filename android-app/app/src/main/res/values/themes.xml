@@ -1,0 +1,28 @@
+<resources>
+    <style name="Theme.RoadmapAndroid" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#20C8A8</item>
+        <item name="colorOnPrimary">#04231F</item>
+        <item name="colorPrimaryContainer">#1A4147</item>
+        <item name="colorOnPrimaryContainer">#E8F1F4</item>
+
+        <item name="colorSecondary">#79ADFF</item>
+        <item name="colorOnSecondary">#0B1422</item>
+        <item name="colorSecondaryContainer">#23425C</item>
+        <item name="colorOnSecondaryContainer">#E8F1F4</item>
+
+        <item name="colorTertiary">#32D7AE</item>
+        <item name="colorOnTertiary">#04231F</item>
+
+        <item name="colorSurface">#132138</item>
+        <item name="colorOnSurface">#E8F1F4</item>
+        <item name="colorSurfaceVariant">#192A41</item>
+        <item name="colorOnSurfaceVariant">#90A3AD</item>
+        <item name="colorOutline">#21374C</item>
+
+        <item name="colorError">#FF6D83</item>
+        <item name="colorOnError">#2B0910</item>
+
+        <item name="android:colorAccent">#27D3B0</item>
+        <item name="android:textColorHighlight">#4027D3B0</item>
+    </style>
+</resources>

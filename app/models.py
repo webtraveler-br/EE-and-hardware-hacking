@@ -90,3 +90,13 @@ class ReviewLog(Base):
     new_state: Mapped[int] = mapped_column(Integer, nullable=False)
     due_before: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     due_after: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+
+class SyncEvent(Base):
+    __tablename__ = "sync_events"
+    __table_args__ = (UniqueConstraint("user_id", "event_id", name="uq_sync_event"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True, nullable=False)
+    event_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, nullable=False)

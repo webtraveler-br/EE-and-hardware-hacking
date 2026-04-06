@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Roadmap EE&amp;HH</string>
+    <string name="brand_mark">EE&amp;HH</string>
+    <string name="offline_mode">Offline</string>
+    <string name="offline_title">Flashcards Offline</string>
+    <string name="offline_subtitle">Mesmo fluxo do site: escolha deck, revele resposta e avalie 1-4.</string>
+    <string name="offline_deck_label">Deck selecionado</string>
+    <string name="offline_download">Baixar snapshot</string>
+    <string name="offline_sync">Sincronizar</string>
+    <string name="offline_show_answer">Mostrar resposta</string>
+    <string name="offline_pending_count">Pendentes: %1$d</string>
+    <string name="offline_cards_count">Cards locais: %1$d</string>
+    <string name="offline_status_empty">Sem cards offline. Toque em Baixar snapshot.</string>
+    <string name="offline_status_deck_empty">Sem cards offline para este deck. Baixe snapshot do deck selecionado.</string>
+    <string name="offline_status_no_eligible">Nenhum card elegivel no momento para este deck.</string>
+    <string name="offline_sync_done">Sync concluido: aceitos %1$d, duplicados %2$d, erros %3$d.</string>
+    <string name="offline_download_done">Snapshot offline atualizado (%1$d cards).</string>
+    <string name="offline_need_online_login">Faca login no modo online para usar download e sync offline.</string>
+    <string name="offline_deck_option">%1$s - %2$d rev - %3$d novos - %4$d cards</string>
+    <string name="offline_question_label">Pergunta</string>
+    <string name="offline_answer_label">Resposta</string>
+    <string name="rate_again">Esqueci (1)</string>
+    <string name="rate_hard">Dificil (2)</string>
+    <string name="rate_good">Bom (3)</string>
+    <string name="rate_easy">Facil (4)</string>
+    <string name="online_unavailable_title">Sem conexao</string>
+    <string name="online_unavailable_message">Nao foi possivel carregar o site agora. Verifique internet e tente novamente, ou estude no modo offline.</string>
+    <string name="try_again">Tentar novamente</string>
+    <string name="open_offline_mode">Abrir modo offline</string>
+    <string name="loading_online">Carregando ambiente online...</string>
+    <string name="all_decks">Todos os baralhos</string>
+    <string name="select_deck_hint">Escolha o deck para estudar/revisar</string>
+</resources>

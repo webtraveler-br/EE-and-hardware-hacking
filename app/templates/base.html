@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ app_name }}</title>
+    <link rel="icon" type="image/svg+xml" href="/static/img/favicon.svg" />
+    <meta name="theme-color" content="#0b1422" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,7 +37,10 @@
   </head>
   <body>
     <header class="topbar">
-      <a href="/" class="brand">{{ app_name }}</a>
+      <a href="/" class="brand">
+        <span class="brand-mark" aria-hidden="true">EE&amp;HH</span>
+        <span class="brand-label">{{ app_name }}</span>
+      </a>
       <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menu">Menu</button>
       <nav id="main-nav" class="main-nav">
         <a href="/">Início</a>

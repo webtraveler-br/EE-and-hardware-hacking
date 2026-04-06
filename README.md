@@ -10,18 +10,31 @@ Nota: sim, isso tudo foi vibe codado.
 
 Total atual: 31 decks, 2049 cards.
 
+## Novidades Recentes (2026-04-06)
+
+- App Android com WebView e persistencia de sessao entre aberturas.
+- Modo offline no Android para estudar sem internet.
+- Sincronizacao offline->online com idempotencia por `event_id`.
+- API de sync no backend:
+	- `GET /api/sync/export`
+	- `POST /api/sync/import`
+- Deploy Debian validado com health local/publico e smoke tests.
+- Script de deploy atualizado para nao sincronizar artefatos pesados do Android (`android-app/.gradle`, `android-app/build`, `android-app/app/build`).
+
 ## Visao Geral
 
-- Execucao: app web (FastAPI) para roadmap, estudo e stats.
+- Execucao: app web (FastAPI) + app Android (WebView + modo offline).
 - Conteudo: markdown versionado no repositorio.
 - Revisao: scheduling FSRS por usuario/card.
 
 ## Estrutura do Projeto
 
 - [app](app): backend, templates e JS da aplicacao
+- [android-app](android-app): cliente Android (online + offline/sync)
 - [content/flashcards/decks](content/flashcards/decks): fonte canonica dos decks markdown
 - [content/roadmaps/decks](content/roadmaps/decks): roadmaps orientados a deck (`*.md`)
 - [scripts](scripts): utilitarios de normalizacao/reindex/deploy
+- [docs](docs): documentacao tecnica e operacional
 
 ## Subir Localmente (venv)
 
@@ -58,6 +71,35 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8088
 docker compose up --build -d
 ```
 
+## Deploy Debian
+
+Script oficial:
+
+```bash
+scripts/deploy_debian.sh --health-public https://seu-host-publico/healthz
+```
+
+O script faz:
+
+1. sincronizacao de codigo para o host remoto
+2. `docker compose up --build -d`
+3. validacao de health local (`127.0.0.1:8088`)
+4. validacao de health publico (quando informado)
+
+Variaveis/flags disponiveis em [scripts/deploy_debian.sh](scripts/deploy_debian.sh).
+
+## App Android e Sync Offline
+
+Fluxo resumido:
+
+1. login online no app
+2. abrir modo Offline
+3. baixar snapshot de cards
+4. revisar offline (gera fila local de eventos)
+5. sincronizar quando houver internet
+
+Detalhes tecnicos em [docs/SYNC_OFFLINE_ANDROID.md](docs/SYNC_OFFLINE_ANDROID.md).
+
 ## Fluxo de Conteudo (Deck-First)
 
 1. Editar decks em `content/flashcards/decks/*.md`.
@@ -83,3 +125,4 @@ python -m pytest
 
 - [docs/APLICACAO_E_PROPOSITO.md](docs/APLICACAO_E_PROPOSITO.md): documentacao funcional e tecnica completa.
 - [docs/REGRAS_FLASHCARDS.md](docs/REGRAS_FLASHCARDS.md): padrao de criacao/manutencao dos flashcards.
+- [docs/SYNC_OFFLINE_ANDROID.md](docs/SYNC_OFFLINE_ANDROID.md): arquitetura do sync offline do Android com backend.

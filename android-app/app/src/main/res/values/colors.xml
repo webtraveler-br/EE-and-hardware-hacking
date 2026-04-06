@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="eehh_bg_0">#050A11</color>
+    <color name="eehh_bg_1">#0B1422</color>
+    <color name="eehh_bg_2">#132138</color>
+    <color name="eehh_panel">#132138</color>
+    <color name="eehh_panel_border">#21374C</color>
+    <color name="eehh_ink">#E8F1F4</color>
+    <color name="eehh_muted">#90A3AD</color>
+    <color name="eehh_accent">#27D3B0</color>
+    <color name="eehh_warn">#F6B256</color>
+    <color name="eehh_good">#32D7AE</color>
+    <color name="eehh_easy">#79ADFF</color>
+    <color name="eehh_danger">#FF6D83</color>
+    <color name="ic_launcher_background">#0B1422</color>
+</resources>
