@@ -28,6 +28,39 @@ O desenho usa duas etapas:
 
 Depois do import, o cliente faz novo export. Isso garante convergencia do estado local para o estado autoritativo do servidor.
 
+## Snapshot incremental
+
+Quando o aparelho ja possui snapshot local, o app nao precisa mais baixar todos os cards completos a cada sync.
+
+O fluxo incremental usa:
+
+- `content_hash` para detectar mudancas de conteudo
+- estado local do usuario (`due_at`, `reps`, `lapses`, `is_new`) para detectar mudancas de scheduling
+- lista de `card_uid` locais para detectar cards removidos/inativos
+
+Cliente chama:
+
+- `POST /api/sync/export-delta`
+
+Payload:
+
+- `deck_uid`
+- `cards[]` com `card_uid`, `content_hash`, `deck_uid`, `position`, `due_at`, `reps`, `lapses`, `is_new`
+
+Servidor responde com:
+
+- `upserts`: cards novos ou alterados, com payload completo
+- `removed_card_uids`: cards que devem sair do snapshot local
+- `unchanged_count`: quantidade reaproveitada do cache
+
+No Android, o storage local aplica merge:
+
+- remove `removed_card_uids`
+- faz upsert dos cards em `upserts`
+- preserva intactos os cards nao alterados
+
+Se ainda nao existir snapshot local, o app continua fazendo export completo inicial.
+
 ## Fluxo detalhado
 
 ### 1) Download para offline
@@ -92,9 +125,10 @@ Resposta:
 
 ### 4) Pos-sync
 
-Cliente remove da fila apenas os eventos sincronizados e faz novo:
+Cliente remove da fila apenas os eventos sincronizados e faz novo refresh do snapshot:
 
-- GET /api/sync/export?deck_uid=all
+- `POST /api/sync/export-delta` quando ja existe cache local
+- `GET /api/sync/export?deck_uid=all` apenas no primeiro download completo
 
 Com isso, o app atualiza o snapshot local para o estado atual do servidor.
 

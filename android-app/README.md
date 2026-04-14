@@ -4,18 +4,14 @@ Aplicativo Android nativo para o sistema Roadmap EEHH.
 
 ## O que o app faz hoje
 
-- Acesso online ao sistema via WebView.
+- Login nativo contra a API web.
 - Persistencia de sessao (cookie) entre aberturas do app.
 - Modo offline para estudar cards sem internet.
 - Sincronizacao de revisoes offline quando a conexao volta.
 
 ## URL padrão
 
-O app abre por padrão:
-
-https://example.com/
-
-Para build de producao/publico, configure via variavel de ambiente ou propriedade Gradle.
+O build agora exige `ROADMAP_BASE_URL` explicita. Nao existe fallback para `example.com`.
 
 ## Fluxo de uso (online + offline)
 
@@ -60,9 +56,13 @@ Você pode sobrescrever a URL no build com a propriedade ROADMAP_BASE_URL:
 
 ./gradlew assembleDebug -PROADMAP_BASE_URL=https://seu-endereco/
 
+Se voce faz deploy com `scripts/deploy_debian.sh --health-public ...`, use no app a mesma URL base publica desse health, sem o `/healthz`.
+
 Exemplo para dev local em emulador Android:
 
 ./gradlew assembleDebug -PROADMAP_BASE_URL=http://10.0.2.2:8088/
+
+Se voce usar HTTPS local com CA propria, o build debug agora aceita certificados instalados pelo usuario no dispositivo/emulador. Ainda assim, para ambiente local, prefira `http://10.0.2.2:8088/` quando possivel. Se o app mostrar erro de trust anchor, normalmente o servidor nao esta enviando uma cadeia valida ou a CA local nao foi instalada no Android.
 
 ## Endpoints usados pelo modo offline
 

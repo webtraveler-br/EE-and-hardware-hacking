@@ -13,6 +13,7 @@ from ..models import Card, Deck, ReviewLog, SyncEvent, User, UserCardState, utcn
 from ..scheduler import FSRSService
 
 router = APIRouter(prefix="/api", tags=["study"])
+ALL_DECK_UID = "all"
 
 
 class NextCardPayload(BaseModel):
@@ -23,6 +24,7 @@ class ReviewPayload(BaseModel):
     card_uid: str = Field(min_length=3, max_length=140)
     rating: int = Field(ge=1, le=4)
     duration_ms: int | None = Field(default=None, ge=0, le=600000)
+    deck_uid: str | None = Field(default=None, max_length=120)
 
 
 class SyncEventPayload(BaseModel):
@@ -35,6 +37,27 @@ class SyncEventPayload(BaseModel):
 
 class SyncImportPayload(BaseModel):
     events: list[SyncEventPayload] = Field(default_factory=list)
+
+
+class SyncLocalCardPayload(BaseModel):
+    card_uid: str = Field(min_length=3, max_length=140)
+    content_hash: str = Field(min_length=1, max_length=64)
+    deck_uid: str = Field(min_length=1, max_length=120)
+    position: int = Field(ge=0)
+    due_at: str | None = Field(default=None, max_length=64)
+    reps: int = Field(default=0, ge=0)
+    lapses: int = Field(default=0, ge=0)
+    is_new: bool = True
+    fsrs_state: int | None = Field(default=None)
+    fsrs_step: int | None = Field(default=None)
+    fsrs_stability: float | None = Field(default=None)
+    fsrs_difficulty: float | None = Field(default=None)
+    last_review_at: str | None = Field(default=None, max_length=64)
+
+
+class SyncExportDeltaPayload(BaseModel):
+    deck_uid: str = Field(default=ALL_DECK_UID, max_length=120)
+    cards: list[SyncLocalCardPayload] = Field(default_factory=list)
 
 
 def _as_aware(dt: datetime | None, fallback: datetime) -> datetime:
@@ -58,6 +81,27 @@ def _parse_iso_datetime(raw: str, *, fallback: datetime) -> datetime:
     return _as_aware(parsed, fallback)
 
 
+def _normalize_deck_uid(raw: str | None) -> str:
+    if raw is None:
+        return ALL_DECK_UID
+
+    deck_uid = raw.strip()
+    if not deck_uid:
+        raise HTTPException(status_code=400, detail="deck_uid_invalido")
+    return deck_uid
+
+
+def _resolve_deck_scope(db: Session, raw: str | None) -> tuple[str, Deck | None]:
+    deck_uid = _normalize_deck_uid(raw)
+    if deck_uid == ALL_DECK_UID:
+        return deck_uid, None
+
+    deck = db.execute(select(Deck).where(Deck.deck_uid == deck_uid)).scalar_one_or_none()
+    if deck is None:
+        raise HTTPException(status_code=404, detail="deck_nao_encontrado")
+    return deck_uid, deck
+
+
 def _client_ip(request: Request) -> str:
     forwarded = request.headers.get("x-forwarded-for")
     if forwarded:
@@ -79,6 +123,144 @@ def _serialize_card(card: Card, deck: Deck, state_row: UserCardState | None) -> 
     }
 
 
+def _serialize_sync_card(card: Card, deck: Deck, state_row: UserCardState | None) -> dict:
+    return {
+        "card_uid": card.card_uid,
+        "deck_uid": deck.deck_uid,
+        "deck_title": deck.title,
+        "question_md": card.question_md,
+        "answer_md": card.answer_md,
+        "content_hash": card.content_hash,
+        "position": int(card.position or 0),
+        "state": {
+            "is_new": state_row is None,
+            "due_at": state_row.due_at.isoformat() if state_row else None,
+            "fsrs_state": int(state_row.fsrs_state) if state_row else None,
+            "fsrs_step": (
+                int(state_row.fsrs_step)
+                if state_row and state_row.fsrs_step is not None
+                else None
+            ),
+            "fsrs_stability": (
+                float(state_row.fsrs_stability)
+                if state_row and state_row.fsrs_stability is not None
+                else None
+            ),
+            "fsrs_difficulty": (
+                float(state_row.fsrs_difficulty)
+                if state_row and state_row.fsrs_difficulty is not None
+                else None
+            ),
+            "last_review_at": (
+                state_row.last_review_at.isoformat()
+                if state_row and state_row.last_review_at
+                else None
+            ),
+            "reps": int(state_row.reps or 0) if state_row else 0,
+            "lapses": int(state_row.lapses or 0) if state_row else 0,
+        },
+    }
+
+
+def _serialize_sync_rows(rows: list[tuple[Card, Deck, UserCardState | None]]) -> list[dict]:
+    return [_serialize_sync_card(card, deck, state_row) for card, deck, state_row in rows]
+
+
+def _sync_export_rows(db: Session, user_id: int, deck_uid: str):
+    rows_query = (
+        select(Card, Deck, UserCardState)
+        .join(Deck, Deck.id == Card.deck_id)
+        .outerjoin(
+            UserCardState,
+            and_(UserCardState.card_id == Card.id, UserCardState.user_id == user_id),
+        )
+        .where(Card.is_active.is_(True))
+        .order_by(Deck.sort_order.asc(), Card.position.asc())
+    )
+    if deck_uid != ALL_DECK_UID:
+        rows_query = rows_query.where(Deck.deck_uid == deck_uid)
+    return db.execute(rows_query).all()
+
+
+def _local_due_matches(remote_due_at: datetime | None, local_due_at_raw: str | None) -> bool:
+    if remote_due_at is None and not local_due_at_raw:
+        return True
+    if remote_due_at is None or not local_due_at_raw:
+        return False
+    return _as_aware(remote_due_at, remote_due_at) == _parse_iso_datetime(
+        local_due_at_raw,
+        fallback=_as_aware(remote_due_at, remote_due_at),
+    )
+
+
+def _local_float_matches(remote_value: float | None, local_value: float | None) -> bool:
+    if remote_value is None and local_value is None:
+        return True
+    if remote_value is None or local_value is None:
+        return False
+    return abs(float(remote_value) - float(local_value)) <= 1e-9
+
+
+def _card_needs_upsert(
+    *,
+    card: Card,
+    deck: Deck,
+    state_row: UserCardState | None,
+    local_card: SyncLocalCardPayload | None,
+) -> bool:
+    if local_card is None:
+        return True
+
+    remote_is_new = state_row is None
+    remote_reps = int(state_row.reps or 0) if state_row else 0
+    remote_lapses = int(state_row.lapses or 0) if state_row else 0
+    remote_fsrs_state = int(state_row.fsrs_state) if state_row else None
+    remote_fsrs_step = (
+        int(state_row.fsrs_step) if state_row and state_row.fsrs_step is not None else None
+    )
+    remote_fsrs_stability = (
+        float(state_row.fsrs_stability)
+        if state_row and state_row.fsrs_stability is not None
+        else None
+    )
+    remote_fsrs_difficulty = (
+        float(state_row.fsrs_difficulty)
+        if state_row and state_row.fsrs_difficulty is not None
+        else None
+    )
+
+    return (
+        local_card.content_hash != card.content_hash
+        or local_card.deck_uid != deck.deck_uid
+        or local_card.position != int(card.position or 0)
+        or local_card.is_new != remote_is_new
+        or local_card.reps != remote_reps
+        or local_card.lapses != remote_lapses
+        or (
+            local_card.fsrs_state is not None and local_card.fsrs_state != remote_fsrs_state
+        )
+        or (
+            local_card.fsrs_step is not None and local_card.fsrs_step != remote_fsrs_step
+        )
+        or (
+            local_card.fsrs_stability is not None
+            and not _local_float_matches(remote_fsrs_stability, local_card.fsrs_stability)
+        )
+        or (
+            local_card.fsrs_difficulty is not None
+            and not _local_float_matches(remote_fsrs_difficulty, local_card.fsrs_difficulty)
+        )
+        or (
+            local_card.last_review_at is not None
+            and not _local_due_matches(
+                state_row.last_review_at if state_row else None,
+                local_card.last_review_at,
+            )
+        )
+        or not _local_due_matches(state_row.due_at if state_row else None, local_card.due_at)
+    )
+
+
 def _select_next_card(
     *, db: Session, user_id: int, deck_uid: str, now: datetime
 ) -> tuple[Card, Deck, UserCardState | None] | None:
@@ -91,7 +273,7 @@ def _select_next_card(
         )
         .where(Card.is_active.is_(True), UserCardState.due_at <= now)
     )
-    if deck_uid != "all":
+    if deck_uid != ALL_DECK_UID:
         due_query = due_query.where(Deck.deck_uid == deck_uid)
 
     due_query = due_query.order_by(func.random()).limit(1)
@@ -106,7 +288,7 @@ def _select_next_card(
         .join(Deck, Deck.id == Card.deck_id)
         .where(Card.is_active.is_(True), Card.id.not_in(seen_subq))
     )
-    if deck_uid != "all":
+    if deck_uid != ALL_DECK_UID:
         new_query = new_query.where(Deck.deck_uid == deck_uid)
 
     new_query = new_query.order_by(Deck.sort_order.asc(), Card.position.asc()).limit(1)
@@ -151,6 +333,18 @@ def _get_deck_stats(db: Session, user_id: int, now: datetime) -> list[dict]:
             func.coalesce(
                 func.sum(case((UserCardState.due_at <= now, 1), else_=0)), 0
             ).label("due_count"),
+            func.coalesce(
+                func.sum(
+                    case(
+                        (
+                            UserCardState.fsrs_state.in_((1, 3)),
+                            1,
+                        ),
+                        else_=0,
+                    )
+                ),
+                0,
+            ).label("learning_count"),
         )
         .outerjoin(Card, and_(Card.deck_id == Deck.id, Card.is_active.is_(True)))
         .outerjoin(
@@ -169,6 +363,7 @@ def _get_deck_stats(db: Session, user_id: int, now: datetime) -> list[dict]:
             "seen_count": int(row.seen_count or 0),
             "new_count": max(0, int(row.card_count or 0) - int(row.seen_count or 0)),
             "due_count": int(row.due_count or 0),
+            "learning_count": int(row.learning_count or 0),
         }
         for row in deck_rows
     ]
@@ -219,8 +414,8 @@ def study_next(
     db: Session = Depends(get_db),
 ):
     now = utcnow()
-    deck_uid = payload.deck_uid.strip() if payload.deck_uid else "all"
-    hit = _select_next_card(db=db, user_id=user.id, deck_uid=deck_uid or "all", now=now)
+    selected_deck_uid, _ = _resolve_deck_scope(db, payload.deck_uid)
+    hit = _select_next_card(db=db, user_id=user.id, deck_uid=selected_deck_uid, now=now)
     if hit is None:
         return {"empty": True}
 
@@ -235,6 +430,7 @@ def study_review(
     user: User = Depends(require_user),
     db: Session = Depends(get_db),
 ):
+    selected_deck_uid, selected_deck = _resolve_deck_scope(db, payload.deck_uid)
     settings = request.app.state.settings
     ip = _client_ip(request)
     limiter: SimpleRateLimiter = request.app.state.rate_limiter
@@ -254,6 +450,8 @@ def study_review(
     ).scalar_one_or_none()
     if card is None:
         raise HTTPException(status_code=404, detail="card_nao_encontrado")
+    if selected_deck is not None and card.deck_id != selected_deck.id:
+        raise HTTPException(status_code=400, detail="card_fora_do_deck")
 
     state_row = db.execute(
         select(UserCardState).where(
@@ -310,8 +508,12 @@ def study_review(
 
     # Return combined response: review result + next card + updated stats
     # This eliminates 3 sequential requests from the frontend
-    deck_uid = card.deck.deck_uid if card.deck else "all"
-    next_hit = _select_next_card(db=db, user_id=user.id, deck_uid="all", now=now)
+    next_hit = _select_next_card(
+        db=db,
+        user_id=user.id,
+        deck_uid=selected_deck_uid,
+        now=now,
+    )
     next_card_data = None
     if next_hit is not None:
         nc, nd, ns = next_hit
@@ -332,59 +534,60 @@ def study_review(
 
 @router.get("/sync/export")
 def sync_export(
-    deck_uid: str = "all",
+    request: Request,
+    deck_uid: str = ALL_DECK_UID,
     user: User = Depends(require_user),
     db: Session = Depends(get_db),
 ):
     now = utcnow()
-    selected_deck_uid = deck_uid.strip() if deck_uid else "all"
-
-    rows_query = (
-        select(Card, Deck, UserCardState)
-        .join(Deck, Deck.id == Card.deck_id)
-        .outerjoin(
-            UserCardState,
-            and_(UserCardState.card_id == Card.id, UserCardState.user_id == user.id),
-        )
-        .where(Card.is_active.is_(True))
-        .order_by(Deck.sort_order.asc(), Card.position.asc())
-    )
-    if selected_deck_uid != "all":
-        rows_query = rows_query.where(Deck.deck_uid == selected_deck_uid)
-
-    rows = db.execute(rows_query).all()
-    cards: list[dict] = []
-
-    for card, deck, state_row in rows:
-        cards.append(
-            {
-                "card_uid": card.card_uid,
-                "deck_uid": deck.deck_uid,
-                "deck_title": deck.title,
-                "question_md": card.question_md,
-                "answer_md": card.answer_md,
-                "content_hash": card.content_hash,
-                "position": int(card.position or 0),
-                "state": {
-                    "is_new": state_row is None,
-                    "due_at": state_row.due_at.isoformat() if state_row else None,
-                    "fsrs_state": int(state_row.fsrs_state) if state_row else None,
-                    "fsrs_step": (
-                        int(state_row.fsrs_step)
-                        if state_row and state_row.fsrs_step is not None
-                        else None
-                    ),
-                    "reps": int(state_row.reps or 0) if state_row else 0,
-                    "lapses": int(state_row.lapses or 0) if state_row else 0,
-                },
-            }
-        )
+    selected_deck_uid, _ = _resolve_deck_scope(db, deck_uid)
+    rows = _sync_export_rows(db, user.id, selected_deck_uid)
 
     return {
         "ok": True,
         "deck_uid": selected_deck_uid,
         "generated_at": now.isoformat(),
-        "cards": cards,
+        "scheduler_profile": request.app.state.fsrs.profile_payload(),
+        "cards": _serialize_sync_rows(rows),
+        "decks": _get_deck_stats(db, user.id, now),
+        "quick_stats": _get_quick_stats(db, user.id, now),
+    }
+
+
+@router.post("/sync/export-delta")
+def sync_export_delta(
+    payload: SyncExportDeltaPayload,
+    request: Request,
+    user: User = Depends(require_user),
+    db: Session = Depends(get_db),
+):
+    now = utcnow()
+    selected_deck_uid, _ = _resolve_deck_scope(db, payload.deck_uid)
+    rows = _sync_export_rows(db, user.id, selected_deck_uid)
+
+    local_cards = {item.card_uid: item for item in payload.cards}
+    remote_card_uids = {card.card_uid for card, _, _ in rows}
+
+    upserts = [
+        _serialize_sync_card(card, deck, state_row)
+        for card, deck, state_row in rows
+        if _card_needs_upsert(
+            card=card,
+            deck=deck,
+            state_row=state_row,
+            local_card=local_cards.get(card.card_uid),
+        )
+    ]
+    removed_card_uids = sorted(set(local_cards) - remote_card_uids)
+
+    return {
+        "ok": True,
+        "deck_uid": selected_deck_uid,
+        "generated_at": now.isoformat(),
+        "scheduler_profile": request.app.state.fsrs.profile_payload(),
+        "upserts": upserts,
+        "removed_card_uids": removed_card_uids,
+        "unchanged_count": max(0, len(rows) - len(upserts)),
         "decks": _get_deck_stats(db, user.id, now),
         "quick_stats": _get_quick_stats(db, user.id, now),
     }
@@ -444,6 +647,19 @@ def sync_import(
         .scalars()
         .all()
     }
+    state_rows_by_card_id = {}
+    if cards_by_uid:
+        state_rows_by_card_id = {
+            state_row.card_id: state_row
+            for state_row in db.execute(
+                select(UserCardState).where(
+                    UserCardState.user_id == user.id,
+                    UserCardState.card_id.in_([card.id for card in cards_by_uid.values()]),
+                )
+            )
+            .scalars()
+            .all()
+        }
 
     fsrs_service: FSRSService = request.app.state.fsrs
     accepted = 0
@@ -461,12 +677,7 @@ def sync_import(
             errors.append({"event_id": event_id, "detail": "card_nao_encontrado"})
             continue
 
-        state_row = db.execute(
-            select(UserCardState).where(
-                UserCardState.user_id == user.id,
-                UserCardState.card_id == card.id,
-            )
-        ).scalar_one_or_none()
+        state_row = state_rows_by_card_id.get(card.id)
 
         old_due = state_row.due_at if state_row else None
         old_state = state_row.fsrs_state if state_row else None
@@ -482,6 +693,7 @@ def sync_import(
         if state_row is None:
             state_row = UserCardState(user_id=user.id, card_id=card.id, reps=0, lapses=0)
             db.add(state_row)
+            state_rows_by_card_id[card.id] = state_row
 
         state_row.fsrs_state = int(new_card.state.value)
         state_row.fsrs_step = new_card.step

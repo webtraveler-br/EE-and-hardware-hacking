@@ -12,54 +12,56 @@
         android:layout_height="wrap_content"
         android:background="@drawable/panel_surface"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:paddingLeft="14dp"
+        android:paddingTop="12dp"
+        android:paddingRight="14dp"
+        android:paddingBottom="14dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/chip_surface"
-            android:paddingLeft="10dp"
-            android:paddingTop="4dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="4dp"
-            android:text="@string/brand_mark"
-            android:textColor="@color/eehh_accent"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/offlineTitle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/offline_title"
-            android:textColor="@color/eehh_ink"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/offline_subtitle"
-            android:textColor="@color/eehh_muted"
-            android:textSize="13sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chip_surface"
+                android:paddingLeft="10dp"
+                android:paddingTop="4dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="4dp"
+                android:text="@string/brand_mark"
+                android:textColor="@color/eehh_accent"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/offline_deck_label"
-            android:textColor="@color/eehh_muted"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/offlineSettingsButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/button_icon_subtle"
+                android:contentDescription="@string/offline_settings"
+                android:padding="10dp"
+                android:src="@android:drawable/ic_menu_manage"
+                app:tint="@color/eehh_muted" />
+        </LinearLayout>
 
         <Spinner
             android:id="@+id/offlineDeckSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/button_ghost"
-            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/spinner_field_bg"
+            android:minHeight="48dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="10dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="10dp"
             android:popupBackground="@color/eehh_panel" />
 
         <LinearLayout
@@ -68,222 +70,301 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/offlineDownloadButton"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/button_primary"
-                android:backgroundTint="@null"
-                app:backgroundTint="@null"
-                android:text="@string/offline_download"
-                android:textColor="#04231F"
-                android:textStyle="bold" />
+                android:background="@drawable/panel_metric_card"
+                android:gravity="center"
+                android:minHeight="52dp"
+                android:orientation="vertical"
+                android:padding="8dp">
 
-            <Button
-                android:id="@+id/offlineSyncButton"
+                <TextView
+                    android:id="@+id/offlineDueCountValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/eehh_easy"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/offline_due_label"
+                    android:textColor="@color/eehh_muted"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="6dp"
                 android:layout_weight="1"
-                android:background="@drawable/button_ghost"
-                android:backgroundTint="@null"
-                app:backgroundTint="@null"
-                android:text="@string/offline_sync"
-                android:textColor="@color/eehh_ink"
-                android:textStyle="bold" />
+                android:background="@drawable/panel_metric_card"
+                android:gravity="center"
+                android:minHeight="52dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/offlineNewCountValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/eehh_good"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/offline_new_label"
+                    android:textColor="@color/eehh_muted"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/panel_metric_card"
+                android:gravity="center"
+                android:minHeight="52dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/offlineWrongQueueCountValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/eehh_danger"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/offline_wrong_queue_label"
+                    android:textColor="@color/eehh_muted"
+                    android:textSize="11sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <TextView
             android:id="@+id/offlineStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:text="@string/offline_status_empty"
             android:textColor="@color/eehh_muted"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/offlineSyncStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/offlinePendingCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/chip_surface"
-                android:paddingLeft="8dp"
-                android:paddingTop="4dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="4dp"
-                android:textColor="@color/eehh_easy"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/offlineCardsCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/chip_surface"
-                android:paddingLeft="8dp"
-                android:paddingTop="4dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="4dp"
-                android:textColor="@color/eehh_good"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+            android:layout_marginTop="2dp"
+            android:textColor="@color/eehh_muted"
+            android:textSize="11sp" />
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:background="@drawable/panel_surface"
-        android:orientation="vertical"
-        android:padding="12dp">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/offline_question_label"
-                    android:textColor="@color/eehh_muted"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/offlineQuestion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="-"
-                    android:textColor="@color/eehh_ink"
-                    android:textSize="19sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/offline_answer_label"
-                    android:textColor="@color/eehh_muted"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/offlineAnswer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/panel_answer_reveal"
-                    android:padding="10dp"
-                    android:text="-"
-                    android:textColor="@color/eehh_ink"
-                    android:textSize="16sp"
-                    android:visibility="gone" />
-            </LinearLayout>
-        </ScrollView>
-
-        <Button
-            android:id="@+id/offlineShowAnswerButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_primary"
-            android:backgroundTint="@null"
-            app:backgroundTint="@null"
-            android:text="@string/offline_show_answer"
-            android:textColor="#04231F"
-            android:textStyle="bold" />
+        android:padding="14dp">
 
         <LinearLayout
-            android:id="@+id/offlineRatingGroup"
+            android:id="@+id/offlineReviewEntryGroup"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/offlineReviewIntro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="3dp"
+                android:text="@string/offline_review_empty"
+                android:textColor="@color/eehh_ink"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/offlineStartReviewButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_primary"
+                android:backgroundTint="@null"
+                android:minHeight="50dp"
+                android:text="@string/offline_start_review_selected"
+                android:textColor="#04231F"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/offlineReviewContentGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:visibility="gone">
 
-            <LinearLayout
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/offline_question_label"
+                        android:textColor="@color/eehh_muted"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/offlineQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="-"
+                        android:textColor="@color/eehh_ink"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/offline_answer_label"
+                        android:textColor="@color/eehh_muted"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/offlineAnswer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/panel_answer_reveal"
+                        android:lineSpacingExtra="4dp"
+                        android:padding="12dp"
+                        android:text="-"
+                        android:textColor="@color/eehh_ink"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </ScrollView>
+
+            <Button
+                android:id="@+id/offlineShowAnswerButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/offlineRate1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_rate_again"
-                    android:text="@string/rate_again"
-                    android:backgroundTint="@null"
-                    app:backgroundTint="@null"
-                    android:textColor="@color/eehh_ink"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/offlineRate2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_rate_hard"
-                    android:text="@string/rate_hard"
-                    android:backgroundTint="@null"
-                    app:backgroundTint="@null"
-                    android:textColor="@color/eehh_ink"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_primary"
+                android:backgroundTint="@null"
+                android:minHeight="48dp"
+                android:text="@string/offline_show_answer"
+                android:textColor="#04231F"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
 
             <LinearLayout
+                android:id="@+id/offlineRatingGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <Button
-                    android:id="@+id/offlineRate3"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_rate_good"
-                    android:text="@string/rate_good"
-                    android:backgroundTint="@null"
-                    app:backgroundTint="@null"
-                    android:textColor="@color/eehh_ink"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/offlineRate4"
-                    android:layout_width="0dp"
+                    <Button
+                        android:id="@+id/offlineRate1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_rate_again"
+                        android:backgroundTint="@null"
+                        android:minHeight="52dp"
+                        android:text="@string/rate_again"
+                        android:textColor="@color/eehh_ink"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null" />
+
+                    <Button
+                        android:id="@+id/offlineRate2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_rate_hard"
+                        android:backgroundTint="@null"
+                        android:minHeight="52dp"
+                        android:text="@string/rate_hard"
+                        android:textColor="@color/eehh_ink"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_rate_easy"
-                    android:text="@string/rate_easy"
-                    android:backgroundTint="@null"
-                    app:backgroundTint="@null"
-                    android:textColor="@color/eehh_ink"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/offlineRate3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_rate_good"
+                        android:backgroundTint="@null"
+                        android:minHeight="52dp"
+                        android:text="@string/rate_good"
+                        android:textColor="@color/eehh_ink"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null" />
+
+                    <Button
+                        android:id="@+id/offlineRate4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_rate_easy"
+                        android:backgroundTint="@null"
+                        android:minHeight="52dp"
+                        android:text="@string/rate_easy"
+                        android:textColor="@color/eehh_ink"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>

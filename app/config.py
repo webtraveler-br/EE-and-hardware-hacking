@@ -1,12 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-import logging
 from pathlib import Path
 import os
-import secrets
-
-logger = logging.getLogger(__name__)
 
 
 def _env_bool(name: str, default: bool) -> bool:
@@ -14,6 +10,38 @@ def _env_bool(name: str, default: bool) -> bool:
     if raw is None:
         return default
     return raw.strip().lower() in {"1", "true", "yes", "on"}
+
+
+def _load_dotenv_file(env_path: Path) -> None:
+    if not env_path.exists():
+        return
+
+    try:
+        lines = env_path.read_text(encoding="utf-8").splitlines()
+    except OSError:
+        return
+
+    for raw_line in lines:
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+
+        key, value = line.split("=", 1)
+        key = key.strip()
+        if not key or key in os.environ:
+            continue
+
+        value = value.strip()
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in {'"', "'"}:
+            value = value[1:-1]
+        os.environ[key] = value
+
+
+def _required_env(name: str) -> str:
+    value = os.getenv(name, "").strip()
+    if not value:
+        raise ValueError(f"{name} obrigatoria. Defina no ambiente ou em .env.")
+    return value
 
 
 @dataclass(frozen=True)
@@ -26,7 +54,6 @@ class Settings:
     database_url: str
     workspace_root: Path
     flashcard_root: Path
-    markdown_excluded_dirs: tuple[str, ...]
     pow_difficulty: int
     pow_ttl_seconds: int
     auth_rate_limit_per_minute: int
@@ -38,6 +65,7 @@ class Settings:
     def load(cls) -> "Settings":
         app_root = Path(__file__).resolve().parents[1]
         workspace_default = Path(__file__).resolve().parents[1]
+        _load_dotenv_file(app_root / ".env")
 
         workspace_root = Path(
             os.getenv("ROADMAP_WORKSPACE_ROOT", str(workspace_default))
@@ -52,22 +80,9 @@ class Settings:
 
         default_db_path = app_root / "data" / "study_os.db"
         database_url = os.getenv("DATABASE_URL", f"sqlite:///{default_db_path}")
-
-        excluded_raw = os.getenv(
-            "MARKDOWN_EXCLUDED_DIRS",
-            ".git,.venv,__pycache__,data",
-        )
-        excluded_dirs = tuple(
-            part.strip() for part in excluded_raw.split(",") if part.strip()
-        )
-
-        secret_key = os.getenv("APP_SECRET_KEY")
-        if not secret_key:
-            secret_key = secrets.token_urlsafe(32)
-            logger.warning(
-                "APP_SECRET_KEY nao definida — usando chave efemera. "
-                "Sessoes serao invalidadas ao reiniciar."
-            )
+        secret_key = _required_env("APP_SECRET_KEY")
+        if secret_key == "CHANGE_ME_GENERATE_A_LONG_RANDOM_SECRET":
+            raise ValueError("APP_SECRET_KEY placeholder invalida. Troque a chave antes de subir a app.")
 
         return cls(
             app_name=os.getenv("APP_NAME", "Roadmap EE&HH"),
@@ -78,7 +93,6 @@ class Settings:
             database_url=database_url,
             workspace_root=workspace_root,
             flashcard_root=flashcard_root,
-            markdown_excluded_dirs=excluded_dirs,
             pow_difficulty=max(1, int(os.getenv("POW_DIFFICULTY", "3"))),
             pow_ttl_seconds=max(30, int(os.getenv("POW_TTL_SECONDS", "180"))),
             auth_rate_limit_per_minute=max(

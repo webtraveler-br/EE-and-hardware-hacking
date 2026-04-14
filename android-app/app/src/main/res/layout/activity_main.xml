@@ -1,56 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_app_gradient">
+    android:background="@drawable/bg_app_gradient"
+    android:fillViewport="true">
 
-    <WebView
-        android:id="@+id/mainWebView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:overScrollMode="never" />
-
-    <ProgressBar
-        android:id="@+id/mainProgress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" />
-
-    <Button
-        android:id="@+id/offlineModeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:background="@drawable/button_offline_chip"
-        android:backgroundTint="@null"
-        app:backgroundTint="@null"
-        android:elevation="3dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="8dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="8dp"
-        android:text="@string/offline_mode"
-        android:textColor="@color/eehh_accent"
-        android:textStyle="bold" />
-
-    <FrameLayout
-        android:id="@+id/offlineOverlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#D9050A11"
-        android:padding="20dp"
-        android:visibility="gone">
+        android:orientation="vertical"
+        android:padding="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:background="@drawable/panel_surface"
             android:orientation="vertical"
-            android:padding="18dp">
+            android:padding="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -65,56 +32,98 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/mainOfflineTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/online_unavailable_title"
+                android:layout_marginTop="10dp"
+                android:text="@string/main_title"
                 android:textColor="@color/eehh_ink"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/mainOfflineMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/main_subtitle"
+                android:textColor="@color/eehh_muted"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/mainBaseUrl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/online_unavailable_message"
-                android:textColor="@color/eehh_muted"
-                android:textSize="15sp" />
+                android:textColor="@color/eehh_easy"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/mainSessionStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="12dp"
+                android:text="@string/main_status_loading"
+                android:textColor="@color/eehh_ink"
+                android:textSize="14sp" />
 
-                <Button
-                    android:id="@+id/mainRetryButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_primary"
-                    android:backgroundTint="@null"
-                    app:backgroundTint="@null"
-                    android:text="@string/try_again"
-                    android:textColor="#04231F"
-                    android:textStyle="bold" />
+            <ProgressBar
+                android:id="@+id/mainProgress"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone" />
 
-                <Button
-                    android:id="@+id/mainOfflineModeButton"
-                    android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/mainLoginFields"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_ghost"
-                    android:backgroundTint="@null"
-                    app:backgroundTint="@null"
-                    android:text="@string/open_offline_mode"
-                    android:textColor="@color/eehh_ink"
-                    android:textStyle="bold" />
+                    android:hint="@string/main_login_label"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/mainLoginInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/eehh_ink"
+                        android:textColorHint="@color/eehh_muted" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/main_password_label"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/mainPasswordInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textColor="@color/eehh_ink"
+                        android:textColorHint="@color/eehh_muted" />
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
-        </LinearLayout>
-    </FrameLayout>
 
-</FrameLayout>
+            <Button
+                android:id="@+id/mainLoginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/button_primary"
+                android:backgroundTint="@null"
+                app:backgroundTint="@null"
+                android:text="@string/main_login_button"
+                android:textColor="#04231F"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

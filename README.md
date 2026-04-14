@@ -2,8 +2,6 @@
 
 Sistema web para estudo continuo de Engenharia Eletrica + Hardware Hacking com foco em operacao deck-first:
 
-Nota: sim, isso tudo foi vibe codado.
-
 1. selecionar trilha/deck em markdown
 2. revisar cards com FSRS
 3. acompanhar progresso por deck
@@ -46,11 +44,13 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-2. (Opcional) Criar arquivo de ambiente:
+2. Criar arquivo de ambiente:
 
 ```bash
 cp .env.example .env
 ```
+
+`APP_SECRET_KEY` agora e obrigatoria. A aplicacao carrega `.env` automaticamente no root do repositorio.
 
 3. Subir a aplicacao:
 
@@ -76,15 +76,16 @@ docker compose up --build -d
 Script oficial:
 
 ```bash
-scripts/deploy_debian.sh --health-public https://seu-host-publico/healthz
+DEPLOY_HOST=deploy@server DEPLOY_DIR=/srv/roadmap_web scripts/deploy_debian.sh --health-public https://seu-host-publico/healthz
 ```
 
 O script faz:
 
 1. sincronizacao de codigo para o host remoto
-2. `docker compose up --build -d`
-3. validacao de health local (`127.0.0.1:8088`)
-4. validacao de health publico (quando informado)
+2. validacao de `<DEPLOY_DIR>/.env` e de `APP_SECRET_KEY`
+3. `docker compose up --build -d`
+4. validacao de health local (`127.0.0.1:8088`)
+5. validacao de health publico (quando informado)
 
 Variaveis/flags disponiveis em [scripts/deploy_debian.sh](scripts/deploy_debian.sh).
 

@@ -1,13 +1,28 @@
+import java.net.URI
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
 
-val rawBaseUrl = (project.findProperty("ROADMAP_BASE_URL") as String?)
-    ?: System.getenv("ROADMAP_BASE_URL")
-    ?: "https://example.com/"
-val normalizedBaseUrl = rawBaseUrl.trim().let {
+val rawBaseUrl = ((project.findProperty("ROADMAP_BASE_URL") as String?)
+    ?: System.getenv("ROADMAP_BASE_URL"))
+    ?.trim()
+    ?.takeIf { it.isNotEmpty() }
+    ?: throw GradleException(
+        "ROADMAP_BASE_URL obrigatoria. Use -PROADMAP_BASE_URL=https://seu-host-publico/ " +
+            "ou export ROADMAP_BASE_URL=https://seu-host-publico/."
+    )
+
+val normalizedBaseUrl = rawBaseUrl.let {
     if (it.endsWith("/")) it else "$it/"
+}
+
+val parsedBaseUrl = URI(normalizedBaseUrl)
+if (parsedBaseUrl.scheme !in setOf("http", "https") || parsedBaseUrl.host.isNullOrBlank()) {
+    throw GradleException(
+        "ROADMAP_BASE_URL invalida: $normalizedBaseUrl. Use URL absoluta com http(s), por exemplo https://host/"
+    )
 }
 
 android {
@@ -51,6 +66,9 @@ android {
 dependencies {
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.lifecycle:lifecycle-process:2.8.7")
+    implementation("androidx.security:security-crypto:1.0.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.1")
     implementation("com.google.android.material:material:1.12.0")
     implementation("io.noties.markwon:core:4.6.2")
     implementation("io.noties.markwon:inline-parser:4.6.2")

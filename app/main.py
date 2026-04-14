@@ -39,7 +39,6 @@ def create_app() -> FastAPI:
     app.state.fsrs = FSRSService(desired_retention=settings.fsrs_desired_retention)
     app.state.content_service = RoadmapContentService(
         workspace_root=settings.workspace_root,
-        excluded_dirs=settings.markdown_excluded_dirs,
     )
 
     app.state.templates = Jinja2Templates(

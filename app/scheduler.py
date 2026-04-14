@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from fsrs import Card as FsrsCard
 from fsrs import Rating, Scheduler, State
@@ -9,8 +9,39 @@ from .models import UserCardState
 
 
 class FSRSService:
-    def __init__(self, *, desired_retention: float) -> None:
-        self._scheduler = Scheduler(desired_retention=desired_retention)
+    def __init__(
+        self,
+        *,
+        desired_retention: float,
+        learning_steps: tuple[timedelta, ...] = (
+            timedelta(minutes=1),
+            timedelta(minutes=10),
+        ),
+        relearning_steps: tuple[timedelta, ...] = (timedelta(minutes=10),),
+        maximum_interval: int = 36500,
+        enable_fuzzing: bool = False,
+    ) -> None:
+        self._scheduler = Scheduler(
+            desired_retention=desired_retention,
+            learning_steps=learning_steps,
+            relearning_steps=relearning_steps,
+            maximum_interval=maximum_interval,
+            enable_fuzzing=enable_fuzzing,
+        )
+
+    def profile_payload(self) -> dict[str, object]:
+        return {
+            "parameters": [float(value) for value in self._scheduler.parameters],
+            "desired_retention": float(self._scheduler.desired_retention),
+            "learning_steps_seconds": [
+                int(step.total_seconds()) for step in self._scheduler.learning_steps
+            ],
+            "relearning_steps_seconds": [
+                int(step.total_seconds()) for step in self._scheduler.relearning_steps
+            ],
+            "maximum_interval": int(self._scheduler.maximum_interval),
+            "enable_fuzzing": bool(self._scheduler.enable_fuzzing),
+        }
 
     def build_card(self, *, card_id: int, state_row: UserCardState | None, now: datetime) -> FsrsCard:
         if state_row is None:

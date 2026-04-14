@@ -1,18 +1,19 @@
 /* ── State ────────────────────────────────────────────────────── */
+const ALL_DECK_UID = "all";
+
 let currentCard = null;
 let revealTimeStart = 0;
-let selectedDeckUid = "all";
+let selectedDeckUid = ALL_DECK_UID;
 let latestDecks = [];
 let isFlipped = false;
 let isLoading = false;
 let sessionReviewed = 0;
 let sessionCorrect = 0;
-let lastReview = null; // for undo
 let quickStats = {};
 
 function syncDeckQueryParam() {
   const url = new URL(window.location.href);
-  if (selectedDeckUid && selectedDeckUid !== "all") {
+  if (selectedDeckUid && selectedDeckUid !== ALL_DECK_UID) {
     url.searchParams.set("deck", selectedDeckUid);
   } else {
     url.searchParams.delete("deck");
@@ -22,16 +23,34 @@ function syncDeckQueryParam() {
 
 /* ── Helpers ──────────────────────────────────────────────────── */
 function sanitizeHtml(html) {
-  return window.DOMPurify ? DOMPurify.sanitize(html) : html;
+  return DOMPurify.sanitize(html);
 }
 
 function renderMd(md) {
   if (!md) return "";
-  return window.marked ? sanitizeHtml(marked.parse(md)) : md;
+  return sanitizeHtml(marked.parse(md));
 }
 
 function $(id) {
   return document.getElementById(id);
+}
+
+function ensureStudyRuntime() {
+  if (!window.marked || !window.DOMPurify) {
+    throw new Error("Renderizacao markdown indisponivel. Recarregue a pagina.");
+  }
+}
+
+async function readApiError(response, fallbackMessage) {
+  try {
+    const data = await response.json();
+    if (data && typeof data.detail === "string" && data.detail.trim()) {
+      return data.detail;
+    }
+  } catch {
+    // Ignore invalid JSON body and use the fallback message.
+  }
+  return fallbackMessage;
 }
 
 function show(el) {
@@ -40,6 +59,20 @@ function show(el) {
 
 function hide(el) {
   el?.classList.add("hidden");
+}
+
+function showFatalStudyError(message) {
+  currentCard = null;
+  hide($("flashcard"));
+  show($("study-empty"));
+  hide($("reveal-btn"));
+  hide($("rating-actions"));
+
+  const summary = $("session-summary");
+  if (summary) summary.innerHTML = "";
+
+  const msg = $("empty-message");
+  if (msg) msg.textContent = message;
 }
 
 /* ── Toast ────────────────────────────────────────────────────── */
@@ -92,7 +125,11 @@ function renderDeckList() {
 
   root.querySelectorAll(".deck-row").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const uid = btn.dataset.deckUid || "all";
+      const uid = btn.dataset.deckUid;
+      if (!uid) {
+        toast("Deck sem identificador valido", "error");
+        return;
+      }
       if (selectedDeckUid === uid) return;
       selectedDeckUid = uid;
       syncDeckQueryParam();
@@ -110,7 +147,7 @@ function renderDeckList() {
 /* ── Session Info ─────────────────────────────────────────────── */
 function updateSessionInfo() {
   const sel = latestDecks.find((d) => d.deck_uid === selectedDeckUid);
-  const label = selectedDeckUid === "all" ? "Todos os baralhos" : sel?.title ?? selectedDeckUid;
+  const label = selectedDeckUid === ALL_DECK_UID ? "Todos os baralhos" : sel?.title ?? selectedDeckUid;
   const deckLabel = $("session-deck-label");
   if (deckLabel) deckLabel.textContent = label;
 }
@@ -231,26 +268,48 @@ function transitionCard(direction, callback) {
 async function loadDecks() {
   try {
     const res = await fetch("/api/decks");
-    if (!res.ok) return;
+    if (!res.ok) {
+      throw new Error(await readApiError(res, "Falha ao carregar baralhos"));
+    }
     const data = await res.json();
-    latestDecks = data.decks || [];
-    const available = new Set(["all", ...latestDecks.map((d) => d.deck_uid)]);
-    if (!available.has(selectedDeckUid)) selectedDeckUid = "all";
+    if (!Array.isArray(data.decks)) {
+      throw new Error("Resposta invalida ao carregar baralhos");
+    }
+
+    latestDecks = data.decks;
+    const available = new Set([ALL_DECK_UID, ...latestDecks.map((d) => d.deck_uid)]);
+    if (!available.has(selectedDeckUid)) {
+      const invalidDeckUid = selectedDeckUid;
+      selectedDeckUid = ALL_DECK_UID;
+      syncDeckQueryParam();
+      if (invalidDeckUid !== ALL_DECK_UID) {
+        toast(`Deck inexistente: ${invalidDeckUid}`, "error");
+      }
+    }
     renderDeckList();
     updateSessionInfo();
-  } catch {
-    toast("Falha ao carregar baralhos", "error");
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Falha ao carregar baralhos";
+    toast(message, "error");
+    throw error;
   }
 }
 
 async function loadQuickStats() {
   try {
     const res = await fetch("/api/stats/summary");
-    if (!res.ok) return;
+    if (!res.ok) {
+      throw new Error(await readApiError(res, "Falha ao carregar estatisticas"));
+    }
     const data = await res.json();
-    updateCounters(data.overview || {});
-  } catch {
-    toast("Falha ao carregar estatísticas", "error");
+    if (!data.overview || typeof data.overview !== "object") {
+      throw new Error("Resposta invalida ao carregar estatisticas");
+    }
+    updateCounters(data.overview);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Falha ao carregar estatisticas";
+    toast(message, "error");
+    throw error;
   }
 }
 
@@ -262,10 +321,10 @@ async function loadNextCard() {
     const res = await fetch("/api/study/next", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ deck_uid: selectedDeckUid || "all" }),
+      body: JSON.stringify({ deck_uid: selectedDeckUid }),
     });
     if (!res.ok) {
-      toast("Falha ao carregar próximo card", "error");
+      toast(await readApiError(res, "Falha ao carregar proximo card"), "error");
       return;
     }
     const data = await res.json();
@@ -287,14 +346,16 @@ async function submitReview(rating) {
 
   const durationMs = Math.max(0, Date.now() - revealTimeStart);
 
-  // Save for undo
-  lastReview = { card_uid: currentCard.card_uid, rating, deck_uid: selectedDeckUid };
-
   try {
     const res = await fetch("/api/study/review", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ card_uid: currentCard.card_uid, rating, duration_ms: durationMs }),
+      body: JSON.stringify({
+        card_uid: currentCard.card_uid,
+        rating,
+        duration_ms: durationMs,
+        deck_uid: selectedDeckUid,
+      }),
     });
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
@@ -352,13 +413,6 @@ function handleKey(e) {
     submitReview(Number(e.key));
     return;
   }
-
-  if (e.key === "u" || e.key === "U") {
-    // Undo placeholder - toast hint
-    if (lastReview) {
-      toast("Undo ainda não implementado", "info");
-    }
-  }
 }
 
 /* ── Init ─────────────────────────────────────────────────────── */
@@ -398,9 +452,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     selectedDeckUid = requestedDeck.trim();
   }
 
+  try {
+    ensureStudyRuntime();
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Falha ao iniciar estudo";
+    showFatalStudyError(message);
+    return;
+  }
+
   wireEvents();
-  // Load decks and stats in parallel, then load first card
-  await Promise.all([loadDecks(), loadQuickStats()]);
-  syncDeckQueryParam();
-  await loadNextCard();
+
+  try {
+    await Promise.all([loadDecks(), loadQuickStats()]);
+    syncDeckQueryParam();
+    await loadNextCard();
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Falha ao iniciar estudo";
+    showFatalStudyError(message);
+  }
 });

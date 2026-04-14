@@ -481,7 +481,6 @@ Arquivo de referencia: `.env.example`
 | `DATABASE_URL` | conexao banco | `sqlite:////srv/roadmap/data/study_os.db` |
 | `ROADMAP_WORKSPACE_ROOT` | raiz do workspace | `/srv/roadmap/workspace` |
 | `FLASHCARD_ROOT` | raiz dos decks markdown | `/srv/roadmap/workspace/content/flashcards` |
-| `MARKDOWN_EXCLUDED_DIRS` | exclusoes no indexador | `.git,.venv,__pycache__,data` |
 | `POW_DIFFICULTY` | dificuldade PoW | `3` |
 | `POW_TTL_SECONDS` | validade desafio PoW | `180` |
 | `AUTH_RATE_LIMIT_PER_MINUTE` | limite auth por minuto | `20` |
