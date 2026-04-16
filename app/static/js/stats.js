@@ -61,13 +61,20 @@ async function loadStats() {
 
     tbody.innerHTML = data.decks
       .map((deck) => {
-        const progress = pct(deck.reviewed_cards, deck.total_cards);
+        const pctNum = deck.total_cards > 0 ? Math.round((deck.reviewed_cards / deck.total_cards) * 100) : 0;
         return `
           <tr>
             <td>${escapeHtml(deck.title)}</td>
             <td>${deck.total_cards}</td>
             <td>${deck.reviewed_cards}</td>
-            <td>${progress}</td>
+            <td class="progress-cell">
+              <div class="progress-bar-wrap">
+                <div class="progress-track">
+                  <div class="progress-fill" style="width:${pctNum}%"></div>
+                </div>
+                <span class="progress-pct">${pctNum}%</span>
+              </div>
+            </td>
           </tr>
         `;
       })

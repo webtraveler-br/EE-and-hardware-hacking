@@ -2,14 +2,14 @@
 
 {% block content %}
 <section class="reveal">
-  <h1>Telemetria de estudo</h1>
-  <p class="muted">Retenção, ritmo e progresso por deck do roadmap EE&HH.</p>
+  <h1>Seu progresso</h1>
+  <p class="muted">Retenção, ritmo e evolução por deck.</p>
 
   <div class="stats-grid" id="stats-overview">
     <article class="stat-tile"><p>Total</p><strong id="st-total">-</strong></article>
     <article class="stat-tile"><p>Revisados</p><strong id="st-reviewed">-</strong></article>
     <article class="stat-tile"><p>Novos</p><strong id="st-new">-</strong></article>
-    <article class="stat-tile"><p>Vencidos</p><strong id="st-due">-</strong></article>
+    <article class="stat-tile"><p>Pendentes</p><strong id="st-due">-</strong></article>
     <article class="stat-tile"><p>Hoje</p><strong id="st-today">-</strong></article>
     <article class="stat-tile"><p>Streak</p><strong id="st-streak">-</strong></article>
   </div>
@@ -21,7 +21,7 @@
           <th>Deck</th>
           <th>Total</th>
           <th>Revisados</th>
-          <th>Progresso</th>
+          <th class="progress-cell">Progresso</th>
         </tr>
       </thead>
       <tbody id="deck-stats-body"></tbody>
