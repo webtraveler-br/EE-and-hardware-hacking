@@ -56,6 +56,7 @@ internal object AppPreferences {
     private const val SNAPSHOT_REFRESH_UNCHANGED_KEY = "snapshot_refresh_unchanged"
     private const val SNAPSHOT_REFRESH_CARD_COUNT_KEY = "snapshot_refresh_card_count"
     private const val SNAPSHOT_REFRESH_AT_KEY = "snapshot_refresh_at"
+    private const val LAST_SYNC_AT_KEY = "last_sync_at"
     private const val DEFAULT_REMINDER_MINUTE = 20 * 60
     private const val SESSION_HEALTH_OK = "ok"
     private const val SESSION_HEALTH_REAUTH_REQUIRED = "reauth_required"
@@ -247,6 +248,27 @@ internal object AppPreferences {
             .remove(SNAPSHOT_REFRESH_UNCHANGED_KEY)
             .remove(SNAPSHOT_REFRESH_CARD_COUNT_KEY)
             .remove(SNAPSHOT_REFRESH_AT_KEY)
+            .apply()
+    }
+
+    fun loadLastSyncAt(context: Context): String? {
+        return appPrefs(context)
+            .getString(LAST_SYNC_AT_KEY, null)
+            ?.trim()
+            ?.takeIf { it.isNotEmpty() }
+    }
+
+    fun saveLastSyncAt(context: Context, serverNow: String) {
+        appPrefs(context)
+            .edit()
+            .putString(LAST_SYNC_AT_KEY, serverNow.trim())
+            .apply()
+    }
+
+    fun clearLastSyncAt(context: Context) {
+        appPrefs(context)
+            .edit()
+            .remove(LAST_SYNC_AT_KEY)
             .apply()
     }
 }

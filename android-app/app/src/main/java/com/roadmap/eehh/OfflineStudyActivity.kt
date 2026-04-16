@@ -186,6 +186,27 @@ data class SyncDeltaResult(
     val deckSummaries: List<DeckSummary>,
 )
 
+data class SyncPushResult(
+    val serverNow: String,
+    val accepted: Int,
+    val duplicates: Int,
+    val errorCount: Int,
+    val upsertCards: List<OfflineCard>,
+    val serverCardUids: Set<String>,
+    val unchangedCount: Int,
+    val schedulerProfile: OfflineSchedulerProfile,
+    val deckSummaries: List<DeckSummary>,
+)
+
+data class SyncStatusResult(
+    val serverNow: String,
+    val serverCardCount: Int,
+    val serverStateCount: Int,
+    val latestServerModifiedAt: String?,
+    val latestCardUpdatedAt: String?,
+    val pendingDueCount: Int,
+)
+
 internal class OfflineStore(private val rootDir: File) {
     private val cardsFile = File(rootDir, "offline_cards_v1.json")
     private val pendingFile = File(rootDir, "offline_pending_reviews_v1.json")
@@ -232,6 +253,26 @@ internal class OfflineStore(private val rootDir: File) {
                 byUid[card.cardUid] = card
             }
         }
+        upsertCards.forEach { card ->
+            byUid[card.cardUid] = card
+        }
+
+        val merged = byUid.values.sortedWith(
+            compareBy<OfflineCard>({ it.deckUid.lowercase(Locale.ROOT) }, { it.position }, { it.cardUid })
+        )
+        saveCards(merged)
+    }
+
+    fun applyPushDelta(upsertCards: List<OfflineCard>, serverCardUids: Set<String>) {
+        val current = loadCards()
+        val byUid = linkedMapOf<String, OfflineCard>()
+        // Keep only cards that still exist on the server
+        current.forEach { card ->
+            if (serverCardUids.isEmpty() || serverCardUids.contains(card.cardUid)) {
+                byUid[card.cardUid] = card
+            }
+        }
+        // Apply upserts (overwrite changed cards, add new ones)
         upsertCards.forEach { card ->
             byUid[card.cardUid] = card
         }
@@ -542,6 +583,132 @@ internal object OfflineApiClient {
                 duplicates = root.optInt("duplicates", 0),
                 errorCount = errors.length(),
                 deckSummaries = deckSummaries,
+            )
+        } catch (exc: Exception) {
+            throw NetworkErrorSupport.wrap(baseUrl, exc)
+        } finally {
+            connection.disconnect()
+        }
+    }
+
+    fun syncPush(
+        baseUrl: String,
+        cookieHeader: String,
+        deckUid: String,
+        events: List<PendingReviewEvent>,
+        lastSyncAt: String?,
+        localCardCount: Int,
+    ): SyncPushResult {
+        val payload = JSONObject()
+            .put("deck_uid", deckUid)
+            .put("local_card_count", localCardCount)
+        if (lastSyncAt != null) {
+            payload.put("last_sync_at", lastSyncAt)
+        }
+
+        val eventsArray = JSONArray()
+        events.forEach { eventsArray.put(it.toJson()) }
+        payload.put("events", eventsArray)
+
+        val endpoint = "${normalizeBaseUrl(baseUrl)}api/sync/push"
+        val connection = openConnection(
+            endpoint,
+            "POST",
+            cookieHeader,
+            readTimeoutMs = SYNC_READ_TIMEOUT_MS,
+        )
+        connection.setRequestProperty("Content-Type", "application/json")
+        connection.doOutput = true
+
+        try {
+            connection.outputStream.use { stream ->
+                stream.write(payload.toString().toByteArray(StandardCharsets.UTF_8))
+            }
+
+            val code = connection.responseCode
+            val body = readBody(connection)
+            if (code !in 200..299) {
+                if (code == 401 || code == 403) {
+                    throw IOException(SESSION_REAUTH_REQUIRED_ERROR)
+                }
+                throw IOException("Falha ao sincronizar ($code)")
+            }
+
+            val root = JSONObject(body)
+            val importResult = root.getJSONObject("import_result")
+            val importErrors = importResult.optJSONArray("errors") ?: JSONArray()
+
+            val errorEventIds = mutableSetOf<String>()
+            for (i in 0 until importErrors.length()) {
+                val item = requireObject(importErrors, i)
+                val eventId = item.optString("event_id", "").trim()
+                if (eventId.isNotBlank()) {
+                    errorEventIds.add(eventId)
+                }
+            }
+
+            val upsertArray = requireArray(root, "upserts")
+            val upsertCards = mutableListOf<OfflineCard>()
+            for (i in 0 until upsertArray.length()) {
+                upsertCards.add(parseOfflineCardPayload(requireObject(upsertArray, i)))
+            }
+
+            val serverCardUidsArray = requireArray(root, "server_card_uids")
+            val serverCardUids = mutableSetOf<String>()
+            for (i in 0 until serverCardUidsArray.length()) {
+                val uid = serverCardUidsArray.getString(i).trim()
+                if (uid.isNotEmpty()) {
+                    serverCardUids.add(uid)
+                }
+            }
+
+            return SyncPushResult(
+                serverNow = root.optString("server_now", ""),
+                accepted = importResult.optInt("accepted", 0),
+                duplicates = importResult.optInt("duplicates", 0),
+                errorCount = importErrors.length(),
+                upsertCards = upsertCards,
+                serverCardUids = serverCardUids,
+                unchangedCount = root.optInt("unchanged_count", 0),
+                schedulerProfile = OfflineSchedulerProfile.fromJson(
+                    root.optJSONObject("scheduler_profile")
+                ),
+                deckSummaries = parseDeckSummaries(root),
+            )
+        } catch (exc: Exception) {
+            throw NetworkErrorSupport.wrap(baseUrl, exc)
+        } finally {
+            connection.disconnect()
+        }
+    }
+
+    fun fetchSyncStatus(baseUrl: String, cookieHeader: String): SyncStatusResult {
+        val endpoint = "${normalizeBaseUrl(baseUrl)}api/sync/status"
+        val connection = openConnection(
+            endpoint,
+            "GET",
+            cookieHeader,
+            readTimeoutMs = DEFAULT_READ_TIMEOUT_MS,
+        )
+
+        try {
+            val code = connection.responseCode
+            val body = readBody(connection)
+            if (code !in 200..299) {
+                if (code == 401 || code == 403) {
+                    throw IOException(SESSION_REAUTH_REQUIRED_ERROR)
+                }
+                throw IOException("Falha ao verificar status de sync ($code)")
+            }
+
+            val root = JSONObject(body)
+            return SyncStatusResult(
+                serverNow = root.optString("server_now", ""),
+                serverCardCount = root.optInt("server_card_count", 0),
+                serverStateCount = root.optInt("server_state_count", 0),
+                latestServerModifiedAt = optNullableString(root, "latest_server_modified_at"),
+                latestCardUpdatedAt = optNullableString(root, "latest_card_updated_at"),
+                pendingDueCount = root.optInt("pending_due_count", 0),
             )
         } catch (exc: Exception) {
             throw NetworkErrorSupport.wrap(baseUrl, exc)

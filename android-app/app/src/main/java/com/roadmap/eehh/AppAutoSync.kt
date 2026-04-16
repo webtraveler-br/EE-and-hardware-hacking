@@ -61,64 +61,67 @@ internal object AppAutoSyncManager {
             try {
                 val store = OfflineStore(context.filesDir)
                 val pending = store.loadPendingEvents()
-                if (pending.isNotEmpty()) {
-                    val importResult = OfflineApiClient.importPendingEvents(
-                        baseUrl = BuildConfig.BASE_URL,
-                        cookieHeader = cookieHeader,
-                        events = pending
-                    )
-                    store.markEventsSynced(importResult.syncedEventIds)
-                    if (importResult.deckSummaries.isNotEmpty()) {
-                        store.saveDeckCatalog(importResult.deckSummaries)
-                    }
-                }
+                val existingCards = store.loadCards()
 
+                // If not refreshing snapshot, just do a quick import-only
                 if (!refreshSnapshot || !AppPreferences.shouldRefreshSnapshotOnLaunch(context)) {
+                    if (pending.isNotEmpty()) {
+                        val importResult = OfflineApiClient.importPendingEvents(
+                            baseUrl = BuildConfig.BASE_URL,
+                            cookieHeader = cookieHeader,
+                            events = pending
+                        )
+                        store.markEventsSynced(importResult.syncedEventIds)
+                        if (importResult.deckSummaries.isNotEmpty()) {
+                            store.saveDeckCatalog(importResult.deckSummaries)
+                        }
+                    }
                     return@Thread
                 }
 
-                val existingCards = store.loadCards()
-                val refreshStatus = if (existingCards.isEmpty()) {
-                    val export = OfflineApiClient.exportCards(
-                        baseUrl = BuildConfig.BASE_URL,
-                        cookieHeader = cookieHeader,
-                        deckUid = OFFLINE_SNAPSHOT_DECK_UID
-                    )
-                    store.saveCards(export.cards)
-                    store.saveSchedulerProfile(export.schedulerProfile)
-                    store.saveDeckCatalog(export.deckSummaries)
-                    SnapshotRefreshStatus(
-                        incremental = false,
-                        upsertCount = export.cards.size,
-                        removedCount = 0,
-                        unchangedCount = 0,
-                        cardCount = export.cards.size,
-                        refreshedAtEpochMs = System.currentTimeMillis()
-                    )
-                } else {
-                    val delta = OfflineApiClient.exportCardsDelta(
-                        baseUrl = BuildConfig.BASE_URL,
-                        cookieHeader = cookieHeader,
-                        deckUid = OFFLINE_SNAPSHOT_DECK_UID,
-                        localCards = existingCards
-                    )
-                    store.applyDelta(delta.upsertCards, delta.removedCardUids)
-                    store.saveSchedulerProfile(delta.schedulerProfile)
-                    store.saveDeckCatalog(delta.deckSummaries)
-                    SnapshotRefreshStatus(
-                        incremental = true,
-                        upsertCount = delta.upsertCards.size,
-                        removedCount = delta.removedCardUids.size,
-                        unchangedCount = delta.unchangedCount,
-                        cardCount = store.loadCards().size,
-                        refreshedAtEpochMs = System.currentTimeMillis()
-                    )
+                // Unified sync: import + delta in one round trip
+                val lastSyncAt = AppPreferences.loadLastSyncAt(context)
+                val pushResult = OfflineApiClient.syncPush(
+                    baseUrl = BuildConfig.BASE_URL,
+                    cookieHeader = cookieHeader,
+                    deckUid = OFFLINE_SNAPSHOT_DECK_UID,
+                    events = pending,
+                    lastSyncAt = if (existingCards.isEmpty()) null else lastSyncAt,
+                    localCardCount = existingCards.size,
+                )
+
+                // Clear synced events
+                if (pending.isNotEmpty()) {
+                    val errorEventIds = mutableSetOf<String>()
+                    // Events with errors stay pending
+                    store.markEventsSynced(pending.map { it.eventId }.toSet() - errorEventIds)
                 }
 
-                AppPreferences.saveSnapshotRefreshStatus(
-                    context,
-                    refreshStatus
+                // Apply delta
+                if (existingCards.isEmpty() && pushResult.upsertCards.isNotEmpty()) {
+                    // First sync — just save all cards
+                    store.saveCards(pushResult.upsertCards)
+                } else {
+                    store.applyPushDelta(pushResult.upsertCards, pushResult.serverCardUids.toSet())
+                }
+
+                store.saveSchedulerProfile(pushResult.schedulerProfile)
+                store.saveDeckCatalog(pushResult.deckSummaries)
+
+                val finalCardCount = store.loadCards().size
+                val refreshStatus = SnapshotRefreshStatus(
+                    incremental = existingCards.isNotEmpty(),
+                    upsertCount = pushResult.upsertCards.size,
+                    removedCount = maxOf(0, existingCards.size + pushResult.upsertCards.size - finalCardCount),
+                    unchangedCount = pushResult.unchangedCount,
+                    cardCount = finalCardCount,
+                    refreshedAtEpochMs = System.currentTimeMillis()
                 )
+
+                AppPreferences.saveSnapshotRefreshStatus(context, refreshStatus)
+                if (pushResult.serverNow.isNotBlank()) {
+                    AppPreferences.saveLastSyncAt(context, pushResult.serverNow)
+                }
             } catch (exc: Exception) {
                 if (exc.message == SESSION_REAUTH_REQUIRED_ERROR) {
                     AppPreferences.markSessionReauthRequired(context)

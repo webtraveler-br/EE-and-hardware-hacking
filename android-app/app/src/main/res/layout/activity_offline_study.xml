@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_app_gradient"
     android:orientation="vertical"
-    android:padding="12dp">
+    android:padding="14dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -242,11 +242,11 @@
                         android:id="@+id/offlineQuestion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:lineSpacingExtra="4dp"
+                        android:layout_marginTop="10dp"
+                        android:lineSpacingExtra="5dp"
                         android:text="-"
                         android:textColor="@color/eehh_ink"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -276,12 +276,13 @@
                 android:id="@+id/offlineShowAnswerButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/button_primary"
                 android:backgroundTint="@null"
-                android:minHeight="48dp"
+                android:minHeight="54dp"
                 android:text="@string/offline_show_answer"
                 android:textColor="#04231F"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:backgroundTint="@null" />
 
@@ -305,10 +306,10 @@
                         android:layout_weight="1"
                         android:background="@drawable/button_rate_again"
                         android:backgroundTint="@null"
-                        android:minHeight="52dp"
+                        android:minHeight="56dp"
                         android:text="@string/rate_again"
                         android:textColor="@color/eehh_ink"
-                        android:textSize="12sp"
+                        android:textSize="13sp"
                         android:textStyle="bold"
                         app:backgroundTint="@null" />
 
@@ -316,14 +317,14 @@
                         android:id="@+id/offlineRate2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
+                        android:layout_marginStart="8dp"
                         android:layout_weight="1"
                         android:background="@drawable/button_rate_hard"
                         android:backgroundTint="@null"
-                        android:minHeight="52dp"
+                        android:minHeight="56dp"
                         android:text="@string/rate_hard"
                         android:textColor="@color/eehh_ink"
-                        android:textSize="12sp"
+                        android:textSize="13sp"
                         android:textStyle="bold"
                         app:backgroundTint="@null" />
                 </LinearLayout>
@@ -341,10 +342,10 @@
                         android:layout_weight="1"
                         android:background="@drawable/button_rate_good"
                         android:backgroundTint="@null"
-                        android:minHeight="52dp"
+                        android:minHeight="56dp"
                         android:text="@string/rate_good"
                         android:textColor="@color/eehh_ink"
-                        android:textSize="12sp"
+                        android:textSize="13sp"
                         android:textStyle="bold"
                         app:backgroundTint="@null" />
 
@@ -352,14 +353,14 @@
                         android:id="@+id/offlineRate4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
+                        android:layout_marginStart="8dp"
                         android:layout_weight="1"
                         android:background="@drawable/button_rate_easy"
                         android:backgroundTint="@null"
-                        android:minHeight="52dp"
+                        android:minHeight="56dp"
                         android:text="@string/rate_easy"
                         android:textColor="@color/eehh_ink"
-                        android:textSize="12sp"
+                        android:textSize="13sp"
                         android:textStyle="bold"
                         app:backgroundTint="@null" />
                 </LinearLayout>
