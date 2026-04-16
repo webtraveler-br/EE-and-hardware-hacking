@@ -12,7 +12,7 @@ from fastapi.templating import Jinja2Templates
 from .anti_bot import ProofOfWorkManager, SimpleRateLimiter
 from .config import Settings
 from .content_service import RoadmapContentService
-from .database import Base, build_engine, build_session_factory
+from .database import Base, build_engine, build_session_factory, ensure_columns
 from .flashcards import sync_flashcards
 from .routes.auth_routes import me_router, router as auth_router
 from .routes.page_routes import router as page_router
@@ -58,15 +58,16 @@ def create_app() -> FastAPI:
     @app.on_event("startup")
     def startup() -> None:
         try:
-            settings.flashcard_root.mkdir(parents=True, exist_ok=True)
+            settings.content_root.mkdir(parents=True, exist_ok=True)
         except OSError:
-            logger.warning("Falha ao criar diretorio de flashcards: %s", settings.flashcard_root)
+            logger.warning("Falha ao criar diretorio de conteudo: %s", settings.content_root)
         Base.metadata.create_all(bind=engine)
+        ensure_columns(engine)
         app.state.content_service.refresh_index()
 
         db = session_factory()
         try:
-            sync_flashcards(db, settings.flashcard_root)
+            sync_flashcards(db, settings.content_root)
             db.commit()
         finally:
             db.close()

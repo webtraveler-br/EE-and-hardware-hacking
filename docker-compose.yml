@@ -13,6 +13,8 @@ services:
     volumes:
       - ./data:/srv/roadmap/data
       - ./:/srv/roadmap/workspace:ro
+    environment:
+      - CONTENT_ROOT=/srv/roadmap/workspace/content
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8088/healthz', timeout=2).read()"]
       interval: 20s

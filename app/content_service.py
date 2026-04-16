@@ -8,11 +8,7 @@ from markdown_it import MarkdownIt
 from mdit_py_plugins.footnote import footnote_plugin
 from mdit_py_plugins.tasklists import tasklists_plugin
 
-from .roadmap_catalog import (
-    ROADMAP_DECKS_DIR,
-    section_key_for_rel_path,
-    section_label_for_key,
-)
+from .roadmap_catalog import CONTENT_DIR, deck_uid_from_rel_path
 
 
 @dataclass(frozen=True)
@@ -20,8 +16,6 @@ class RoadmapDoc:
     slug: str
     rel_path: str
     title: str
-    section: str
-    section_key: str
 
 
 class RoadmapContentService:
@@ -29,6 +23,7 @@ class RoadmapContentService:
         self.workspace_root = workspace_root
         self._docs: dict[str, RoadmapDoc] = {}
         self._slug_by_relpath: dict[str, str] = {}
+        self._slug_by_deck_uid: dict[str, str] = {}
         self._renderer = (
             MarkdownIt("commonmark", {"html": False, "linkify": True, "typographer": True})
             .enable("table")
@@ -39,33 +34,38 @@ class RoadmapContentService:
     def refresh_index(self) -> None:
         docs: dict[str, RoadmapDoc] = {}
         slug_by_relpath: dict[str, str] = {}
-        deck_root = self.workspace_root / ROADMAP_DECKS_DIR
-        if not deck_root.exists():
+        slug_by_deck_uid: dict[str, str] = {}
+        content_root = self.workspace_root / CONTENT_DIR
+        if not content_root.exists():
             self._docs = docs
             self._slug_by_relpath = slug_by_relpath
+            self._slug_by_deck_uid = slug_by_deck_uid
             return
 
-        for md_path in sorted(deck_root.glob("*.md")):
+        for md_path in sorted(content_root.rglob("*.roadmap.md")):
             rel_path = md_path.relative_to(self.workspace_root).as_posix()
-            section_key = section_key_for_rel_path(rel_path)
             text = md_path.read_text(encoding="utf-8", errors="replace")
             title = self._extract_title(md_path, text)
-            section = section_label_for_key(section_key)
             slug = relpath_to_slug(rel_path)
             docs[slug] = RoadmapDoc(
                 slug=slug,
                 rel_path=rel_path,
                 title=title,
-                section=section,
-                section_key=section_key,
             )
             slug_by_relpath[rel_path] = slug
+            uid = deck_uid_from_rel_path(rel_path)
+            if uid:
+                slug_by_deck_uid[uid] = slug
 
         self._docs = docs
         self._slug_by_relpath = slug_by_relpath
+        self._slug_by_deck_uid = slug_by_deck_uid
 
     def slug_for_relpath(self, rel_path: str) -> str | None:
         return self._slug_by_relpath.get(rel_path)
+
+    def slug_for_deck_uid(self, deck_uid: str) -> str | None:
+        return self._slug_by_deck_uid.get(deck_uid)
 
     def get_doc(self, slug: str) -> tuple[RoadmapDoc, str] | None:
         doc = self._docs.get(slug)
@@ -73,7 +73,8 @@ class RoadmapContentService:
             return None
 
         abs_path = (self.workspace_root / doc.rel_path).resolve()
-        if self.workspace_root not in abs_path.parents and abs_path != self.workspace_root:
+        ws = self.workspace_root.resolve()
+        if ws not in abs_path.parents and abs_path != ws:
             return None
 
         if not abs_path.exists():

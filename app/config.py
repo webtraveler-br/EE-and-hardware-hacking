@@ -53,12 +53,13 @@ class Settings:
     cookie_secure: bool
     database_url: str
     workspace_root: Path
-    flashcard_root: Path
+    content_root: Path
     pow_difficulty: int
     pow_ttl_seconds: int
     auth_rate_limit_per_minute: int
     challenge_rate_limit_per_minute: int
     review_rate_limit_per_minute: int
+    sync_rate_limit_per_minute: int
     fsrs_desired_retention: float
 
     @classmethod
@@ -71,10 +72,10 @@ class Settings:
             os.getenv("ROADMAP_WORKSPACE_ROOT", str(workspace_default))
         ).resolve()
 
-        flashcard_root = Path(
+        content_root = Path(
             os.getenv(
-                "FLASHCARD_ROOT",
-                str(workspace_root / "content" / "flashcards"),
+                "CONTENT_ROOT",
+                str(workspace_root / "content"),
             )
         ).resolve()
 
@@ -92,7 +93,7 @@ class Settings:
             cookie_secure=_env_bool("COOKIE_SECURE", False),
             database_url=database_url,
             workspace_root=workspace_root,
-            flashcard_root=flashcard_root,
+            content_root=content_root,
             pow_difficulty=max(1, int(os.getenv("POW_DIFFICULTY", "3"))),
             pow_ttl_seconds=max(30, int(os.getenv("POW_TTL_SECONDS", "180"))),
             auth_rate_limit_per_minute=max(
@@ -103,6 +104,9 @@ class Settings:
             ),
             review_rate_limit_per_minute=max(
                 30, int(os.getenv("REVIEW_RATE_LIMIT_PER_MINUTE", "240"))
+            ),
+            sync_rate_limit_per_minute=max(
+                5, int(os.getenv("SYNC_RATE_LIMIT_PER_MINUTE", "30"))
             ),
             fsrs_desired_retention=float(os.getenv("FSRS_DESIRED_RETENTION", "0.9")),
         )

@@ -480,7 +480,7 @@ Arquivo de referencia: `.env.example`
 | `COOKIE_SECURE` | exige HTTPS para cookie | `false` |
 | `DATABASE_URL` | conexao banco | `sqlite:////srv/roadmap/data/study_os.db` |
 | `ROADMAP_WORKSPACE_ROOT` | raiz do workspace | `/srv/roadmap/workspace` |
-| `FLASHCARD_ROOT` | raiz dos decks markdown | `/srv/roadmap/workspace/content/flashcards` |
+| `CONTENT_ROOT` | raiz do conteudo (flashcards + roadmaps) | `/srv/roadmap/workspace/content` |
 | `POW_DIFFICULTY` | dificuldade PoW | `3` |
 | `POW_TTL_SECONDS` | validade desafio PoW | `180` |
 | `AUTH_RATE_LIMIT_PER_MINUTE` | limite auth por minuto | `20` |

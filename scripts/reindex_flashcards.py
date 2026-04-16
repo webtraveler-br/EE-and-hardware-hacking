@@ -23,7 +23,7 @@ def main() -> int:
 
     db = session_factory()
     try:
-        summary = sync_flashcards(db, settings.flashcard_root)
+        summary = sync_flashcards(db, settings.content_root)
         db.commit()
     finally:
         db.close()

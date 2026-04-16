@@ -222,21 +222,20 @@ def _sync_from_deck_files(
     }
 
 
-def sync_flashcards(db: Session, cards_root: Path) -> dict[str, int]:
-    if not cards_root.exists():
+def sync_flashcards(db: Session, content_root: Path) -> dict[str, int]:
+    if not content_root.exists():
         return {"decks": 0, "cards": 0, "updated": 0, "inactive": 0}
 
-    deck_files_dir = cards_root / "decks"
-    if not deck_files_dir.exists():
-        return {"decks": 0, "cards": 0, "updated": 0, "inactive": 0}
-
-    deck_files = sorted(deck_files_dir.glob("*.md"))
+    deck_files = sorted(
+        f for f in content_root.rglob("*.md")
+        if not f.name.endswith(".roadmap.md")
+    )
     if not deck_files:
         return {"decks": 0, "cards": 0, "updated": 0, "inactive": 0}
 
     return _sync_from_deck_files(
         db=db,
-        cards_root=cards_root,
+        cards_root=content_root,
         deck_files=deck_files,
     )
 

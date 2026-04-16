@@ -63,8 +63,8 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--decks-dir",
-        default="content/flashcards/decks",
-        help="Relative path to deck markdown directory",
+        default="content",
+        help="Relative path to content directory",
     )
     parser.add_argument(
         "--check",
@@ -80,7 +80,10 @@ def main() -> int:
     if not decks_dir.exists():
         raise FileNotFoundError(f"Diretorio de decks nao encontrado: {decks_dir}")
 
-    files = sorted(decks_dir.glob("*.md"))
+    files = sorted(
+        f for f in decks_dir.rglob("*.md")
+        if not f.name.endswith(".roadmap.md")
+    )
     rewritten = 0
     unchanged = 0
     total_cards = 0
