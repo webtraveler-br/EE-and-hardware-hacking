@@ -73,6 +73,9 @@ class UserCardState(Base):
 
     reps: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     lapses: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    server_modified_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, onupdate=utcnow, nullable=False
+    )
 
 
 class ReviewLog(Base):

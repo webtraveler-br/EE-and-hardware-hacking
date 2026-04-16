@@ -60,6 +60,15 @@ class SyncExportDeltaPayload(BaseModel):
     cards: list[SyncLocalCardPayload] = Field(default_factory=list)
 
 
+class SyncPushPayload(BaseModel):
+    """Unified sync: import pending events + fetch delta since timestamp."""
+
+    events: list[SyncEventPayload] = Field(default_factory=list)
+    deck_uid: str = Field(default=ALL_DECK_UID, max_length=120)
+    last_sync_at: str | None = Field(default=None, max_length=64)
+    local_card_count: int = Field(default=0, ge=0)
+
+
 def _as_aware(dt: datetime | None, fallback: datetime) -> datetime:
     if dt is None:
         return fallback
@@ -264,8 +273,9 @@ def _card_needs_upsert(
 def _select_next_card(
     *, db: Session, user_id: int, deck_uid: str, now: datetime
 ) -> tuple[Card, Deck, UserCardState | None] | None:
+    # Priority 1: random due card
     due_query = (
-        select(Card, Deck, UserCardState)
+        select(Card.id)
         .join(Deck, Deck.id == Card.deck_id)
         .join(
             UserCardState,
@@ -275,13 +285,20 @@ def _select_next_card(
     )
     if deck_uid != ALL_DECK_UID:
         due_query = due_query.where(Deck.deck_uid == deck_uid)
-
     due_query = due_query.order_by(func.random()).limit(1)
-    due_hit = db.execute(due_query).first()
-    if due_hit is not None:
-        card, deck, state_row = due_hit
-        return card, deck, state_row
 
+    due_id = db.execute(due_query).scalar_one_or_none()
+    if due_id is not None:
+        row = db.execute(
+            select(Card, Deck, UserCardState)
+            .join(Deck, Deck.id == Card.deck_id)
+            .join(UserCardState, and_(UserCardState.card_id == Card.id, UserCardState.user_id == user_id))
+            .where(Card.id == due_id)
+        ).first()
+        if row is not None:
+            return row[0], row[1], row[2]
+
+    # Priority 2: first unseen card by order
     seen_subq = select(UserCardState.card_id).where(UserCardState.user_id == user_id)
     new_query = (
         select(Card, Deck)
@@ -405,6 +422,22 @@ def _get_quick_stats(db: Session, user_id: int, now: datetime) -> dict:
 def list_decks(user: User = Depends(require_user), db: Session = Depends(get_db)):
     now = utcnow()
     return {"decks": _get_deck_stats(db, user.id, now)}
+
+
+def _enforce_sync_rate_limit(request: Request, user: User) -> None:
+    settings = request.app.state.settings
+    ip = _client_ip(request)
+    limiter: SimpleRateLimiter = request.app.state.rate_limiter
+    allowed, retry_after = limiter.allow(
+        key=f"sync:{user.id}:{ip}",
+        limit=settings.sync_rate_limit_per_minute,
+        window_seconds=60,
+    )
+    if not allowed:
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail=f"limite_excedido_tente_em_{retry_after}s",
+        )
 
 
 @router.post("/study/next")
@@ -539,6 +572,7 @@ def sync_export(
     user: User = Depends(require_user),
     db: Session = Depends(get_db),
 ):
+    _enforce_sync_rate_limit(request, user)
     now = utcnow()
     selected_deck_uid, _ = _resolve_deck_scope(db, deck_uid)
     rows = _sync_export_rows(db, user.id, selected_deck_uid)
@@ -561,6 +595,7 @@ def sync_export_delta(
     user: User = Depends(require_user),
     db: Session = Depends(get_db),
 ):
+    _enforce_sync_rate_limit(request, user)
     now = utcnow()
     selected_deck_uid, _ = _resolve_deck_scope(db, payload.deck_uid)
     rows = _sync_export_rows(db, user.id, selected_deck_uid)
@@ -600,133 +635,20 @@ def sync_import(
     user: User = Depends(require_user),
     db: Session = Depends(get_db),
 ):
+    _enforce_sync_rate_limit(request, user)
     if len(payload.events) > 1000:
         raise HTTPException(status_code=400, detail="limite_maximo_1000_eventos")
 
     now = utcnow()
-    prepared_events: list[tuple[SyncEventPayload, str, datetime]] = []
-    duplicate_in_payload = 0
-    seen_payload_ids: set[str] = set()
-
-    for event in payload.events:
-        event_id = event.event_id.strip()
-        if event_id in seen_payload_ids:
-            duplicate_in_payload += 1
-            continue
-        seen_payload_ids.add(event_id)
-        reviewed_at = _parse_iso_datetime(event.reviewed_at, fallback=now)
-        prepared_events.append((event, event_id, reviewed_at))
-
-    if not prepared_events:
-        return {
-            "ok": True,
-            "accepted": 0,
-            "duplicates": duplicate_in_payload,
-            "errors": [],
-            "decks": _get_deck_stats(db, user.id, now),
-            "quick_stats": _get_quick_stats(db, user.id, now),
-        }
-
-    existing_ids = set(
-        db.execute(
-            select(SyncEvent.event_id).where(
-                SyncEvent.user_id == user.id,
-                SyncEvent.event_id.in_([event_id for _, event_id, _ in prepared_events]),
-            )
-        )
-        .scalars()
-        .all()
-    )
-
-    card_uids = sorted({event.card_uid for event, _, _ in prepared_events})
-    cards_by_uid = {
-        card.card_uid: card
-        for card in db.execute(
-            select(Card).where(Card.card_uid.in_(card_uids), Card.is_active.is_(True))
-        )
-        .scalars()
-        .all()
-    }
-    state_rows_by_card_id = {}
-    if cards_by_uid:
-        state_rows_by_card_id = {
-            state_row.card_id: state_row
-            for state_row in db.execute(
-                select(UserCardState).where(
-                    UserCardState.user_id == user.id,
-                    UserCardState.card_id.in_([card.id for card in cards_by_uid.values()]),
-                )
-            )
-            .scalars()
-            .all()
-        }
-
     fsrs_service: FSRSService = request.app.state.fsrs
-    accepted = 0
-    duplicates = duplicate_in_payload
-    errors: list[dict[str, str]] = []
 
-    ordered_events = sorted(prepared_events, key=lambda item: item[2])
-    for event, event_id, reviewed_at in ordered_events:
-        if event_id in existing_ids:
-            duplicates += 1
-            continue
-
-        card = cards_by_uid.get(event.card_uid)
-        if card is None:
-            errors.append({"event_id": event_id, "detail": "card_nao_encontrado"})
-            continue
-
-        state_row = state_rows_by_card_id.get(card.id)
-
-        old_due = state_row.due_at if state_row else None
-        old_state = state_row.fsrs_state if state_row else None
-
-        previous_card, new_card, review_log = fsrs_service.review(
-            card_id=card.id,
-            state_row=state_row,
-            rating_value=event.rating,
-            review_duration_ms=event.duration_ms,
-            now=reviewed_at,
-        )
-
-        if state_row is None:
-            state_row = UserCardState(user_id=user.id, card_id=card.id, reps=0, lapses=0)
-            db.add(state_row)
-            state_rows_by_card_id[card.id] = state_row
-
-        state_row.fsrs_state = int(new_card.state.value)
-        state_row.fsrs_step = new_card.step
-        state_row.fsrs_stability = (
-            float(new_card.stability) if new_card.stability is not None else None
-        )
-        state_row.fsrs_difficulty = (
-            float(new_card.difficulty) if new_card.difficulty is not None else None
-        )
-        state_row.due_at = _as_aware(new_card.due, reviewed_at)
-        state_row.last_review_at = _as_aware(new_card.last_review, reviewed_at)
-        state_row.reps = (state_row.reps or 0) + 1
-        if int(previous_card.state.value) == 2 and event.rating == 1:
-            state_row.lapses = (state_row.lapses or 0) + 1
-
-        db.add(
-            ReviewLog(
-                user_id=user.id,
-                card_id=card.id,
-                rating=event.rating,
-                review_duration_ms=event.duration_ms,
-                reviewed_at=_as_aware(review_log.review_datetime, reviewed_at),
-                old_state=old_state,
-                new_state=int(new_card.state.value),
-                due_before=_as_aware(old_due, reviewed_at) if old_due else None,
-                due_after=_as_aware(new_card.due, reviewed_at),
-            )
-        )
-
-        db.add(SyncEvent(user_id=user.id, event_id=event_id))
-        existing_ids.add(event_id)
-        accepted += 1
-
+    accepted, duplicates, errors = _import_events_batch(
+        db=db,
+        user=user,
+        events=payload.events,
+        fsrs_service=fsrs_service,
+        now=now,
+    )
     db.commit()
 
     fresh_now = utcnow()
@@ -774,4 +696,303 @@ def stats_summary(user: User = Depends(require_user), db: Session = Depends(get_
             }
             for row in per_deck_rows
         ],
+    }
+
+
+# ---------------------------------------------------------------------------
+# Lightweight sync status check
+# ---------------------------------------------------------------------------
+
+@router.get("/sync/status")
+def sync_status(
+    request: Request,
+    user: User = Depends(require_user),
+    db: Session = Depends(get_db),
+):
+    """Return a lightweight fingerprint so Android can skip sync when nothing changed.
+
+    The response includes:
+    - server_card_count: total active cards on server
+    - server_state_count: number of UserCardState rows for this user
+    - latest_server_modified_at: max(server_modified_at) across user states
+    - latest_card_updated_at: max(updated_at) across all active cards
+    - pending_due_count: cards currently due for review
+    """
+    now = utcnow()
+
+    server_card_count = db.execute(
+        select(func.count(Card.id)).where(Card.is_active.is_(True))
+    ).scalar_one()
+
+    state_agg = db.execute(
+        select(
+            func.count(UserCardState.id),
+            func.max(UserCardState.server_modified_at),
+        ).where(UserCardState.user_id == user.id)
+    ).first()
+    server_state_count = int(state_agg[0] or 0) if state_agg else 0
+    latest_state_modified = state_agg[1] if state_agg else None
+
+    latest_card_updated = db.execute(
+        select(func.max(Card.updated_at)).where(Card.is_active.is_(True))
+    ).scalar_one_or_none()
+
+    due_count = db.execute(
+        select(func.count(UserCardState.id)).where(
+            UserCardState.user_id == user.id,
+            UserCardState.due_at <= now,
+        )
+    ).scalar_one()
+
+    return {
+        "ok": True,
+        "server_now": now.isoformat(),
+        "server_card_count": int(server_card_count),
+        "server_state_count": server_state_count,
+        "latest_server_modified_at": (
+            latest_state_modified.isoformat() if latest_state_modified else None
+        ),
+        "latest_card_updated_at": (
+            latest_card_updated.isoformat() if latest_card_updated else None
+        ),
+        "pending_due_count": int(due_count),
+    }
+
+
+# ---------------------------------------------------------------------------
+# Unified sync/push: import events + timestamp-based delta in one round trip
+# ---------------------------------------------------------------------------
+
+def _import_events_batch(
+    *,
+    db: Session,
+    user: User,
+    events: list[SyncEventPayload],
+    fsrs_service: FSRSService,
+    now: datetime,
+) -> tuple[int, int, list[dict[str, str]]]:
+    """Process import events and return (accepted, duplicates, errors)."""
+    prepared_events: list[tuple[SyncEventPayload, str, datetime]] = []
+    duplicate_in_payload = 0
+    seen_payload_ids: set[str] = set()
+
+    for event in events:
+        event_id = event.event_id.strip()
+        if event_id in seen_payload_ids:
+            duplicate_in_payload += 1
+            continue
+        seen_payload_ids.add(event_id)
+        reviewed_at = _parse_iso_datetime(event.reviewed_at, fallback=now)
+        prepared_events.append((event, event_id, reviewed_at))
+
+    if not prepared_events:
+        return 0, duplicate_in_payload, []
+
+    existing_ids = set(
+        db.execute(
+            select(SyncEvent.event_id).where(
+                SyncEvent.user_id == user.id,
+                SyncEvent.event_id.in_([eid for _, eid, _ in prepared_events]),
+            )
+        )
+        .scalars()
+        .all()
+    )
+
+    card_uids = sorted({ev.card_uid for ev, _, _ in prepared_events})
+    cards_by_uid = {
+        card.card_uid: card
+        for card in db.execute(
+            select(Card).where(Card.card_uid.in_(card_uids), Card.is_active.is_(True))
+        )
+        .scalars()
+        .all()
+    }
+    state_rows_by_card_id = {}
+    if cards_by_uid:
+        state_rows_by_card_id = {
+            sr.card_id: sr
+            for sr in db.execute(
+                select(UserCardState).where(
+                    UserCardState.user_id == user.id,
+                    UserCardState.card_id.in_([c.id for c in cards_by_uid.values()]),
+                )
+            )
+            .scalars()
+            .all()
+        }
+
+    accepted = 0
+    duplicates = duplicate_in_payload
+    errors: list[dict[str, str]] = []
+
+    ordered_events = sorted(prepared_events, key=lambda item: item[2])
+    for event, event_id, reviewed_at in ordered_events:
+        if event_id in existing_ids:
+            duplicates += 1
+            continue
+
+        card = cards_by_uid.get(event.card_uid)
+        if card is None:
+            errors.append({"event_id": event_id, "detail": "card_nao_encontrado"})
+            continue
+
+        state_row = state_rows_by_card_id.get(card.id)
+        old_due = state_row.due_at if state_row else None
+        old_state = state_row.fsrs_state if state_row else None
+
+        previous_card, new_card, review_log = fsrs_service.review(
+            card_id=card.id,
+            state_row=state_row,
+            rating_value=event.rating,
+            review_duration_ms=event.duration_ms,
+            now=reviewed_at,
+        )
+
+        if state_row is None:
+            state_row = UserCardState(user_id=user.id, card_id=card.id, reps=0, lapses=0)
+            db.add(state_row)
+            state_rows_by_card_id[card.id] = state_row
+
+        state_row.fsrs_state = int(new_card.state.value)
+        state_row.fsrs_step = new_card.step
+        state_row.fsrs_stability = (
+            float(new_card.stability) if new_card.stability is not None else None
+        )
+        state_row.fsrs_difficulty = (
+            float(new_card.difficulty) if new_card.difficulty is not None else None
+        )
+        state_row.due_at = _as_aware(new_card.due, reviewed_at)
+        state_row.last_review_at = _as_aware(new_card.last_review, reviewed_at)
+        state_row.reps = (state_row.reps or 0) + 1
+        if int(previous_card.state.value) == 2 and event.rating == 1:
+            state_row.lapses = (state_row.lapses or 0) + 1
+
+        db.add(
+            ReviewLog(
+                user_id=user.id,
+                card_id=card.id,
+                rating=event.rating,
+                review_duration_ms=event.duration_ms,
+                reviewed_at=_as_aware(review_log.review_datetime, reviewed_at),
+                old_state=old_state,
+                new_state=int(new_card.state.value),
+                due_before=_as_aware(old_due, reviewed_at) if old_due else None,
+                due_after=_as_aware(new_card.due, reviewed_at),
+            )
+        )
+        db.add(SyncEvent(user_id=user.id, event_id=event_id))
+        existing_ids.add(event_id)
+        accepted += 1
+
+    return accepted, duplicates, errors
+
+
+def _delta_since_timestamp(
+    *,
+    db: Session,
+    user_id: int,
+    deck_uid: str,
+    since: datetime | None,
+    local_card_count: int,
+) -> tuple[list[dict], list[str], int]:
+    """Return (upserts, removed_uids, unchanged_count) based on server timestamps.
+
+    If `since` is None or local has 0 cards, return all cards as upserts.
+    """
+    rows = _sync_export_rows(db, user_id, deck_uid)
+
+    if since is None or local_card_count == 0:
+        # Full export needed
+        return _serialize_sync_rows(rows), [], 0
+
+    # Find cards with content or state modified after `since`
+    upserts = []
+    unchanged = 0
+    for card, deck, state_row in rows:
+        card_changed = card.updated_at > since
+        state_changed = (
+            state_row is not None and state_row.server_modified_at > since
+        )
+        # New card that didn't exist before — state_row might be None
+        state_is_new = state_row is None and local_card_count > 0
+
+        if card_changed or state_changed or state_is_new:
+            upserts.append(_serialize_sync_card(card, deck, state_row))
+        else:
+            unchanged += 1
+
+    # Detect removed cards: if local_card_count > total server rows,
+    # some cards were deleted but we can't know which without a list.
+    # Return all server card_uids so client can diff locally.
+    server_uids = sorted(card.card_uid for card, _, _ in rows)
+
+    return upserts, server_uids, unchanged
+
+
+@router.post("/sync/push")
+def sync_push(
+    payload: SyncPushPayload,
+    request: Request,
+    user: User = Depends(require_user),
+    db: Session = Depends(get_db),
+):
+    """Unified sync endpoint: import + delta in one round trip.
+
+    1. Imports pending review events (if any)
+    2. Returns cards modified since `last_sync_at`
+    3. Returns all server card_uids so client can detect removals
+
+    This replaces the need for separate /sync/import + /sync/export-delta calls.
+    """
+    _enforce_sync_rate_limit(request, user)
+
+    if len(payload.events) > 1000:
+        raise HTTPException(status_code=400, detail="limite_maximo_1000_eventos")
+
+    now = utcnow()
+    selected_deck_uid, _ = _resolve_deck_scope(db, payload.deck_uid)
+    fsrs_service: FSRSService = request.app.state.fsrs
+
+    # Phase 1: import pending events
+    accepted, duplicates, errors = 0, 0, []
+    if payload.events:
+        accepted, duplicates, errors = _import_events_batch(
+            db=db,
+            user=user,
+            events=payload.events,
+            fsrs_service=fsrs_service,
+            now=now,
+        )
+        db.commit()
+
+    # Phase 2: compute delta since last sync
+    since = None
+    if payload.last_sync_at:
+        since = _parse_iso_datetime(payload.last_sync_at, fallback=now)
+
+    fresh_now = utcnow()
+    upserts, server_card_uids, unchanged_count = _delta_since_timestamp(
+        db=db,
+        user_id=user.id,
+        deck_uid=selected_deck_uid,
+        since=since,
+        local_card_count=payload.local_card_count,
+    )
+
+    return {
+        "ok": True,
+        "server_now": fresh_now.isoformat(),
+        "import_result": {
+            "accepted": accepted,
+            "duplicates": duplicates,
+            "errors": errors,
+        },
+        "deck_uid": selected_deck_uid,
+        "scheduler_profile": fsrs_service.profile_payload(),
+        "upserts": upserts,
+        "server_card_uids": server_card_uids,
+        "unchanged_count": unchanged_count,
+        "decks": _get_deck_stats(db, user.id, fresh_now),
+        "quick_stats": _get_quick_stats(db, user.id, fresh_now),
     }

@@ -19,6 +19,7 @@ from app.routes.study_routes import (
     sync_export_delta,
     sync_import,
 )
+from app.anti_bot import SimpleRateLimiter
 from app.scheduler import FSRSService
 
 
@@ -31,7 +32,21 @@ def _new_session() -> Session:
 
 def _mk_request() -> SimpleNamespace:
     fsrs = FSRSService(desired_retention=0.9)
-    return SimpleNamespace(app=SimpleNamespace(state=SimpleNamespace(fsrs=fsrs)))
+    settings = SimpleNamespace(
+        sync_rate_limit_per_minute=1000,
+        review_rate_limit_per_minute=1000,
+    )
+    return SimpleNamespace(
+        app=SimpleNamespace(
+            state=SimpleNamespace(
+                fsrs=fsrs,
+                settings=settings,
+                rate_limiter=SimpleRateLimiter(),
+            )
+        ),
+        headers={},
+        client=SimpleNamespace(host="127.0.0.1"),
+    )
 
 
 def _seed_user_and_card(db: Session) -> tuple[User, Card]:
